@@ -7,5 +7,8 @@ class CreateAttendances < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :attendances, [:user_id, :lesson_id], :unique => true
+
   end
 end
