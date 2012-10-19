@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @lesson.title
+%p
+  %b Description:
+  = @lesson.description
+%p
+  %b Date:
+  = @lesson.date
+%p
+  %b Address:
+  = @lesson.address
+%p
+  %b City:
+  = @lesson.city
+%p
+  %b Course:
+  = @lesson.course_id
+%p
+  %b User:
+  = @lesson.user_id
+
+= link_to 'Edit', edit_lesson_path(@lesson)
+\|
+= link_to 'Back', lessons_path

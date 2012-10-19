@@ -1,4 +1,8 @@
 Rs::Application.routes.draw do
+  resources :users
+
+  resources :lessons
+
   get "home/index"
 
   get "home/about"
