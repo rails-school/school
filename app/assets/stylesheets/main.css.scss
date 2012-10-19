@@ -1,0 +1,247 @@
+@import url(http://fonts.googleapis.com/css?family=Muli:300,400|Yanone+Kaffeesatz:400,300,700);
+fonts {
+  font-family: 'Muli', sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+html {
+  background: url(bg_box.png);
+}
+
+body {
+  background: url(circles.png) no-repeat bottom right;
+  font-family: 'Muli', sans-serif;
+  text-shadow: 0px 1px 0px rgba(255,255,255,1);
+}
+
+h1 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: normal;
+  font-size:38px;
+  text-shadow: 0px 1px 0px rgba(255,255,255,1);
+}
+
+h2 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: normal;
+  font-size: 25px;
+  text-shadow: 0px 1px 0px rgab(255,255,255,1);
+}
+
+
+.header {
+  background: #093b4d;
+  height:40px;
+  position:relative;
+  margin-bottom:15px;
+  .menu-block {
+    width:55%;
+    margin-left: 20%;
+    a {
+      font-family: 'Yanone Kaffeesatz', sans-serif;
+      font-size:22px;
+      color:white;
+      height:45px;
+      display:block;
+      text-shadow: 0px 1px 0px rgba(0,0,0,0.5);
+      padding-left:20px;
+      padding-right:20px;
+      -webkit-transition: all 0.3s ease-out;  /* Safari 3.2+, Chrome */
+      -moz-transition: all 0.3s ease-out;  /* Firefox 4-15 */
+      -o-transition: all 0.3s ease-out;  /* Opera 10.5–12.00 */
+      transition: all 0.3s ease-out;  /* Firefox 16+, Opera 12.50+ */
+      &:hover {
+        background: #257c9c;
+      }
+    }
+    .menu {
+      list-style-type: none;
+      overflow:hidden;
+      li {
+        float:left;
+        margin-right:7%;
+      }
+    }
+  }
+  .flag {
+    margin-left:20px;
+    position:absolute;
+    background: url(flag.png);
+    width: 213px;
+    height: 259px;
+  }
+}
+
+.content {
+  max-width:1440px;
+  min-height:800px;
+  overflow:hidden;
+}
+
+.left-column {
+
+  .polls {
+    background:#a8b6bb;
+    margin-left:15px;
+    margin-top:-50px;
+    margin-right:5px;
+    padding:25px;
+    padding-top:5px;
+  }
+
+  float:left;
+  width:19%;
+  padding-left:20px;
+
+  .past {
+    padding: 5px 25px 40px 25px;
+    h2 {
+      color: #093b4d;
+    }
+    background: url(noise.png);
+    min-height:200px;
+    margin-top:215px;
+    ul {
+      list-style-type: none;
+      margin-top:20px;
+      li {
+        display:block;
+        padding-bottom:10px;
+        &:before {
+          width: 5px;
+          height:5px;
+          display:block;
+          float:left;
+          margin-top:7px;
+          background: #a30000;
+          content: ' ';
+        }
+        a {
+          color:black;
+          margin-left:20px;
+          display:block;
+        }
+      }
+    }
+  }
+  .poll {
+    background: #a8b6bb;
+  }
+}
+
+.center-column {
+  float:left;
+  width:56%;
+  .announce {
+    .text {
+      width: 60%;
+    }
+    .date {
+
+    }
+    .description {
+      font-size:16px;
+    }
+    .details {
+      color: #666666;
+    }
+    font-size:14px;
+    padding: 30px 30px 20px 30px;
+    background:url(shadows1.png) top right no-repeat, rgba(255,255,255,0.8);
+    min-height:200px;
+    border-top:5px solid #ab1818;
+    position: relative;
+    box-shadow: 2px 10px 15px rgba(0,0,0,0.05);
+    .view {
+      margin-top: 15px;
+      margin-bottom: 40px;
+      color: #ab1818;
+      font-size:14px;
+    }
+    h1 {
+      color: #ab1818;
+    }
+    &:after {
+      position:absolute;
+      right:0px;
+      bottom:-27px;
+      width:49px;
+      height:27px;
+      background: url(shadows2.png);
+      content: ' ';
+    }
+  }
+  .future-events {
+    h2 {
+      color: #093b4d;
+    }
+    margin-top:-20px;
+    padding:40px;
+    background: rgba(236,235,236,0.9);
+    margin-left:5%;
+    width:85%;
+    min-height:100px;
+    ul {
+      margin-top:15px;
+      list-style-type: none;
+      li {
+        border-bottom: 1px solid #bcbaa4;
+        border-top: 1px solid #fafaf8;
+        padding-left: 5px;
+
+        clear:both;
+        height:45px;
+        line-height: 45px;
+        &:first-child {
+          border-top:none;
+        }
+        &:last-child {
+          border-bottom:none;
+        }
+        .date {
+          float:left;
+          width: 15%;
+        }
+        .text {
+          float:left;
+          width: 55%;
+        }
+        .expand {
+          float:right;
+          width: 120px;
+        }
+      }
+    }
+  }
+}
+
+.right-column {
+  float:left;
+  width:25%;
+}
+
+
+.footer {
+  background: #07222c;
+  height:40px;
+  content: ' ';
+}
+
+.slogan {
+  margin-top: 120px;
+  margin-bottom: 120px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  margin-left:5%;
+
+  .white {
+    display:inline-block;
+    background:white;
+    font-size: 38px;
+    padding:7px;
+    margin-bottom:10px;
+  }
+  .red {
+    color: #a30000;
+
+  }
+}
