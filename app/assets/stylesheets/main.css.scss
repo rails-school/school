@@ -175,6 +175,7 @@ h2 {
     h2 {
       color: #093b4d;
     }
+    color: #333333;
     margin-top:-20px;
     padding:40px;
     background: rgba(236,235,236,0.9);
@@ -208,6 +209,9 @@ h2 {
         .text {
           float:left;
           width: 55%;
+          a {
+            color: #333333;
+          }
         }
         .expand {
           float:right;
