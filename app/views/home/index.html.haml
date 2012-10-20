@@ -3,59 +3,13 @@
   .left-column
     .past
       %h2 Past Workshops
-      %ul
-        %li
-          %a{:href => "#"}
-            Sending email using background workers
-        %li
-          %a{:href => "#"}
-            Sending email using background workers
-        %li
-          %a{:href => "#"}
-            Sending email using background workers
+      =render :partial => "lessons/past_lessons", :locals => {:lessons => past_lessons}
     .polls
       %h2 Poll: Do you want to learn Onyx on Train on Racks?
 
   .center-column
-    .announce
-      .text
-        .date
-          Next Workshop / 11.12.2012
-        %h1 How to Prepare your Rails App to Production
-        .description
-          Backend web dev in Ruby on Rails. This is a weekly seminar and workshop for folks to learn everything about Ruby, Rails, and web application development.
-        .view
-          View class Details
-        .details
-          Free Course / Tuesdays Nov 12th, 7pm-9pm
-          %br
-          in the Facebook’s Church room (map).
-      .image
-
-    .future-events
-      %h2 Upcoming Free Workshops
-      %ul
-        %li
-          .date
-            Date
-          .text
-            Text
-          .expand
-            Expand
-        %li
-          .date
-            Date
-          .text
-            Text
-          .expand
-            Expand
-        %li
-          .date
-            Date
-          .text
-            Text
-          .expand
-            Expand
+    =render :partial => "lessons/announce", :locals => {:lesson => past_lessons.first}
+    =render :partial => "lessons/future_lessons", :locals => {:lessons => past_lessons}
 
     .slogan
       .white

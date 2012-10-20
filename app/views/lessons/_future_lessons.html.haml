@@ -1,0 +1,11 @@
+.future-events
+  %h2 Upcoming Free Workshops
+  %ul
+    -lessons.each do |l|
+      %li
+        .date
+          =l.date.strftime("%d.%m.%y")
+        .text
+          =l.title
+        .expand
+          Expand

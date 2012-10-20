@@ -190,8 +190,11 @@ h2 {
         padding-left: 5px;
 
         clear:both;
-        height:45px;
-        line-height: 45px;
+        min-height:45px;
+        padding-top:10px;
+        padding-bottom:5px;
+        overflow:hidden;
+        //line-height: 45px;
         &:first-child {
           border-top:none;
         }
@@ -200,7 +203,7 @@ h2 {
         }
         .date {
           float:left;
-          width: 15%;
+          width: 90px;
         }
         .text {
           float:left;
