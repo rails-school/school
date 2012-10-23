@@ -1,30 +1,16 @@
-=render :partial => "layouts/header"
-.content
-  .left-column
-    .past
-      %h2 Past Workshops
-      =render :partial => "lessons/past_lessons", :locals => {:lessons => past_lessons}
-    .polls
-      %h2 Poll: Do you want to learn Onyx on Train on Racks?
+-provide :left_column do
+  .past
+    %h2 Past Workshops
+    =render :partial => "lessons/past_lessons", :locals => {:lessons => past_lessons}
+  .polls
+    %h2 Poll: Do you want to learn Onyx on Train on Racks?
 
-  .center-column
-    =render :partial => "lessons/announce", :locals => {:lesson => past_lessons.first}
-    =render :partial => "lessons/future_lessons", :locals => {:lessons => past_lessons}
+=render :partial => "lessons/announce", :locals => {:lesson => past_lessons.first}
+=render :partial => "lessons/future_lessons", :locals => {:lessons => past_lessons}
 
-    .slogan
-      .white
-        Want to learn
-        %span.red
-          Ruby on Rails
-        in the city?
-      .white
-        Come join us for free.
-        %span.red
-          No fees, no charges, no tricks.
-      .white
-        Just having fun learning and socializing together!
+=render :partial => "home/slogan"
 
+-provide :right_column do
   .right-column
     Blabla
 
-.footer

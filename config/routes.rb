@@ -1,7 +1,20 @@
 Rs::Application.routes.draw do
+  #get "internal/contact"
+
+  #get "internal/about"
+
+  get "internal/calendar"
+
+  resources :internals
+
+  devise_for :users
+
   resources :users
 
   resources :lessons
+
+  get "about" => "internal#about"
+  get "contact" => "internal#contact"
 
   get "home/index"
 

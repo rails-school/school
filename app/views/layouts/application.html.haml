@@ -7,4 +7,17 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     =csrf_meta_tags
   %body
-    = yield
+    =render :partial => "layouts/header"
+    .content
+      .left-column
+        = yield :left_column
+      .center-column
+        -if controller.controller_name == "home" and controller.action_name == "index"
+          = yield
+        -else
+          .announce
+            = yield
+      .right-column
+        = yield :right_column
+    .footer
+    =render :partial => "devise/login_modal"

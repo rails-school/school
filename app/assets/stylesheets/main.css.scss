@@ -5,13 +5,19 @@ fonts {
 }
 
 html {
-  background: url(bg_box.png);
-}
 
-body {
-  background: url(circles.png) no-repeat bottom right;
-  font-family: 'Muli', sans-serif;
-  text-shadow: 0px 1px 0px rgba(255,255,255,1);
+  background: url(bg_box.png);
+
+  body {
+    background: url(circles.png) no-repeat bottom right;
+    font-family: 'Muli', sans-serif;
+    text-shadow: 0px 1px 0px rgba(255,255,255,1);
+
+    input:focus{
+      outline: none;
+      border: none;
+    }
+  }
 }
 
 h1 {
@@ -59,7 +65,14 @@ h2 {
       overflow:hidden;
       li {
         float:left;
-        margin-right:7%;
+        margin-right:4%;
+      }
+    }
+    .login {
+      float:right;
+      width:100px;
+      li {
+        float:right;
       }
     }
   }
@@ -89,6 +102,7 @@ h2 {
     padding-top:5px;
   }
 
+  min-height:500px;
   float:left;
   width:19%;
   padding-left:20px;
@@ -133,8 +147,20 @@ h2 {
   float:left;
   width:56%;
   .announce {
+    overflow:hidden;
+
+    .rsvp {
+      margin-top:30px;
+    }
+
     .text {
       width: 60%;
+      float:left;
+    }
+    .image {
+      width: 40%;
+      float:left;
+      text-align:center;
     }
     .date {
 
@@ -239,7 +265,16 @@ h2 {
   margin-bottom: 120px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   margin-left:5%;
-
+  .register {
+    margin-top:30px;
+    .link {
+      padding-left: 30px;
+      color: #093b4d;
+      font-size:28px;
+      text-decoration: underline;
+      font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+  }
   .white {
     display:inline-block;
     background:white;
@@ -252,3 +287,18 @@ h2 {
 
   }
 }
+
+
+.img-wrap {
+  padding:15px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2), -1px -1px 3px rgba(0,0,0,0.2);
+  display:inline-block;
+}
+
+.img {
+  width:155px;
+  height:155px;
+  background: url(image.png);
+  box-shadow: INSET 3px 3px 15px rgba(0,0,0,0.5);
+}
+

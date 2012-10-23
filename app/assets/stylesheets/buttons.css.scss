@@ -1,0 +1,51 @@
+
+
+.a_button {
+  width:147px;
+  height:52px;
+  background: url(buttons.png);
+  cursor:pointer;
+  display:inline-block;
+  font-size:30px;
+  text-shadow: 0px 1px 0px rgba(0,0,0,0.9);
+  color:white;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  text-align:center;
+  padding-top:7px;
+  border:none;
+  font-weight:normal;
+  -webkit-appearance: none;
+  //white-space: pre;
+  outline: none;
+  &:focus {
+    font-weight:normal;
+    outline: none !important;
+  }
+  &:hover {
+    opacity:0.9;
+    color:white;
+  }
+  &:active {
+    background-position: left -58px;
+    padding-top:9px;
+  }
+
+  &.pressed {
+    padding-top:9px;
+    background-position: left 52px;
+
+  }
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+input[type="submit"].a_button {
+  padding-top:0px;
+  font-weight: normal;
+}
