@@ -8,4 +8,11 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name
+
+  has_many :attendances
+  has_many :lessons, :through => :attendances
+
+  def attend?(id)
+    true if Attendance.find_by_lesson_id(id)
+  end
 end

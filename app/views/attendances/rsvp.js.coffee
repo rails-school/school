@@ -1,0 +1,1 @@
+$(".rsvp[data-id='<%= @lesson.id %>']").replaceWith("<%= escape_javascript(render :partial => "attendances/rsvp", :locals => {:lesson => @lesson}) %>")

@@ -1,4 +1,6 @@
 Rs::Application.routes.draw do
+  mount Contenteditable::Engine => '/contenteditable'
+
   #get "internal/contact"
 
   #get "internal/about"
@@ -15,6 +17,8 @@ Rs::Application.routes.draw do
 
   get "about" => "internal#about"
   get "contact" => "internal#contact"
+  post "rsvp/:id" => "attendances#rsvp"
+  post "rsvp/:id/:delete" => "attendances#rsvp"
 
   get "home/index"
 

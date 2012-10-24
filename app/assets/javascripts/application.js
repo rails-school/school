@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require contenteditable/contenteditable
 //= require foundation
 //= require_tree .

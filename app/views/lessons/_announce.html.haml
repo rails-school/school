@@ -12,10 +12,7 @@
       %br
       in the Facebook’s Church room (map).
       %br
-    .rsvp{'data-id' => lesson.id}
-      %a.a_button{:href => "#", 'data-reveal-id' => 'LoginModal'}
-        RSVP!
-      5 people are going (on the way)
+    =render :partial => "attendances/rsvp", :locals => {:lesson => lesson}
 
 
   .image

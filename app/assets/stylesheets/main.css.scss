@@ -32,16 +32,21 @@ h2 {
   font-weight: normal;
   font-size: 25px;
   text-shadow: 0px 1px 0px rgab(255,255,255,1);
+  color: #093b4d;
 }
 
 
 .header {
+  &:after {
+    clear:both;
+  }
+
   background: #093b4d;
   height:40px;
   position:relative;
   margin-bottom:15px;
   .menu-block {
-    width:55%;
+    width:80%;
     margin-left: 20%;
     a {
       font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -59,22 +64,41 @@ h2 {
       &:hover {
         background: #257c9c;
       }
+
     }
+
     .menu {
+      //height:40px;
+      display:block;
+      //float:left;
+      //width:70%;
       list-style-type: none;
       overflow:hidden;
       li {
         float:left;
         margin-right:4%;
       }
-    }
-    .login {
-      float:right;
-      width:100px;
-      li {
+      .right {
         float:right;
+        margin-right:0px;
+        a {
+          padding-top:5px;
+          font-size: 18px;
+        }
       }
+
     }
+
+  }
+  .login {
+    //float:right;
+    width:200px;
+    li {
+      float:right;
+    }
+  }
+  .clearboth {
+    clear:both;
   }
   .flag {
     margin-left:20px;
@@ -115,6 +139,8 @@ h2 {
     background: url(noise.png);
     min-height:200px;
     margin-top:215px;
+    width:200%;
+    padding-right:107%;
     ul {
       list-style-type: none;
       margin-top:20px;

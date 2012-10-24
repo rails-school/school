@@ -4,7 +4,7 @@
   .menu-block
     %ul.menu
       %li
-        %a{:href => "about"} About
+        %a{:href => "/about"} About
       %li
         %a{:href => "#"} Workshop
       %li
@@ -14,10 +14,13 @@
       %li
         %a{:href => "#"} Calendar
       %li
-        %a{:href => "contact"} Contact
+        %a{:href => "/contact"} Contact
 
-  %ul.login
-    %li
-      %a{:href => "about"} Sign up
-    %li
-      %a{:href => "about"} Login
+      -if user_signed_in?
+        %li.right
+          =link_to 'Logout', destroy_user_session_path, :method => :delete
+      -else
+        %li.right
+          =link_to 'Sign up', '/users/sign_up'
+        %li.right
+          %a{:href => "about", 'data-reveal-id' => "LoginModal"} Login
