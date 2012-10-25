@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :admin?, :except => [:index, :show]
 
   def index
     @lessons = Lesson.all

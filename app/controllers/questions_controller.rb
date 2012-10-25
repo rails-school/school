@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_filter :admin?
+
   # GET /questions
   # GET /questions.json
   def index

@@ -64,6 +64,7 @@ input[type="submit"].a_button {
   -webkit-appearance: none;
   //white-space: pre;
   outline: none;
+  cursor:pointer;
 
   &:focus {
     font-weight:normal;
