@@ -49,3 +49,32 @@ input[type="submit"].a_button {
   padding-top:0px;
   font-weight: normal;
 }
+
+
+.small_button {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: normal;
+  font-size:16px;
+  color:white;
+  background:#093b4d;
+  border-radius:10px;
+  padding: 5px 25px;
+  user-select: none;
+  border:none;
+  -webkit-appearance: none;
+  //white-space: pre;
+  outline: none;
+
+  &:focus {
+    font-weight:normal;
+    outline: none !important;
+  }
+  &:hover {
+    background:#082b3d;
+  }
+  -webkit-transition: all 0.3s ease-out;  /* Safari 3.2+, Chrome */
+  -moz-transition: all 0.3s ease-out;  /* Firefox 4-15 */
+  -o-transition: all 0.3s ease-out;  /* Opera 10.5–12.00 */
+  transition: all 0.3s ease-out;  /* Firefox 16+, Opera 12.50+ */
+
+}

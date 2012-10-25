@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @answer.user_id
+%p
+  %b Question:
+  = @answer.question_id
+%p
+  %b Text:
+  = @answer.text
+
+= link_to 'Edit', edit_answer_path(@answer)
+\|
+= link_to 'Back', answers_path

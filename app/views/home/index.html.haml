@@ -2,8 +2,7 @@
   .past
     %h2 Past Workshops
     =render :partial => "lessons/past_lessons", :locals => {:lessons => past_lessons}
-  .polls
-    %h2 Poll: Do you want to learn Onyx on Train on Racks?
+  =render :partial => "questions/poll"
 
 =render :partial => "lessons/announce", :locals => {:lesson => past_lessons.first}
 =render :partial => "lessons/future_lessons", :locals => {:lessons => past_lessons}

@@ -1,0 +1,26 @@
+-if user_signed_in?
+  -q = current_user.question
+  -if q.present?
+    .polls{'data-id' => q.id}
+      -if q.present?
+        %h2=q.title
+        %p=q.description
+        -if q.body.match(";")
+          -answers = q.body.split(";")
+          =form_for current_user.answers.new, :remote => true do |f|
+            =f.hidden_field :question_id, :value => q.id
+            %ul
+              -answers.each do |a|
+                -if a != "!"
+                  %li
+                    =f.radio_button(:text, a)
+                    =a
+            =f.submit "Vote", :class => "small_button"
+  -else
+    .polls
+      Please watch the statistics
+
+-else
+  .polls
+  Please sign in, baby!
+

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025174524) do
+ActiveRecord::Schema.define(:version => 20121025192310) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.string   "text"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "attendances", :force => true do |t|
     t.integer  "user_id"
@@ -46,6 +54,15 @@ ActiveRecord::Schema.define(:version => 20121025174524) do
   end
 
   add_index "lessons", ["slug"], :name => "index_lessons_on_slug", :unique => true
+
+  create_table "questions", :force => true do |t|
+    t.string   "data_type"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "body"
+  end
 
   create_table "translations", :force => true do |t|
     t.string   "locale"

@@ -1,4 +1,8 @@
 Rs::Application.routes.draw do
+  resources :answers
+
+  resources :questions
+
   mount Contenteditable::Engine => '/contenteditable'
 
   #get "internal/contact"

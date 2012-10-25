@@ -1,0 +1,23 @@
+%h1 Listing questions
+
+%table
+  %tr
+    %th Data type
+    %th Title
+    %th Description
+    %th
+    %th
+    %th
+
+  - @questions.each do |question|
+    %tr
+      %td= question.data_type
+      %td= question.title
+      %td= question.description
+      %td= link_to 'Show', question
+      %td= link_to 'Edit', edit_question_path(question)
+      %td= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Question', new_question_path

@@ -10,9 +10,28 @@ class User < ActiveRecord::Base
   attr_accessible :name
 
   has_many :attendances
+  has_many :answers
   has_many :lessons, :through => :attendances
 
   def attend?(id)
     true if Attendance.find_by_lesson_id(id)
   end
+
+  def answered?(q)
+    true if self.answers.find_by_question_id(q.id)
+  end
+
+  def question
+    qs = Question.all
+    qs.each do |q|
+      if self.answered?(q)
+      else
+        return q
+      end
+
+    end
+    return nil
+  end
+
+
 end

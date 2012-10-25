@@ -1,0 +1,23 @@
+%h1 Listing answers
+
+%table
+  %tr
+    %th User
+    %th Question
+    %th Text
+    %th
+    %th
+    %th
+
+  - @answers.each do |answer|
+    %tr
+      %td= answer.user_id
+      %td= answer.question_id
+      %td= answer.text
+      %td= link_to 'Show', answer
+      %td= link_to 'Edit', edit_answer_path(answer)
+      %td= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Answer', new_answer_path
