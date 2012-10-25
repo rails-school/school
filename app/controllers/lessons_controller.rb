@@ -15,7 +15,11 @@ class LessonsController < ApplicationController
   # GET /lessons/1
   # GET /lessons/1.json
   def show
-    @lesson = Lesson.find(params[:id])
+    slug = params[:slug]
+
+    @lesson = Lesson.find(params[:id]) if slug.blank?
+    @lesson = Lesson.find_by_slug(slug) if slug.present?
+
 
     respond_to do |format|
       format.html # show.html.erb

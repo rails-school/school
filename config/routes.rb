@@ -16,6 +16,7 @@ Rs::Application.routes.draw do
   resources :lessons
 
   get "about" => "internal#about"
+  get "l/:slug" => "lessons#show"
   get "contact" => "internal#contact"
   post "rsvp/:id" => "attendances#rsvp"
   post "rsvp/:id/:delete" => "attendances#rsvp"
