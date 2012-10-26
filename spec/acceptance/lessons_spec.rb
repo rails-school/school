@@ -9,7 +9,7 @@ feature %q{
   background do
     @user = FactoryGirl.create(:user)
     @lesson = FactoryGirl.create(:lesson)
-    visit "/"
+    visit root_path
     click_link "Login"
     fill_in "user[email]", :with => @user.email
     fill_in "user[password]", :with => "draft1"
@@ -79,7 +79,7 @@ feature %q{
 
   background do
     @admin = FactoryGirl.create(:admin)
-    visit "/"
+    visit root_path
     click_link "Login"
     fill_in "user[email]", :with => @admin.email
     fill_in "user[password]", :with => "draft1"
@@ -107,7 +107,7 @@ feature %q{
 
   background do
     @user = FactoryGirl.create(:user)
-    visit "/"
+    visit root_path
     click_link "Login"
     fill_in "user[email]", :with => @user.email
     fill_in "user[password]", :with => "draft1"
@@ -115,9 +115,9 @@ feature %q{
   end
 
   scenario "Random user is trying to access create lesson address", :js => true do
-    visit "/lessons/new"
+    visit new_lesson_path
     uri = URI.parse(current_url)
-    uri.path.should == "/"
+    uri.path.should == root_path
   end
 
 
