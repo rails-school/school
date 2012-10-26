@@ -19,6 +19,7 @@ feature %q{
 
   scenario "RSVP clicking RSVP button", :js => true do
     click_link "RSVP!"
+    Attendance.all.count.should == 1
     page.should have_css(".pressed")
   end
 
@@ -29,16 +30,16 @@ end
 feature %q{
   As a user
   I cannot RSVP if I am not logged in
-  So organizers know who exactly logged in
+  So organizers know who exactly goes
 } do
 
   background do
     visit "/"
   end
 
-
   scenario "trying RSVP clicking RSVP button", :js => true do
     click_link "RSVP!"
+    Attendance.all.count.should == 0
     page.should_not have_css(".pressed")
   end
 
