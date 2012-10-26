@@ -22,15 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def question
-    qs = Question.all
-    qs.each do |q|
-      if self.answered?(q)
-      else
-        return q
-      end
-
-    end
-    return nil
+    Question.all.select {|q| !self.answered?(q) }[0]
   end
 
 

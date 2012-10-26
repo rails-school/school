@@ -34,6 +34,19 @@ end
 
 gem 'jquery-rails'
 
+group :test do
+  gem "cucumber-rails", :require => false
+  gem "factory_girl_rails"
+  gem "timecop"
+  gem 'shoulda-matchers'
+  gem 'simplecov', :require => false # code coverage tool
+  gem "database_cleaner"
+  gem "forgery"
+  gem "rspec-rails"
+  gem 'pry'
+  gem 'pry-nav'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
