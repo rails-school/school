@@ -4,7 +4,7 @@
     -lessons.each do |l|
       %li
         .date
-          =l.date.strftime("%d.%m.%y")
+          =l.date.try(:strftime, "%d.%m.%y")
         .text
           =link_to l.title, l.url
         .expand

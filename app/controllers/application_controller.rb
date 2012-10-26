@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   #contenteditable_filter "admin?"
 
   def past_lessons
-    Lesson.all(:order => "RANDOM()", :limit => 4)
+    lessons = Lesson.all(:order => "RANDOM()", :limit => 4)
+    lessons << Lesson.new if lessons.empty?
+    lessons
   end
 
   def admin?
