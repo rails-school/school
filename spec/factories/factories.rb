@@ -9,4 +9,10 @@ FactoryGirl.define do
     u.password_confirmation  "draft1"
   end
 
+  factory :lesson do |l|
+    l.title              "some random lesson how to make animal orgy on mondays"
+    l.description        "light@beer-is-good.com"
+    l.date               Date.today
+  end
+
 end

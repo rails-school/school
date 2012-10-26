@@ -15,9 +15,11 @@ feature %q{
     click_button "Sign in"
   end
 
+
   scenario "Log out by clicking link", :js => true do
     click_link "Logout"
     page.should have_link("Login")
   end
+
 
 end
