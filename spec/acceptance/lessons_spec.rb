@@ -50,9 +50,31 @@ end
 feature %q{
   As a website
   I want to make sure,
-  That when admin creates a lesson,
+  That when lesson is saved
   Slug is generated
-  So link to the lesson is accessible
+} do
+
+  background do
+  end
+
+  scenario "creating a lesson", :js => true do
+    l = Lesson.new
+    l.title = "Funny lesson how to eat bad veggie burgers"
+    l.description = "Yooou!"
+    l.save!
+    lessons = Lesson.all
+    lessons.count.should == 1
+    lessons.first.slug.should == "funny_lesson_how_to_eat_bad_veggie_burgers"
+  end
+
+
+end
+
+feature %q{
+  As a website
+  I want to make sure,
+  That the admin can create lessons
+  So the admin can create lessons
 } do
 
   background do
@@ -65,13 +87,37 @@ feature %q{
   end
 
   scenario "creating a lesson", :js => true do
-    l = Lesson.new
-    l.title = "Funny lesson how to eat bad veggie burgers"
-    l.description = "Yooou!"
-    l.save!
+    visit "/lessons/new"
+    fill_in "lesson[title]", :with => "some random topic"
+    fill_in "lesson[description]", :with => "some random topic"
+    click_button "Save"
     lessons = Lesson.all
     lessons.count.should == 1
-    lessons.first.slug.should == "funny_lesson_how_to_eat_bad_veggie_burgers"
+  end
+
+
+end
+
+feature %q{
+  As a website
+  I want to make sure,
+  That some random user
+  Can't create lessons
+} do
+
+  background do
+    @user = FactoryGirl.create(:user)
+    visit "/"
+    click_link "Login"
+    fill_in "user[email]", :with => @user.email
+    fill_in "user[password]", :with => "draft1"
+    click_button "Sign in"
+  end
+
+  scenario "Random user is trying to access create lesson address", :js => true do
+    visit "/lessons/new"
+    uri = URI.parse(current_url)
+    uri.path.should == "/"
   end
 
 
