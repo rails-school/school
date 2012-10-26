@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20121025192310) do
   create_table "lessons", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime     "date"
+    t.datetime "date"
     t.string   "address"
     t.string   "city"
     t.integer  "course_id"
