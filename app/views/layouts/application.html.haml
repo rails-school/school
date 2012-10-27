@@ -7,6 +7,7 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     =csrf_meta_tags
   %body
+    =render "social_media/fb_header"
     =render :partial => "layouts/header"
     =save_button
     .content
@@ -20,5 +21,5 @@
             = yield
       .right-column
         = yield :right_column
-    .footer
-    =render :partial => "devise/login_modal"
+    = render :partial => "layouts/footer"
+    = render :partial => "devise/login_modal"

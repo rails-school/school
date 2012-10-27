@@ -282,8 +282,13 @@ h2 {
 
 .footer {
   background: #07222c;
+  padding-top:8px;
   height:40px;
   content: ' ';
+  .content {
+    min-height:1px;
+    padding:0px 25px;
+  }
 }
 
 .slogan {
