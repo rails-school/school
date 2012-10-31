@@ -10,6 +10,5 @@
 =render :partial => "home/slogan"
 
 -provide :right_column do
-  .right-column
-    Blabla
+  =render :partial => "lessons/calendar", :locals => {:lesson => Lesson.all}
 
