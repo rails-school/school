@@ -101,9 +101,10 @@ h2 {
     clear:both;
   }
   .flag {
+    display:block;
     margin-left:20px;
     position:absolute;
-    background: url(flag.png);
+    background: url(logo.png);
     width: 213px;
     height: 259px;
   }
