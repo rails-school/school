@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :past_lessons, :admin?
+  helper_method :past_lessons, :admin?, :all_lessons
   #contenteditable_filter "admin?"
 
   def past_lessons
@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
 
+  end
+
+  def all_lessons
+    Lesson.all
   end
 
 end
