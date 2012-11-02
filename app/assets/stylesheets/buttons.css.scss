@@ -17,6 +17,7 @@
   -webkit-appearance: none;
   //white-space: pre;
   outline: none;
+  line-height:30px;
   &:focus {
     font-weight:normal;
     outline: none !important;
@@ -24,6 +25,7 @@
   &:hover {
     opacity:0.9;
     color:white;
+    text-decoration: none;
   }
   &:active {
     background-position: left -58px;

@@ -1,0 +1,17 @@
+.member {
+  overflow:hidden;
+  padding-bottom:20px;
+  .pic-wrap {
+    padding:5px;
+    border:1px solid #e8e8e8;
+    width:140px;
+    height:140px;
+    float:left;
+    margin-right:20px;
+  }
+
+  &:after {
+    clear:both;
+  }
+
+}

@@ -1,13 +1,17 @@
 .rsvp{'data-id' => lesson.id}
-  -if user_signed_in?
-    -if current_user.attend?(lesson.id)
-      %a.a_button.pressed{:href => "/rsvp/#{lesson.id}/delete", 'data-remote' => true, 'data-method' => 'POST'}
-        RSVP!
+  .actions
+    -if user_signed_in?
+      -if current_user.attend?(lesson.id)
+        %a.a_button.pressed{:href => "/rsvp/#{lesson.id}/delete", 'data-remote' => true, 'data-method' => 'POST'}
+          RSVP!
+      -else
+        %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-remote' => true, 'data-method' => 'POST'}
+          RSVP!
     -else
-      %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-remote' => true, 'data-method' => 'POST'}
+      %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-reveal-id' => 'LoginModal', 'data-remote' => true}
         RSVP!
-  -else
-    %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-reveal-id' => 'LoginModal', 'data-remote' => true}
-      RSVP!
-
-  #{lesson.users.count} people are going (on the way)
+  .text
+    #{lesson.users.count} people are going
+    %br
+    See
+    =link_to 'who is going', lesson.url

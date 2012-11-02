@@ -261,12 +261,20 @@ ul.lessons_list {
     border-bottom: 1px solid #bcbaa4;
     border-top: 1px solid #fafaf8;
     padding-left: 5px;
-
+    background: rgba(255,255,255,0);
     clear:both;
     min-height:45px;
     padding-top:10px;
     padding-bottom:5px;
     overflow:hidden;
+
+    -webkit-transition: all 0.3s ease-out;  /* Safari 3.2+, Chrome */
+    -moz-transition: all 0.3s ease-out;  /* Firefox 4-15 */
+    -o-transition: all 0.3s ease-out;  /* Opera 10.5–12.00 */
+    transition: all 0.3s ease-out;  /* Firefox 16+, Opera 12.50+ */
+    &.white {
+      background: rgba(255,255,255,1);
+    }
     //line-height: 45px;
     &:first-child {
       border-top:none;

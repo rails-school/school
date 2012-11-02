@@ -1,0 +1,16 @@
+body {
+  a {
+    color:#093b4d;
+    &:hover {
+      text-decoration: underline;
+      color:#093b4d;
+    }
+    &.red {
+      color: #a30000;
+      &:hover {
+        text-decoration: underline;
+        color:#a30000;
+      }
+    }
+  }
+}

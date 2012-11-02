@@ -1,0 +1,18 @@
+.rsvp {
+  margin-top:20px;
+  margin-bottom:20px;
+  .actions {
+    float:left;
+    width:150px;
+  }
+  .text {
+    width:150px;
+    box-sizing: border-box;
+    margin-top:20px;
+    padding-left:20px;
+    float:left;
+  }
+  &:after {
+    clear:both;
+  }
+}
