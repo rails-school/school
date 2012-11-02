@@ -19,6 +19,10 @@
         =l.place.city
         =link_to '(map)', l.place
         =render :partial => "attendances/rsvp", :locals => {:lesson => l}
+        -if admin?
+          %td= link_to 'Show', l
+          %td= link_to 'Edit', edit_lesson_path(l)
+          %td= link_to 'Destroy', l, method: :delete, data: { confirm: 'Are you sure?' }
 
 
 
