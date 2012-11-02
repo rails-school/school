@@ -1,4 +1,6 @@
 Rs::Application.routes.draw do
+  resources :places
+
   resources :answers
 
   resources :questions

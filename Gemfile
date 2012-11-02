@@ -9,7 +9,7 @@ gem "devise"
 gem "haml-rails"
 gem 'coffee-rails', '~> 3.2.1'
 gem "contenteditable", :github => 'micmmakarov/contenteditable', :branch => :master
-
+gem 'gmaps4rails'
 
 group :development do
   gem 'pry'

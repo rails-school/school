@@ -175,6 +175,15 @@ h2 {
   width:56%;
   .announce {
     overflow:hidden;
+    .top {
+      overflow:hidden;
+    }
+    .botom {
+      &:before {
+        clear:both;
+      }
+      overflow:hidden;
+    }
 
     .rsvp {
       margin-top:30px;
@@ -210,6 +219,12 @@ h2 {
       margin-bottom: 40px;
       color: #ab1818;
       font-size:14px;
+      a {
+        color:#a30000;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
     h1 {
       color: #ab1818;
@@ -235,42 +250,44 @@ h2 {
     margin-left:5%;
     width:85%;
     min-height:100px;
-    ul {
-      margin-top:15px;
-      list-style-type: none;
-      li {
-        border-bottom: 1px solid #bcbaa4;
-        border-top: 1px solid #fafaf8;
-        padding-left: 5px;
 
-        clear:both;
-        min-height:45px;
-        padding-top:10px;
-        padding-bottom:5px;
-        overflow:hidden;
-        //line-height: 45px;
-        &:first-child {
-          border-top:none;
-        }
-        &:last-child {
-          border-bottom:none;
-        }
-        .date {
-          float:left;
-          width: 90px;
-        }
-        .text {
-          float:left;
-          width: 55%;
-          a {
-            color: #333333;
-          }
-        }
-        .expand {
-          float:right;
-          width: 120px;
-        }
+  }
+}
+
+ul.lessons_list {
+  margin-top:15px;
+  list-style-type: none;
+  li {
+    border-bottom: 1px solid #bcbaa4;
+    border-top: 1px solid #fafaf8;
+    padding-left: 5px;
+
+    clear:both;
+    min-height:45px;
+    padding-top:10px;
+    padding-bottom:5px;
+    overflow:hidden;
+    //line-height: 45px;
+    &:first-child {
+      border-top:none;
+    }
+    &:last-child {
+      border-bottom:none;
+    }
+    .date {
+      float:left;
+      width: 90px;
+    }
+    .text {
+      float:left;
+      width: 55%;
+      a {
+        color: #333333;
       }
+    }
+    .expand {
+      float:right;
+      width: 120px;
     }
   }
 }

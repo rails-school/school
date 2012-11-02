@@ -6,3 +6,23 @@
 .head {
   overflow:hidden;
 }
+
+
+.lessons_list {
+  .info {
+    overflow:hidden;
+    &:after {
+      clear:both;
+    }
+  }
+  .details {
+    margin-top:20px;
+    margin-bottom:20px;
+    padding:20px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    overflow:hidden;
+    display:none;
+    background:white;
+  }
+}

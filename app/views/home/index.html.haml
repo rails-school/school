@@ -5,7 +5,9 @@
   =render :partial => "questions/poll"
 
 =render :partial => "lessons/announce", :locals => {:lesson => past_lessons.first}
-=render :partial => "lessons/future_lessons", :locals => {:lessons => past_lessons}
+.future-events
+  %h2 Upcoming Free Workshops
+  =render :partial => "lessons/future_lessons", :locals => {:lessons => past_lessons}
 
 =render :partial => "home/slogan"
 

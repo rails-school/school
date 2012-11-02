@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1=@place.name
+%p
+  %b Address:
+  = @place.address
+%p
+  %b City:
+  = @place.city
+%p
+  %b State:
+  = @place.state
+%p
+  %b Country:
+  = @place.country
+%p
+  %b Zip:
+  = @place.zip
+
+=render :partial => "shared/maps", :locals => {:places => @place}
+
+-if admin?
+  = link_to 'Edit', edit_place_path(@place)
+  \|
+  = link_to 'Back', places_path

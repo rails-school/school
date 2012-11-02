@@ -1,0 +1,21 @@
+@media screen and (max-width: 767px) {
+  .left-column {
+    display:none;
+  }
+  .right-column {
+    display:none;
+  }
+  .center-column {
+    width: 90%;
+    margin:auto;
+    display:block;
+    float:none;
+  }
+  .flag {
+    display:none !important;
+  }
+  .menu-block {
+    margin-left: 20px !important;
+  }
+
+}

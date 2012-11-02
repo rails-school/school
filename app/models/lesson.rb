@@ -4,6 +4,9 @@ class Lesson < ActiveRecord::Base
   has_many :attendances
   has_many :users, :through => :attendances
   before_save :generate_slug
+  belongs_to :place
+
+
 
   def generate_slug
     self.slug = "#{self.title}"

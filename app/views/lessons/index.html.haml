@@ -1,31 +1,13 @@
-%h1 Listing lessons
+%h1 All lessons
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Date
-    %th Address
-    %th City
-    %th Course
-    %th User
-    %th
-    %th
-    %th
+=render :partial => "lessons/future_lessons", :locals => {:lessons => @lessons}
 
-  - @lessons.each do |lesson|
-    %tr
-      %td= lesson.title
-      %td= lesson.description
-      %td= lesson.date
-      %td= lesson.address
-      %td= lesson.city
-      %td= lesson.course_id
-      %td= lesson.user_id
-      %td= link_to 'Show', lesson
-      %td= link_to 'Edit', edit_lesson_path(lesson)
-      %td= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' }
+-if admin?
+  %td= link_to 'Show', lesson
+  %td= link_to 'Edit', edit_lesson_path(lesson)
+  %td= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Lesson', new_lesson_path
+-if admin?
+  = link_to 'New Lesson', new_lesson_path

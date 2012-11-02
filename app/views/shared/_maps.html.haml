@@ -1,0 +1,3 @@
+.the_map
+  -place = places.to_gmaps4rails
+  =gmaps("map_options" => {"auto_zoom" => false, "detect_location" => true, "center_on_user" => true, "zoom" => 14},"markers" => { "data" => place })
