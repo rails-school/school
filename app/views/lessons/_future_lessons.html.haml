@@ -10,19 +10,28 @@
           %a.expand_lesson{:href => "#", "data-lesson" => l.id} Expand
 
       .details{"data-lesson" => l.id}
-        =l.description
+        %h5=l.description
+        %br
+        =l.text.html_safe if l.text.present?
         %br
         %br
         %b Address:
-        =link_to l.place.name, l.place
-        =l.place.address
-        =l.place.city
-        =link_to '(map)', l.place
+        =link_to l.place.name, l.place if l.place.present?
+        =l.place.address  if l.place.present?
+        =l.place.city if l.place.present?
+        =link_to '(map)', l.place if l.place.present?
+        .view
+          =link_to 'View details...', l
         =render :partial => "attendances/rsvp", :locals => {:lesson => l}
         -if admin?
-          %td= link_to 'Show', l
-          %td= link_to 'Edit', edit_lesson_path(l)
-          %td= link_to 'Destroy', l, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Show', l
+          = link_to 'Edit', edit_lesson_path(l)
+          = link_to 'Destroy', l, method: :delete, data: { confirm: 'Are you sure?' }
 
+-if lessons.count == 0
+  %br
+  %br
+  %br
+  There are no workshops
 
 

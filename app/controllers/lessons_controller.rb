@@ -4,7 +4,7 @@ class LessonsController < ApplicationController
   before_filter :admin_only, :except => [:index, :show]
 
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.order("date DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,7 +47,6 @@ class LessonsController < ApplicationController
   # POST /lessons.json
   def create
     @lesson = Lesson.new(params[:lesson])
-
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }

@@ -15,9 +15,10 @@
       =lesson.date.try(:strftime, "%I%p")
       %br
       Location:
-      =lesson.place.address
-      =lesson.place.city
-      =link_to "(map)", lesson.place
+      -if lesson.place.present?
+        =lesson.place.address
+        =lesson.place.city
+        =link_to "(map)", lesson.place
 
 
       %br

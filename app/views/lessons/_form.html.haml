@@ -12,9 +12,9 @@
   .field
     = f.label :description
     = f.text_area :description
-  .field
-    = f.label :date
-    = f.time_select :date
+  .time-field
+    =f.label :date
+    =f.datetime_select :date
   .field
     = f.label :address
     = f.text_field :address
