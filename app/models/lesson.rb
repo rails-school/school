@@ -23,5 +23,8 @@ class Lesson < ActiveRecord::Base
     "/l/" + self.slug.to_s
   end
 
+  def self.future_lessons
+    self.all.select { |l| l.date > DateTime.now}
+  end
 
 end

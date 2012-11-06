@@ -7,13 +7,15 @@
       %li
         %a{:href => lessons_url} All events
       %li
-        %a{:href => "#"} Calendar
+        %a{:href => "/calendar"} Calendar
       %li
         %a{:href => "/contact"} Contact
 
       -if user_signed_in?
         %li.right
           =link_to 'Logout', destroy_user_session_path, :method => :delete
+        %li.right
+          =link_to current_user.name, current_user
       -else
         %li.right
           =link_to 'Sign up', '/users/sign_up'

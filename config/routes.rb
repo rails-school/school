@@ -21,6 +21,7 @@ Rs::Application.routes.draw do
 
   resources :lessons
 
+  get "calendar" => "home#calendar"
   get "about" => "internal#about"
   get "l/:slug" => "lessons#show"
   get "contact" => "internal#contact"
