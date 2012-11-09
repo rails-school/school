@@ -1,11 +1,12 @@
+# encoding: UTF-8
+
 puts "Creating lesson Class: topic is BLOGS"
 lesson = Lesson.find_or_create_by_title("Class: topic is BLOGS") do |lesson|
   lesson.title = "Class: topic is BLOGS"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-05-08 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = " We'll take a look at some blog features and talk about how they might be implemented."
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-05-08 19:00:00 UTC')
   lesson.text = <<EOF
 In preparation please tackle <a href="http://guides.rubyonrails.org/">http://guides.rubyonrails.org/</a> getting_started.html and get as far as you can in setting up a simple blog app.
 Please post some links here to your favorite blogs. We'll take a look at some blog features and talk about how they might be implemented.
@@ -17,11 +18,10 @@ end
 puts "Creating lesson Demo Day!"
 lesson = Lesson.find_or_create_by_title("Demo Day!") do |lesson|
   lesson.title = "Demo Day!"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-05-15 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = " We'll take a look at some blog features and talk about how they might be implemented."
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-05-15 19:00:00 UTC')
   lesson.text = <<EOF
 This class we're going to start with a show-and-tell of projects we're working on or have recently completed. The demos don't have to be Ruby- or Rails-related, but should be related to web programming in some way. This is a chance to get answers to your project-specific questions, find fun new projects to work on, and receive great feedback.
 Then we'll break up into two groups, one for beginners and one for more experienced students.
@@ -30,11 +30,10 @@ end
 puts "Creating lesson  Authentication with the Devise gem"
 lesson = Lesson.find_or_create_by_title(" Authentication with the Devise gem") do |lesson|
   lesson.title = " Authentication with the Devise gem"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-05-22 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "add authentication to the blogs we created"
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-05-22 19:00:00 UTC')
   lesson.text = <<EOF
 In preparation please finish the tutorial at http://guides.rubyonrails.org/getting_started.html . Seriously!
 Enough talking about awesome Rails gems, let's use one in an app. We're going to add authentication to the blogs we created in the Getting Started guide, using the devise gem.
@@ -44,11 +43,10 @@ end
 puts "Creating lesson Rails class"
 lesson = Lesson.find_or_create_by_title("Rails class") do |lesson|
   lesson.title = "Rails class"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-05-29 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Intro to Product Development"
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-05-29 19:00:00 UTC')
   lesson.text = <<EOF
 5/29 Class
 
@@ -89,11 +87,10 @@ end
 puts "Creating lesson Ajax in Rails"
 lesson = Lesson.find_or_create_by_title("Ajax in Rails") do |lesson|
   lesson.title = "Ajax in Rails"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-06-05 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Rails' Unobtrusive Javascript framework"
-  lesson.address = "San Francisco"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-06-05 19:00:00 UTC')
   lesson.text = <<EOF
 We're going to continue our discussion of using Rails' Unobtrusive Javascript framework to add ajax interaction to our blog apps.
 
@@ -105,11 +102,10 @@ end
 puts "Creating lesson Dissecting the request lifecycle with pry"
 lesson = Lesson.find_or_create_by_title("Dissecting the request lifecycle with pry") do |lesson|
   lesson.title = "Dissecting the request lifecycle with pry"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-06-12 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Let's investigate the journey of a request through Rails with some help from the debugging tool pry."
-  lesson.address = "Church Room, Noisebridge, 2169 Mission, SF"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-06-12 19:00:00 UTC')
   lesson.text = <<EOF
 Required reading
 
@@ -125,11 +121,10 @@ end
 puts "Creating lesson Test-Driven-Development and Sending Emails"
 lesson = Lesson.find_or_create_by_title("Test-Driven-Development and Sending Emails") do |lesson|
   lesson.title = "Test-Driven-Development and Sending Emails"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-06-19 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "In this ambitious lecture-workshop, we're going to introduce Test-Driven-Development, and apply it to sending emails from our blogs."
-  lesson.address = "Church Room, Noisebridge, 2169 Mission, SF"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-06-19 19:00:00 UTC')
   lesson.text = <<EOF
 New students and others interested will have the option of learning Ruby 101 separately.
 
@@ -147,11 +142,10 @@ end
 puts "Creating lesson Layouts and Rendering in Rails"
 lesson = Lesson.find_or_create_by_title("Layouts and Rendering in Rails") do |lesson|
   lesson.title = "Layouts and Rendering in Rails"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-06-26 18:59:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Will go through the layout features of Action Controller and Action View"
-  lesson.address = "Church Room, Noisebridge, 2169 Mission, SF"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-06-26 18:59:00 UTC')
   lesson.text = <<EOF
 You will learn how to:
 
@@ -164,11 +158,10 @@ end
 puts "Creating lesson Playing with APIs"
 lesson = Lesson.find_or_create_by_title("Playing with APIs") do |lesson|
   lesson.title = "Playing with APIs"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-07-03 19:01:00 UTC")
+  lesson.place_id = 1
   lesson.description = "We will use Twitter API in a rails app"
-  lesson.address = "Church Room, Noisebridge, 2169 Mission, SF"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-07-03 19:01:00 UTC')
   lesson.text = <<EOF
 In this class we will use Twitter's API (https://dev.twitter.com/docs/api) and integrate Twitter functionality into our Rails app.
 EOF
@@ -176,11 +169,10 @@ end
 puts "Creating lesson Continuous Integration with Travis"
 lesson = Lesson.find_or_create_by_title("Continuous Integration with Travis") do |lesson|
   lesson.title = "Continuous Integration with Travis"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-07-10 19:01:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Intro to CI including configuring our apps to run on Travis-CI"
-  lesson.address = "Church Room, Noisebridge, 2169 Mission, SF"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-07-10 19:01:00 UTC')
   lesson.text = <<EOF
 Please bring a Rails app that you've already pushed to Github.
 
@@ -193,11 +185,10 @@ end
 puts "Creating lesson Catch-up Day"
 lesson = Lesson.find_or_create_by_title("Catch-up Day") do |lesson|
   lesson.title = "Catch-up Day"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-07-17 07:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "We're going to use this class to catch up new students."
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-07-17 07:00:00 UTC')
   lesson.text = <<EOF
 The two big things we want to accomplish:
 
@@ -213,11 +204,10 @@ end
 puts "Creating lesson Fun with the Stripe payment API"
 lesson = Lesson.find_or_create_by_title("Fun with the Stripe payment API") do |lesson|
   lesson.title = "Fun with the Stripe payment API"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-07-24 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "We'll hook up Stripe's API in our blog apps."
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-07-24 19:00:00 UTC')
   lesson.text = <<EOF
 Please sign up for Stripe ahead of time - 
 
@@ -236,11 +226,10 @@ end
 puts "Creating lesson Rails' Asset Pipeline"
 lesson = Lesson.find_or_create_by_title("Rails' Asset Pipeline") do |lesson|
   lesson.title = "Rails' Asset Pipeline"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-07-31 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "We'll look closely at asset organization, compilation, and packaging, and also check out SCSS and Coffeescript."
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-07-31 19:00:00 UTC')
   lesson.text = <<EOF
 Required viewing 
 
@@ -252,11 +241,10 @@ end
 puts "Creating lesson Ruby, API's, and Gems"
 lesson = Lesson.find_or_create_by_title("Ruby, API's, and Gems") do |lesson|
   lesson.title = "Ruby, API's, and Gems"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-08-07 19:01:00 UTC")
+  lesson.place_id = 1
   lesson.description = "No Rails today; Ruby, Rest API's and Ruby Gems instead!"
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-08-07 19:01:00 UTC')
   lesson.text = <<EOF
 Highly Recommended Reading
 
@@ -266,11 +254,10 @@ end
 puts "Creating lesson Twitter API"
 lesson = Lesson.find_or_create_by_title("Twitter API") do |lesson|
   lesson.title = "Twitter API"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-08-14 19:03:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Using twitter API to build fun app"
-  lesson.address = "Noisebridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-08-14 19:03:00 UTC')
   lesson.text = <<EOF
 Homework: think how you want to use twitter API and what kind of APPs do you want to make with it.
 
@@ -282,11 +269,10 @@ end
 puts "Creating lesson ActiveRecord"
 lesson = Lesson.find_or_create_by_title("ActiveRecord") do |lesson|
   lesson.title = "ActiveRecord"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-08-21 07:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Taking a better look at this essential part of Rails"
-  lesson.address = "Church Room, Noisebridge, 2169 Mission, SF"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-08-21 07:00:00 UTC')
   lesson.text = <<EOF
 Suggested reading:
 
@@ -301,11 +287,10 @@ end
 puts "Creating lesson Self-posting Novelty Twitter Accounts"
 lesson = Lesson.find_or_create_by_title("Self-posting Novelty Twitter Accounts") do |lesson|
   lesson.title = "Self-posting Novelty Twitter Accounts"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-08-28 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Let's create bots that make interesting tweets periodically"
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-08-28 19:00:00 UTC')
   lesson.text = <<EOF
 The homework is just to come up with a fun and simple idea for the tweets you want your bot to post.   Also, register your novelty twitter username and a twitter app: <a href="http://dev.twitter.com">http://dev.twitter.com</a>.
 And make sure you have a heroku account set up.
@@ -322,11 +307,10 @@ end
 puts "Creating lesson Scraping and Parsing the Web"
 lesson = Lesson.find_or_create_by_title("Scraping and Parsing the Web") do |lesson|
   lesson.title = "Scraping and Parsing the Web"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-09-11 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "The last resort when there is no API, scraping and parsing isn't much fun, but Ruby's got some great tools to alleviate the pain."
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-09-11 19:00:00 UTC')
   lesson.text = <<EOF
 Please bring some sources you want to scrape as well as ideas for what to do with the scraped data.
 
@@ -342,11 +326,10 @@ end
 puts "Creating lesson Hack with Foursquare API"
 lesson = Lesson.find_or_create_by_title("Hack with Foursquare API") do |lesson|
   lesson.title = "Hack with Foursquare API"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-09-04 19:01:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Lets learn how to use foursquare API and what can we make out of it"
-  lesson.address = "Noisebridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-09-04 19:01:00 UTC')
   lesson.text = <<EOF
 Homework:
 
@@ -363,11 +346,10 @@ end
 puts "Creating lesson Roll-your-own Chat App with the Goliath web server"
 lesson = Lesson.find_or_create_by_title("Roll-your-own Chat App with the Goliath web server") do |lesson|
   lesson.title = "Roll-your-own Chat App with the Goliath web server"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-09-18 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Rails isn't perfect for interactive, real-time, scalable apps.  Let's play with Goliath, a Ruby-based web server that is."
-  lesson.address = "NoiseBridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-09-18 19:00:00 UTC')
   lesson.text = <<EOF
 This is Ruby-only class for which no Rails experience is required.
 
@@ -379,11 +361,10 @@ end
 puts "Creating lesson Catch-up Day"
 lesson = Lesson.find_or_create_by_title("Catch-up Day") do |lesson|
   lesson.title = "Catch-up Day"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-09-25 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "We're going to use this class to catch up new students."
-  lesson.address = "Noisebridge, Church room"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-09-25 19:00:00 UTC')
   lesson.text = <<EOF
 The two big things we want to accomplish: 
 
@@ -399,11 +380,10 @@ end
 puts "Creating lesson Etherpad Bots"
 lesson = Lesson.find_or_create_by_title("Etherpad Bots") do |lesson|
   lesson.title = "Etherpad Bots"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-10-02 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Let's write some bots that interact in Etherpads"
-  lesson.address = "Noisebridge, Church room"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-10-02 19:00:00 UTC')
   lesson.text = <<EOF
 Etherpads are the shared docs we take our class notes on.
 
@@ -415,11 +395,10 @@ end
 puts "Creating lesson Sending email using background workers"
 lesson = Lesson.find_or_create_by_title("Sending email using background workers") do |lesson|
   lesson.title = "Sending email using background workers"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-10-09 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Sending email using background workers"
-  lesson.address = "Noisebridge, SF"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-10-09 19:00:00 UTC')
   lesson.text = <<EOF
 In this class we will show how to send email using Rails. We will also utilize delayed_job gem to handle the actual email sending in the background. 
 
@@ -433,11 +412,10 @@ end
 puts "Creating lesson How to prepare your Rails app for production"
 lesson = Lesson.find_or_create_by_title("How to prepare your Rails app for production") do |lesson|
   lesson.title = "How to prepare your Rails app for production"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-10-16 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Essential steps to take before you launch"
-  lesson.address = "Noisebridge"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-10-16 19:00:00 UTC')
   lesson.text = <<EOF
 By choosing to build your web app in Rails, countless choices have been made for you that give you the best chance of a successful launch.  Nevertheless, there are some details you will need to take care of on your own.
 
@@ -450,14 +428,13 @@ Recommended reading
 <a href="http://guides.rubyonrails.org/caching_with_rails.html">http://guides.rubyonrails.org/caching_with_rails.html</a>
 EOF
 end
-puts "Creating lesson Calculating Pi with Object-Oriented Ruby and Test-Driven Development"
-lesson = Lesson.find_or_create_by_title("Calculating Pi with Object-Oriented Ruby and Test-Driven Development") do |lesson|
-  lesson.title = "Calculating Pi with Object-Oriented Ruby and Test-Driven Development"
+puts "Creating lesson Calculating π with Object-Oriented Ruby and Test-Driven Development"
+lesson = Lesson.find_or_create_by_title("Calculating π with Object-Oriented Ruby and Test-Driven Development") do |lesson|
+  lesson.title = "Calculating π with Object-Oriented Ruby and Test-Driven Development"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-10-23 19:00:00 UTC")
+  lesson.place_id = 1
   lesson.description = "Let's use our favorite programming language to calculate one of our favorite irrationals"
-  lesson.address = "Noisebridge, Church room"
-  lesson.city = 'San Francisco'
-  lesson.course_id = 1
-  lesson.date = Time.parse('2012-10-23 19:00:00 UTC')
   lesson.text = <<EOF
 You don't need Rails for this class; it's Ruby-only.  Just bring a laptop with Ruby 1.9.
 
@@ -466,5 +443,27 @@ Suggested Preparation
 <a href="http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html">http://tutorials.jumpstartlab.com/projects/ruby_in_100_minutes.html</a>
 
 <a href="http://blog.teamtreehouse.com/an-introduction-to-rspec">http://blog.teamtreehouse.com/an-introduction-to-rspec</a>
+EOF
+end
+puts "Creating lesson Image Uploads in Rails with TDD"
+lesson = Lesson.find_or_create_by_title("Image Uploads in Rails with TDD") do |lesson|
+  lesson.title = "Image Uploads in Rails with TDD"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-10-30 19:00:00 UTC")
+  lesson.place_id = 1
+  lesson.description = "Let's add images to out blog posts"
+  lesson.text = <<EOF
+Please complete <a href="http://guides.rubyonrails.org/getting_started.html">http://guides.rubyonrails.org/getting_started.html</a> beforehand.
+EOF
+end
+puts "Creating lesson Refactoring existing code"
+lesson = Lesson.find_or_create_by_title("Refactoring existing code") do |lesson|
+  lesson.title = "Refactoring existing code"
+  lesson.course_id = "1"
+  lesson.date = Time.parse("2012-11-06 19:00:00 UTC")
+  lesson.place_id = 1
+  lesson.description = "How to refactor Rails code"
+  lesson.text = <<EOF
+We're going to take a look at refactoring an existing Rails up. Learn how to improve your models, controllers and views.
 EOF
 end

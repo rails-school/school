@@ -16,7 +16,6 @@ Rs::Application.routes.draw do
   resources :internals
 
   devise_for :users
-
   resources :users
 
   resources :lessons
