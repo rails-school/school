@@ -359,3 +359,20 @@ ul.lessons_list {
   box-shadow: INSET 3px 3px 15px rgba(0,0,0,0.5);
 }
 
+
+.expand_lesson {
+  &:after {
+    width:10px;
+    height:10px;
+    margin-left:10px;
+    display:inline-block;
+    background: url(arrows.png);
+    background-position: -15px 0px;
+    content:' ';
+  }
+  &.opened {
+    &:after {
+      background-position: -15px -15px;
+    }
+  }
+}

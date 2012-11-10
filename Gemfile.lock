@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/micmmakarov/contenteditable.git
-  revision: 861da722b8f7a6b7ffe671d312928361a61b3062
+  revision: 87fcc95f7ac4d60a5ea4b02fbce440af35a48b0e
   branch: master
   specs:
     contenteditable (0.0.1)

@@ -17,7 +17,7 @@ require 'factory_girl'
 
         it "fucking have Logout link" do
           #render
-          binding.pry
+          #binding.pry
           #it { should respond_with :success }
         end    
 
