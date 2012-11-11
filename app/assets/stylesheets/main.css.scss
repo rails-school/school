@@ -372,7 +372,21 @@ ul.lessons_list {
   }
   &.opened {
     &:after {
-      background-position: -15px -15px;
+      background-position: -15px -12px;
     }
   }
+}
+
+.view {
+  display:inline-block;
+  &:after {
+    width:10px;
+    height:10px;
+    margin-left:10px;
+    display:inline-block;
+    background: url(arrows.png);
+    background-position: 0px 0px;
+    content:' ';
+  }
+
 }
