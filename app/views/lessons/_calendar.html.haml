@@ -33,7 +33,7 @@
             -if d >= 0 and d < lastday
               -d += 1
               -if not lessons_today?(year, month, d).empty?
-                .event
+                %a.event{:href => "#{root_url}/d/#{d}_#{Date::MONTHNAMES[month]}_#{year}"}
                   =d
               -else
                 =d

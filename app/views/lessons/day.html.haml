@@ -1,0 +1,18 @@
+-provide :left_column do
+  .past
+    %h2 Statistics
+    %p
+      In total, #{Lesson.all.count} lessons have been held since #{Lesson.order(:date).first.date.try(:strftime, "%d.%m.%y")}
+      %br
+      In total, #{User.all.count} students have been registered, and they attended lessons #{Attendance.all.count} times.
+  =render :partial => "questions/poll"
+
+%h1=@the_date.strftime("%A, %e of %B, %Y")
+
+=render :partial => "lessons/future_lessons", :locals => {:lessons => @lessons}
+
+
+%br
+
+-if admin?
+  = link_to 'New Lesson', new_lesson_path

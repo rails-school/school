@@ -27,6 +27,7 @@ Rs::Application.routes.draw do
   post "rsvp/:id" => "attendances#rsvp"
   post "rsvp/:id/:delete" => "attendances#rsvp"
 
+  get "d/:the_date" => "lessons#day"
   get "home/index"
 
   get "home/about"

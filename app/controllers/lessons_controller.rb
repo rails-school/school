@@ -1,10 +1,26 @@
 class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
-  before_filter :admin_only, :except => [:index, :show]
+  before_filter :admin_only, :except => [:index, :show, :day]
 
   def index
     @lessons = Lesson.order("date DESC")
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @lessons }
+    end
+  end
+
+
+  def day
+    @the_date = Time.parse(params[:the_date])
+    @lessons = Lesson.all.select do |l|
+      l.date.to_date == @the_date.to_date
+    end
+
+
+
 
     respond_to do |format|
       format.html # index.html.erb
