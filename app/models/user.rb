@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :lessons, :through => :attendances
 
   def attend?(id)
-    true if Attendance.find_by_lesson_id(id)
+    true if not Attendance.where(:lesson_id => id, :user_id => self.id).empty?
   end
 
   def answered?(q)
