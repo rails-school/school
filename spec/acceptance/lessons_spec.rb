@@ -34,6 +34,7 @@ feature %q{
 } do
 
   background do
+    @lesson = FactoryGirl.create(:lesson)
     visit "/"
   end
 
@@ -64,7 +65,7 @@ feature %q{
     l.save!
     lessons = Lesson.all
     lessons.count.should == 1
-    lessons.first.slug.should == "funny_lesson_how_to_eat_bad_veggie_burgers"
+    lessons.first.slug.should == "funny-lesson-how-to-eat-bad-veggie-burgers"
   end
 
 
@@ -123,28 +124,3 @@ feature %q{
 
 end
 
-
-feature %q{
-  As an admin
-  I want to make sure
-  When I create a lesson, slug also is generated
-} do
-
-  background do
-    @user = FactoryGirl.create(:user)
-    @lesson = FactoryGirl.create(:lesson)
-    visit root_path
-    click_link "Login"
-    fill_in "user[email]", :with => @user.email
-    fill_in "user[password]", :with => "draft1"
-    click_button "Sign in"
-  end
-
-
-  scenario "RSVP clicking RSVP button", :js => true do
-    @lesson.save!
-    Lesson.first.slug.should == "some-random-lesson-how-to-make-animal-orgy-on-mondays"
-  end
-
-
-end
