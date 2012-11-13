@@ -5,7 +5,7 @@
       -if user_signed_in?
         -if current_user.attend?(lesson.id)
           %a.a_button.pressed{:href => "/rsvp/#{lesson.id}/delete", 'data-remote' => true, 'data-method' => 'POST'}
-            RSVP!
+            unRSVP
         -else
           %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-remote' => true, 'data-method' => 'POST'}
             RSVP!

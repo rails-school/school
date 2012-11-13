@@ -27,6 +27,37 @@ feature %q{
 end
 
 
+
+
+feature %q{
+  As a user
+  I want to be able to unRSVP
+  So organizers can see how many people go
+} do
+
+  background do
+    @user = FactoryGirl.create(:user)
+    @lesson = FactoryGirl.create(:lesson)
+    visit root_path
+    click_link "Login"
+    fill_in "user[email]", :with => @user.email
+    fill_in "user[password]", :with => "draft1"
+    click_button "Sign in"
+  end
+
+
+  scenario "RSVP clicking RSVP button", :js => true do
+    click_link "RSVP!"
+    click_link "unRSVP"
+    page.should_not have_css(".pressed")
+    Attendance.all.count.should == 0
+  end
+
+
+end
+
+
+
 feature %q{
   As a user
   I cannot RSVP if I am not logged in
