@@ -32,6 +32,7 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     slug = params[:slug]
+    @whiteboard = params[:whiteboard]
 
     @lesson = Lesson.find(params[:id]) if slug.blank?
     @lesson = Lesson.find_by_slug(slug) if slug.present?

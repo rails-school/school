@@ -19,8 +19,6 @@
     %h1=@lesson.title
     .description
       =@lesson.description
-    .view
-      View class Details
     .details
       Free Course / Tuesdays Nov 12th, 7pm-9pm
       %br
@@ -41,8 +39,17 @@
 %h2 Whiteboard
 
 -if user_signed_in?
-  -link = "http://pad.coshx.com/p/"
-  %iframe{:src => "#{link}rails-school-lesson-#{@lesson.id}", :style => "width:100%;height:600px;border:1px solid #CCCCCC;"}
+  -if @whiteboard == true
+    -link = "http://pad.coshx.com/p/"
+    %iframe{:src => "#{link}rails-school-lesson-#{@lesson.id}", :style => "width:100%;height:600px;border:1px solid #CCCCCC;"}
+  -else
+    .action
+      =link_to "Show whiteboard", "#{@lesson.url}/whiteboard", :class => "button secondary"
+
+      %br
+      %br
+      %br
+
 -else
   Please, sign in to see the Whiteboard
 

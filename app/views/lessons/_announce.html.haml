@@ -6,8 +6,9 @@
     %h1=lesson.title
     .description
       =lesson.description
-    .view
-      =link_to 'View class Details', lesson.url
+    -if main_page == true
+      .view
+        =link_to 'View class Details', lesson.url
     .details
       Date:
       =lesson.date.try(:strftime, "%d.%m.%y")

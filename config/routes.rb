@@ -23,6 +23,7 @@ Rs::Application.routes.draw do
   get "calendar" => "home#calendar"
   get "about" => "internal#about"
   get "l/:slug" => "lessons#show"
+  get "l/:slug/whiteboard" => "lessons#show", :whiteboard => true
   get "contact" => "internal#contact"
   post "rsvp/:id" => "attendances#rsvp"
   post "rsvp/:id/:delete" => "attendances#rsvp"
