@@ -24,7 +24,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def self.future_lessons
-    self.all.select { |l| l.date >= DateTime.now}
+    self.all.select { |l| l.date.to_date >= DateTime.now.to_date}
   end
 
 end
