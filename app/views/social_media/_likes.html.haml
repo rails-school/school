@@ -1,0 +1,5 @@
+.likes
+  .tweet
+    =render :partial => "social_media/tweet", :locals => {:message => message, :url => url}
+  .fb
+    =render :partial => "social_media/like", :locals => {:url => url}

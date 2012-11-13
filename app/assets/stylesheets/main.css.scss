@@ -174,7 +174,7 @@ h2 {
   float:left;
   width:56%;
   .announce {
-    overflow:hidden;
+    //overflow:hidden;
     .top {
       overflow:hidden;
     }
@@ -387,6 +387,18 @@ ul.lessons_list {
     background: url(arrows.png);
     background-position: 0px 0px;
     content:' ';
+  }
+
+}
+
+.likes {
+  padding-top:20px;
+  .tweet {
+    padding-left:20px;
+  }
+  iframe, .fb-like {
+    margin:5px;
+    display:block;
   }
 
 }
