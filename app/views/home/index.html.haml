@@ -4,7 +4,8 @@
     =render :partial => "lessons/past_lessons", :locals => {:lessons => past_lessons}
   =render :partial => "questions/poll"
 
-=render :partial => "lessons/announce", :locals => {:lesson => future_lessons.first, :main_page => true}
+.announce
+  =render :partial => "lessons/announce", :locals => {:lesson => future_lessons.first, :main_page => true}
 .future-events
   %h2 Upcoming Free Workshops
   =render :partial => "lessons/future_lessons", :locals => {:lessons => future_lessons}

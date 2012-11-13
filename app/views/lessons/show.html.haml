@@ -12,24 +12,8 @@
   .polls
     %h2 Poll: Do you want to learn Onyx on Train on Racks?
 
-.head
-  .text
-    .date
-      Next Workshop / 11.12.2012
-    %h1=@lesson.title
-    .description
-      =@lesson.description
-    .details
-      Free Course / Tuesdays Nov 12th, 7pm-9pm
-      %br
-      in the Facebook’s Church room (map).
-      %br
-    =render :partial => "attendances/rsvp", :locals => {:lesson => @lesson}
-
-
-  .image
-    .img-wrap
-      .img
+.lesson_details
+  =render :partial => "lessons/announce", :locals => {:lesson => @lesson, :main_page => false}
 
 
 %hr
