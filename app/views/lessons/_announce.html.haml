@@ -1,7 +1,7 @@
 .text
   .date
     Next Workshop /
-    =lesson.date.try(:strftime, "%d.%m.%y")
+    =lesson.date.try(:strftime, "%d.%m.%y") if lesson.present?
   %h1=lesson.title
   .description
     =lesson.description

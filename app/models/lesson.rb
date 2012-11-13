@@ -13,9 +13,9 @@ class Lesson < ActiveRecord::Base
     self.slug.gsub! /['`]/,""
     self.slug.gsub! /\s*@\s*/, " at "
     self.slug.gsub! /\s*&\s*/, " and "
-    self.slug.gsub! /\s*[^A-Za-z0-9\.\-]\s*/, '_'
-    self.slug.gsub! /_+/,"_"
-    self.slug.gsub! /\A[_\.]+|[_\.]+\z/,""
+    self.slug.gsub! /\s*[^A-Za-z0-9\.\-]\s*/, '-'
+    self.slug.gsub! /-+/,"-"
+    self.slug.gsub! /\A[-\.]+|[-\.]+\z/,""
     self.slug.downcase!
   end
 

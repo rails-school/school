@@ -15,15 +15,17 @@
     .text
       #{lesson.users.count} people are going
       %br
-      -if current_user.attend?(lesson.id)
-        You are going
+      -if user_signed_in?
+        -if current_user.attend?(lesson.id)
+          You are going
       /See
       /=link_to 'who is going', lesson.url
   -else
     .text
       #{lesson.users.count} people were there
       %br
-      -if current_user.attend?(lesson.id)
-        You were there
+      -if user_signed_in?
+        -if current_user.attend?(lesson.id)
+          You were there
       /See
       /=link_to 'who was there', lesson.url

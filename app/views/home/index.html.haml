@@ -5,7 +5,7 @@
   =render :partial => "questions/poll"
 
 .announce
-  =render :partial => "lessons/announce", :locals => {:lesson => future_lessons.first, :main_page => true}
+  =render :partial => "lessons/announce", :locals => {:lesson => future_lessons.first, :main_page => true} if future_lessons.first.present?
 .future-events
   %h2 Upcoming Free Workshops
   =render :partial => "lessons/future_lessons", :locals => {:lessons => future_lessons}

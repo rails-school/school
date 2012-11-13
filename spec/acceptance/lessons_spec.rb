@@ -19,8 +19,8 @@ feature %q{
 
   scenario "RSVP clicking RSVP button", :js => true do
     click_link "RSVP!"
-    Attendance.all.count.should == 1
     page.should have_css(".pressed")
+    Attendance.all.count.should == 1
   end
 
 
@@ -39,8 +39,8 @@ feature %q{
 
   scenario "trying RSVP clicking RSVP button", :js => true do
     click_link "RSVP!"
-    Attendance.all.count.should == 0
     page.should_not have_css(".pressed")
+    Attendance.all.count.should == 0
   end
 
 
@@ -118,6 +118,32 @@ feature %q{
     visit new_lesson_path
     uri = URI.parse(current_url)
     uri.path.should == root_path
+  end
+
+
+end
+
+
+feature %q{
+  As an admin
+  I want to make sure
+  When I create a lesson, slug also is generated
+} do
+
+  background do
+    @user = FactoryGirl.create(:user)
+    @lesson = FactoryGirl.create(:lesson)
+    visit root_path
+    click_link "Login"
+    fill_in "user[email]", :with => @user.email
+    fill_in "user[password]", :with => "draft1"
+    click_button "Sign in"
+  end
+
+
+  scenario "RSVP clicking RSVP button", :js => true do
+    @lesson.save!
+    Lesson.first.slug.should == "some-random-lesson-how-to-make-animal-orgy-on-mondays"
   end
 
 
