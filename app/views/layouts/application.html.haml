@@ -1,7 +1,11 @@
 !!!
 %html
   %head
-    %title Rs
+    %title Rails School San Francisco
+    -if controller.action_name == 'show' and controller.controller_name == "lessons"
+      = yield :meta
+    -else
+      =render "social_media/meta"
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/

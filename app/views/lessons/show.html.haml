@@ -63,3 +63,13 @@
 -if admin?
   = link_to 'Edit', edit_lesson_path(@lesson), :class => 'button'
 
+
+-provide :meta do
+  %meta{:content => "Rails School San Francisco - #{lesson.title}", :property => "og:title"}/
+  %meta{:content => "website", :property => "og:type"}/
+  %meta{:content => "http://RailsSchool.org#{lesson.url}", :property => "og:url"}/
+  %meta{:content => "http://railsschool.org/assets/logo.png", :property => "og:image"}/
+  %meta{:content => "RailsSchool.org", :property => "og:site_name"}/
+  %meta{:content => "100000245725293", :property => "fb:admins"}/
+  %meta{:content => "442490832470487", :property => "fb:app_id"}/
+  %meta{:content => "Rails School San Francisco - #{lesson.description}", :property => "og:description"}/
