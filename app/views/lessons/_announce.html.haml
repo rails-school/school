@@ -1,7 +1,7 @@
 .text
   .date
     Next Workshop /
-    =lesson.date.try(:strftime, "%d.%m.%y") if lesson.present?
+    =lesson.date.try(:strftime, "%h, %d %Y") if lesson.present?
   %h1=lesson.title
   .description
     =lesson.description
@@ -13,9 +13,9 @@
     %br
   .details
     Date:
-    =lesson.date.try(:strftime, "%d.%m.%y")
+    =lesson.date.try(:strftime, "%h, %d %Y")
     Time:
-    =lesson.date.try(:strftime, "%I%p")
+    =lesson.date.try(:strftime, "%I:%m%p")
     %br
     Location:
     -if lesson.place.present?

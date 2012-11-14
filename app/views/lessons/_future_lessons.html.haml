@@ -3,7 +3,7 @@
     %li
       .info
         .date
-          =l.date.try(:strftime, "%d.%m.%y")
+          =l.date.try(:strftime, "%m.%d.%y")
         .text
           =link_to l.title, l.url
         .expand
