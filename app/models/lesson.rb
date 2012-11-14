@@ -31,8 +31,11 @@ class Lesson < ActiveRecord::Base
 
   def self.past_lessons
     lessons = order("RANDOM()").limit(4)
+
     if lessons.empty?
       lessons << new
     end
+
+    lessons
   end
 end

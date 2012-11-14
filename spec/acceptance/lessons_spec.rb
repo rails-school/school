@@ -22,12 +22,7 @@ feature %q{
     page.should have_css(".pressed")
     Attendance.all.count.should == 1
   end
-
-
 end
-
-
-
 
 feature %q{
   As a user

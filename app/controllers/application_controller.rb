@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :admin?
-  contenteditable_filter "authenticate_user!"
+  contenteditable_filter "user_signed_in?"
 
   def admin?
     if user_signed_in?
