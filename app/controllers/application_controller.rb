@@ -1,17 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :past_lessons, :admin?, :all_lessons, :future_lessons
-  contenteditable_filter "user_signed_in?"
-
-  def past_lessons
-    lessons = Lesson.all(:order => "RANDOM()", :limit => 4)
-    lessons << Lesson.new if lessons.empty?
-    lessons
-  end
-
-  def future_lessons
-    Lesson.future_lessons
-  end
+  helper_method :admin?
+  contenteditable_filter "authenticate_user!"
 
   def admin?
     if user_signed_in?
@@ -24,9 +14,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-
-  def all_lessons
-    Lesson.all
-  end
-
 end

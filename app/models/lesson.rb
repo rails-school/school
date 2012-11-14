@@ -7,16 +7,16 @@ class Lesson < ActiveRecord::Base
   belongs_to :place
 
 
+  def get(id, slug)
+    if slug.blank?
+      find(id)
+    else
+      find_by_slug(slug)
+    end
+  end
 
   def generate_slug
-    self.slug = "#{self.title}"
-    self.slug.gsub! /['`]/,""
-    self.slug.gsub! /\s*@\s*/, " at "
-    self.slug.gsub! /\s*&\s*/, " and "
-    self.slug.gsub! /\s*[^A-Za-z0-9\.\-]\s*/, '-'
-    self.slug.gsub! /-+/,"-"
-    self.slug.gsub! /\A[-\.]+|[-\.]+\z/,""
-    self.slug.downcase!
+    self.slug = Slug.new(title).generate
   end
 
   def url
@@ -28,4 +28,11 @@ class Lesson < ActiveRecord::Base
     self.all.select { |l| l.date.to_date >= the_time.to_date}
   end
 
+
+  def self.past_lessons
+    lessons = order("RANDOM()").limit(4)
+    if lessons.empty?
+      lessons << new
+    end
+  end
 end
