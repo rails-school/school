@@ -24,7 +24,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def self.future_lessons
-    the_time = Time.current - 7.hours
+    the_time = Time.current
     self.all.select { |l| l.date.to_date >= the_time.to_date}
   end
 

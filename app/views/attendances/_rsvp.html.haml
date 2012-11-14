@@ -1,6 +1,6 @@
 .rsvp{'data-id' => lesson.id}
   -the_date = lesson.date.present? ? lesson.date.to_date : Date.today.to_date
-  -today = Time.current - 7.hours
+  -today = Time.current
   -if the_date >= today.to_date
     .actions
       -if user_signed_in?
