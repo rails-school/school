@@ -13,17 +13,15 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :lessons, :through => :attendances
 
-  def attend?(id)
-    true if not Attendance.where(:lesson_id => id, :user_id => self.id).empty?
+  def attend?(class_id)
+    Attendance.where(:lesson_id => class_id, :user_id => id).present?
   end
 
   def answered?(q)
-    true if self.answers.find_by_question_id(q.id)
+    answers.find_by_question_id(q.id).present?
   end
 
   def question
     Question.all.select {|q| !self.answered?(q) }[0]
   end
-
-
 end

@@ -1,17 +1,19 @@
 -provide :left_column do
   .past
     %h2 Past Workshops
-    =render :partial => "lessons/past_lessons", :locals => {:lessons => past_lessons}
-  =render :partial => "questions/poll"
+    =render "lessons/past_lessons", :lessons => @past_lessons
+  = render "questions/poll", question: current_user.try(:question)
 
 .announce
-  =render :partial => "lessons/announce", :locals => {:lesson => future_lessons.first, :main_page => true} if future_lessons.first.present?
+  - if @future_lessons.present?
+    = render "lessons/announce", :lesson => @future_lessons.first, :main_page => true
+
 .future-events
   %h2 Upcoming Free Workshops
-  =render :partial => "lessons/future_lessons", :locals => {:lessons => future_lessons}
+  =render "lessons/future_lessons", :lessons => @future_lessons
 
 =render :partial => "home/slogan"
 
 -provide :right_column do
-  =render :partial => "lessons/calendar", :locals => {:lesson => Lesson.all}
+  =render :partial => "lessons/calendar"
 

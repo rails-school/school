@@ -1,20 +1,17 @@
 -if user_signed_in?
-  -q = current_user.question
-  -if q.present?
-    .polls{'data-id' => q.id}
-      -if q.present?
-        %h2 Poll:#{q.title}
-        %p=q.description
-        -if q.body.match(";")
-          -answers = q.body.split(";")
+  -if question.present?
+    .polls{'data-id' => question.id}
+      -if question.present?
+        %h2 Poll:#{question.title}
+        %p=question.description
+
+        -if question.body.match(";")
+          -answers = question.body.split(";")
           =form_for current_user.answers.new, :remote => true do |f|
-            =f.hidden_field :question_id, :value => q.id
+            =f.hidden_field :question_id, :value => question.id
             %ul
-              -answers.each do |a|
-                -if a != "!"
-                  %li
-                    =f.radio_button(:text, a)
-                    =a
+              -answers.each do |answer|
+                = answer_list_item(f, answer)
             =f.submit "Vote", :class => "small_button"
   -else
     .polls
