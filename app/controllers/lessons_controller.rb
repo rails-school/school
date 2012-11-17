@@ -32,7 +32,7 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     @whiteboard = params[:whiteboard]
-    @lesson = Lesson.get(params[:id], params[:slug])
+    @lesson=Lesson.get(params[:id], params[:slug])
 
     respond_to do |format|
       format.html # show.html.erb

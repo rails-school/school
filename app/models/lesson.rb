@@ -1,5 +1,5 @@
 class Lesson < ActiveRecord::Base
-  attr_accessible :address, :city, :course_id, :date, :description, :title, :user_id, :slug
+  attr_accessible :address, :city, :course_id, :date, :description, :title, :user_id, :slug, :place_id
 
   has_many :attendances
   has_many :users, :through => :attendances
@@ -7,7 +7,7 @@ class Lesson < ActiveRecord::Base
   belongs_to :place
 
 
-  def get(id, slug)
+  def self.get(id, slug)
     if slug.blank?
       find(id)
     else
@@ -16,7 +16,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def generate_slug
-    self.slug = Slug.new(title).generate
+    self.slug = Slug.new(title).generate if self.slug.blank?
   end
 
   def url

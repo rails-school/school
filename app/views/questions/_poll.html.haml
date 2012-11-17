@@ -1,4 +1,5 @@
 -if user_signed_in?
+  -question = current_user.question
   -if question.present?
     .polls{'data-id' => question.id}
       -if question.present?

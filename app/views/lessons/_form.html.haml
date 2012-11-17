@@ -11,16 +11,10 @@
     =f.label :date
     =f.datetime_select :date
   .field
-    = f.label :address
-    = f.text_field :address
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
     = f.label :course_id
     = f.number_field :course_id
   .field
-    = f.label :user_id
-    = f.number_field :user_id
+    = f.label :slug
+    = f.text_field :slug
   .actions
     = f.submit 'Save'
