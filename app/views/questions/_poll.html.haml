@@ -12,7 +12,7 @@
             =f.hidden_field :question_id, :value => question.id
             %ul
               -answers.each do |answer|
-                = answer_list_item(f, answer)
+                = answer_list_item(f, answer).html_safe
             =f.submit "Vote", :class => "small_button"
   -else
     .polls
