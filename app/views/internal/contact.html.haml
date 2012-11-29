@@ -1,2 +1,14 @@
+= provide(:title, 'Contact us')
+
 = ceditable("contact title", "h1")
-= ceditable("contact text", "p")
+-#= ceditable("contact text", "p")
+
+%p
+  Thank you for your interest in Rails School!
+
+%p
+  We welcome your feedback and are happy to answer your questions.
+
+%h1
+  Email us at
+  = mail_to 'team@railsschool.org', 'team@railsschool.org'
