@@ -27,7 +27,6 @@ Rs::Application.routes.draw do
   get "contact" => "internal#contact"
   post "rsvp/:id" => "attendances#rsvp"
   post "rsvp/:id/:delete" => "attendances#rsvp"
-  post "notify_subscribers/:id" => "users#notify_subscribers"
 
   get "d/:the_date" => "lessons#day"
   get "home/index"

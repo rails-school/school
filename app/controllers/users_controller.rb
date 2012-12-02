@@ -3,16 +3,6 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
-
-
-  def notify_subscribers
-    lesson = Lesson.find(params[:id])
-    users = User.where(:subscribe => true)
-    users.each do |u|
-      NotificationMailer.lesson_notification(lesson, u, current_user).deliver
-    end
-  end
-
   def index
     @users = User.all
 
