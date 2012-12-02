@@ -3,12 +3,14 @@
     Next Workshop /
     =lesson.date.try(:strftime, "%h, %d %Y") if lesson.present?
   %h1=lesson.title
-  .description
-    =lesson.description
+  .summary= lesson.summary
   -if main_page == true
     .view
       =link_to 'View class Details', lesson.url
   -else
+    %br
+    .description
+      #{lesson.description}
     %br
     %br
   .details

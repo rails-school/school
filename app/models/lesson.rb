@@ -1,5 +1,5 @@
 class Lesson < ActiveRecord::Base
-  attr_accessible :address, :city, :course_id, :date, :description, :title, :user_id, :slug, :place_id
+  attr_accessible :address, :city, :course_id, :date, :description, :title, :user_id, :slug, :place_id, :summary
 
   has_many :attendances
   has_many :users, :through => :attendances

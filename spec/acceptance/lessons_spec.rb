@@ -116,12 +116,16 @@ feature %q{
   scenario "creating a lesson", :js => true do
     visit "/lessons/new"
     fill_in "lesson[title]", :with => "some random topic"
-    fill_in "lesson[description]", :with => "some random topic"
+    fill_in "lesson[summary]", :with => "some random summary"
+    fill_in "lesson[description]", :with => "some random description"
     click_button "Save"
     lessons = Lesson.all
     lessons.count.should == 1
-  end
 
+    visit "/"
+    page.should have_content "some random topic"
+    page.should have_content "some random summary"
+  end
 
 end
 

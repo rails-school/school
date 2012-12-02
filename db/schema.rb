@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101192307) do
+ActiveRecord::Schema.define(:version => 20121202225910) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20121101192307) do
     t.text     "text"
     t.string   "slug"
     t.integer  "place_id"
+    t.text     "summary"
   end
 
   add_index "lessons", ["slug"], :name => "index_lessons_on_slug", :unique => true
