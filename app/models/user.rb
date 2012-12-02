@@ -12,6 +12,11 @@ class User < ActiveRecord::Base
   has_many :attendances
   has_many :answers
   has_many :lessons, :through => :attendances
+  before_save :generate_unsubscribe_link
+
+  def generate_unsubscribe_link
+
+  end
 
   def attend?(class_id)
     Attendance.where(:lesson_id => class_id, :user_id => id).present?
@@ -24,4 +29,5 @@ class User < ActiveRecord::Base
   def question
     Question.all.select {|q| !self.answered?(q) }[0]
   end
+
 end

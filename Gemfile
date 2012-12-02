@@ -46,6 +46,8 @@ group :test do
   gem 'simplecov', :require => false # code coverage tool
   gem "database_cleaner"
   gem "forgery"
+  gem 'sqlite3'
+
 end
 
 group :test, :development do
