@@ -64,7 +64,6 @@
 
 -if admin?
   = link_to 'Edit', edit_lesson_path(@lesson), :class => 'button'
-  = link_to 'Notify users', "/notify_subscribers/#{@lesson.id}", :remote => true, :method => 'POST'
 
 
 -provide :meta do
