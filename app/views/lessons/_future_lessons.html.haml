@@ -10,9 +10,11 @@
           %a.expand_lesson{:href => "#", "data-lesson" => l.id} Expand
 
       .details{"data-lesson" => l.id}
-        %h5=l.description
+        .summary= l.summary
         %br
-        =l.text.html_safe if l.text.present?
+        .description
+          :markdown
+            #{l.description}
         %br
         %br
         %b Address:
