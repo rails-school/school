@@ -161,6 +161,7 @@ GEM
     rake (10.0.0)
     rdoc (3.12)
       json (~> 1.4)
+    redcarpet (1.17.2)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -239,6 +240,7 @@ DEPENDENCIES
   pry
   pry-nav
   rails (= 3.2.8)
+  redcarpet (~> 1.17.2)
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers

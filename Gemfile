@@ -12,6 +12,9 @@ gem "contenteditable", :github => 'micmmakarov/contenteditable', :branch => :mas
 gem 'gmaps4rails'
 gem "letter_opener", :group => :development
 
+# render markdown
+gem "redcarpet", "~> 1.17.2"
+
 group :development do
   gem 'pry'
   gem 'pry-nav'
