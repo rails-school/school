@@ -21,7 +21,7 @@ module ApplicationHelper
     "#{format_time(date)} on #{format_date(date)}"
   end
   def unsubscribe_url(user)
-    content_tag :a, "Unsubscribe link", :href => "#{root_url}unsubscribe/#{user.unsubscribe}"
+    content_tag :a, "Unsubscribe link", :href => "#{root_url}unsubscribe/#{user.unsubscribe_token}"
   end
 
 end
