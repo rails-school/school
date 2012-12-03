@@ -4,14 +4,10 @@ class ApplicationController < ActionController::Base
   contenteditable_filter "user_signed_in?"
 
   def admin?
-    if user_signed_in?
-      true if current_user.admin
-    end
+    user_signed_in? && current_user.admin
   end
 
   def admin_only
-    unless current_user.admin == true
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user.admin == true
   end
 end
