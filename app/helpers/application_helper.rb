@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def format_time(time)
-    t = time.try(:strftime, "%I:%M%p").downcase
+    t = time.try(:strftime, "%l:%M%p").downcase
     t.sub(':00', '')
   end
 
