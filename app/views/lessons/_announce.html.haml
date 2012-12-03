@@ -1,7 +1,7 @@
 .text
   .date
     Next Workshop /
-    =lesson.date.try(:strftime, "%h, %d %Y") if lesson.present?
+    = format_date(lesson.date) if lesson.present?
   %h1=lesson.title
   .summary= lesson.summary
   -if main_page == true
@@ -15,17 +15,10 @@
     %br
     %br
   .details
-    Date:
-    =lesson.date.try(:strftime, "%h, %d %Y")
-    Time:
-    =lesson.date.try(:strftime, "%I:%m%p")
-    %br
-    Location:
+    = format_datetime(lesson.date)
     -if lesson.place.present?
-      =lesson.place.address
-      =lesson.place.city
-      =link_to "(map)", lesson.place
-
+      at
+      = link_to lesson.place.name, lesson.place
 
     %br
   =render :partial => "attendances/rsvp", :locals => {:lesson => lesson}

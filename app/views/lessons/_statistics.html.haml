@@ -1,0 +1,7 @@
+.past
+  %h2 Statistics
+  %p
+    In total, #{Lesson.all.count} lessons have been held since #{format_date(Lesson.order(:date).first.date)}
+    %br
+    In total, #{User.all.count} students have been registered, and they attended lessons #{Attendance.all.count} times.
+=render :partial => "questions/poll"

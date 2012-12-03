@@ -3,7 +3,7 @@
     %li
       .info
         .date
-          =l.date.try(:strftime, "%m.%d.%y")
+          = format_date l.date
         .text
           =link_to l.title, l.url
         .expand
@@ -35,5 +35,3 @@
   %br
   %br
   There are no workshops
-
-
