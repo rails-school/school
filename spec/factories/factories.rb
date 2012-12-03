@@ -7,7 +7,8 @@ FactoryGirl.define do
     u.email                  "light@beer-is-good.com"
     u.password               "draft1"
     u.password_confirmation  "draft1"
-    admin                    false
+    u.subscribe               true
+    u.admin                   false
   end
 
   factory :admin, class: User do |u|

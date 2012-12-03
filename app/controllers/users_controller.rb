@@ -1,8 +1,26 @@
 class UsersController < ApplicationController
-  before_filter :admin_only
+  before_filter :admin_only, :except => :unsubscribe
 
   # GET /users
   # GET /users.json
+  def unsubscribe
+
+    code = params[:code]
+    user = User.find_by_unsubscribe_token(code)
+    user.subscribe = false
+    user.save!
+
+    render text: "you have been successfully unsubscribed from RailsSchool notifications. Thank you for all the good you have, cheers and astalavista."
+
+  end
+  def notify_subscribers
+    lesson = Lesson.find(params[:id])
+    users = User.where(:subscribe => true)
+    users.each do |u|
+      NotificationMailer.lesson_notification(lesson, u, current_user).deliver
+    end
+  end
+
   def index
     @users = User.all
 

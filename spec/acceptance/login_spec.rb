@@ -51,3 +51,25 @@ feature %q{
 end
 
 
+feature %q{
+  As a user
+  I should be able to unsubscribe
+  if I have a link
+} do
+
+  background do
+    @user = FactoryGirl.create(:user)
+    visit "/"
+  end
+
+
+  scenario "unsubscribe", :js => true do
+    user = User.first
+    user.subscribe.should == true
+    visit "/unsubscribe/#{user.unsubscribe_token}"
+    page.should have_content("unsubscribed")
+    user.reload.subscribe.should == false
+  end
+
+
+end

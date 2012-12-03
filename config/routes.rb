@@ -7,6 +7,7 @@ Rs::Application.routes.draw do
   resources :users
   resources :lessons
 
+  get "unsubscribe/:code" => "users#unsubscribe"
   get "about" => "home#about"
   get "calendar" => "home#calendar"
   get "contact" => "home#contact"

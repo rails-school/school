@@ -12,10 +12,10 @@ class User < ActiveRecord::Base
   has_many :attendances
   has_many :answers
   has_many :lessons, :through => :attendances
-  before_save :generate_unsubscribe_link
+  before_save :generate_unsubscribe_token
 
-  def generate_unsubscribe_link
-
+  def generate_unsubscribe_token
+    self.unsubscribe_token = (0..15).map{(65+rand(26)).chr}.join
   end
 
   def attend?(class_id)

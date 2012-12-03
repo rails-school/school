@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<h1>Hi, <%=  @user.name %>! We added a new class on <%= @lesson.date %></h1>
+<p>
+  <%= @lesson.title %>
+</p>
+<p>
+  <%= @lesson.description %>
+</p>
+<p>May The Force Be With You!</p>
+<p>Unsubscribe link here: <%= unsubscribe_url(@user) %></p>
+</body>
+</html>

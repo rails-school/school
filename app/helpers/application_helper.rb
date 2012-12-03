@@ -20,4 +20,8 @@ module ApplicationHelper
   def format_datetime(date)
     "#{format_time(date)} on #{format_date(date)}"
   end
+  def unsubscribe_url(user)
+    content_tag :a, "Unsubscribe link", :href => "#{root_url}unsubscribe/#{user.unsubscribe}"
+  end
+
 end
