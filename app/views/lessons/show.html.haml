@@ -63,6 +63,7 @@
 
 -if admin?
   = link_to 'Edit', edit_lesson_path(@lesson), :class => 'button'
+  = notify_subscribers_link(@lesson)
 
 
 -provide :meta do
