@@ -18,7 +18,7 @@ feature %q{
 
 
   scenario "RSVP clicking RSVP button", :js => true do
-    click_link "RSVP!"
+    page.find(".announce").click_link "RSVP!"
     page.should have_css(".pressed")
     Attendance.all.count.should == 1
   end
@@ -42,8 +42,8 @@ feature %q{
 
 
   scenario "RSVP clicking RSVP button", :js => true do
-    click_link "RSVP!"
-    click_link "unRSVP"
+    page.find(".announce").click_link "RSVP!"
+    page.find(".announce").click_link "unRSVP"
     page.should_not have_css(".pressed")
     Attendance.all.count.should == 0
   end
@@ -65,7 +65,7 @@ feature %q{
   end
 
   scenario "trying RSVP clicking RSVP button", :js => true do
-    click_link "RSVP!"
+    page.find(".announce").click_link "RSVP!"
     page.should_not have_css(".pressed")
     Attendance.all.count.should == 0
   end
