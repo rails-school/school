@@ -24,10 +24,8 @@ class Lesson < ActiveRecord::Base
   end
 
   def self.future_lessons
-    the_time = Time.current
-    self.all.select { |l| l.date.to_date >= the_time.to_date}
+    self.where("date > (?)", Time.current).order("date asc")
   end
-
 
   def self.past_lessons
     lessons = order("RANDOM()").limit(4)
