@@ -9,6 +9,9 @@ class HomeController < ApplicationController
   def contact
   end
 
+  def faq
+  end
+
   def index
     @lessons = Lesson.all
     @past_lessons = Lesson.past_lessons

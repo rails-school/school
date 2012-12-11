@@ -1,0 +1,60 @@
+= provide(:title, 'FAQ')
+
+%h1 Frequently Asked Questions
+
+%ul.faq-items
+
+  %li.faq-item
+    = faq_item_question("What is this class about?")
+    %p Noisebridge Rails Class covers everything about Ruby, Rails, and web application development.
+    %p Approximately half of our lessons are on Ruby, and half are on Rails.
+
+  %li.faq-item
+    = faq_item_question("How is the curriculum organized?  Do you ever start over?")
+    %p Our weekly lessons vary by topic and difficulty.
+    %p The curriculum never starts over, but we hold Catch-up Days from time to time, during which new students can get personal help preparing for the regular lessons.
+
+  %li.faq-item
+    = faq_item_question("How should I prepare for my first Ruby lesson?")
+    %p Please have Ruby 1.9.3 installed on your machine.
+
+  %li.faq-item
+    = faq_item_question("How should I prepare for my first Rails lesson?")
+    %p
+      First, please follow the great, actively maintained
+      = succeed '.' do
+        %a{href: 'http://installfest.railsbridge.org/installfest/installfest'}<
+          Railsbridge IntallFest guide
+
+    %p
+      Then create a blog app by completing the
+      = succeed '.' do
+        %a{href: 'http://guides.rubyonrails.org/getting_started.html'}<
+          Rails Getting Started Guide
+      (we will build off the blog app extensively)
+
+  %li.faq-item
+    = faq_item_question("How do I sign up?  Does it cost money?")
+    %p
+      Please
+      %a{href: user_registration_path} sign up
+      on this website, and RSVP for the lessons you plan on attending.
+    %p
+      Classes are free of cost, but we'd love for you to
+      %a{href: 'https://www.noisebridge.net/wiki/Donate_or_Pay_Dues'}<
+        donate to Noisebridge
+      on our behalf.
+
+  %li.faq-item
+    = faq_item_question("Do you have a mailing list?")
+    %p
+      Yes, we post announcements and hold discussions on the
+      = succeed '.' do
+        %a{href: 'https://groups.google.com/group/starmonkeys'}<
+          Starmonkeys Google Group
+
+  %li.faq-item
+    = faq_item_question("Do you need help?")
+    %p
+      Yes!  We always welcome new teachers and TAs to better serve our students and keep this thing going.
+    %p Please RSVP and join us in class.
