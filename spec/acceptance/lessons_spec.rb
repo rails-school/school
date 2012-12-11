@@ -113,11 +113,12 @@ feature %q{
     click_button "Sign in"
   end
 
-  scenario "creating a lesson", :js => true do
+  scenario "creating a new upcoming lesson", :js => true do
     visit "/lessons/new"
     fill_in "lesson[title]", :with => "some random topic"
     fill_in "lesson[summary]", :with => "some random summary"
     fill_in "lesson[description]", :with => "some random description"
+    select "#{Date.current.year + 1}", :form => "lesson[date(1i)]"
     click_button "Save"
     lessons = Lesson.all
     lessons.count.should == 1
@@ -151,6 +152,4 @@ feature %q{
     uri.path.should == root_path
   end
 
-
 end
-
