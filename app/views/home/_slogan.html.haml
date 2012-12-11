@@ -11,7 +11,8 @@
   .white
     Just having fun learning and socializing together!
   .register
-    %a.a_button{:href => "#"}
-      Register
+    - unless current_user
+      %a.a_button{:href => "#"}
+        Register
     %a.link{:href => "/about"}
       Learn More About Us
