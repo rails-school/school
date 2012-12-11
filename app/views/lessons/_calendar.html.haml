@@ -6,14 +6,12 @@
 -lastday = Date.civil(year,month,-1).day.to_i
 -d = -1
 
-
 .calendar_wrap
 
   %h1
     Events in
     %span.red_color
       =Date.civil(year,month,1).strftime("%B").upcase
-
 
   .calendar
 
@@ -30,10 +28,10 @@
             -if startweekday == day
               -startweekday = -1
               -d = 0
-            -if d >= 0 and d < lastday
+            -if d >= 0 && d < lastday
               -d += 1
-              -if not lessons_today?(year, month, d).empty?
-                %a.event{:href => "#{root_url}/d/#{d}_#{Date::MONTHNAMES[month]}_#{year}"}
+              - unless (lessons = lessons_today?(year, month, d)).empty?
+                %a.event{:href => lessons.first.url, :title => lessons.first.title}
                   =d
               -else
                 =d
