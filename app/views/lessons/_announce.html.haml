@@ -15,10 +15,7 @@
     %br
     %br
   .details
-    = format_datetime(lesson.date)
-    -if lesson.place.present?
-      at
-      = link_to lesson.place.name, lesson.place
+    = render "lessons/time_and_place", :lesson => lesson
 
     %br
   =render :partial => "attendances/rsvp", :locals => {:lesson => lesson}

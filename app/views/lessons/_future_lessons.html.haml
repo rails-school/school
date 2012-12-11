@@ -17,11 +17,7 @@
             #{l.description}
         %br
         %br
-        %b Address:
-        =link_to l.place.name, l.place if l.place.present?
-        =l.place.address  if l.place.present?
-        =l.place.city if l.place.present?
-        =link_to '(map)', l.place if l.place.present?
+        = render "lessons/time_and_place", :lesson => l
         .view
           =link_to 'View details...', l
         =render :partial => "attendances/rsvp", :locals => {:lesson => l}
