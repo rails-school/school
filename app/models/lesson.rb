@@ -24,7 +24,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def self.future_lessons
-    self.where("date > (?)", Time.current).order("date asc")
+    self.where("date > (?)", Time.current.beginning_of_day).order("date asc")
   end
 
   def self.past_lessons
