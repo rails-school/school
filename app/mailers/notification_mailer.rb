@@ -1,5 +1,5 @@
 class NotificationMailer < ActionMailer::Base
-  default from: "info@railsschool.org"
+  default from: "team@railsschool.org"
   helper ApplicationHelper
 
   def lesson_notification(lesson, user, current_user)
