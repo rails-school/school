@@ -62,7 +62,10 @@
 
 -if admin?
   = link_to 'Edit', edit_lesson_path(@lesson), :class => 'button'
-  = notify_subscribers_link(@lesson)
+  - if current_user.email.match(/.*@railsschool.org$/)
+    = notify_subscribers_link(@lesson)
+  - else
+    Please update your account to use your @railsschool.org email in order to notify subscribers by email.
 
 
 -provide :meta do

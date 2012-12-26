@@ -14,10 +14,12 @@ class UsersController < ApplicationController
 
   end
   def notify_subscribers
-    lesson = Lesson.find(params[:id])
-    users = User.where(:subscribe => true)
-    users.each do |u|
-      NotificationMailer.lesson_notification(lesson, u, current_user).deliver
+    if current_user.email.match(/.*@railsschool.org$/)
+      lesson = Lesson.find(params[:id])
+      users = User.where(:subscribe => true)
+      users.each do |u|
+        NotificationMailer.lesson_notification(lesson, u, current_user).deliver
+      end
     end
   end
 
