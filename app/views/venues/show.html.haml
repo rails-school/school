@@ -16,7 +16,7 @@
   %b Zip:
   = @place.zip
 
-=render :partial => "shared/maps", :locals => {:venues => @place}
+=render :partial => "shared/maps", :locals => {:places => @place}
 
 -if admin?
   = link_to 'Edit', edit_venue_path(@place)
