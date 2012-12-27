@@ -13,6 +13,8 @@ gem 'coffee-rails', '~> 3.2.1'
 gem "contenteditable", :github => 'micmmakarov/contenteditable', :branch => :master
 gem 'gmaps4rails'
 gem "thin"
+gem "sidekiq"
+gem "devise-async"
 
 # render markdown
 gem "redcarpet", "~> 1.17.2"

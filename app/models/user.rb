@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable#, :validatable
+         :recoverable, :rememberable, :trackable, :async
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
   before_save :generate_unsubscribe_token
 
   def generate_unsubscribe_token
-    self.unsubscribe_token = (0..15).map{(65+rand(26)).chr}.join
+    unless encrypted_password.blank? # dummy users
+      self.unsubscribe_token = (0..15).map{(65+rand(26)).chr}.join
+    end
   end
 
   def attend?(class_id)
