@@ -22,6 +22,7 @@ group :development do
   gem 'pry-nav'
   gem 'sqlite3'
   gem 'letter_opener'
+  gem 'quiet_assets'
 end
 
 group :production do
