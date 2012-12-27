@@ -1,7 +1,7 @@
 Rs::Application.routes.draw do
   devise_for :users
 
-  resources :places
+  resources :venues
   resources :answers
   resources :questions
   resources :users

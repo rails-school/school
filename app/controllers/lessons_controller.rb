@@ -60,7 +60,7 @@ class LessonsController < ApplicationController
   # POST /lessons.json
   def create
     @lesson = Lesson.new(params[:lesson])
-    @lesson.place_id = 1 if @lesson.place_id.blank?
+    @lesson.venue_id = 1 if @lesson.venue_id.blank?
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }

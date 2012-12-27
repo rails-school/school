@@ -1,4 +1,4 @@
-class Place < ActiveRecord::Base
+class Venue < ActiveRecord::Base
   attr_accessible :address, :city, :country, :state, :zip, :name
   has_many :lessons
   acts_as_gmappable

@@ -1,8 +1,8 @@
-class PlacesController < ApplicationController
-  # GET /places
-  # GET /places.json
+class VenuesController < ApplicationController
+  # GET /venues
+  # GET /venues.json
   def index
-    @places = Place.all
+    @places = Venue.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,10 +10,10 @@ class PlacesController < ApplicationController
     end
   end
 
-  # GET /places/1
-  # GET /places/1.json
+  # GET /venues/1
+  # GET /venues/1.json
   def show
-    @place = Place.find(params[:id])
+    @place = Venue.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,10 +21,10 @@ class PlacesController < ApplicationController
     end
   end
 
-  # GET /places/new
-  # GET /places/new.json
+  # GET /venues/new
+  # GET /venues/new.json
   def new
-    @place = Place.new
+    @place = Venue.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,19 +32,19 @@ class PlacesController < ApplicationController
     end
   end
 
-  # GET /places/1/edit
+  # GET /venues/1/edit
   def edit
-    @place = Place.find(params[:id])
+    @place = Venue.find(params[:id])
   end
 
-  # POST /places
-  # POST /places.json
+  # POST /venues
+  # POST /venues.json
   def create
-    @place = Place.new(params[:place])
+    @place = Venue.new(params[:place])
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
+        format.html { redirect_to @place, notice: 'Venue.was successfully created.' }
         format.json { render json: @place, status: :created, location: @place }
       else
         format.html { render action: "new" }
@@ -53,14 +53,14 @@ class PlacesController < ApplicationController
     end
   end
 
-  # PUT /places/1
-  # PUT /places/1.json
+  # PUT /venues/1
+  # PUT /venues/1.json
   def update
-    @place = Place.find(params[:id])
+    @place = Venue.find(params[:id])
 
     respond_to do |format|
       if @place.update_attributes(params[:place])
-        format.html { redirect_to @place, notice: 'Place was successfully updated.' }
+        format.html { redirect_to @place, notice: 'Venue.was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -69,14 +69,14 @@ class PlacesController < ApplicationController
     end
   end
 
-  # DELETE /places/1
-  # DELETE /places/1.json
+  # DELETE /venues/1
+  # DELETE /venues/1.json
   def destroy
-    @place = Place.find(params[:id])
+    @place = Venue.find(params[:id])
     @place.destroy
 
     respond_to do |format|
-      format.html { redirect_to places_url }
+      format.html { redirect_to venues_url }
       format.json { head :no_content }
     end
   end

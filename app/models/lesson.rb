@@ -1,10 +1,10 @@
 class Lesson < ActiveRecord::Base
-  attr_accessible :address, :city, :course_id, :date, :description, :title, :user_id, :slug, :place_id, :summary
+  attr_accessible :address, :city, :course_id, :date, :description, :title, :user_id, :slug, :venue_id, :summary
 
   has_many :attendances
   has_many :users, :through => :attendances
   before_save :generate_slug
-  belongs_to :place
+  belongs_to :venue
 
 
   def self.get(id, slug)
