@@ -12,5 +12,6 @@ class Slug
     slug.gsub! /_+/,"-"
     slug.gsub! /\A[_\.]+|[_\.]+\z/,""
     slug.downcase!
+    slug
   end
 end

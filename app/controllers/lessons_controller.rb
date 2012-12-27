@@ -32,7 +32,7 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     @whiteboard = params[:whiteboard]
-    @lesson=Lesson.get(params[:id], params[:slug])
+    @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -53,7 +53,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
-    @lesson = Lesson.find(params[:id])
+    @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
   end
 
   # POST /lessons
@@ -75,7 +75,7 @@ class LessonsController < ApplicationController
   # PUT /lessons/1
   # PUT /lessons/1.json
   def update
-    @lesson = Lesson.find(params[:id])
+    @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
 
     respond_to do |format|
       if @lesson.update_attributes(params[:lesson])
@@ -91,7 +91,7 @@ class LessonsController < ApplicationController
   # DELETE /lessons/1
   # DELETE /lessons/1.json
   def destroy
-    @lesson = Lesson.find(params[:id])
+    @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
     @lesson.destroy
 
     respond_to do |format|

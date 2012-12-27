@@ -6,21 +6,12 @@ class Lesson < ActiveRecord::Base
   before_save :generate_slug
   belongs_to :venue
 
-
-  def self.get(id, slug)
-    if slug.blank?
-      find(id)
-    else
-      find_by_slug(slug)
-    end
-  end
-
   def generate_slug
     self.slug = Slug.new(title).generate if self.slug.blank?
   end
 
-  def url
-    "/l/" + self.slug.to_s
+  def to_param
+    slug || id
   end
 
   def self.future_lessons

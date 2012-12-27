@@ -28,7 +28,7 @@
     %iframe{:src => "#{etherpad_host(@lesson)}rails-school-lesson-#{@lesson.id}", :style => "width:100%;height:600px;border:1px solid #CCCCCC;"}
   -else
     .action
-      =link_to "Show whiteboard", "#{@lesson.url}/whiteboard", :class => "button secondary"
+      =link_to "Show whiteboard", whiteboard_lesson_path(@lesson), :class => "button secondary"
 
       %br
       %br
@@ -71,7 +71,7 @@
 -provide :meta do
   %meta{:content => "Rails School San Francisco - #{@lesson.title}", :property => "og:title"}/
   %meta{:content => "website", :property => "og:type"}/
-  %meta{:content => "http://www.railsschool.org#{@lesson.url}", :property => "og:url"}/
+  %meta{:content => url_for(@lesson), :property => "og:url"}/
   %meta{:content => "http://www.railsschool.org/assets/logo.png", :property => "og:image"}/
   %meta{:content => "www.railsschool.org", :property => "og:site_name"}/
   %meta{:content => "100000245725293", :property => "fb:admins"}/

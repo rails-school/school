@@ -5,16 +5,17 @@ Rs::Application.routes.draw do
   resources :answers
   resources :questions
   resources :users
-  resources :lessons
+  resources :lessons, :path => "l" do
+    member do
+      get "whiteboard" => "lessons#show", :whiteboard => true
+    end
+  end
 
   get "unsubscribe/:code" => "users#unsubscribe"
   get "about" => "home#about"
   get "calendar" => "home#calendar"
   get "contact" => "home#contact"
   get "faq" => "home#faq"
-
-  get "l/:slug" => "lessons#show"
-  get "l/:slug/whiteboard" => "lessons#show", :whiteboard => true
 
   post "notify_subscribers/:id" => "users#notify_subscribers"
   post "rsvp/:id" => "attendances#rsvp"

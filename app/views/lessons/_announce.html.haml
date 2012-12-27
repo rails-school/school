@@ -6,7 +6,7 @@
   .summary= lesson.summary
   -if main_page == true
     .view
-      =link_to 'View class Details', lesson.url
+      =link_to 'View class Details', lesson
   -else
     %br
     .description
@@ -24,11 +24,6 @@
 .image
   .img-wrap
     .img
-  -if main_page == true
-    =render :partial => "social_media/likes", :locals => {:message => "I'm going to rails class #{lesson.title}!!", :url => "http://www.railsschool.org#{lesson.url}"}
-  -else
-    =render :partial => "social_media/likes", :locals => {:message => "I'm going to rails class #{lesson.title}!!", :url => ""}
-
-
+  =render :partial => "social_media/likes", :locals => {:message => "I'm going to rails class #{lesson.title}!!", :url => url_for(lesson)}
 
 .clearboth{:style => "clear:both;"}

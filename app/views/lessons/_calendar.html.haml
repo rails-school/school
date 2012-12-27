@@ -31,8 +31,7 @@
             -if d >= 0 && d < lastday
               -d += 1
               - unless (lessons = lessons_today?(year, month, d)).empty?
-                %a.event{:href => lessons.first.url, :title => lessons.first.title}
+                %a.event{:href => lesson_path(lessons.first), :title => lessons.first.title}
                   =d
               -else
                 =d
-

@@ -20,7 +20,7 @@
         -if current_user.attend?(lesson.id)
           You are going
       /See
-      /=link_to 'who is going', lesson.url
+      /=link_to 'who is going', lesson
   -else
     .text
       #{lesson.users.count} people were there
@@ -29,4 +29,4 @@
         -if current_user.attend?(lesson.id)
           You were there
       /See
-      /=link_to 'who was there', lesson.url
+      /=link_to 'who was there', lesson

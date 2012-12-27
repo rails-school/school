@@ -114,7 +114,7 @@ feature %q{
   end
 
   scenario "creating a new upcoming lesson", :js => true do
-    visit "/lessons/new"
+    visit "/l/new"
     fill_in "lesson[title]", :with => "some random topic"
     fill_in "lesson[summary]", :with => "some random summary"
     fill_in "lesson[description]", :with => "some random description"
