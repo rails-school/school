@@ -10,4 +10,6 @@ May The Force Be With You!
 Best regards,
 Rails School, http://www.railsschool.org
 
+<% if @user.unsubscribe_token.present? %>
 Unsubscribe link here: <%= unsubscribe_path(:code => @user.unsubscribe_token, :only_path => false) %>
+<% end %>

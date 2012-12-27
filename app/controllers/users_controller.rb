@@ -13,10 +13,13 @@ class UsersController < ApplicationController
     render text: "you have been successfully unsubscribed from RailsSchool notifications. Thank you for all the good you have, cheers and astalavista."
 
   end
+
   def notify_subscribers
     if current_user.email.match(/.*@railsschool.org$/)
       lesson = Lesson.find(params[:id])
-      users = User.where(:subscribe => true)
+      users = User.where(:subscribe => true).to_a
+      users << User.new(:name => "Starmonkeys", :email => "starmonkeys@googlegroups.com")
+      users << User.new(:name => "Noisebridge", :email => "noisebridge-announce@lists.noisebridge.net")
       users.each do |u|
         NotificationMailer.lesson_notification(lesson, u, current_user).deliver
       end
