@@ -13,7 +13,7 @@ Rs::Application.routes.draw do
     end
   end
 
-  get "unsubscribe/:code" => "users#unsubscribe"
+  get "unsubscribe/:code" => "users#unsubscribe", :as => "unsubscribe"
   get "about" => "home#about"
   get "calendar" => "home#calendar"
   get "contact" => "home#contact"

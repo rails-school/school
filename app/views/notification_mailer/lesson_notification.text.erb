@@ -1,0 +1,13 @@
+Hi, <%= @user.name %>! We added a new class at <%= format_datetime(@lesson.date) %>
+
+<%= @lesson.title %>
+
+<%= @lesson.description if @lesson.description.present? %>
+
+RSVP here: <%= lesson_path(@lesson, :only_path => false) %>
+May The Force Be With You!
+
+Best regards,
+Rails School, http://www.railsschool.org
+
+Unsubscribe link here: <%= unsubscribe_path(:code => @user.unsubscribe_token, :only_path => false) %>
