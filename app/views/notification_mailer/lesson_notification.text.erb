@@ -2,6 +2,8 @@ Hi, <%= @user.name %>! We added a new class at <%= format_datetime(@lesson.date)
 
 <%= @lesson.title %>
 
+<%= @lesson.summary %>
+
 <%= @lesson.description if @lesson.description.present? %>
 
 RSVP here: <%= lesson_path(@lesson, :only_path => false) %>
