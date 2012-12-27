@@ -17,8 +17,6 @@ class UsersController < ApplicationController
     if current_user.email.match(/.*@railsschool.org$/)
       lesson = Lesson.find(params[:id])
       users = User.where(:subscribe => true).to_a
-#      users << User.new(:name => "Starmonkeys", :email => "starmonkeys@googlegroups.com")
-#      users << User.new(:name => "Noisebridge", :email => "noisebridge-announce@lists.noisebridge.net")
       users.each do |u|
         NotificationMailer.delay.lesson_notification(lesson.id, u.id, current_user.id)
       end
