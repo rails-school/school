@@ -31,6 +31,4 @@ module ApplicationHelper
   def lesson_url(lesson)
     content_tag :a, lesson.title, :href => "#{root_url}l/#{lesson.slug}"
   end
-
-
 end

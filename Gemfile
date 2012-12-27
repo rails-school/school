@@ -5,7 +5,6 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'letter_opener'
 gem "devise"
 gem "haml-rails"
 gem 'coffee-rails', '~> 3.2.1'
@@ -19,6 +18,7 @@ group :development do
   gem 'pry'
   gem 'pry-nav'
   gem 'sqlite3'
+  gem 'letter_opener'
 end
 
 group :production do

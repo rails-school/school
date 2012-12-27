@@ -5,7 +5,15 @@ class NotificationMailer < ActionMailer::Base
   def lesson_notification(lesson, user, current_user)
     @lesson = lesson
     @user = user
-    mail(:to => user.email, :subject => "Rails School SF new class on #{lesson.date}: #{lesson.title}", :from => current_user.email)
+    subject = "Rails class #{lesson.date.strftime("%-m/%-d")}: #{lesson.title}"
+    mail(:to => format_email_field(user), :subject => subject,
+         :from => format_email_field(current_user))
   end
 
+  private
+  def format_email_field(user)
+    address = Mail::Address.new(user.email)
+    address.display_name = user.name
+    address.format
+  end
 end

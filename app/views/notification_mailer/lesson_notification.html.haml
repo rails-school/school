@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Hi, #{@user.name}! We added a new class at #{format_datetime(@lesson.date)}
+    %h2
+      = @lesson.title
+    - if @lesson.description.present?
+      %p
+        :markdown
+          #{@lesson.description}
+    %p
+      RSVP here: #{lesson_url(@lesson)}
+    %br
+    %p
+      May The Force Be With You!
+    %br
+    Best regards,
+    %br
+    Rails School,
+    %a{:href =>"http://www.railsschool.org"}www.railsschool.org
+    %p
+      Unsubscribe link here: #{unsubscribe_url(@user)}
