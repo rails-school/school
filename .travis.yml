@@ -6,3 +6,5 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 before_script:
   - "bundle exec rake db:test:load"
+notifications:
+  hipchat: 89d684618c0efae42e66b30900961c@RailsSchool
