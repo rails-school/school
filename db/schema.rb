@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227003449) do
+ActiveRecord::Schema.define(:version => 20121227010328) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20121227003449) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "name"
+    t.integer  "school_id"
   end
 
 end
