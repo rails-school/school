@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :load_and_authorize_user, :except => [:unsubscribe, :index]
-  before_filter :admin_only, :only => [:index]
+  before_filter :load_and_authorize_user, :only => [:show, :edit, :update]
+  before_filter :admin_only, :only => [:index, :notify_subscribers]
 
   # GET /unsubscribe/:code
   def unsubscribe
