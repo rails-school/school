@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_only
-    redirect_to root_path unless current_user.admin == true
+    redirect_to root_path unless admin?
   end
 end

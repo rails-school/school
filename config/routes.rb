@@ -6,7 +6,7 @@ Rs::Application.routes.draw do
   resources :venues
   resources :answers
   resources :questions
-  resources :users
+  resources :users, :except => [:new, :create, :destroy]
   resources :lessons, :path => "l" do
     member do
       get "whiteboard" => "lessons#show", :whiteboard => true
