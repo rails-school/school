@@ -1,5 +1,7 @@
 Rs::Application.routes.draw do
-  resources :polls
+  resources :polls do
+    get "publish" => "polls#publish"
+  end
 
   resources :schools
 

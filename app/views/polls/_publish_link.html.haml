@@ -1,0 +1,4 @@
+-if poll.published
+  = link_to '(published) unpublish!', "#{polls_path}/#{poll.id}/publish", :remote => true
+-else
+  = link_to 'Publish!', "#{polls_path}/#{poll.id}/publish", :remote => true, :class => 'small_button'

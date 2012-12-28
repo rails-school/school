@@ -80,4 +80,10 @@ class PollsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def publish
+    @poll = Poll.find(params[:poll_id])
+    @poll.published = !@poll.published
+    @poll.save!
+  end
 end
