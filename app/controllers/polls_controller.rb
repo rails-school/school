@@ -86,4 +86,14 @@ class PollsController < ApplicationController
     @poll.published = !@poll.published
     @poll.save!
   end
+
+  def answer
+    answer_id = params[:answer][:id]
+    user_id = current_user.id
+    ua = UsersAnswers.new
+    ua.answer_id = answer_id
+    ua.user_id = user_id
+    ua.save!
+    @poll = Answer.find(answer_id).poll
+  end
 end

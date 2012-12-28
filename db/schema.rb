@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(:version => 20121228003047) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "users_answers", ["user_id", "answer_id"], :name => "index_users_answers_on_user_id_and_answer_id", :unique => true
+
   create_table "venues", :force => true do |t|
     t.string   "address"
     t.string   "city"

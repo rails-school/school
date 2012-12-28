@@ -1,8 +1,6 @@
 module QuestionsHelper
   def answer_list_item(form, answer)
-    if answer != "!"
       content_tag :li,
-        "#{form.radio_button(:text, answer)} #{answer}".html_safe
-    end
+        "#{form.radio_button(:id, answer.id)} #{answer.text}".html_safe
   end
 end

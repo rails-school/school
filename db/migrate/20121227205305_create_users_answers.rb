@@ -5,5 +5,6 @@ class CreateUsersAnswers < ActiveRecord::Migration
       t.integer "answer_id"
       t.timestamps
     end
+    add_index :users_answers, [:user_id, :answer_id], :unique => true
   end
 end

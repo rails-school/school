@@ -1,0 +1,29 @@
+-if user_signed_in?
+  -poll = current_user.poll
+  -if poll.present?
+    .polls{'data-id' => poll.id}
+      -if poll.present?
+        %h2 Poll:#{poll.question}
+        /%p=poll.description
+
+        -answers = poll.answers
+        -answer = UsersAnswers.new
+        -answer.user_id = current_user.id
+
+        =form_for answers, :url => "polls/answer", :remote => true do |f|
+          %ul
+            -answers.each do |answer|
+              = answer_list_item(f, answer).html_safe
+          =f.submit "Vote", :class => "small_button"
+  -else
+    .polls
+      %h2 Polls
+      Please watch the statistics
+
+-else
+  .polls
+    %h2 Polls
+    Please
+    %a{:href => "#", "data-reveal-id" => "LoginModal"} sign in
+    , baby!
+
