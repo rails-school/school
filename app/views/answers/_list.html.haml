@@ -1,0 +1,8 @@
+The answers:
+-answers = poll.answers
+=answers.length
+-answers.each do |a|
+  %h5
+    #{a.text},
+    =link_to 'X', a, :method => :delete, :remote => true, :class => 'delete-answer'
+

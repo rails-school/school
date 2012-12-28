@@ -11,14 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227010328) do
+ActiveRecord::Schema.define(:version => 20121227205305) do
 
   create_table "answers", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "question_id"
-    t.string   "text"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "poll_id"
+    t.text     "text"
   end
 
   create_table "attendances", :force => true do |t|
@@ -56,13 +55,10 @@ ActiveRecord::Schema.define(:version => 20121227010328) do
 
   add_index "lessons", ["slug"], :name => "index_lessons_on_slug", :unique => true
 
-  create_table "questions", :force => true do |t|
-    t.string   "data_type"
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "body"
+  create_table "polls", :force => true do |t|
+    t.text     "question"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "schools", :force => true do |t|
@@ -104,6 +100,13 @@ ActiveRecord::Schema.define(:version => 20121227010328) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_answers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "venues", :force => true do |t|
     t.string   "address"

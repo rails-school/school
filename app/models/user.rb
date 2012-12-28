@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :name
 
   has_many :attendances
-  has_many :answers
+  #has_many :answers
   has_many :lessons, :through => :attendances
   before_save :generate_unsubscribe_token
 
@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
     answers.find_by_question_id(q.id).present?
   end
 
-  def question
-    Question.all.select {|q| !self.answered?(q) }[0]
+  def poll
+    #Question.all.select {|q| !self.answered?(q) }[0]
   end
 
 end

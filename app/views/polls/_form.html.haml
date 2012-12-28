@@ -1,0 +1,22 @@
+= form_for @poll do |f|
+  - if @poll.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@poll.errors.count, "error")} prohibited this poll from being saved:"
+      %ul
+        - @poll.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :question
+    = f.text_field :question
+
+  .actions
+    = f.submit 'Save'
+
+.answers
+  -if @poll.id.blank?
+    %h2 Please save this pall first to add answers
+  -else
+    =render :partial => "polls/answer_form", :locals => {:poll_id => @poll.id}
+  .list
+    =render :partial => "answers/list", :locals => {:poll => @poll}

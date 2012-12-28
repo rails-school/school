@@ -1,4 +1,7 @@
 class SchoolsController < ApplicationController
+
+  before_filter :admin_only
+
   # GET /schools
   # GET /schools.json
   def index

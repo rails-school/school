@@ -1,4 +1,6 @@
 Rs::Application.routes.draw do
+  resources :polls
+
   resources :schools
 
   devise_for :users

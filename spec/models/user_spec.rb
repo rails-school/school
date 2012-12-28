@@ -3,6 +3,6 @@ require 'spec_helper'
 describe User do
 
   describe "relations" do
-    it { should have_many :answers }
+    #it { should have_many :answers }
   end
 end

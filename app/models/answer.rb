@@ -1,5 +1,4 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :question_id, :text
-  belongs_to :user
-  belongs_to :question
+  attr_accessible :poll_id, :text
+  belongs_to :poll
 end

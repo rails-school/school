@@ -1,0 +1,10 @@
+-answer = Answer.new
+= form_for answer, :html => {:remote => true} do |answer_form|
+  = render 'shared/errors', resource: answer
+
+  .field
+    = answer_form.label :text
+    = answer_form.text_field :text
+  = answer_form.hidden_field :poll_id, :value => poll_id
+  .actions
+    = answer_form.submit 'Add answer'
