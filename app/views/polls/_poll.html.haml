@@ -14,7 +14,8 @@
           %ul
             -answers.each do |answer|
               = answer_list_item(f, answer).html_safe
-          =f.submit "Vote", :class => "small_button"
+          = f.hidden_field :poll_id, :value => poll.id
+          = f.submit "Vote", :class => "small_button"
   -else
     .polls
       %h2 Polls

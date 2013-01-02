@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228003047) do
+ActiveRecord::Schema.define(:version => 20130102220358) do
 
   create_table "answers", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20121228003047) do
     t.integer  "answer_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "poll_id"
   end
 
   add_index "users_answers", ["user_id", "answer_id"], :name => "index_users_answers_on_user_id_and_answer_id", :unique => true

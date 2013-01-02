@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   def create
     @answer = Answer.new(params[:answer])
-    @answer.save!
+    binding.pry
 
   end
   def destroy

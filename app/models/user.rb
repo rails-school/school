@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   end
 
   def answered?(q)
-    UsersAnswers.find_by_answer_id(q.id).present?
+    UsersAnswers.where(:poll_id => q.id, :user_id => id)[0].present?
   end
 
   def poll
