@@ -2,7 +2,8 @@
   .past
     %h2 Past Workshops
     =render "lessons/past_lessons", :lessons => @past_lessons
-  = render "polls/poll", poll: current_user.try(:poll), previous_poll: nil
+  - if current_user
+    = render "polls/poll", poll: current_user.next_unanswered_poll, previous_poll: nil
 
 .announce
   - if @future_lessons.present?

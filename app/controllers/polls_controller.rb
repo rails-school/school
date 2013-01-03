@@ -85,7 +85,7 @@ class PollsController < ApplicationController
     answer_id = params[:answer][:id]
     poll_id = params[:answer][:poll_id]
     user_id = current_user.id
-    ua = UsersAnswers.new
+    ua = UserAnswer.new
     ua.answer_id = answer_id
     ua.user_id = user_id
     ua.poll_id = poll_id

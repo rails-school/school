@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :name
 
   has_many :attendances
-  has_many :users_answers
+  has_many :user_answers
   #has_many :answers
   has_many :lessons, :through => :attendances
   before_save :generate_unsubscribe_token
@@ -22,15 +22,15 @@ class User < ActiveRecord::Base
   end
 
   def attend?(class_id)
-    Attendance.where(:lesson_id => class_id, :user_id => id).present?
+    Attendance.where(:lesson_id => class_id, :user_id => id).any?
   end
 
-  def answered?(q)
-    UsersAnswers.where(:poll_id => q.id, :user_id => id)[0].present?
+  def answered?(poll)
+    UserAnswer.where(:poll_id => q.id, :user_id => id).any?
   end
 
-  def poll
-    Poll.all.select {|q| !self.answered?(q) }[0]
+  def next_unanswered_poll
+    answered_poll_ids = (user_answers.empty? ? '' : user_answers.map(&:poll_id))
+    Poll.where(['id not in (?)', answered_poll_ids]).first
   end
-
 end

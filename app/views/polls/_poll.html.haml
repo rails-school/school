@@ -1,5 +1,5 @@
 -if user_signed_in?
-  -poll = current_user.poll
+  -poll = current_user.next_unanswered_poll
   -if poll.present?
     .polls{'data-id' => poll.id}
       -if poll.present?
@@ -7,7 +7,7 @@
         /%p=poll.description
 
         -answers = poll.answers
-        -answer = UsersAnswers.new
+        -answer = UserAnswer.new
         -answer.user_id = current_user.id
 
         =form_for answers, :url => "polls/answer", :remote => true do |f|
