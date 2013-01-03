@@ -13,10 +13,14 @@
   .actions
     = f.submit 'Save'
 
-.answers
-  -if @poll.id.blank?
-    %h2 Please save this pall first to add answers
-  -else
-    =render :partial => "polls/answer_form", :locals => {:poll_id => @poll.id}
-  .list
-    =render :partial => "answers/list", :locals => {:poll => @poll}
+.row
+  .six.columns
+    .answers
+      -if @poll.id.blank?
+        %h2 Please save this pall first to add answers
+      -else
+        =render :partial => "polls/answer_form", :locals => {:poll_id => @poll.id}
+  .six.columns
+    .answers
+      .list
+        =render :partial => "answers/list", :locals => {:poll => @poll}
