@@ -403,3 +403,14 @@ ul.lessons_list {
   }
 
 }
+
+.source-link {
+  color:white;
+  text-shadow: none;
+  float:right;
+  display:block;
+  margin-top:5px;
+  &:hover {
+    color:white;
+  }
+}
