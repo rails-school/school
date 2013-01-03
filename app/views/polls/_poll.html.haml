@@ -24,7 +24,7 @@
   -if previous_poll.present?
     .poll-result
       %p Poll result
-      %h3=previous_poll.question
+      %h3=previous_poll.try(:question)
       =render :partial => 'polls/stats', :locals => {:poll => previous_poll}
 
 -else

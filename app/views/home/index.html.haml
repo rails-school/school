@@ -3,7 +3,7 @@
     %h2 Past Workshops
     =render "lessons/past_lessons", :lessons => @past_lessons
   - if current_user
-    = render "polls/poll", poll: current_user.next_unanswered_poll, previous_poll: nil
+    = render :partial => "polls/poll", :locals => {poll: current_user.next_unanswered_poll, previous_poll: nil}
 
 .announce
   - if @future_lessons.present?
