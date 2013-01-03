@@ -21,10 +21,18 @@
       %h2 Polls
       Please watch the statistics
 
+  -if previous_poll.present?
+    .poll-result
+      %p Poll result
+      %h3=previous_poll.question
+      =render :partial => 'polls/stats', :locals => {:poll => previous_poll}
+
 -else
   .polls
     %h2 Polls
     Please
     %a{:href => "#", "data-reveal-id" => "LoginModal"} sign in
     , baby!
+
+
 

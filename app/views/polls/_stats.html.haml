@@ -1,0 +1,12 @@
+-poll_id = poll.id
+-answers = poll.answers
+-answered = UsersAnswers.where(:poll_id => poll.id).length
+
+-if answered > 0
+  -answers.each do |a|
+    -answered_this_question = UsersAnswers.where(:poll_id => poll.id, :answer_id => a.id).length
+    -ratio = 1.0 * answered_this_question / answered * 100.0
+    #{ratio}% of users answered #{a.text}
+    %br
+-else
+  Nobody answered this poll yet
