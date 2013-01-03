@@ -30,7 +30,10 @@ class User < ActiveRecord::Base
   end
 
   def next_unanswered_poll
-    answered_poll_ids = (user_answers.empty? ? '' : user_answers.map(&:poll_id))
-    Poll.where(['id not in (?)', answered_poll_ids]).first
+    if user_answers.any?
+      Poll.where(['id not in (?)', user_answers.map(&:poll_id)]).first
+    else
+      Poll.first
+    end
   end
 end
