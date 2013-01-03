@@ -1,11 +1,7 @@
 Rs::Application.routes.draw do
   match "polls/answer" => "polls#answer"
 
-  resources :polls do
-    get "publish" => "polls#publish"
-  end
-
-
+  resources :polls
   resources :schools
 
   devise_for :users

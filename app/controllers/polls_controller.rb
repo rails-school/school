@@ -61,10 +61,10 @@ class PollsController < ApplicationController
     respond_to do |format|
       if @poll.update_attributes(params[:poll])
         format.html { redirect_to @poll, notice: 'Poll was successfully updated.' }
-        format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
-        format.json { render json: @poll.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -79,12 +79,6 @@ class PollsController < ApplicationController
       format.html { redirect_to polls_url }
       format.json { head :no_content }
     end
-  end
-
-  def publish
-    @poll = Poll.find(params[:poll_id])
-    @poll.published = !@poll.published
-    @poll.save!
   end
 
   def answer
