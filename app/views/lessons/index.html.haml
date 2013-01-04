@@ -1,11 +1,8 @@
 = provide(:title, 'All events')
 
 -provide :left_column do
-  -if user_signed_in?
-    -poll = current_user.next_unanswered_poll
-  -else
-    -poll = nil
-  = render "polls/poll", :poll => poll, :previous_poll => nil
+  -poll = user_signed_in? ? current_user.next_unanswered_poll : nil
+  =render "polls/poll", :poll => poll, :previous_poll => nil
 
 %h1 All lessons
 
