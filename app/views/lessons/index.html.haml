@@ -1,11 +1,11 @@
 = provide(:title, 'All events')
 
 -provide :left_column do
-  = render :partial => "polls/poll", :locals => {poll: current_user.next_unanswered_poll, previous_poll: nil}
+  = render "polls/poll", poll: current_user.next_unanswered_poll, previous_poll: nil
 
 %h1 All lessons
 
-=render :partial => "lessons/future_lessons", :locals => {:lessons => @lessons}
+=render "lessons/future_lessons", :lessons => @lessons
 
 %br
 

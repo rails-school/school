@@ -6,7 +6,7 @@
   -answers.each do |a|
     -answered_this_question = UserAnswer.where(:poll_id => poll.id, :answer_id => a.id).length
     -ratio = 1.0 * answered_this_question / answered * 100.0
-    #{ratio}% of users answered #{a.text}
+    #{ratio.ceil}% of users answered #{a.text}
     %br
 -else
   Nobody answered this poll yet
