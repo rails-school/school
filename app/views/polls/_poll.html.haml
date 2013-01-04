@@ -10,7 +10,7 @@
         -answer = UserAnswer.new
         -answer.user_id = current_user.id
 
-        =form_for answers, :url => "polls/answer", :remote => true do |f|
+        =form_for answers, :url => "/polls/answer", :remote => true do |f|
           %ul
             -answers.each do |answer|
               = answer_list_item(f, answer).html_safe

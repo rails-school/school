@@ -11,8 +11,8 @@
       -lesson.users.each do |u|
         %li
           %a=u.name
-  .polls
-    %h2 Poll: Do you want to learn Onyx on Train on Racks?
+  - if user_signed_in?
+    = render :partial => "polls/poll", :locals => {poll: current_user.next_unanswered_poll, previous_poll: nil}
 
 .lesson_details
   =render :partial => "lessons/announce", :locals => {:lesson => @lesson, :main_page => false}
