@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103021905) do
+ActiveRecord::Schema.define(:version => 20130106225410) do
 
   create_table "answers", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20130103021905) do
     t.float    "longitude"
     t.string   "name"
     t.integer  "school_id"
+    t.string   "comment"
   end
 
 end
