@@ -414,3 +414,13 @@ ul.lessons_list {
     color:white;
   }
 }
+
+.content form.new_user {
+  > div { width: 22em; }
+  #suggestion {
+    display: none;
+    margin-bottom: 16px;
+    text-align: right;
+    .domain { font-weight: bold; }
+   }
+}
