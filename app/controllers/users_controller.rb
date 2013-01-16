@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter :load_and_authorize_user, :only => [:show, :edit, :update]
   before_filter :admin_only, :only => [:index, :notify_subscribers]
+  http_basic_authenticate_with :name => SENDGRID_EVENT_USERNAME,
+    :password => SENDGRID_EVENT_PASSWORD, :only => :report_email_bounce
 
   # GET /unsubscribe/:code
   def unsubscribe
@@ -13,8 +15,9 @@ class UsersController < ApplicationController
     render text: "you have been successfully unsubscribed from RailsSchool notifications. Thank you for all the good you have, cheers and astalavista."
   end
 
+  # POST /notify_subscribers/1
   def notify_subscribers
-    if current_user.email.match(/.*@railsschool.org$/)
+    if current_user.admin? && current_user.email.match(/.*@railsschool.org$/)
       lesson = Lesson.find(params[:id])
       users = User.where(:subscribe => true).to_a
       users.each do |u|
@@ -35,6 +38,19 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  # POST /bounce_reports
+  def report_email_bounce
+    unless params[:email].present? && params[:event] == "bounce"
+      return head :status => 422
+    end
+    user = User.find_by_email(params[:email])
+    if user
+      user.subscribe = false
+      user.save
+    end
+    head :status => 200 # sendgrid demands a 200
   end
 
   # PUT /users/1

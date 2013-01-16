@@ -25,6 +25,7 @@ Rs::Application.routes.draw do
   post "notify_subscribers/:id" => "users#notify_subscribers"
   post "rsvp/:id" => "attendances#rsvp"
   post "rsvp/:id/:delete" => "attendances#rsvp"
+  post "bounce_reports" => "users#report_email_bounce"
 
   get "d/:the_date" => "lessons#day"
 
