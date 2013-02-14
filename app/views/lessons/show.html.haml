@@ -7,9 +7,10 @@
     %p
       =lesson.users.count
       People attending
-    %ul
+    .attendees
       -lesson.users.each do |u|
-        %li
+        %div
+          =image_tag Gravatar.new(u.email).image_url(:size => 40)
           %a=u.name
   - if user_signed_in?
     = render :partial => "polls/poll", :locals => {poll: current_user.next_unanswered_poll, previous_poll: nil}

@@ -15,7 +15,7 @@ gem 'gmaps4rails'
 gem "thin"
 gem "sidekiq"
 gem "devise-async"
-
+gem "gravatar-ultimate"
 # render markdown
 gem "redcarpet", "~> 1.17.2"
 
