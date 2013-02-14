@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+
 feature %q{
   As a user
   I want to be able to RSVP
@@ -151,5 +152,6 @@ feature %q{
     uri = URI.parse(current_url)
     uri.path.should == root_path
   end
+
 
 end

@@ -356,7 +356,7 @@ ul.lessons_list {
 .img {
   width:155px;
   height:155px;
-  background: url(image.png);
+  background: url(rails.jpg);
   box-shadow: INSET 3px 3px 15px rgba(0,0,0,0.5);
 }
 
@@ -429,6 +429,9 @@ ul.lessons_list {
 .attendees {
   img {
     float:left;
+  }
+  div {
+    margin-bottom:2px;
   }
   a {
     line-height:40px;

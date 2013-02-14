@@ -24,6 +24,6 @@
 .image
   .img-wrap
     .img
-  =render :partial => "social_media/likes", :locals => {:message => "I'm going to rails class #{lesson.title}!!", :url => url_for(lesson)}
+  =render :partial => "social_media/likes", :locals => {:message => "I'm going to rails class #{lesson.title}!!", :url => url_to(lesson)}
 
 .clearboth{:style => "clear:both;"}

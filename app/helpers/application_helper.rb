@@ -24,4 +24,8 @@ module ApplicationHelper
   def notify_subscribers_link(lesson)
     content_tag :a, "notify subscribers", :href => "#{root_url}notify_subscribers/#{lesson.id}", 'data-method' => 'POST', 'data-remote' => true
   end
+
+  def url_to(object)
+    "#{root_url[0..root_url.length-2]}#{url_for(object)}"
+  end
 end
