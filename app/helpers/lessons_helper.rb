@@ -9,4 +9,12 @@ module LessonsHelper
       "http://typewith.me/p/"
     end
   end
+
+  def format_user_name(user)
+    if user.hide_last_name?
+      user.name.split(" ").first
+    else
+      user.name
+    end
+  end
 end

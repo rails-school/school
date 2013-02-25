@@ -11,7 +11,7 @@
       -lesson.users.each do |u|
         %div
           =image_tag Gravatar.new(u.email).image_url(:size => 40)
-          %a=u.name
+          %a= format_user_name(u)
   - if user_signed_in?
     = render :partial => "polls/poll", :locals => {poll: current_user.next_unanswered_poll, previous_poll: nil}
 

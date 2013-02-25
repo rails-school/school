@@ -7,5 +7,8 @@
   .field
     = f.label :email
     = f.text_field :email
+  .field
+    = f.label :hide_last_name, "Hide last name (in Attendance)"
+    = f.check_box :hide_last_name
   .actions
     = f.submit 'Save'
