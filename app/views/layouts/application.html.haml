@@ -2,6 +2,7 @@
 %html
   %head
     %title= title_content(yield(:title))
+    %meta{:charset => "UTF-8"}
     -if controller.action_name == 'show' && controller.controller_name == "lessons"
       = yield :meta
     -else
@@ -9,6 +10,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = render "layouts/google_analytics"
     =csrf_meta_tags
   %body
     =render "social_media/fb_header"
