@@ -22,7 +22,8 @@ FactoryGirl.define do
   factory :lesson do |l|
     l.title              "some random lesson how to make animal orgy on mondays"
     l.description        "light@beer-is-good.com"
-    l.date               Date.today + 1.day
+    l.start_time         Date.today + 1.day
+    l.end_time           Date.today + 1.day + 2.hours
   end
 
 end

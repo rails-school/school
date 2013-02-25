@@ -1,5 +1,5 @@
 class Lesson < ActiveRecord::Base
-  attr_accessible :address, :city, :course_id, :date, :description, :title, :user_id, :slug, :venue_id, :summary
+  attr_accessible :address, :city, :course_id, :start_time, :end_time, :description, :title, :user_id, :slug, :venue_id, :summary
 
   has_many :attendances
   has_many :users, :through => :attendances
@@ -15,7 +15,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def self.future_lessons
-    self.where("date > (?)", Time.current.beginning_of_day).order("date asc")
+    self.where("end_time > (?)", Time.current).order("start_time asc")
   end
 
   def self.past_lessons

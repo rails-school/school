@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130114012608) do
+ActiveRecord::Schema.define(:version => 20130225033924) do
 
   create_table "answers", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20130114012608) do
   create_table "lessons", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "date"
     t.string   "address"
     t.string   "city"
     t.integer  "course_id"
@@ -51,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20130114012608) do
     t.string   "slug"
     t.integer  "venue_id"
     t.text     "summary"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   add_index "lessons", ["slug"], :name => "index_lessons_on_slug", :unique => true

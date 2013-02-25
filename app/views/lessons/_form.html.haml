@@ -10,9 +10,21 @@
   .field
     = f.label :description
     = f.text_area :description
-  .time-field
+  .field
     =f.label :date
-    =f.datetime_select :date
+    -# TODO replace this with date helper when upgrading to Rails 4
+    %input{id: "lesson_date", name: "lesson[date]", type: "date",
+           value: @lesson.start_time ? @lesson.start_time.to_date : Date.today}
+  .field
+    =f.label :start_time
+    -# TODO replace this with time helper when upgrading to Rails 4
+    %input{id: "lesson_start_time", name: "lesson[start_time]", type: "time",
+     value: @lesson.start_time ? @lesson.start_time.strftime("%H:%M") : "19:00"}
+  .field
+    =f.label :end_time
+    -# TODO replace this with time helper when upgrading to Rails 4
+    %input{id: "lesson_end_time", name: "lesson[end_time]", type: "time",
+     value: @lesson.end_time ? @lesson.end_time.strftime("%H:%M") : "21:00"}
   .field
     = f.label :course_id
     = f.number_field :course_id

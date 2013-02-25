@@ -4,7 +4,7 @@ class LessonsController < ApplicationController
   before_filter :admin_only, :except => [:index, :show, :day]
 
   def index
-    @lessons = Lesson.order("date DESC")
+    @lessons = Lesson.order("start_time DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class LessonsController < ApplicationController
   def day
     @the_date = Time.parse(params[:the_date])
     @lessons = Lesson.all.select do |l|
-      l.date.to_date == @the_date.to_date
+      l.start_time.to_date == @the_date.to_date
     end
 
 
@@ -59,7 +59,7 @@ class LessonsController < ApplicationController
   # POST /lessons
   # POST /lessons.json
   def create
-    @lesson = Lesson.new(params[:lesson])
+    @lesson = Lesson.new(fix_dates(params[:lesson]))
     @lesson.venue_id = 1 if @lesson.venue_id.blank?
     respond_to do |format|
       if @lesson.save
@@ -78,7 +78,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
 
     respond_to do |format|
-      if @lesson.update_attributes(params[:lesson])
+      if @lesson.update_attributes(fix_dates(params[:lesson]))
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { head :no_content }
       else
@@ -98,5 +98,15 @@ class LessonsController < ApplicationController
       format.html { redirect_to lessons_url }
       format.json { head :no_content }
     end
+  end
+
+private
+  def fix_dates(l_params)
+    date = l_params.delete("date")
+    l_params[:start_time] =
+      DateTime.parse("#{date} #{l_params[:start_time]} #{Time.zone}")
+    l_params[:end_time] =
+      DateTime.parse("#{date} #{l_params[:end_time]} #{Time.zone}")
+    l_params
   end
 end

@@ -119,7 +119,9 @@ feature %q{
     fill_in "lesson[title]", :with => "some random topic"
     fill_in "lesson[summary]", :with => "some random summary"
     fill_in "lesson[description]", :with => "some random description"
-    select "#{Date.current.year + 1}", :form => "lesson[date(1i)]"
+    fill_in "lesson[start_time]", :with => "6:30pm"
+    fill_in "lesson[end_time]", :with => "8:15pm"
+    fill_in "lesson[date]", :with => (Date.current + 1.day).to_s
     click_button "Save"
     lessons = Lesson.all
     lessons.count.should == 1

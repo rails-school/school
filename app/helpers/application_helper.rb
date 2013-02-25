@@ -1,6 +1,6 @@
 module ApplicationHelper
   def lessons_today?(year, month, day)
-    Lesson.all.select { |l| l.date.month == month && l.date.day == day }
+    Lesson.all.select { |l| l.start_time.month == month && l.start_time == day }
   end
 
   def title_content(page_title)
@@ -17,8 +17,10 @@ module ApplicationHelper
     t.sub(':00', '')
   end
 
-  def format_datetime(date)
-    "#{format_time(date)} on #{format_date(date)}"
+  def format_datetime(start_time, end_time=nil)
+    t = format_time(start_time)
+    t += " - #{format_time(end_time)}" if end_time
+    t + " on #{format_date(start_time)}"
   end
 
   def notify_subscribers_link(lesson)
