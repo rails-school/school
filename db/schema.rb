@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225042935) do
+ActiveRecord::Schema.define(:version => 20130225043835) do
 
   create_table "answers", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20130225042935) do
     t.boolean  "teacher"
     t.string   "unsubscribe_token"
     t.boolean  "hide_last_name",         :default => true
+    t.string   "homepage"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
