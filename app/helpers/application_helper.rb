@@ -1,6 +1,6 @@
 module ApplicationHelper
   def lessons_today?(year, month, day)
-    Lesson.all.select { |l| l.start_time.month == month && l.start_time == day }
+    Lesson.all.select { |l| l.start_time.month == month && l.start_time.day == day }
   end
 
   def title_content(page_title)
