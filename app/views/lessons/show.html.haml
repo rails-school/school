@@ -40,29 +40,6 @@
 -else
   = link_to "Please, sign in to see the Whiteboard", new_user_registration_path
 
--if 1 == 2
-  %p
-    %b Title:
-    = @lesson.title
-  %p
-    %b Description:
-    = @lesson.description
-  %p
-    %b Date:
-    = @lesson.start_time
-  %p
-    %b Address:
-    = @lesson.address
-  %p
-    %b City:
-    = @lesson.city
-  %p
-    %b Course:
-    = @lesson.course_id
-  %p
-    %b User:
-    = @lesson.user_id
-
 -if admin?
   = link_to 'Edit', edit_lesson_path(@lesson), :class => 'button'
   - if current_user.email.match(/.*@railsschool.org$/)
