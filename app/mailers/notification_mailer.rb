@@ -6,7 +6,7 @@ class NotificationMailer < ActionMailer::Base
     @lesson = Lesson.find(lesson_id)
     @user = User.find(to_id)
     from_user = User.find(from_id)
-    subject = "Rails class #{@lesson.date.strftime("%-m/%-d")}: #{@lesson.title}"
+    subject = "Rails class #{@lesson.start_time.strftime("%-m/%-d")}: #{@lesson.title}"
     mail(:to => format_email_field(@user), :subject => subject,
          :from => format_email_field(from_user))
   end
