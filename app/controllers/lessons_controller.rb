@@ -32,6 +32,7 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     @whiteboard = params[:whiteboard]
+    authenticate_user! if @whiteboard
     @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
 
     respond_to do |format|
