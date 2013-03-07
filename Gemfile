@@ -53,7 +53,7 @@ group :test do
   gem "database_cleaner"
   gem "forgery"
   gem 'sqlite3'
-
+  gem 'email_spec'
 end
 
 group :test, :development do

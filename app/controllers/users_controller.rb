@@ -17,14 +17,15 @@ class UsersController < ApplicationController
 
   # POST /notify_subscribers/1
   def notify_subscribers
-    if current_user.admin? && current_user.email.match(/.*@railsschool.org$/)
+    if current_user.admin? && current_user.email.match(/railsschool.org$/)
       lesson = Lesson.find(params[:id])
       users = User.where(:subscribe => true).to_a
       users.each do |u|
         NotificationMailer.delay.lesson_notification(lesson.id, u.id, current_user.id)
       end
     end
-    head :status => 201
+    lesson.update_attribute(:notification_sent_at, Time.now)
+    redirect_to lesson_path(lesson), :notice => "Subscriber notification emails sent"
   end
 
   # GET /users

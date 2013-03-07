@@ -22,7 +22,7 @@ Rs::Application.routes.draw do
   get "contact" => "home#contact"
   get "faq" => "home#faq"
 
-  post "notify_subscribers/:id" => "users#notify_subscribers"
+  post "notify_subscribers/:id" => "users#notify_subscribers", :as => "notify_subscribers"
   post "rsvp/:id" => "attendances#rsvp"
   post "rsvp/:id/:delete" => "attendances#rsvp"
   post "bounce_reports" => "users#report_email_bounce"

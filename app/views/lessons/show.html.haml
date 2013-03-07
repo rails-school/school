@@ -42,8 +42,11 @@
 
 -if admin?
   = link_to 'Edit', edit_lesson_path(@lesson), :class => 'button'
-  - if current_user.email.match(/.*@railsschool.org$/)
-    = notify_subscribers_link(@lesson)
+  - if current_user.email.match(/railsschool.org$/)
+    - if @lesson.notification_sent_at.blank?
+      = link_to "Notify subscribers", notify_subscribers_path(@lesson.id), :method => :post, :confirm => "Are you sure?"
+    - else
+      Notification email was sent #{@lesson.notification_sent_at}.
   - else
     Please update your account to use your @railsschool.org email in order to notify subscribers by email.
 

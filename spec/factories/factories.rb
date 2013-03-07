@@ -13,7 +13,7 @@ FactoryGirl.define do
 
   factory :admin, class: User do |u|
     u.name                   "this is an admin"
-    u.email                  "light1@beer-is-good.com"
+    u.email                  "light1@test.railsschool.org"
     u.password               "draft1"
     u.password_confirmation  "draft1"
     admin                    true
