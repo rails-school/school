@@ -105,9 +105,9 @@ private
   def fix_dates(l_params)
     date = l_params.delete("date")
     l_params[:start_time] =
-      DateTime.parse("#{date} #{l_params[:start_time]} #{Time.zone}")
+      Time.zone.parse("#{date} #{l_params[:start_time]}")
     l_params[:end_time] =
-      DateTime.parse("#{date} #{l_params[:end_time]} #{Time.zone}")
+      Time.zone.parse("#{date} #{l_params[:end_time]}")
     l_params
   end
 end
