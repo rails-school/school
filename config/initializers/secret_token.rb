@@ -5,7 +5,8 @@
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
 if Rails.env.production?
-  Rs::Application.config.secret_token = ENV['RAILS_SECRET_TOKEN']
+  token = ENV['RAILS_SECRET_TOKEN']
 else
-  Rs::Application.config.secret_token = "Blueberry23"
+  token = "6c962917b0a99394fc59a3a53a125529e8a212a084ec4dff2bb281869f5594f3b2f7b8d38a3aaf82f2dcd4c2f2f5711a56e5f3dbc2ac5ea66e61d12ddfca6d6e"
 end
+Rs::Application.config.secret_token = token
