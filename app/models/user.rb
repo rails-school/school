@@ -1,3 +1,5 @@
+require "addressable/uri"
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -13,11 +15,17 @@ class User < ActiveRecord::Base
   has_many :user_answers
   #has_many :answers
   has_many :lessons, :through => :attendances
-  before_save :generate_unsubscribe_token
+  before_save :generate_unsubscribe_token, :canonicalize_homepage
 
   def generate_unsubscribe_token
     unless encrypted_password.blank? # dummy users
       self.unsubscribe_token = (0..15).map{(65+rand(26)).chr}.join
+    end
+  end
+
+  def canonicalize_homepage
+    if homepage_changed?
+      self.homepage = Addressable::URI.heuristic_parse(homepage).to_s
     end
   end
 

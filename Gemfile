@@ -19,6 +19,9 @@ gem "gravatar-ultimate"
 # render markdown
 gem "redcarpet", "~> 1.17.2"
 
+# parse urls
+gem "addressable"
+
 group :development do
   gem 'pry'
   gem 'pry-nav'

@@ -15,14 +15,16 @@ feature %q{
     click_button "Sign in"
   end
 
-  scenario "Edit my email", :js => true do
+  scenario "Edit my profile", :js => true do
     click_link "Stewie"
     click_link "Edit"
     within ".center-column" do
       fill_in "user[email]", :with => "stewie@example.com"
+      fill_in "user[homepage]", :with => "example.com"
       click_button "Save"
     end
     page.should have_content "User was successfully updated."
     @user.reload.email.should == "stewie@example.com"
+    @user.reload.homepage.should == "http://example.com"
   end
 end
