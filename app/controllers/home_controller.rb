@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   end
 
   def index
-    @lessons = Lesson.all
+    @lessons_this_month = Lesson.lessons_this_month
     @past_lessons = Lesson.past_lessons
     @future_lessons = Lesson.future_lessons
   end

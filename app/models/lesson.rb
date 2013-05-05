@@ -14,6 +14,13 @@ class Lesson < ActiveRecord::Base
     slug || id
   end
 
+  def self.lessons_this_month
+    from = Time.current.beginning_of_month
+    to = Time.current.end_of_month
+
+    self.where(start_time: (from..to))
+  end
+
   def self.future_lessons
     self.where("end_time > (?)", Time.current).order("start_time asc")
   end
