@@ -21,10 +21,12 @@ feature %q{
     within ".center-column" do
       fill_in "user[email]", :with => "stewie@example.com"
       fill_in "user[homepage]", :with => "example.com"
+      uncheck "user[subscribe]"
       click_button "Save"
     end
     page.should have_content "User was successfully updated."
     @user.reload.email.should == "stewie@example.com"
-    @user.reload.homepage.should == "http://example.com"
+    @user.homepage.should == "http://example.com"
+    @user.subscribe.should == false
   end
 end
