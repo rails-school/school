@@ -38,6 +38,8 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.3)
+    angularjs-rails (1.0.6.1)
+    angularjs-rails-resource (0.1.5)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
@@ -136,6 +138,8 @@ GEM
     modular-scale (1.0.2)
       compass (>= 0.11.5)
       sassy-math (>= 1.2)
+    momentjs-rails (2.0.0.1)
+      railties (>= 3.1)
     multi_json (1.7.2)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
@@ -254,6 +258,8 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
+  angularjs-rails
+  angularjs-rails-resource
   coffee-rails (~> 3.2.1)
   compass-rails (~> 1.0.3)
   contenteditable!
@@ -269,6 +275,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   letter_opener
+  momentjs-rails
   pg
   pry
   pry-nav

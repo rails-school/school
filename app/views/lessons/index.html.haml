@@ -4,11 +4,22 @@
   -poll = user_signed_in? ? current_user.next_unanswered_poll : nil
   =render "polls/poll", :poll => poll, :previous_poll => nil
 
-%h1 All lessons
+%div{'ng-app' => 'RailsSchool'}
 
-=render "lessons/future_lessons", :lessons => @lessons
+  %h1 All lessons
 
-%br
+  %div{'ng-view' => 'ng-view'}
+    =render "lessons/future_lessons", :lessons => @lessons
 
--if admin?
-  = link_to 'New Lesson', new_lesson_path
+  :javascript
+    window.lessons = #{@lessons.to_json};
+
+  -if user_signed_in?
+    :javascript
+      window.current_user = #{current_user.to_json(:only => [:name, :admin], :include => {:lessons => {:only => :id}})};
+
+
+
+  %br
+  -if admin?
+    = link_to 'New Lesson', new_lesson_path

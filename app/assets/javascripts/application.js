@@ -14,5 +14,9 @@
 //= require jquery_ujs
 //= require contenteditable/contenteditable
 //= require foundation
+//= require angular
+//= require angular-resource
+//= require angularjs/rails/resource
+//= require moment
 //= require mailcheck
 //= require_tree .

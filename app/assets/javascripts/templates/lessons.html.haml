@@ -1,0 +1,42 @@
+%ul.lessons_list{'ng-controller' => 'LessonsCtrl'}
+  %li{'ng-repeat' => 'lesson in lessons'}
+    .info
+      .date
+        {{lesson.start_time|dateFormat}}
+      .text
+        %a{:href => '/l/{{lesson.slug}}'} {{lesson.title}}
+      .expand
+        %a.expand_lesson{:href => "#", "data-lesson" => "{{lesson.id}}"} Expand
+
+    .details{"data-lesson" => "{{lesson.id}}"}
+      .summary
+        {{lesson.summary}}
+      %br
+      .description
+        :markdown
+          {{lesson.description}}
+      %br
+      %br
+      {{lesson.start_time|timeFormat}} - {{lesson.end_time|timeFormat}} on {{lesson.start_time|dateFormat}} at
+      %a{:href => "/venues/1"} Noisebridge
+
+
+      .view
+        %a{:href => '/l/{{lesson.slug}}'} View details...
+
+
+      %div{"ng-hide" => "current_user"}
+        %a.a_button{"data-remote" => "", "data-reveal-id" => "LoginModal", :href => "/rsvp/80"}
+          RSVP!
+      %div{'ng-show' => 'current_user'}
+        %a.a_button{"ng-hide" => "attending(lesson.id)", 'ng-click' => 'attend(lesson.id)'}
+          RSVP!
+        %a.a_button.pressed{"ng-show" => "attending(lesson.id)", 'ng-click' => 'noAttend(lesson.id)'}
+          unRSVP
+
+      %div{'ng-show' => 'current_user.admin'}
+        @link_to 'Show', l
+        @link_to 'Edit', edit_lesson_path(l)
+        @link_to 'Destroy', l, method: :delete, data: { confirm: 'Are you sure?' }
+
+  There are no workshops

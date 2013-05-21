@@ -18,6 +18,9 @@ gem "devise-async"
 gem "gravatar-ultimate"
 # render markdown
 gem "redcarpet", "~> 1.17.2"
+gem "angularjs-rails"
+gem "angularjs-rails-resource"
+gem 'momentjs-rails'
 
 # parse urls
 gem "addressable"

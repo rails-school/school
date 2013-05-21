@@ -1,0 +1,68 @@
+RailsSchool = angular.module('RailsSchool', ['ngResource', 'rails'])
+
+RailsSchool.factory "Lesson", ["railsResourceFactory", (railsResourceFactory) ->
+  railsResourceFactory
+    url: "/api/lessons"
+    name: "lesson"
+]
+
+RailsSchool.filter "dateFormat", ->
+  (dt) ->
+    date = moment(dt)
+    date.format("MMM Do, ddd")
+
+RailsSchool.filter "timeFormat", ->
+  (dt) ->
+    if dt isnt "undefined" and dt isnt null
+      date = moment(dt).utc()
+      result = date.format("h:mma")
+    else
+      result = "8:30pm"
+    result
+
+RailsSchool.controller "LessonsCtrl", ["$scope", "$http", "Lesson", "$routeParams", "$location", ($scope, $http, Poll, $routeParams, $location) ->
+  $scope.lessons = window.lessons
+  $scope.current_user = window.current_user
+  $scope.attending = (id) ->
+    attending = false
+    if $scope.current_user
+      angular.forEach($scope.current_user.lessons, (lesson) ->
+        attending = true if lesson.id == id
+      )
+    attending
+  $scope.attend = (id) ->
+    $http(
+      method: 'POST'
+      url: "/rsvp/#{id}"
+    ).success((data) ->
+      $scope.current_user.lessons.push({id: id})
+    ).error((data) ->
+      alert "some error (or maybe you already registered)"
+    )
+  $scope.noAttend = (id) ->
+    $http(
+      method: 'POST'
+      url: "/rsvp/#{id}/delete"
+    ).success((data) ->
+      angular.forEach($scope.current_user.lessons, (lesson) ->
+        lesson.id = 0 if lesson.id == id
+
+      )
+    ).error((data) ->
+      alert "some error (or maybe you already registered)"
+    )
+
+]
+
+#****************************************
+#* Router
+#****************************************
+
+# Page title manipulations
+
+RailsSchool.config ["$locationProvider", "$routeProvider", ($locationProvider, $routeProvider) ->
+  $locationProvider.html5Mode(true).hashPrefix('!')
+  $routeProvider.when("/l",
+    templateUrl: "<%= asset_path 'templates/lessons.html' %>"
+  )
+]
