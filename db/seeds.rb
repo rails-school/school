@@ -4,7 +4,7 @@ puts "Creating lesson Class: topic is BLOGS"
 lesson = Lesson.find_or_create_by_title("Class: topic is BLOGS") do |lesson|
   lesson.title = "Class: topic is BLOGS"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-05-08 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-05-08 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = " We'll take a look at some blog features and talk about how they might be implemented."
   lesson.description = <<EOF
@@ -19,7 +19,7 @@ puts "Creating lesson Demo Day!"
 lesson = Lesson.find_or_create_by_title("Demo Day!") do |lesson|
   lesson.title = "Demo Day!"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-05-15 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-05-15 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = " We'll take a look at some blog features and talk about how they might be implemented."
   lesson.description = <<EOF
@@ -31,7 +31,7 @@ puts "Creating lesson  Authentication with the Devise gem"
 lesson = Lesson.find_or_create_by_title(" Authentication with the Devise gem") do |lesson|
   lesson.title = " Authentication with the Devise gem"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-05-22 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-05-22 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "add authentication to the blogs we created"
   lesson.description = <<EOF
@@ -44,7 +44,7 @@ puts "Creating lesson Rails class"
 lesson = Lesson.find_or_create_by_title("Rails class") do |lesson|
   lesson.title = "Rails class"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-05-29 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-05-29 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Intro to Product Development"
   lesson.description = <<EOF
@@ -88,7 +88,7 @@ puts "Creating lesson Ajax in Rails"
 lesson = Lesson.find_or_create_by_title("Ajax in Rails") do |lesson|
   lesson.title = "Ajax in Rails"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-06-05 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-06-05 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Rails' Unobtrusive Javascript framework"
   lesson.description = <<EOF
@@ -103,7 +103,7 @@ puts "Creating lesson Dissecting the request lifecycle with pry"
 lesson = Lesson.find_or_create_by_title("Dissecting the request lifecycle with pry") do |lesson|
   lesson.title = "Dissecting the request lifecycle with pry"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-06-12 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-06-12 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Let's investigate the journey of a request through Rails with some help from the debugging tool pry."
   lesson.description = <<EOF
@@ -122,7 +122,7 @@ puts "Creating lesson Test-Driven-Development and Sending Emails"
 lesson = Lesson.find_or_create_by_title("Test-Driven-Development and Sending Emails") do |lesson|
   lesson.title = "Test-Driven-Development and Sending Emails"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-06-19 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-06-19 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "In this ambitious lecture-workshop, we're going to introduce Test-Driven-Development, and apply it to sending emails from our blogs."
   lesson.description = <<EOF
@@ -143,7 +143,7 @@ puts "Creating lesson Layouts and Rendering in Rails"
 lesson = Lesson.find_or_create_by_title("Layouts and Rendering in Rails") do |lesson|
   lesson.title = "Layouts and Rendering in Rails"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-06-26 18:59:00 UTC")
+  lesson.start_time = Time.parse("2013-06-26 18:59:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Will go through the layout features of Action Controller and Action View"
   lesson.description = <<EOF
@@ -159,7 +159,7 @@ puts "Creating lesson Playing with APIs"
 lesson = Lesson.find_or_create_by_title("Playing with APIs") do |lesson|
   lesson.title = "Playing with APIs"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-07-03 19:01:00 UTC")
+  lesson.start_time = Time.parse("2013-07-03 19:01:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "We will use Twitter API in a rails app"
   lesson.description = <<EOF
@@ -170,7 +170,7 @@ puts "Creating lesson Continuous Integration with Travis"
 lesson = Lesson.find_or_create_by_title("Continuous Integration with Travis") do |lesson|
   lesson.title = "Continuous Integration with Travis"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-07-10 19:01:00 UTC")
+  lesson.start_time = Time.parse("2013-07-10 19:01:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Intro to CI including configuring our apps to run on Travis-CI"
   lesson.description = <<EOF
@@ -186,7 +186,7 @@ puts "Creating lesson Catch-up Day"
 lesson = Lesson.find_or_create_by_title("Catch-up Day") do |lesson|
   lesson.title = "Catch-up Day"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-07-17 07:00:00 UTC")
+  lesson.start_time = Time.parse("2013-07-17 07:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "We're going to use this class to catch up new students."
   lesson.description = <<EOF
@@ -205,7 +205,7 @@ puts "Creating lesson Fun with the Stripe payment API"
 lesson = Lesson.find_or_create_by_title("Fun with the Stripe payment API") do |lesson|
   lesson.title = "Fun with the Stripe payment API"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-07-24 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-07-24 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "We'll hook up Stripe's API in our blog apps."
   lesson.description = <<EOF
@@ -227,7 +227,7 @@ puts "Creating lesson Rails' Asset Pipeline"
 lesson = Lesson.find_or_create_by_title("Rails' Asset Pipeline") do |lesson|
   lesson.title = "Rails' Asset Pipeline"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-07-31 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-07-31 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "We'll look closely at asset organization, compilation, and packaging, and also check out SCSS and Coffeescript."
   lesson.description = <<EOF
@@ -242,7 +242,7 @@ puts "Creating lesson Ruby, API's, and Gems"
 lesson = Lesson.find_or_create_by_title("Ruby, API's, and Gems") do |lesson|
   lesson.title = "Ruby, API's, and Gems"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-08-07 19:01:00 UTC")
+  lesson.start_time = Time.parse("2013-08-07 19:01:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "No Rails today; Ruby, Rest API's and Ruby Gems instead!"
   lesson.description = <<EOF
@@ -255,7 +255,7 @@ puts "Creating lesson Twitter API"
 lesson = Lesson.find_or_create_by_title("Twitter API") do |lesson|
   lesson.title = "Twitter API"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-08-14 19:03:00 UTC")
+  lesson.start_time = Time.parse("2013-08-14 19:03:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Using twitter API to build fun app"
   lesson.description = <<EOF
@@ -270,7 +270,7 @@ puts "Creating lesson ActiveRecord"
 lesson = Lesson.find_or_create_by_title("ActiveRecord") do |lesson|
   lesson.title = "ActiveRecord"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-08-21 07:00:00 UTC")
+  lesson.start_time = Time.parse("2013-08-21 07:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Taking a better look at this essential part of Rails"
   lesson.description = <<EOF
@@ -288,7 +288,7 @@ puts "Creating lesson Self-posting Novelty Twitter Accounts"
 lesson = Lesson.find_or_create_by_title("Self-posting Novelty Twitter Accounts") do |lesson|
   lesson.title = "Self-posting Novelty Twitter Accounts"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-08-28 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-08-28 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Let's create bots that make interesting tweets periodically"
   lesson.description = <<EOF
@@ -308,7 +308,7 @@ puts "Creating lesson Scraping and Parsing the Web"
 lesson = Lesson.find_or_create_by_title("Scraping and Parsing the Web") do |lesson|
   lesson.title = "Scraping and Parsing the Web"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-09-11 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-09-11 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "The last resort when there is no API, scraping and parsing isn't much fun, but Ruby's got some great tools to alleviate the pain."
   lesson.description = <<EOF
@@ -327,7 +327,7 @@ puts "Creating lesson Hack with Foursquare API"
 lesson = Lesson.find_or_create_by_title("Hack with Foursquare API") do |lesson|
   lesson.title = "Hack with Foursquare API"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-09-04 19:01:00 UTC")
+  lesson.start_time = Time.parse("2013-09-04 19:01:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Lets learn how to use foursquare API and what can we make out of it"
   lesson.description = <<EOF
@@ -347,7 +347,7 @@ puts "Creating lesson Roll-your-own Chat App with the Goliath web server"
 lesson = Lesson.find_or_create_by_title("Roll-your-own Chat App with the Goliath web server") do |lesson|
   lesson.title = "Roll-your-own Chat App with the Goliath web server"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-09-18 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-09-18 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Rails isn't perfect for interactive, real-time, scalable apps.  Let's play with Goliath, a Ruby-based web server that is."
   lesson.description = <<EOF
@@ -362,7 +362,7 @@ puts "Creating lesson Catch-up Day"
 lesson = Lesson.find_or_create_by_title("Catch-up Day") do |lesson|
   lesson.title = "Catch-up Day"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-09-25 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-09-25 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "We're going to use this class to catch up new students."
   lesson.description = <<EOF
@@ -381,7 +381,7 @@ puts "Creating lesson Etherpad Bots"
 lesson = Lesson.find_or_create_by_title("Etherpad Bots") do |lesson|
   lesson.title = "Etherpad Bots"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-10-02 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-10-02 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Let's write some bots that interact in Etherpads"
   lesson.description = <<EOF
@@ -396,7 +396,7 @@ puts "Creating lesson Sending email using background workers"
 lesson = Lesson.find_or_create_by_title("Sending email using background workers") do |lesson|
   lesson.title = "Sending email using background workers"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-10-09 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-10-09 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Sending email using background workers"
   lesson.description = <<EOF
@@ -413,7 +413,7 @@ puts "Creating lesson How to prepare your Rails app for production"
 lesson = Lesson.find_or_create_by_title("How to prepare your Rails app for production") do |lesson|
   lesson.title = "How to prepare your Rails app for production"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-10-16 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-10-16 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Essential steps to take before you launch"
   lesson.description = <<EOF
@@ -432,7 +432,7 @@ puts "Creating lesson Calculating π with Object-Oriented Ruby and Test-Driven D
 lesson = Lesson.find_or_create_by_title("Calculating π with Object-Oriented Ruby and Test-Driven Development") do |lesson|
   lesson.title = "Calculating π with Object-Oriented Ruby and Test-Driven Development"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-10-23 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-10-23 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Let's use our favorite programming language to calculate one of our favorite irrationals"
   lesson.description = <<EOF
@@ -449,7 +449,7 @@ puts "Creating lesson Image Uploads in Rails with TDD"
 lesson = Lesson.find_or_create_by_title("Image Uploads in Rails with TDD") do |lesson|
   lesson.title = "Image Uploads in Rails with TDD"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-10-30 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-10-30 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "Let's add images to out blog posts"
   lesson.description = <<EOF
@@ -460,7 +460,7 @@ puts "Creating lesson Refactoring existing code"
 lesson = Lesson.find_or_create_by_title("Refactoring existing code") do |lesson|
   lesson.title = "Refactoring existing code"
   lesson.course_id = "1"
-  lesson.date = Time.parse("2012-11-06 19:00:00 UTC")
+  lesson.start_time = Time.parse("2013-11-06 19:00:00 UTC")
   lesson.venue_id = 1
   lesson.summary = "How to refactor Rails code"
   lesson.description = <<EOF
