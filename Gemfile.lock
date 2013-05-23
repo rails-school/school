@@ -107,6 +107,9 @@ GEM
     gherkin (2.11.5)
       json (>= 1.4.6)
     gmaps4rails (1.5.6)
+    gon (4.1.0)
+      actionpack (>= 2.3.0)
+      json
     gravatar-ultimate (1.0.3)
     haml (3.1.7)
     haml-rails (0.3.5)
@@ -265,6 +268,7 @@ DEPENDENCIES
   factory_girl_rails
   forgery
   gmaps4rails
+  gon
   gravatar-ultimate
   haml-rails
   jquery-rails

@@ -4,6 +4,8 @@ class LessonsController < ApplicationController
   before_filter :admin_only, :except => [:index, :show, :day]
 
   def index
+    gon.signed_in = user_signed_in?
+    gon.user_lessons = current_user.lessons.pluck(:id) if user_signed_in?
     @lessons = Lesson.order("start_time DESC")
 
     respond_to do |format|

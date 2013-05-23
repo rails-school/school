@@ -1,9 +1,10 @@
+- cachable = false unless defined?(cachable)
 .rsvp{'data-id' => lesson.id}
   -the_date = lesson.start_time.present? ? lesson.start_time.to_date : Date.today.to_date
   -today = Time.current
   -if the_date >= today.to_date
     .actions
-      -if user_signed_in?
+      -if user_signed_in? && !cachable
         -if current_user.attend?(lesson.id)
           %a.a_button.pressed{:href => "/rsvp/#{lesson.id}/delete", 'data-remote' => true, 'data-method' => 'POST'}
             unRSVP

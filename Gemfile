@@ -7,6 +7,7 @@ gem 'rails', '~> 3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem "gon"
 gem "devise"
 gem "haml-rails"
 gem 'coffee-rails', '~> 3.2.1'

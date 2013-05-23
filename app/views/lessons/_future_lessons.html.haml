@@ -1,30 +1,31 @@
 %ul.lessons_list
   -lessons.each do |l|
-    %li
-      .info
-        .date
-          = format_date l.start_time
-        .text
-          =link_to l.title, l
-        .expand
-          %a.expand_lesson{:href => "#", "data-lesson" => l.id} Expand
+    - cache(l) do
+      %li
+        .info
+          .date
+            = format_date l.start_time
+          .text
+            =link_to l.title, l
+          .expand
+            %a.expand_lesson{:href => "#", "data-lesson" => l.id} Expand
 
-      .details{"data-lesson" => l.id}
-        .summary= l.summary
-        %br
-        .description
-          :markdown
-            #{l.description}
-        %br
-        %br
-        = render "lessons/time_and_place", :lesson => l
-        .view
-          =link_to 'View details...', l
-        =render :partial => "attendances/rsvp", :locals => {:lesson => l}
-        -if admin?
-          = link_to 'Show', l
-          = link_to 'Edit', edit_lesson_path(l)
-          = link_to 'Destroy', l, method: :delete, data: { confirm: 'Are you sure?' }
+        .details{"data-lesson" => l.id}
+          .summary= l.summary
+          %br
+          .description
+            :markdown
+              #{l.description}
+          %br
+          %br
+          = render "lessons/time_and_place", :lesson => l
+          .view
+            =link_to 'View details...', l
+          =render :partial => "attendances/rsvp", :locals => {:lesson => l, :cachable => true}
+          -if admin?
+            = link_to 'Show', l
+            = link_to 'Edit', edit_lesson_path(l)
+            = link_to 'Destroy', l, method: :delete, data: { confirm: 'Are you sure?' }
 
 -if lessons.count == 0
   %br
