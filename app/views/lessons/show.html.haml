@@ -1,4 +1,4 @@
-= provide(:title, @lesson.title)
+= provide(:title, @lesson.title.html_safe)
 
 -provide :left_column do
   .past
