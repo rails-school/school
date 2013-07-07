@@ -58,6 +58,22 @@ module Rs
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.compile = true
+
+    # Fix foundation for rails4
+    foundation_gem = ::Gem::Specification.latest_specs(true)
+                                         .find {|g| g.name == "zurb-foundation"}
+    config.assets.paths << "#{foundation_gem.full_gem_path}/scss"
+
+    # Fix compass for rails4
+    compass_gem = ::Gem::Specification.latest_specs(true)
+                                      .find {|g| g.name == "compass"}
+    config.assets.paths << "#{compass_gem.full_gem_path}/frameworks/compass/stylesheets"
+
+    # Fix modular-scale for rails4
+    ms_gem = ::Gem::Specification.latest_specs(true)
+                                 .find {|g| g.name == "modular-scale"}
+    config.assets.paths << "#{ms_gem.full_gem_path}/stylesheets"
+
     config.assets.precompile += ['foundation']
 
     config.assets.initialize_on_precompile = false
@@ -67,5 +83,6 @@ module Rs
     config.generators do |g|
       g.test_framework  :rspec
     end
+    config.serve_static_assets = true
   end
 end

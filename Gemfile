@@ -2,15 +2,16 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
-gem 'rails', '~> 3.2.11'
+gem 'rails', '~> 4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem "gon"
-gem "devise"
+gem "devise", "3.0.0.rc"
 gem "haml-rails"
-gem 'coffee-rails', '~> 3.2.1'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'i18n-active_record', github: "rubysolo/i18n-active_record", branch: "rails4"
 gem "contenteditable", :github => 'micmmakarov/contenteditable', :branch => :master
 gem 'gmaps4rails'
 gem "thin"
@@ -22,6 +23,8 @@ gem "redcarpet", "~> 1.17.2"
 
 # parse urls
 gem "addressable"
+
+gem "protected_attributes"
 
 group :development do
   gem 'pry'
@@ -37,14 +40,12 @@ end
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-  gem "uglifier"
-  gem 'compass-rails', '~> 1.0.3'
-  gem 'zurb-foundation', '~> 3.0.9'
-end
+gem 'sass-rails',   '~> 4.0.0'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
+gem "uglifier"
+gem 'compass-rails', '1.0.3'
+gem 'zurb-foundation', '3.0.9'
 
 gem 'jquery-rails'
 

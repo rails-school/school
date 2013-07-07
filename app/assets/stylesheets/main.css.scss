@@ -6,10 +6,10 @@ fonts {
 
 html {
 
-  background: url(bg_box.png);
+  background: image-url("bg_box.png");
 
   body {
-    background: url(circles.png) no-repeat bottom right;
+    background: image-url("circles.png") no-repeat bottom right;
     font-family: 'Muli', sans-serif;
     text-shadow: 0px 1px 0px rgba(255,255,255,1);
 
@@ -104,7 +104,7 @@ h2 {
     display:block;
     margin-left:20px;
     position:absolute;
-    background: url(logo.png);
+    background: image-url("logo.png");
     width: 213px;
     height: 258px;
   }
@@ -139,7 +139,7 @@ h2 {
     h2 {
       color: #093b4d;
     }
-    background: url(noise.png);
+    background: image-url("noise.png");
     min-height:200px;
     width:200%;
     padding-right:107%;
@@ -210,7 +210,7 @@ h2 {
     }
     font-size:14px;
     padding: 30px 30px 20px 30px;
-    background:url(shadows1.png) top right no-repeat, rgba(255,255,255,0.8);
+    background: image-url("shadows1.png") top right no-repeat, rgba(255,255,255,0.8);
     min-height:200px;
     border-top:5px solid #ab1818;
     position: relative;
@@ -236,7 +236,7 @@ h2 {
       bottom:-27px;
       width:49px;
       height:27px;
-      background: url(shadows2.png);
+      background: image-url("shadows2.png");
       content: ' ';
     }
   }
@@ -356,7 +356,7 @@ ul.lessons_list {
 .img {
   width:155px;
   height:155px;
-  background: url(rails.jpg);
+  background: image-url("rails.jpg");
   box-shadow: INSET 3px 3px 15px rgba(0,0,0,0.5);
 }
 
@@ -367,7 +367,7 @@ ul.lessons_list {
     height:10px;
     margin-left:10px;
     display:inline-block;
-    background: url(arrows.png);
+    background: image-url("arrows.png");
     background-position: -15px 0px;
     content:' ';
   }
@@ -385,7 +385,7 @@ ul.lessons_list {
     height:10px;
     margin-left:10px;
     display:inline-block;
-    background: url(arrows.png);
+    background: image-url("arrows.png");
     background-position: 0px 0px;
     content:' ';
   }

@@ -1,5 +1,5 @@
 Rs::Application.routes.draw do
-  match "polls/answer" => "polls#answer"
+  post "polls/answer" => "polls#answer"
 
   resources :polls
   resources :schools
