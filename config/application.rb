@@ -83,6 +83,5 @@ module Rs
     config.generators do |g|
       g.test_framework  :rspec
     end
-    config.serve_static_assets = true
   end
 end
