@@ -165,3 +165,25 @@ feature %q{
     page.should_not have_link("Notify subscribers")
   end
 end
+
+
+feature %q{
+  As a user
+  I see a calendar for the next month
+  If there no more lessons in this month
+} do
+
+  background do
+    @user = FactoryGirl.create(:user)
+    @lesson = FactoryGirl.create(:next_month_lesson)
+    sign_in @user
+  end
+
+
+  scenario "RSVP clicking RSVP button", :js => true do
+    page.should_not have_content(Date.today.strftime("%B").upcase)
+    page.should have_content((Date.today+1.month).strftime("%B").upcase)
+  end
+
+
+end

@@ -3,6 +3,14 @@ module ApplicationHelper
     @lessons_this_month.find { |l| l.start_time.day == day }
   end
 
+  def lessons_between?(day_start, day_end)
+    @lessons_this_month.find { |l| l.start_time.day >= day_start && l.start_time.day <= day_end }.present?
+  end
+
+  def future_lessons_between?(day_start, day_end)
+    @future_lessons.find { |l| l.start_time.day >= day_start && l.start_time.day <= day_end }.present?
+  end
+
   def title_content(page_title)
     site_name = 'Rails School San Francisco'
     page_title.present? ? "#{page_title} | #{site_name}" : site_name

@@ -9,7 +9,7 @@ feature %q{
 
   background do
     @user = FactoryGirl.create(:user)
-    visit "/"
+    visit root_path
     click_link "Login"
     fill_in "user[email]", :with => @user.email
     fill_in "user[password]", :with => "draft1"
