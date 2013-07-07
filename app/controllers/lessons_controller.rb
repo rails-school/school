@@ -14,22 +14,6 @@ class LessonsController < ApplicationController
     end
   end
 
-
-  def day
-    @the_date = Time.parse(params[:the_date])
-    @lessons = Lesson.all.select do |l|
-      l.start_time.to_date == @the_date.to_date
-    end
-
-
-
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @lessons }
-    end
-  end
-
   # GET /lessons/1
   # GET /lessons/1.json
   def show
