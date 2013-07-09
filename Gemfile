@@ -24,6 +24,7 @@ gem "redcarpet", "~> 1.17.2"
 # parse urls
 gem "addressable"
 
+gem "twitter"
 gem "protected_attributes"
 
 group :development do

@@ -1,5 +1,9 @@
 class Lesson < ActiveRecord::Base
+<<<<<<< HEAD
   attr_accessible :address, :city, :course_id, :start_time, :end_time, :description, :title, :user_id, :slug, :venue_id, :summary, :level_id
+=======
+  attr_accessible :address, :city, :course_id, :start_time, :end_time, :description, :title, :user_id, :slug, :venue_id, :summary, :tweet_message
+>>>>>>> Allow teacher to specify tweet message, with default
 
   has_many :attendances
   has_many :users, :through => :attendances

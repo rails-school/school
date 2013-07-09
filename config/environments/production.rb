@@ -13,6 +13,7 @@ Rs::Application.configure do
 
   # Code is not reloaded between requests
   config.action_mailer.default_url_options = { :host => 'www.railsschool.org' }
+  Rails.application.routes.default_url_options[:host] = 'www.railsschool.org'
 
   config.eager_load = true
   config.cache_classes = true

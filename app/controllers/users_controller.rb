@@ -17,15 +17,21 @@ class UsersController < ApplicationController
 
   # POST /notify_subscribers/1
   def notify_subscribers
-    if current_user.admin? && current_user.email.match(/railsschool.org$/)
-      lesson = Lesson.find(params[:id])
-      users = User.where(:subscribe => true).to_a
-      users.each do |u|
-        NotificationMailer.delay.lesson_notification(lesson.id, u.id, current_user.id)
-      end
+    unless current_user.admin? && current_user.email.match(/railsschool.org$/)
+      return head status: 403
+    end
+    lesson = Lesson.find(params[:id])
+    User.where(subscribe: true).each do |u|
+      NotificationMailer.delay.lesson_notification(lesson.id, u.id,
+                                                   current_user.id)
+    end
+    if LessonTweeter.new(lesson, current_user).tweet
+      flash[:notice] = "Subcribers notified and tweet tweeted"
+    else
+      flash[:notice] = "Subscribers notified but error sending tweet, perhaps it was too long?"
     end
     lesson.update_attribute(:notification_sent_at, Time.now)
-    redirect_to lesson_path(lesson), :notice => "Subscriber notification emails sent"
+    redirect_to lesson_path(lesson)
   end
 
   # GET /users

@@ -155,17 +155,32 @@ feature %q{
     sign_in @admin
   end
 
-  scenario "Admin notifies users" do
+  scenario "Admin notifies users without setting tweet message" do
     @lesson.reload.notification_sent_at.should be_nil
     visit lesson_path(@lesson)
     NotificationMailer.should_receive(:lesson_notification).with(@lesson.id, @user.id, @admin.id)
+    status = /Shame on #{@admin.name.split(" ").first} for this boring message. The next class is "#{@lesson.title}". http/
+    Twitter.should_receive(:update).with(status)
     click_link "Notify subscribers"
-    page.should have_content("Subscriber notification emails sent")
+    page.should have_content("Subcribers notified and tweet tweeted")
+    @lesson.reload.notification_sent_at.should be_within(1.minute).of(Time.now)
+    page.should_not have_link("Notify subscribers")
+  end
+
+  scenario "Admin notifies users with custom tweet message" do
+    @lesson.reload.notification_sent_at.should be_nil
+    visit edit_lesson_path(@lesson)
+    fill_in "lesson[tweet_message]", with: "Check it out! >> {{url}} << W00t!"
+    click_button "Save"
+    NotificationMailer.should_receive(:lesson_notification).with(@lesson.id, @user.id, @admin.id)
+    status = /Check it out! >> http.* << W00t!/
+    Twitter.should_receive(:update).with(status)
+    click_link "Notify subscribers"
+    page.should have_content("Subcribers notified and tweet tweeted")
     @lesson.reload.notification_sent_at.should be_within(1.minute).of(Time.now)
     page.should_not have_link("Notify subscribers")
   end
 end
-
 
 feature %q{
   As a user

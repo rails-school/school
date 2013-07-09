@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130707043933) do
+ActiveRecord::Schema.define(version: 20130709041821) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at", null: false
@@ -45,14 +45,15 @@ ActiveRecord::Schema.define(version: 20130707043933) do
     t.string   "city"
     t.integer  "course_id"
     t.integer  "user_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "slug"
     t.integer  "venue_id"
     t.text     "summary"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "notification_sent_at"
+    t.string   "tweet_message",        limit: 140
     t.integer  "level_id"
   end
 
