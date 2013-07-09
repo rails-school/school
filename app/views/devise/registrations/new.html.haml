@@ -30,6 +30,11 @@
     %br
     = f.password_field :password_confirmation
 
+  %div
+    = f.label :homepage
+    %br
+    = f.text_field :homepage
+
   %div= f.submit "Sign up"
 
 = render "devise/shared/links"
