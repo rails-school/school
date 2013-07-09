@@ -44,7 +44,7 @@
   = link_to 'Edit', edit_lesson_path(@lesson), :class => 'button'
   - if current_user.email.match(/railsschool.org$/)
     - if @lesson.notification_sent_at.blank?
-      = link_to "Notify subscribers", notify_subscribers_path(@lesson.id), :method => :post, :confirm => "Are you sure?"
+      = link_to "Notify subscribers", notify_subscribers_path(@lesson.id), method: :post, data: {confirm: "Are you sure?"}
     - else
       Notification email was sent #{@lesson.notification_sent_at}.
   - else
