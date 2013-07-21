@@ -9,7 +9,7 @@
       People attending
     %ul.attendees
       -lesson.users.each do |u|
-        %a{href: user_path(u), rel: "nofollow"}
+        %a{href: user_path(u)}
           = render "users/show_attending", :user => u
   - if user_signed_in?
     = render :partial => "polls/poll", :locals => {poll: current_user.next_unanswered_poll, previous_poll: nil}
