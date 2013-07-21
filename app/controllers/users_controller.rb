@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :load_and_authorize_user, :only => [:show, :edit, :update]
+  before_filter :load_and_authorize_user, :only => [:edit, :update]
   before_filter :admin_only, :only => [:index, :notify_subscribers]
   http_basic_authenticate_with :name => SENDGRID_EVENT_USERNAME,
     :password => SENDGRID_EVENT_PASSWORD, :only => :report_email_bounce
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/1/edit

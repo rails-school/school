@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130709041821) do
+ActiveRecord::Schema.define(version: 20130721001643) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at", null: false
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20130709041821) do
     t.integer  "user_id"
     t.integer  "lesson_id"
     t.boolean  "attended"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "confirmed",  default: false
   end
 
   add_index "attendances", ["user_id", "lesson_id"], name: "index_attendances_on_user_id_and_lesson_id", unique: true
@@ -71,6 +72,15 @@ ActiveRecord::Schema.define(version: 20130709041821) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "published"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "data_type"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "body"
   end
 
   create_table "schools", force: true do |t|

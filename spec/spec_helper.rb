@@ -25,4 +25,5 @@ RSpec.configure do |config|
   config.include Helpers
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
+  config.include Devise::TestHelpers, type: :controller
 end

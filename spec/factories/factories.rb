@@ -4,7 +4,7 @@ FactoryGirl.define do
 
   factory :user do |u|
     u.name                   "Test User that loves beer"
-    u.email                  "light@beer-is-good.com"
+    sequence(:email) { |i| "user_#{i}@example.com"}
     u.password               "draft1"
     u.password_confirmation  "draft1"
     u.subscribe               true
@@ -19,8 +19,13 @@ FactoryGirl.define do
     admin                    true
   end
 
+  factory :attendance do
+    lesson
+    user
+  end
+
   factory :lesson do |l|
-    l.title              "some random lesson how to make animal orgy on mondays"
+    sequence(:title) { |i| "Lesson ##{i}" }
     l.description        "light@beer-is-good.com"
     l.start_time         Date.today + 1.day
     l.end_time           Date.today + 1.day + 2.hours

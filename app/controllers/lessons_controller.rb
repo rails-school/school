@@ -18,8 +18,14 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     @whiteboard = params[:whiteboard]
-    authenticate_user! if @whiteboard
     @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
+    if @whiteboard
+      authenticate_user!
+      if Time.now > @lesson.start_time-10.minutes && Time.now < @lesson.end_time
+        rsvp = current_user.attendances.where(lesson_id: @lesson.id).first
+        rsvp.update_attribute(:confirmed, true) if rsvp && !rsvp.confirmed 
+      end
+    end
 
     respond_to do |format|
       format.html # show.html.erb

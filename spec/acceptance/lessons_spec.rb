@@ -10,7 +10,7 @@ feature %q{
   background do
     @user = FactoryGirl.create(:user)
     @lesson = FactoryGirl.create(:lesson)
-    sign_in @user
+    sign_in_manually @user
   end
 
 
@@ -30,7 +30,7 @@ feature %q{
   background do
     @user = FactoryGirl.create(:user)
     @lesson = FactoryGirl.create(:lesson)
-    sign_in @user
+    sign_in_manually @user
   end
 
 
@@ -99,7 +99,7 @@ feature %q{
 
   background do
     @admin = FactoryGirl.create(:admin)
-    sign_in @admin
+    sign_in_manually @admin
   end
 
   scenario "creating a new upcoming lesson", :js => true do
@@ -130,7 +130,7 @@ feature %q{
 
   background do
     @user = FactoryGirl.create(:user)
-    sign_in @user
+    sign_in_manually @user
   end
 
   scenario "Random user is trying to access create lesson address", :js => true do
@@ -152,7 +152,7 @@ feature %q{
     @user = FactoryGirl.create(:user)
     @admin = FactoryGirl.create(:admin, :subscribe => false)
     @lesson = FactoryGirl.create(:lesson)
-    sign_in @admin
+    sign_in_manually @admin
   end
 
   scenario "Admin notifies users without setting tweet message" do
@@ -191,7 +191,7 @@ feature %q{
   background do
     @user = FactoryGirl.create(:user)
     @lesson = FactoryGirl.create(:next_month_lesson)
-    sign_in @user
+    sign_in_manually @user
   end
 
 
