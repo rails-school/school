@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/micmmakarov/contenteditable.git
-  revision: 59eee1ee60c136817f5014cf87e7517ee300e7bc
+  revision: 575b3077ee61134314b446d8ee48e2cd16c4de7b
   branch: master
   specs:
-    contenteditable (0.0.1)
+    contenteditable (0.0.2)
       i18n-active_record
       rails
 
