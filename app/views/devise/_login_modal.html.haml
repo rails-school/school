@@ -15,7 +15,7 @@
         %input#user_password{:name => "user[password]", :size => "30", :type => "password"}/
     %div
       %input{:name => "user[remember_me]", :type => "hidden", :value => "0"}
-        %input#user_remember_me{:name => "user[remember_me]", :type => "checkbox", :value => "1"}
+        %input#user_remember_me{:name => "user[remember_me]", :type => "checkbox", :value => "1", checked: true}
           %label{:for => "user_remember_me"} Remember me
     %div
       %input.a_button{:name => "commit", :type => "submit", :value => "Sign in"}/
