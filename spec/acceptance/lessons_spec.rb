@@ -117,6 +117,11 @@ feature %q{
     visit "/"
     page.should have_content "some random topic"
     page.should have_content "some random summary"
+
+    visit lesson_path(Lesson.last)
+    within "ul.teachers" do
+      page.should have_content @admin.name
+    end
   end
 
 end

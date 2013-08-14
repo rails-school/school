@@ -54,6 +54,7 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(fix_dates(params[:lesson]))
     @lesson.venue_id = 1 if @lesson.venue_id.blank?
+    @lesson.teacher = current_user
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }

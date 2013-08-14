@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130721001643) do
+ActiveRecord::Schema.define(version: 20130814012527) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at", null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20130721001643) do
     t.datetime "notification_sent_at"
     t.string   "tweet_message",        limit: 140
     t.integer  "level_id"
+    t.integer  "teacher_id"
   end
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
@@ -72,15 +73,6 @@ ActiveRecord::Schema.define(version: 20130721001643) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "published"
-  end
-
-  create_table "questions", force: true do |t|
-    t.string   "data_type"
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "body"
   end
 
   create_table "schools", force: true do |t|

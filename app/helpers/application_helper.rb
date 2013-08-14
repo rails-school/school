@@ -1,6 +1,6 @@
 module ApplicationHelper
   def format_user_name(user)
-    if user.hide_last_name?
+    if user.hide_last_name? && !user.admin?
       user.name.split(" ").first
     else
       user.name

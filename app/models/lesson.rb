@@ -5,6 +5,7 @@ class Lesson < ActiveRecord::Base
   has_many :users, :through => :attendances
   before_save :generate_slug
   belongs_to :venue
+  belongs_to :teacher, class_name: "User"
 
   def generate_slug
     self.slug = Slug.new(title).generate if self.slug.blank?
