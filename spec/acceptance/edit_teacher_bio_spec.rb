@@ -16,7 +16,6 @@ feature %q{
     visit about_path
     selector = "*[data-tag='about mike'][contenteditable]"
     page.should have_css(selector)
-    puts %Q{$("#{selector}").text("Mike is a superhero")}
     page.execute_script(%Q{$("#{selector}").text("Mike is a superhero")})
     page.execute_script("$('.contenteditable_save_button').show();")
     find(".contenteditable_save_button").click
