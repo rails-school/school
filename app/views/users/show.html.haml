@@ -7,7 +7,8 @@
 
 %p
   %b Homepage:
-  = link_to @user.homepage, @user.homepage, rel: "nofollow"
+  - if @user.homepage.present?
+    = link_to @user.homepage, @user.homepage, rel: "nofollow"
 
 - if current_user == @user
   %h2 Details
