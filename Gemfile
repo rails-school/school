@@ -8,7 +8,7 @@ gem 'rails', '~> 4.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem "gon"
-gem "devise", "3.0.0.rc"
+gem "devise", "~> 3.0.2"
 gem "haml-rails"
 gem 'coffee-rails', '~> 4.0.0'
 gem 'i18n-active_record', github: "rubysolo/i18n-active_record", branch: "rails4"
