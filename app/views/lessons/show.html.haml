@@ -10,7 +10,7 @@
     - if @lesson.users.any?
       %h2 Attendance
       %p
-        = pluralize(@lesson.users.count, "person")
+        = pluralize(@lesson.users.count, "student")
         - if (@lesson.end_time || @lesson.start_time) > Time.now
           attending
         - else

@@ -15,7 +15,7 @@
         %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-reveal-id' => 'LoginModal', 'data-remote' => true}
           RSVP!
     .text
-      #{pluralize(lesson.users.count, "person")}
+      #{pluralize(lesson.users.count, "student")}
       #{lesson.users.count == 1 ? "is" : "are"}
       going
       %br
@@ -26,7 +26,7 @@
       /=link_to 'who is going', lesson
   -else
     .text
-      #{lesson.users.count} people were there
+      #{lesson.users.count} students were there
       %br
       -if user_signed_in?
         -if current_user.attend?(lesson.id)
