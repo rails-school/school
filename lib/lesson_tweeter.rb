@@ -5,7 +5,7 @@ class LessonTweeter
   end
 
   def tweet
-    status = lesson.tweet_message || default_content
+    status = lesson.tweet_message.present? ? lesson.tweet_message : default_content
     if status.match(/{{URL}}/i)
       status.gsub!(/{{URL}}/i, url)
     else
