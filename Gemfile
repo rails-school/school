@@ -17,6 +17,7 @@ gem 'gmaps4rails'
 gem "unicorn"
 gem "rack-timeout"
 gem "sidekiq"
+gem "asset_sync"
 gem "devise-async"
 gem "gravatar-ultimate"
 # render markdown

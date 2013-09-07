@@ -57,7 +57,18 @@ Rs::Application.configure do
   config.cache_store = :memory_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  if ENV['ASSET_SYNC_ENABLED'] == 'false'
+     # noop
+  elsif ENV['CLOUDFRONT_HOST']
+    config.action_controller.asset_host = ENV['CLOUDFRONT_HOST']
+  elsif ENV['FOG_DIRECTORY']
+    if ENV['FOG_REGION']
+      host = "http://#{ENV['FOG_DIRECTORY']}.s3-#{ENV['FOG_REGION']}.amazonaws.com"
+    else
+      host = "http://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
+    end
+    config.action_controller.asset_host = host
+  end
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
