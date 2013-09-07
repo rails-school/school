@@ -47,7 +47,7 @@ end
 gem 'sass-rails',   '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
-gem "uglifier"
+gem "uglifier", '~> 2.1.1'
 gem 'compass-rails', '1.0.3'
 gem 'zurb-foundation', '3.0.9'
 
