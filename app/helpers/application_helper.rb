@@ -11,6 +11,14 @@ module ApplicationHelper
     @lessons_this_month.find { |l| l.start_time.day == day }
   end
 
+  def calendar_lesson(day, month)
+    if month == Time.current.month
+      @lessons_this_month.find { |l| l.start_time.day == day }
+    else
+      @future_lessons.find { |l| l.start_time.day == day && l.start_time.month == month }
+    end
+  end
+
   def lessons_between?(day_start, day_end)
     @lessons_this_month.find { |l| l.start_time.day >= day_start && l.start_time.day <= day_end }
   end

@@ -33,7 +33,7 @@
               -d = 0
             -if d >= 0 && d < lastday
               -d += 1
-              - if (lesson = lesson_today(d))
+              - if (lesson = calendar_lesson(d, month))
                 %a.event{:href => lesson_path(lesson), :title => lesson.title}
                   =d
               -else
