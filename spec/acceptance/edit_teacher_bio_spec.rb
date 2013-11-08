@@ -19,9 +19,9 @@ feature %q{
     page.execute_script(%Q{$("#{selector}").text("Mike is a superhero")})
     page.execute_script("$('.contenteditable_save_button').show();")
     find(".contenteditable_save_button").click
-    find(selector).text.should == "Mike is a superhero"
+    within(selector) { page.should have_content "Mike is a superhero" }
     visit about_path
-    find(selector).text.should == "Mike is a superhero"
+    within(selector) { page.should have_content "Mike is a superhero" }
   end
 
 end
