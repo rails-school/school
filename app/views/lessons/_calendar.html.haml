@@ -1,7 +1,7 @@
 -month=Date.today.month
 -year=Date.today.year
 
--if !lessons_between?(Date.today.day, Date.civil(year,month,-1).day) && future_lessons_between?(1, Date.civil(year,month + 1,-1).day)
+-if !lessons_between?(Date.today.day, Date.civil(year,month,-1).day) && future_lessons_between?(1, (Date.civil(year,month,-1) + 1.month).day)
   -month=(Date.today + 1.month).month
 
 -startweekday = Date.civil(year,month,1).strftime("%u").to_i
