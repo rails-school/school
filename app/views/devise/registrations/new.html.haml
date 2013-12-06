@@ -35,6 +35,11 @@
     %br
     = f.text_field :homepage
 
+  %div
+    = f.label :github_username
+    %br
+    = f.text_field :github_username
+
   %div= f.submit "Sign up"
 
 = render "devise/shared/links"

@@ -5,11 +5,14 @@
 %h4
   This user has attended #{pluralize(@user.attendances.joins(:lesson).where(confirmed: true).where("lessons.end_time < (?)", Time.now).count, "lesson")}
 
-%p
-  %b Homepage:
   - if @user.homepage.present?
-    = link_to @user.homepage, @user.homepage, rel: "nofollow"
+    %p
+      %b Homepage:
+      = link_to @user.homepage, @user.homepage, rel: "nofollow"
 
+  - if @user.github_username.present?
+    %p
+      %iframe{frameborder: "0", src: "http://githubbadge.appspot.com/#{@user.github_username}", style: "border: 0;height: 142px;width: 200px;overflow: hidden;"}
 - if current_user == @user
   %h2 Details
 
@@ -26,11 +29,25 @@
     = @user.homepage
 
   %p
+    %b Github profile:
+    - if @user.github_username.present?
+      = link_to nil, "https://github.com/#{@user.github_username}"
+    - else
+      Missing
+
+  %p
     %b Subscribe to lesson announcement emails:
     = @user.subscribe
 
   %p
     %b Last name hidden (in Attendance):
     = @user.hide_last_name
+
+  - if @user.attendances.any?
+    %p
+      %ul
+        - @user.attendances.each do |attendance|
+          %li
+            = link_to attendance.lesson.title, attendance.lesson
 
   = link_to 'Edit', edit_user_path(@user)
