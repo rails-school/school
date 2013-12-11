@@ -15,4 +15,5 @@
 //= require contenteditable/contenteditable
 //= require foundation
 //= require mailcheck
+//= require jquery.snow.hacked
 //= require_tree .
