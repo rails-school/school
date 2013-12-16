@@ -9,6 +9,7 @@ feature %q{
 
   background do
     @user = FactoryGirl.create(:user)
+    venue = FactoryGirl.create(:venue)
     visit root_path
     click_link "Login"
     page.should have_field "user[email]"
@@ -36,6 +37,7 @@ feature %q{
 
   background do
     @user = FactoryGirl.create(:user)
+    venue = FactoryGirl.create(:venue)
     visit "/"
     click_link "Login"
     fill_in "user[email]", :with => "some_random_mail@example.com"
@@ -60,6 +62,7 @@ feature %q{
 
   background do
     @user = FactoryGirl.create(:user)
+    venue = FactoryGirl.create(:venue)
     visit "/"
   end
 

@@ -10,6 +10,7 @@ feature %q{
   background do
     @user = FactoryGirl.create(:user)
     @lesson = FactoryGirl.create(:lesson)
+    @user.school = @lesson.venue.school
     sign_in_manually @user
   end
 
@@ -98,7 +99,8 @@ feature %q{
 } do
 
   background do
-    @admin = FactoryGirl.create(:admin)
+    @admin = create(:admin)
+    @venue = create(:venue)
     sign_in_manually @admin
   end
 
@@ -135,6 +137,8 @@ feature %q{
 
   background do
     @user = FactoryGirl.create(:user)
+    venue = FactoryGirl.create(:venue)
+    @user.school = venue.school
     sign_in_manually @user
   end
 
@@ -157,6 +161,7 @@ feature %q{
     @user = FactoryGirl.create(:user)
     @admin = FactoryGirl.create(:admin, :subscribe => false)
     @lesson = FactoryGirl.create(:lesson)
+    @user.school = @lesson.venue.school; @user.save!
     sign_in_manually @admin
   end
 
@@ -164,6 +169,23 @@ feature %q{
     @lesson.reload.notification_sent_at.should be_nil
     visit lesson_path(@lesson)
     NotificationMailer.should_receive(:lesson_notification).with(@lesson.id, @user.id, @admin.id)
+    status = /Shame on #{@admin.name.split(" ").first} for this boring message. The next class is "#{@lesson.title}". http/
+    Twitter.should_receive(:update).with(status)
+    click_link "Notify subscribers"
+    page.should have_content("Subcribers notified and tweet tweeted")
+    @lesson.reload.notification_sent_at.should be_within(1.minute).of(Time.now)
+    page.should_not have_link("Notify subscribers")
+  end
+
+  scenario "Admin only notifies users in the lesson's school" do
+    user_2 = FactoryGirl.create(:user, school: @user.school)
+    user_3 = FactoryGirl.create(:user)
+
+    @lesson.reload.notification_sent_at.should be_nil
+    visit lesson_path(@lesson)
+    NotificationMailer.should_receive(:lesson_notification).with(@lesson.id, @user.id, @admin.id)
+    NotificationMailer.should_receive(:lesson_notification).with(@lesson.id, user_2.id, @admin.id)
+    NotificationMailer.should_not_receive(:lesson_notification).with(@lesson.id, user_3.id, @admin.id)
     status = /Shame on #{@admin.name.split(" ").first} for this boring message. The next class is "#{@lesson.title}". http/
     Twitter.should_receive(:update).with(status)
     click_link "Notify subscribers"
@@ -196,6 +218,7 @@ feature %q{
   background do
     @user = FactoryGirl.create(:user)
     @lesson = FactoryGirl.create(:next_month_lesson)
+    @user.school = @lesson.venue.school
     sign_in_manually @user
   end
 

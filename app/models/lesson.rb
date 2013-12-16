@@ -26,13 +26,18 @@ class Lesson < ActiveRecord::Base
     self.where("end_time > (?)", Time.current).order("start_time asc")
   end
 
-  def self.past_lessons
-    lessons = order("RANDOM()").limit(4)
+  def self.past_lessons(limit=4)
+    lessons = self.where("end_time < (?)", Time.current)
+                  .order("RANDOM()").limit(limit)
 
     if lessons.empty?
       lessons << new
     end
 
     lessons
+  end
+
+  def self.for_school(school)
+    self.joins(:venue).where(venues: {school_id: school.id})
   end
 end

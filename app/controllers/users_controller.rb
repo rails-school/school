@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       return head status: 403
     end
     lesson = Lesson.find(params[:id])
-    User.where(subscribe: true).each do |u|
+    User.where(subscribe: true, school: lesson.venue.school).each do |u|
       NotificationMailer.delay.lesson_notification(lesson.id, u.id,
                                                    current_user.id)
     end

@@ -8,6 +8,10 @@
     = f.label :email
     = f.text_field :email
   .field
+    = f.label :school_id
+    - @user.school_id ||= current_school.id
+    = f.select(:school_id, School.all.collect{|s| [s.name, s.id]})
+  .field
     = f.label :homepage
     = f.text_field :homepage
   .field

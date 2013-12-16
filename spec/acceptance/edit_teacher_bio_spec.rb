@@ -9,6 +9,7 @@ feature %q{
 
   background do
     @admin = FactoryGirl.create(:admin)
+    venue = FactoryGirl.create(:venue)
     sign_in_manually @admin
   end
 

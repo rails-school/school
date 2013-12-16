@@ -1,7 +1,9 @@
 .header
   %a.flag{:href => root_url}
+    .school= current_school.name
   .menu-block
     %ul.menu
+      = render partial: "layouts/school_select_menu_item"
       %li
         %a{:href => "/about"} About
       %li
