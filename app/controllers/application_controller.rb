@@ -2,7 +2,7 @@ require "user_sanitizer"
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :admin?
+  helper_method :admin?, :current_school
   contenteditable_filter "admin?"
 
   def admin?
@@ -11,6 +11,27 @@ class ApplicationController < ActionController::Base
 
   def admin_only
     redirect_to root_path unless admin?
+  end
+
+  def current_school
+    unless @current_school
+      if params[:school]
+        @current_school = School.find_by_slug(params[:school])
+      elsif session[:school]
+        @current_school = School.find_by_slug(session[:school])
+      elsif current_user
+        @current_school = current_user.school
+      end
+    end
+
+    unless @current_school
+      loc = request.location
+      closest_venue = Venue.near([loc.latitude, loc.longitude], 5000)
+      @current_school = (closest_venue.first || Venue.first).school
+    end
+
+    session[:school] = @current_school.slug if @current_school
+    @current_school
   end
 
   def devise_parameter_sanitizer

@@ -31,6 +31,12 @@
     = f.password_field :password_confirmation
 
   %div
+    = f.label :school_id
+    %br
+    - resource.school_id ||= current_school.id
+    = f.select(:school_id, School.all.collect{|s| [s.name, s.id]})
+
+  %div
     = f.label :homepage
     %br
     = f.text_field :homepage

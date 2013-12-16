@@ -9,12 +9,15 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :name, :hide_last_name, :homepage, :subscribe, :github_username
+                  :name, :hide_last_name, :homepage, :subscribe, 
+                  :github_username, :school_id
 
   has_many :attendances
   has_many :user_answers
   #has_many :answers
   has_many :lessons, :through => :attendances
+  belongs_to :school
+  
   before_save :generate_unsubscribe_token, :canonicalize_homepage
 
   def generate_unsubscribe_token

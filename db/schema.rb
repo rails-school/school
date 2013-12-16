@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206033348) do
+ActiveRecord::Schema.define(version: 20131216025123) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -123,10 +123,12 @@ ActiveRecord::Schema.define(version: 20131206033348) do
     t.boolean  "hide_last_name",         default: true
     t.string   "homepage"
     t.string   "github_username"
+    t.integer  "school_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["school_id"], name: "index_users_on_school_id"
 
   create_table "venues", force: true do |t|
     t.string   "address"

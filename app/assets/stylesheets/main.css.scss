@@ -64,7 +64,6 @@ h2 {
       &:hover {
         background: #257c9c;
       }
-
     }
 
     .menu {
@@ -84,6 +83,36 @@ h2 {
         a {
           padding-top:5px;
           font-size: 18px;
+        }
+      }
+
+      li.dropdown {
+        z-index: 50;
+      }
+
+      ul.show-dropdown {
+        position: relative;
+
+        li {
+          padding-top: 16px;
+          padding-bottom: 16px;
+
+          &:hover {
+            background: #257c9c;
+          }
+          a {
+            color: white;
+            font-size: 18px;
+            height: 36px;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+
+            &:hover {
+              background: #257c9c;
+            }
+          }
         }
       }
 
@@ -107,6 +136,12 @@ h2 {
     background: image-url("logo.png");
     width: 213px;
     height: 258px;
+  }
+  .school {
+    margin-left:26px;
+    position: absolute;
+    top: 176px;
+    color: #ffffff;
   }
 }
 

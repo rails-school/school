@@ -9,6 +9,7 @@ feature %q{
   let(:myself) { create(:user, github_username: "example") }
 
   background do
+    venue = create(:venue)
     sign_in_manually(myself)
   end
 

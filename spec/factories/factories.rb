@@ -9,6 +9,7 @@ FactoryGirl.define do
     u.password_confirmation  "draft1"
     u.subscribe               true
     u.admin                   false
+    school
   end
 
   factory :admin, class: User do |u|
@@ -29,6 +30,7 @@ FactoryGirl.define do
     l.description        "light@beer-is-good.com"
     l.start_time         Date.today + 1.day
     l.end_time           Date.today + 1.day + 2.hours
+    venue
   end
 
   factory :next_month_lesson, class: Lesson do |l|
@@ -36,6 +38,20 @@ FactoryGirl.define do
     l.description        "light@beer-is-good.com"
     l.start_time         Date.today + 1.month + 1.day
     l.end_time           Date.today + 1.month + 1.day + 2.hours
+    venue
+  end
+
+  factory :school do
+    sequence(:name) { |i| "School ##{i}" }
+    sequence(:slug) { |i| "school_#{i}" }
+  end
+
+  factory :venue do
+    sequence(:name) { |i| "Venue ##{i}" }
+    sequence(:zip) { |i| "019"+(i<10?"0":"")+i.to_s }
+    address "100 Main St."
+    state "Massachusetts"
+    school
   end
 
 end

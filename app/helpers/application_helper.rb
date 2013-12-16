@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def title_content(page_title)
-    site_name = 'Rails School San Francisco'
+    site_name = "Rails School #{current_school.name}"
     page_title.present? ? "#{page_title} | #{site_name}" : site_name
   end
 
