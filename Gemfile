@@ -72,6 +72,8 @@ end
 
 group :test, :development do
   gem "rspec-rails"
+  gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'pry'
   gem 'pry-nav'
 end

@@ -12,7 +12,7 @@
           %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-remote' => true, 'data-method' => 'POST'}
             RSVP!
       -else
-        %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-reveal-id' => 'LoginModal', 'data-remote' => true}
+        %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-reveal-id' => 'LoginModal', 'data-remote' => true, 'data-method' => 'POST'}
           RSVP!
     .text
       #{pluralize(lesson.users.count, "student")}
