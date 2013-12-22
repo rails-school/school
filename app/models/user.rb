@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   belongs_to :school
   
   before_save :generate_unsubscribe_token, :canonicalize_homepage
+  validates_uniqueness_of :email
 
   def generate_unsubscribe_token
     unless encrypted_password.blank? # dummy users

@@ -7,11 +7,12 @@ feature %q{
 } do
 
   background do
+    create(:venue)
     visit root_path
     click_link "Sign up"
   end
 
-  scenario "Sign up" do
+  scenario "Sign up with valid data" do
     fill_in "user[email]", with: "stewie@example.com"
     fill_in "user[name]", with: "Stewie"
     fill_in "user[password]", with: "draft1"
@@ -25,5 +26,18 @@ feature %q{
     user.name.should == "Stewie"
     user.email.should == "stewie@example.com"
     user.homepage.should == "http://google.com"
+  end
+
+  scenario "Email has already been taken", js: true do
+    create(:user, email: "stewie@example.com")
+    User.count.should == 1
+    fill_in "user[email]", with: "stewie@example.com"
+    fill_in "user[name]", with: "Stewie"
+    fill_in "user[password]", with: "draft1"
+    fill_in "user[password_confirmation]", with: "draft1"
+    fill_in "user[homepage]", with: "google.com"
+    click_button "Sign up"
+    page.should have_content "Email has already been taken"
+    User.count.should == 1
   end
 end
