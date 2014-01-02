@@ -48,6 +48,13 @@ describe ApplicationController do
       end
     end
 
+    it "rescues exception during geocoding" do
+      school = create(:school)
+      venue = create(:venue, zip: 94102, school: school)
+      request.stub(:location) { raise StandardError }
+      controller.current_school.should == school
+    end
+
     context "when current_user exists" do
       let(:school) { create(:school) }
 

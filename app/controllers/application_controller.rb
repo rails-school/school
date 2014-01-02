@@ -25,10 +25,10 @@ class ApplicationController < ActionController::Base
     end
 
     unless @current_school
-      loc = request.location
-      if loc
+      begin
+        loc = request.location
         closest_venue = Venue.near([loc.latitude, loc.longitude], 5000)
-      else
+      rescue StandardError
         closest_venue = Venue.order("created_at")
       end
       @current_school = closest_venue.first.school
