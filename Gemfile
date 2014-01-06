@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.0.0"
+ruby "2.1.0"
 
 gem 'rails', '~> 4.0.0'
 
@@ -29,9 +29,6 @@ gem "twitter"
 gem "protected_attributes"
 
 group :development do
-  gem 'pry'
-  gem 'pry-nav'
-  gem 'sqlite3'
   gem 'letter_opener'
   gem 'quiet_assets'
 end
@@ -65,7 +62,6 @@ group :test do
   gem 'simplecov', :require => false # code coverage tool
   gem "database_cleaner"
   gem "forgery"
-  gem 'sqlite3'
   gem 'email_spec'
 end
 
@@ -75,6 +71,7 @@ group :test, :development do
   gem 'poltergeist'
   gem 'pry'
   gem 'pry-nav'
+  gem 'sqlite3'
 end
 
 # To use ActiveModel has_secure_password
