@@ -15,4 +15,8 @@ module Helpers
       OpenStruct.new(name: "MIT")
     }
   end
+
+  def stub_lesson_tweeter
+    LessonTweeter.any_instance.stub(:tweet) { true }
+  end
 end

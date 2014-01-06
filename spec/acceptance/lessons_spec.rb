@@ -153,6 +153,8 @@ feature %q{
     @admin = FactoryGirl.create(:admin, :subscribe => false)
     @lesson = FactoryGirl.create(:lesson)
     @user.school = @lesson.venue.school; @user.save!
+    LessonTweeter.should_receive(:new).with(@lesson, @admin).and_call_original
+    stub_lesson_tweeter
     sign_in_manually @admin
   end
 
@@ -160,8 +162,6 @@ feature %q{
     @lesson.reload.notification_sent_at.should be_nil
     visit lesson_path(@lesson)
     NotificationMailer.should_receive(:lesson_notification).with(@lesson.id, @user.id, @admin.id)
-    status = /Shame on #{@admin.name.split(" ").first} for this boring message. The next class is "#{@lesson.title}". http/
-    Twitter.should_receive(:update).with(status)
     click_link "Notify subscribers"
     page.should have_content("Subcribers notified and tweet tweeted")
     @lesson.reload.notification_sent_at.should be_within(1.minute).of(Time.now)
@@ -177,8 +177,6 @@ feature %q{
     NotificationMailer.should_receive(:lesson_notification).with(@lesson.id, @user.id, @admin.id)
     NotificationMailer.should_receive(:lesson_notification).with(@lesson.id, user_2.id, @admin.id)
     NotificationMailer.should_not_receive(:lesson_notification).with(@lesson.id, user_3.id, @admin.id)
-    status = /Shame on #{@admin.name.split(" ").first} for this boring message. The next class is "#{@lesson.title}". http/
-    Twitter.should_receive(:update).with(status)
     click_link "Notify subscribers"
     page.should have_content("Subcribers notified and tweet tweeted")
     @lesson.reload.notification_sent_at.should be_within(1.minute).of(Time.now)
@@ -191,8 +189,6 @@ feature %q{
     fill_in "lesson[tweet_message]", with: "Check it out! >> {{url}} << W00t!"
     click_button "Save"
     NotificationMailer.should_receive(:lesson_notification).with(@lesson.id, @user.id, @admin.id)
-    status = /Check it out! >> http.* << W00t!/
-    Twitter.should_receive(:update).with(status)
     click_link "Notify subscribers"
     page.should have_content("Subcribers notified and tweet tweeted")
     @lesson.reload.notification_sent_at.should be_within(1.minute).of(Time.now)
