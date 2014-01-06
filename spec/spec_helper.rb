@@ -6,6 +6,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require "email_spec"
+require 'capybara/poltergeist'
 require_relative 'helpers'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -16,10 +17,8 @@ RSpec.configure do |config|
   config.mock_with :rspec
   config.use_transactional_fixtures = false
   config.infer_base_class_for_anonymous_controllers = false
-  config.before :each do
-    DatabaseCleaner.start
-  end
   config.after :each do
+    Capybara.reset_sessions!
     DatabaseCleaner.clean
   end
   config.include Helpers
@@ -27,3 +26,28 @@ RSpec.configure do |config|
   config.include(EmailSpec::Matchers)
   config.include Devise::TestHelpers, type: :controller
 end
+
+Capybara.register_driver :poltergeist do |app|
+    options = {
+        :phantomjs_options => ['--load-images=no', '--disk-cache=false'],
+    #    debug: true
+    }
+    Capybara::Poltergeist::Driver.new(app, options)
+end
+Capybara.javascript_driver = :poltergeist
+
+Geocoder.configure(:lookup => :test)
+
+Geocoder::Lookup::Test.set_default_stub(
+  [
+    {
+      'latitude'     => 40.7143528,
+      'longitude'    => -74.0059731,
+      'address'      => 'New York, NY, USA',
+      'state'        => 'New York',
+      'state_code'   => 'NY',
+      'country'      => 'United States',
+      'country_code' => 'US'
+    }
+  ]
+)

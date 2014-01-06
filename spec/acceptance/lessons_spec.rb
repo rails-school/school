@@ -8,9 +8,8 @@ feature %q{
 } do
 
   background do
-    @user = FactoryGirl.create(:user)
     @lesson = FactoryGirl.create(:lesson)
-    @user.school = @lesson.venue.school
+    @user = FactoryGirl.create(:user, school: @lesson.venue.school)
     sign_in_manually @user
   end
 
@@ -29,11 +28,10 @@ feature %q{
 } do
 
   background do
-    @user = FactoryGirl.create(:user)
     @lesson = FactoryGirl.create(:lesson)
+    @user = FactoryGirl.create(:user, school: @lesson.venue.school)
     sign_in_manually @user
   end
-
 
   scenario "RSVP clicking RSVP button", :js => true do
     page.find(".announce").click_link "RSVP!"
@@ -41,11 +39,7 @@ feature %q{
     page.should_not have_css(".pressed")
     Attendance.all.count.should == 0
   end
-
-
 end
-
-
 
 feature %q{
   As a user
@@ -75,9 +69,6 @@ feature %q{
   Slug is generated
 } do
 
-  background do
-  end
-
   scenario "creating a lesson", :js => true do
     l = Lesson.new
     l.title = "Funny lesson how to eat bad veggie burgers"
@@ -87,8 +78,6 @@ feature %q{
     lessons.count.should == 1
     lessons.first.slug.should == "funny-lesson-how-to-eat-bad-veggie-burgers"
   end
-
-
 end
 
 feature %q{
@@ -99,13 +88,14 @@ feature %q{
 } do
 
   background do
-    @admin = create(:admin)
     @venue = create(:venue)
+    @admin = create(:admin, school: @venue.school)
     sign_in_manually @admin
   end
 
   scenario "creating a new upcoming lesson", :js => true do
-    visit "/l/new"
+    visit new_lesson_path
+    page.should have_content "New lesson"
     fill_in "lesson[title]", :with => "some random topic"
     fill_in "lesson[summary]", :with => "some random summary"
     fill_in "lesson[description]", :with => "some random description"
@@ -113,6 +103,7 @@ feature %q{
     fill_in "lesson[end_time]", :with => "8:15pm"
     fill_in "lesson[date]", :with => (Date.current + 1.day).to_s
     click_button "Save"
+    page.should have_content "Lesson was successfully created."
     lessons = Lesson.all
     lessons.count.should == 1
 

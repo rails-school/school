@@ -7,5 +7,12 @@ module Helpers
       fill_in "user[password]", :with => "draft1"
       click_button "Sign in"
     end
+    page.should have_content(user.name)
+  end
+
+  def stub_current_school
+    ApplicationController.any_instance.stub(:current_school) {
+      OpenStruct.new(name: "MIT")
+    }
   end
 end

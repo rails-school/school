@@ -45,19 +45,12 @@ feature %q{
 } do
 
   background do
+    stub_current_school
     @user = FactoryGirl.create(:user)
-    @lesson = FactoryGirl.create(:lesson)
-    visit root_path
-    click_link "Login"
-    fill_in "user[email]", :with => @user.email
-    fill_in "user[password]", :with => "draft1"
-    click_button "Sign in"
+    sign_in_manually(@user)
   end
-
 
   scenario "poll is visible and votable", :js => true do
     page.should have_css(".polls", :visible => true)
   end
-
-
 end

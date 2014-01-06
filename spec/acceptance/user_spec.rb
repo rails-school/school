@@ -9,11 +9,7 @@ feature %q{
   background do
     @user = FactoryGirl.create(:user, :name => "Stewie", :email => "bogus@example.com")
     venue = FactoryGirl.create(:venue)
-    visit "/"
-    click_link "Login"
-    fill_in "user[email]", :with => "bogus@example.com"
-    fill_in "user[password]", :with => "draft1"
-    click_button "Sign in"
+    sign_in_manually(@user)
   end
 
   scenario "Edit my profile", :js => true do

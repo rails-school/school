@@ -1,9 +1,6 @@
 language: ruby
 rvm:
   - 2.0.0
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
 before_script:
   - "bundle exec rake db:test:load"
 notifications:
