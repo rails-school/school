@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131216025123) do
+ActiveRecord::Schema.define(version: 20140106012102) do
 
   create_table "answers", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "poll_id"
     t.text     "text"
   end
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20131216025123) do
     t.integer  "user_id"
     t.integer  "lesson_id"
     t.boolean  "attended"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.boolean  "confirmed",  default: false
   end
 
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20131216025123) do
     t.string   "about"
     t.string   "contact"
     t.string   "calendar"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lessons", force: true do |t|
@@ -46,16 +46,16 @@ ActiveRecord::Schema.define(version: 20131216025123) do
     t.string   "city"
     t.integer  "course_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "slug"
     t.integer  "venue_id"
     t.text     "summary"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "notification_sent_at"
-    t.integer  "level_id"
     t.string   "tweet_message",        limit: 140
+    t.integer  "level_id"
     t.integer  "teacher_id"
   end
 
@@ -70,42 +70,32 @@ ActiveRecord::Schema.define(version: 20131216025123) do
 
   create_table "polls", force: true do |t|
     t.text     "question"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean  "published"
   end
 
   create_table "schools", force: true do |t|
     t.string   "name"
     t.string   "slug"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "translations", force: true do |t|
-    t.string   "locale"
-    t.string   "key"
-    t.text     "value"
-    t.text     "interpolations"
-    t.boolean  "is_proc",        default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_answers", force: true do |t|
     t.integer  "user_id"
     t.integer  "answer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "poll_id"
   end
 
-  add_index "user_answers", ["user_id", "answer_id"], name: "index_user_answers_on_user_id_and_answer_id", unique: true
+  add_index "user_answers", ["user_id", "answer_id"], name: "index_users_answers_on_user_id_and_answer_id", unique: true
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "email",                  default: "",   null: false
     t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
@@ -136,8 +126,8 @@ ActiveRecord::Schema.define(version: 20131216025123) do
     t.string   "state"
     t.string   "country"
     t.string   "zip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean  "gmaps"
     t.float    "latitude"
     t.float    "longitude"
