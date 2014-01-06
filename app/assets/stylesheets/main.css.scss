@@ -396,7 +396,7 @@ ul.lessons_list {
 }
 
 
-.expand_lesson {
+li.lesson a.show {
   &:after {
     width:10px;
     height:10px;
@@ -405,11 +405,6 @@ ul.lessons_list {
     background: image-url("arrows.png");
     background-position: -15px 0px;
     content:' ';
-  }
-  &.opened {
-    &:after {
-      background-position: -15px -12px;
-    }
   }
 }
 
