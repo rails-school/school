@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/smathieu/prosperity.git
+  revision: e3f4b8b77695e0b449f817c024a31da9ea3e076b
+  specs:
+    prosperity (0.0.1)
+      haml-rails
+      jquery-rails
+      rails (> 3.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -316,6 +325,7 @@ DEPENDENCIES
   letter_opener
   pg
   poltergeist
+  prosperity!
   protected_attributes
   pry
   pry-nav

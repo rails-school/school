@@ -28,6 +28,9 @@ gem "addressable"
 gem "twitter"
 gem "protected_attributes"
 
+# quick and easy metrics
+gem "prosperity", github: "smathieu/prosperity"
+
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets'

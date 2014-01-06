@@ -28,4 +28,6 @@ Rs::Application.routes.draw do
   post "bounce_reports" => "users#report_email_bounce"
 
   root :to => 'home#index'
+
+  mount Prosperity::Engine => "/metrics"
 end
