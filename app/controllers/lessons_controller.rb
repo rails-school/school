@@ -6,7 +6,13 @@ class LessonsController < ApplicationController
   def index
     gon.signed_in = user_signed_in?
     gon.user_lessons = current_user.lessons.pluck(:id) if user_signed_in?
-    @lessons = Lesson.order("start_time DESC")
+    if params[:school].present?
+      @lessons = Lesson.for_school(current_school).order("start_time DESC")
+      @title = "All lessons in #{current_school.name}"
+    else
+      @lessons = Lesson.order("start_time DESC")
+      @title = "All lessons, globally"
+    end
 
     respond_to do |format|
       format.html # index.html.erb

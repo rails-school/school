@@ -1,10 +1,10 @@
-= provide(:title, 'All events')
+= provide(:title, @title)
 
 -provide :left_column do
   -poll = user_signed_in? ? current_user.next_unanswered_poll : nil
   =render "polls/poll", :poll => poll, :previous_poll => nil
 
-%h1 All lessons
+%h1= @title
 
 =render "lessons/future_lessons", :lessons => @lessons
 
