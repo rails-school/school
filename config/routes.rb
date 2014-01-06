@@ -27,7 +27,5 @@ Rs::Application.routes.draw do
   post "rsvp/:id/:delete" => "attendances#rsvp"
   post "bounce_reports" => "users#report_email_bounce"
 
-  mount Contenteditable::Engine => '/contenteditable'
-
   root :to => 'home#index'
 end

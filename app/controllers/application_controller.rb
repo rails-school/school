@@ -3,7 +3,6 @@ require "user_sanitizer"
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :admin?, :current_school
-  contenteditable_filter "admin?"
 
   def admin?
     user_signed_in? && current_user.admin

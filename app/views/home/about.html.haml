@@ -1,7 +1,6 @@
 = provide(:title, 'About us')
 
-= ceditable("about title", "h1")
--#= ceditable("about text", "p")
+%h1 About Rails School
 
 %p
   Rails School is a weekly seminar and workshop for learning everything about Ruby, Rails, and web application development.
@@ -13,6 +12,33 @@
   = link_to 'making a donation', 'https://www.noisebridge.net/wiki/Donate_or_Pay_Dues'
   to Noisebridge, a 501(c)(3) nonprofit organization.
 
--#= render "social_media/like_box"
+.member
+  .pic-wrap
+    =image_tag('gabe.jpg')
+  %h1 Gabe Kopley
+  %p Teacher and Organizer
 
-=render "users/team"
+.member
+  .pic-wrap
+    =image_tag('greg.jpg')
+  %h1 Greg Lazarev
+  %p Teacher
+
+.member
+  .pic-wrap
+    =image_tag('mike.jpg')
+  %h1 Michael Makarov
+  %p Teacher
+
+.member
+  .pic-wrap
+    =image_tag('sameer.jpg')
+  %h1 Sameer Siruguri
+  %p Teacher
+
+.member.you
+  .pic-wrap
+    %h1
+      Try it!
+  %h1 You
+  %p We want your help!

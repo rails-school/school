@@ -12,7 +12,6 @@ gem "devise", "~> 3.0.2"
 gem "haml-rails"
 gem 'coffee-rails', '~> 4.0.0'
 gem 'i18n-active_record', github: "rubysolo/i18n-active_record", branch: "rails4"
-gem "contenteditable", :github => 'micmmakarov/contenteditable', :branch => :master
 gem 'gmaps4rails'
 gem 'geocoder'
 gem "unicorn"

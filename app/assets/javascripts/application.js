@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require contenteditable/contenteditable
 //= require foundation
 //= require mailcheck
 //= require_tree .
