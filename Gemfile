@@ -8,10 +8,10 @@ gem 'rails', '~> 4.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem "gon"
-gem "devise", "~> 3.0.2"
+gem "devise", "~> 3.2.2"
 gem "haml-rails"
 gem 'coffee-rails', '~> 4.0.0'
-gem 'gmaps4rails'
+gem 'gmaps4rails', '~> 1.5.6'
 gem 'geocoder'
 gem "unicorn"
 gem "rack-timeout"
