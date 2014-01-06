@@ -7,7 +7,7 @@ module Helpers
       fill_in "user[password]", :with => "draft1"
       click_button "Sign in"
     end
-    page.should have_content(user.name)
+    page.should have_content("Logout #{user.name}")
   end
 
   def stub_current_school
