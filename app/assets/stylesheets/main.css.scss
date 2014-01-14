@@ -393,6 +393,10 @@ ul.lessons_list {
   height:155px;
   background: image-url("rails.jpg");
   box-shadow: INSET 3px 3px 15px rgba(0,0,0,0.5);
+
+  &.coshx_labs {
+    background: image-url("coshx.jpg");
+  }
 }
 
 
