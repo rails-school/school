@@ -2,14 +2,10 @@ require "user_sanitizer"
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :admin?, :current_school
+  helper_method :current_school
 
-  def admin?
-    user_signed_in? && current_user.admin
-  end
-
-  def admin_only
-    redirect_to root_path unless admin?
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, :alert => exception.message
   end
 
   def current_school

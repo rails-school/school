@@ -24,7 +24,7 @@
 
 =render :partial => "shared/maps", :locals => {:places => @place}
 
--if admin?
+-if can? :manage, :venues
   = link_to 'Edit', edit_venue_path(@place)
   \|
   = link_to 'Back', venues_path

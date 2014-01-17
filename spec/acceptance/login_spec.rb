@@ -46,6 +46,7 @@ feature %q{
 
   background do
     @user = FactoryGirl.create(:user)
+    @venue = FactoryGirl.create(:venue)
   end
 
   scenario "unsubscribe" do
