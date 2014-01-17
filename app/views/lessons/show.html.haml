@@ -45,7 +45,7 @@
 -else
   = link_to "Please, sign in to see the Whiteboard", whiteboard_lesson_path(@lesson)
 
--if admin?
+-if can? :manage, :lesson
   = link_to 'Edit', edit_lesson_path(@lesson), :class => 'button'
   - if current_user.email.match(/railsschool.org$/)
     - if @lesson.notification_sent_at.blank?

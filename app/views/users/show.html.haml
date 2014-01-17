@@ -13,7 +13,7 @@
   - if @user.github_username.present?
     %p
       %iframe{frameborder: "0", src: "http://githubbadge.appspot.com/#{@user.github_username}", style: "border: 0;height: 142px;width: 200px;overflow: hidden;"}
-- if current_user == @user
+- if can? :manage, @user
   %h2 Details
 
   %p

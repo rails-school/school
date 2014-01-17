@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
-  before_filter :load_and_authorize_user, :only => [:edit, :update]
-  before_filter :admin_only, :only => [:index, :notify_subscribers]
+  load_and_authorize_resource except: [:unsubscribe, :notify_subscribers]
+
   http_basic_authenticate_with :name => SENDGRID_EVENT_USERNAME,
     :password => SENDGRID_EVENT_PASSWORD, :only => :report_email_bounce
 
   # GET /unsubscribe/:code
   def unsubscribe
-
     code = params[:code]
     user = User.find_by_unsubscribe_token(code)
     user.subscribe = false
@@ -17,9 +16,7 @@ class UsersController < ApplicationController
 
   # POST /notify_subscribers/1
   def notify_subscribers
-    unless current_user.admin? && current_user.email.match(/railsschool.org$/)
-      return head status: 403
-    end
+    authorize! :manage, :notifications
     lesson = Lesson.find(params[:id])
     User.where(subscribe: true, school: lesson.venue.school).each do |u|
       NotificationMailer.delay.lesson_notification(lesson.id, u.id,
@@ -36,12 +33,11 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    authorize! :manage, :all
   end
 
   # GET /users/1
   def show
-    @user = User.find(params[:id])
   end
 
   # GET /users/1/edit
@@ -71,9 +67,4 @@ class UsersController < ApplicationController
     end
   end
 
-private
-  def load_and_authorize_user
-    @user = User.find(params[:id])
-    redirect_to root_path unless (admin? || @user == current_user)
-  end
 end

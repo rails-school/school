@@ -1,8 +1,10 @@
 class LessonsController < ApplicationController
+  before_filter :fix_dates, only: [:create, :update]
+  before_filter :convert_slug_to_id
+  load_and_authorize_resource except: [:index]
+
   # GET /lessons
   # GET /lessons.json
-  before_filter :admin_only, :except => [:index, :show, :day]
-
   def index
     gon.signed_in = user_signed_in?
     gon.user_lessons = current_user.lessons.pluck(:id) if user_signed_in?
@@ -24,7 +26,6 @@ class LessonsController < ApplicationController
   # GET /lessons/1.json
   def show
     @whiteboard = params[:whiteboard]
-    @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
     if @whiteboard
       authenticate_user!
       if Time.now > @lesson.start_time-10.minutes && Time.now < @lesson.end_time
@@ -42,7 +43,7 @@ class LessonsController < ApplicationController
   # GET /lessons/new
   # GET /lessons/new.json
   def new
-    @lesson = Lesson.new
+    # @lesson = Lesson.new
     @venues = current_school.venues
 
     respond_to do |format|
@@ -53,14 +54,12 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
-    @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
     @venues = current_school.venues
   end
 
   # POST /lessons
   # POST /lessons.json
   def create
-    @lesson = Lesson.new(fix_dates(params[:lesson]))
     @lesson.venue_id = 1 if @lesson.venue_id.blank?
     @lesson.teacher = current_user
     respond_to do |format|
@@ -77,10 +76,8 @@ class LessonsController < ApplicationController
   # PUT /lessons/1
   # PUT /lessons/1.json
   def update
-    @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
-
     respond_to do |format|
-      if @lesson.update_attributes(fix_dates(params[:lesson]))
+      if @lesson.update_attributes(params[:lesson])
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { head :no_content }
       else
@@ -93,7 +90,6 @@ class LessonsController < ApplicationController
   # DELETE /lessons/1
   # DELETE /lessons/1.json
   def destroy
-    @lesson = Lesson.find_by_slug(params[:id]) || Lesson.find(params[:id])
     @lesson.destroy
 
     respond_to do |format|
@@ -103,12 +99,21 @@ class LessonsController < ApplicationController
   end
 
 private
-  def fix_dates(l_params)
-    date = l_params.delete("date")
-    l_params[:start_time] =
-      Time.zone.parse("#{date} #{l_params[:start_time]}")
-    l_params[:end_time] =
-      Time.zone.parse("#{date} #{l_params[:end_time]}")
-    l_params
+  def convert_slug_to_id
+    if (params[:id] && !(params[:id].to_i > 0))
+      l = Lesson.find_by_slug(params[:id])
+      params[:id] = l.id if l.present?
+    end
+  end
+
+  def fix_dates
+    l_params = params[:lesson]
+    if l_params
+      date = l_params.delete("date")
+      l_params[:start_time] =
+        Time.zone.parse("#{date} #{l_params[:start_time]}")
+      l_params[:end_time] =
+        Time.zone.parse("#{date} #{l_params[:end_time]}")
+    end
   end
 end

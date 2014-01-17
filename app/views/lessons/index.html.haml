@@ -10,5 +10,5 @@
 
 %br
 
--if admin?
+-if can? :create, :lesson
   = link_to 'New Lesson', new_lesson_path

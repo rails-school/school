@@ -9,6 +9,7 @@ gem 'rails', '~> 4.0.0'
 
 gem "gon"
 gem "devise", "~> 3.2.2"
+gem "cancan"
 gem "haml-rails"
 gem 'coffee-rails', '~> 4.0.0'
 gem 'gmaps4rails', '~> 1.5.6'
