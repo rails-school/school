@@ -6,8 +6,6 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    gon.signed_in = user_signed_in?
-    gon.user_lessons = current_user.lessons.pluck(:id) if user_signed_in?
     if params[:school].present?
       @lessons = Lesson.for_school(current_school).order("start_time DESC")
       @title = "All lessons in #{current_school.name}"
