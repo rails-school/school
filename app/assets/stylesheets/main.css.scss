@@ -66,18 +66,15 @@ h2 {
       }
     }
 
-    .menu {
-      //height:40px;
+    ul.menu {
       display:block;
-      //float:left;
-      //width:70%;
       list-style-type: none;
       overflow:hidden;
-      li {
+      > li {
         float:left;
         margin-right:4%;
       }
-      .right {
+      > .right {
         float:right;
         margin-right:0px;
         a {
@@ -92,26 +89,28 @@ h2 {
 
       ul.show-dropdown {
         position: relative;
+        width: 235px;
+        background-color: #2ba6cb;
+        border: 0;
 
         li {
-          padding-top: 16px;
-          padding-bottom: 16px;
+          position: relative;
+          height: 66px;
+          padding-bottom: 0px;
 
           &:hover {
             background: #257c9c;
           }
           a {
+            position: absolute;
+            line-height: 30px;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             color: white;
             font-size: 18px;
-            height: 36px;
-            padding-top: 0;
-            padding-bottom: 0;
-            margin-top: 0;
-            margin-bottom: 0;
-
-            &:hover {
-              background: #257c9c;
-            }
+            height: auto;
           }
         }
       }
