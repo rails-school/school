@@ -211,8 +211,8 @@ feature %q{
 
 
   scenario "RSVP clicking RSVP button", :js => true do
-    page.should_not have_content(Date.today.strftime("%B").upcase)
-    page.should have_content((Date.today+1.month).strftime("%B").upcase)
+    page.should_not have_content(Date.current.strftime("%B").upcase)
+    page.should have_content((Date.current+1.month).strftime("%B").upcase)
   end
 
 

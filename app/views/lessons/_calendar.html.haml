@@ -1,8 +1,8 @@
--month=Date.today.month
--year=Date.today.year
+-month=Date.current.month
+-year=Date.current.year
 
--if !lessons_between?(Date.today.day, Date.civil(year,month,-1).day) && future_lessons_between?(1, (Date.civil(year,month,-1) + 1.month).day)
-  -month=(Date.today + 1.month).month
+-if !lessons_between?(Date.current.day, Date.civil(year,month,-1).day) && future_lessons_between?(1, (Date.civil(year,month,-1) + 1.month).day)
+  -month=(Date.current + 1.month).month
 
 -startweekday = Date.civil(year,month,1).strftime("%u").to_i
 -startweekday = 0 if startweekday.to_i > 6
