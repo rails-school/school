@@ -8,7 +8,7 @@ Rs::Application.configure do
 
   config.action_mailer.delivery_method = :letter_opener
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => '54.201.168.84:3000' }
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
