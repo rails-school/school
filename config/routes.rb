@@ -5,6 +5,7 @@ Rs::Application.routes.draw do
   resources :schools
 
   devise_for :users
+  resoußrces :email
 
   resources :venues
   resources :answers
