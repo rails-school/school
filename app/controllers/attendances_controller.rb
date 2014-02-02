@@ -9,8 +9,8 @@ class AttendancesController < ApplicationController
 
     if delete == "delete"
       current_user.attendances.find_by_lesson_id(id).destroy
-    elsif @lesson.present? && @lesson.teacher != current_user
-      current_user.attendances.create!(:lesson_id => id)
+    elsif @lesson.present?
+      current_user.rsvp_for(@lesson)
     end
   end
 

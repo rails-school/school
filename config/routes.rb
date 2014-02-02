@@ -4,7 +4,7 @@ Rs::Application.routes.draw do
   resources :polls
   resources :schools
 
-  devise_for :users
+  devise_for :users, controllers: {sessions: "devise_overrides/sessions"}
   resources :email
 
   resources :venues

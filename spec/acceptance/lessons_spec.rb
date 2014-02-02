@@ -43,22 +43,30 @@ end
 
 feature %q{
   As a user
-  I cannot RSVP if I am not logged in
-  So organizers know who exactly goes
+  I can log in and RSVP at the same time
+  So my life is easy
 } do
 
   background do
     @lesson = FactoryGirl.create(:lesson)
+    @user = FactoryGirl.create(:user, school: @lesson.venue.school)
     visit "/"
   end
 
-  scenario "trying RSVP clicking RSVP button", :js => true do
+  scenario "try to RSVP while not logged in", :js => true do
     page.find(".announce").click_link "RSVP!"
     page.should_not have_css(".pressed")
     Attendance.all.count.should == 0
+    page.should have_css("#LoginModal")
+    within first('#LoginModal') do
+      fill_in "user[email]", with: @user.email
+      fill_in "user[password]", with: "draft1"
+      find_button("Sign in").trigger(:click)
+    end
+    page.should have_content("Signed in successfully.")
+    Attendance.all.count.should == 1
+    page.should have_css(".pressed")
   end
-
-
 end
 
 

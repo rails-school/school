@@ -5,6 +5,7 @@
     %div{:style => "margin:0;padding:0;display:inline"}
       %input{:name => "utf8", :type => "hidden", :value => "✓"}
         %input{:name => "authenticity_token", :type => "hidden", :value => "sG1jXNsXVyt+nxiYop/3C2ZTq8NzlBPV3Vh9Ao/d5Ts="}/
+        %input{name: "rsvp_for", type: "hidden"}
     %div
       %label{:for => "user_email"} Email
       %br
@@ -18,7 +19,7 @@
         %input#user_remember_me{:name => "user[remember_me]", :type => "checkbox", :value => "1", checked: true}
           %label{:for => "user_remember_me"} Remember me
     %div
-      %input.a_button{:name => "commit", :type => "submit", :value => "Sign in"}/
+      %input.button{:name => "commit", :type => "submit", :value => "Sign in"}/
   %a{:href => "/users/sign_up"} Sign up
   %br
     %a{:href => "/users/password/new"} Forgot your password?

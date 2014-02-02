@@ -48,4 +48,8 @@ class User < ActiveRecord::Base
       Poll.first
     end
   end
+  
+  def rsvp_for(lesson)
+    attendances.create(lesson_id: lesson.id) unless lesson.teacher == self
+  end
 end

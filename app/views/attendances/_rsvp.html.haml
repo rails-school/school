@@ -3,15 +3,15 @@
   -today = Time.current
   -if the_date >= today.to_date
     .actions
-      -if user_signed_in?
-        -if current_user.attend?(lesson.id)
-          %a.a_button.pressed{:href => "/rsvp/#{lesson.id}/delete", 'data-remote' => true, 'data-method' => 'POST'}
-            unRSVP
-        -else
-          %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-remote' => true, 'data-method' => 'POST'}
-            RSVP!
+      -if user_signed_in? && current_user.attend?(lesson.id)
+        %a.button.pressed{:href => "/rsvp/#{lesson.id}/delete", 'data-remote' => true, 'data-method' => 'POST'}
+          unRSVP
       -else
-        %a.a_button{:href => "/rsvp/#{lesson.id}", 'data-reveal-id' => 'LoginModal', 'data-remote' => true, 'data-method' => 'POST'}
+        - if user_signed_in?
+          - attrs = {href: "/rsvp/#{lesson.id}", data: {remote: true, method: 'POST'}}
+        - else
+          - attrs = {href: "#", data: {"must-login" => "true"}}
+        %a.button{attrs}
           RSVP!
     .text
       #{pluralize(lesson.users.count, "student")}

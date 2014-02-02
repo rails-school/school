@@ -1,6 +1,6 @@
 
 
-.a_button {
+input.button, a.button {
   width:147px;
   height:52px;
   background: image-url("buttons.png");
@@ -44,12 +44,11 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
 
-
-input[type="submit"].a_button {
-  padding-top:0px;
-  font-weight: normal;
+  &[type="submit"].button {
+    padding-top:0px;
+    font-weight: normal;
+  }
 }
 
 
