@@ -1,6 +1,4 @@
-
-
-input.button, a.button {
+.ruby-button {
   width:147px;
   height:52px;
   background: image-url("buttons.png");
@@ -45,7 +43,7 @@ input.button, a.button {
   -ms-user-select: none;
   user-select: none;
 
-  &[type="submit"].button {
+  &[type="submit"] {
     padding-top:0px;
     font-weight: normal;
   }

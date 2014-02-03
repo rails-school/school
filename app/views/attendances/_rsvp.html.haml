@@ -4,14 +4,14 @@
   -if the_date >= today.to_date
     .actions
       -if user_signed_in? && current_user.attend?(lesson.id)
-        %a.button.pressed{:href => "/rsvp/#{lesson.id}/delete", 'data-remote' => true, 'data-method' => 'POST'}
+        %a.ruby-button.pressed{:href => "/rsvp/#{lesson.id}/delete", 'data-remote' => true, 'data-method' => 'POST'}
           unRSVP
       -else
         - if user_signed_in?
           - attrs = {href: "/rsvp/#{lesson.id}", data: {remote: true, method: 'POST'}}
         - else
           - attrs = {href: "#", data: {"must-login" => "true"}}
-        %a.button{attrs}
+        %a.ruby-button{attrs}
           RSVP!
     .text
       #{pluralize(lesson.users.count, "student")}
