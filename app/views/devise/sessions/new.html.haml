@@ -4,6 +4,9 @@
 = content_tag(:div, flash[:alert], :id => "flash_alert", :class => "alert-box alert") if flash[:alert]
 
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  - [:rsvp_for, :user_return_to].each do |key|
+    - if params[key].present?
+      %input{name: key, type: :hidden, value: params[key]}
   %div
     = f.label :email
     %br/
@@ -14,7 +17,7 @@
     = f.password_field :password
   - if devise_mapping.rememberable?
     %div
-      = f.check_box :remember_me
+      = f.check_box :remember_me, value: "1", checked: true
       = f.label :remember_me
   %div= f.submit "Sign in"
 = render "devise/shared/links"
