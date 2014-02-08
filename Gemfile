@@ -54,6 +54,7 @@ gem "uglifier", '~> 2.1.1'
 # Allow compass to support Rails 4.0.0
 gem 'compass-rails'
 gem 'zurb-foundation', '3.0.9'
+gem 'modular-scale', '1.0.6'
 
 gem 'jquery-rails'
 
