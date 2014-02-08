@@ -19,9 +19,10 @@
       .left-column
         = yield :left_column
       .center-column
-        - flash.each do |name, msg|
-          - if msg.is_a?(String)
-            .flash{class: name}= msg
+        - unless  params[:controller].include?("devise")
+          - flash.each do |name, msg|
+            - if msg.is_a?(String)
+              .flash{class: name}= msg
         -if controller.controller_name == "home" and controller.action_name == "index"
           = yield
         -else
