@@ -16,8 +16,8 @@ class UsersController < ApplicationController
 
   # POST /notify_subscribers/1
   def notify_subscribers
-    authorize! :manage, :notifications
     lesson = Lesson.find(params[:id])
+    authorize! :notify, lesson
     User.where(subscribe: true, school: lesson.venue.school).each do |u|
       NotificationMailer.delay.lesson_notification(lesson.id, u.id,
                                                    current_user.id)

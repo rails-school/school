@@ -19,7 +19,9 @@ class Ability
 
     # admins and teachers who have @railsschool.org email addresses can send notifications
     if (user.admin? || user.teacher?) && (user.email.match(/railsschool.org\Z/))
-      can :manage, :notifications
+      can :notify, Lesson do |lesson|
+        user.school == lesson.venue.school
+      end
     end
 
   end
