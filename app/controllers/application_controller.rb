@@ -1,4 +1,4 @@
-require "user_sanitizer"
+require_dependency "user_sanitizer"
 
 class ApplicationController < ActionController::Base
   protect_from_forgery

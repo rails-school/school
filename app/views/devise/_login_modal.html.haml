@@ -6,6 +6,8 @@
       %input{:name => "utf8", :type => "hidden", :value => "✓"}
         %input{:name => "authenticity_token", :type => "hidden", :value => "sG1jXNsXVyt+nxiYop/3C2ZTq8NzlBPV3Vh9Ao/d5Ts="}/
         %input{name: "rsvp_for", type: "hidden"}
+        %input{name: "user_return_to", type: "hidden", value: request.fullpath}
+
     %div
       %label{:for => "user_email"} Email
       %br

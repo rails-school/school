@@ -12,7 +12,6 @@ feature %q{
     sign_in_manually(@user)
   end
 
-
   scenario "Log out by clicking link", :js => true do
     click_link "Logout"
     page.should have_link("Login")
@@ -35,6 +34,26 @@ feature %q{
     # poltergeist interittently doesn't trigger javascript unless we do this
     find_button("Sign in").trigger(:click)
     page.should have_content("Invalid email or password.")
+  end
+end
+
+feature %q{
+  As a user
+  If I log in while on a particular page
+  I want to return to that page immediately
+} do
+
+  scenario "login on about page", js: true do
+    user = create(:user)
+    venue = create(:venue)
+    visit about_path
+    click_link "Login"
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: "draft1"
+    # poltergeist interittently doesn't trigger javascript unless we do this
+    find_button("Sign in").trigger(:click)
+    page.should have_content("Signed in successfully")
+    URI.parse(current_url).path.should == about_path
   end
 end
 
