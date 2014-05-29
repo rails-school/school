@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   http_basic_authenticate_with :name => SENDGRID_EVENT_USERNAME,
     :password => SENDGRID_EVENT_PASSWORD, :only => :report_email_bounce
 
+  skip_before_action :verify_authenticity_token, only: [:report_email_bounce]
+
   # GET /unsubscribe/:code
   def unsubscribe
     code = params[:code]
