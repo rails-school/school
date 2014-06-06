@@ -14,7 +14,6 @@ feature %q{
   end
 
   scenario "Sending notification mail", :js => true do
-
     expect{NotificationMailer.lesson_notification(
       @lesson.id, @user.id, @user2.id
     ).deliver}.to change{ActionMailer::Base.deliveries.count}.by(1)    
