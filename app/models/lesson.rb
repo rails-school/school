@@ -54,7 +54,7 @@ class Lesson < ActiveRecord::Base
     lesson.ip_class = "PUBLIC"
     lesson.created = self.created_at
     lesson.last_modified = self.updated_at
-    lesson.uid = lesson.url = "#{Rails.application.routes.default_url_options[:host]}l/#{self.slug}"
+    lesson.uid = lesson.url = "http://#{Rails.application.routes.default_url_options[:host]}/l/#{self.slug}"
     calendar.to_ical
   end
 

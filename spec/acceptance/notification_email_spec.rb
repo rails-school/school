@@ -14,10 +14,12 @@ feature %q{
   end
 
   scenario "Sending notification mail", :js => true do
+
     expect{NotificationMailer.lesson_notification(
       @lesson.id, @user.id, @user2.id
     ).deliver}.to change{ActionMailer::Base.deliveries.count}.by(1)    
     email = ActionMailer::Base.deliveries.last
     email.attachments.count.should == 1
+    email.attachments.first.body.include?(Rails.application.routes.default_url_options[:host]).should == true
   end
 end
