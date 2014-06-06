@@ -37,8 +37,15 @@ module ApplicationHelper
   end
 
   def format_time(time)
+    zone = time.try(:strftime, "%Z").downcase
+    case zone
+      when "pdt", "pst"
+        zone = "Pacific"
+      when "idt", "ist"
+        zone = "Eastern"
+    end
     t = time.try(:strftime, "%l:%M%p").downcase
-    t.sub(':00', '')
+    "#{t.sub(':00', '')} #{zone}"
   end
 
   def format_datetime(start_time, end_time=nil)
