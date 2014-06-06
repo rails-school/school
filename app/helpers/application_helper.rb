@@ -41,7 +41,7 @@ module ApplicationHelper
     case zone
       when "pdt", "pst"
         zone = "Pacific"
-      when "idt", "ist"
+      when "edt", "est"
         zone = "Eastern"
     end
     t = time.try(:strftime, "%l:%M%p").downcase
