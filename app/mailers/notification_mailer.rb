@@ -7,6 +7,8 @@ class NotificationMailer < ActionMailer::Base
     @user = User.find(to_id)
     from_user = User.find(from_id)
     subject = "Rails class #{@lesson.start_time.strftime("%-m/%-d")}: #{@lesson.title}"
+    calendar = @lesson.to_ics
+    attachments['calendar.ics'] = calendar if calendar.present?
     mail(:to => format_email_field(@user), :subject => subject,
          :from => format_email_field(from_user))
   end

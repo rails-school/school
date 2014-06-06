@@ -40,4 +40,22 @@ class Lesson < ActiveRecord::Base
   def self.for_school(school)
     self.joins(:venue).where(venues: {school_id: school.id})
   end
+
+  def to_ics
+    calendar = Icalendar::Calendar.new
+    calendar.ip_method = "REQUEST"
+    calendar.events << Icalendar::Event.new
+    lesson = calendar.events.first
+    lesson.dtstart = self.start_time
+    lesson.dtend = self.end_time
+    lesson.summary = self.title
+    lesson.description = self.summary
+    lesson.location = self.venue.formatted_address
+    lesson.ip_class = "PUBLIC"
+    lesson.created = self.created_at
+    lesson.last_modified = self.updated_at
+    lesson.uid = lesson.url = "#{Rails.application.routes.default_url_options[:host]}l/#{self.slug}"
+    calendar.to_ical
+  end
+
 end
