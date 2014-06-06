@@ -13,7 +13,7 @@ feature %q{
     @lesson = FactoryGirl.create(:next_month_lesson)
   end
 
-  scenario "Sending notification mail", :js => true do
+  scenario "Sending notification mail" do
     expect{NotificationMailer.lesson_notification(
       @lesson.id, @user.id, @user2.id
     ).deliver}.to change{ActionMailer::Base.deliveries.count}.by(1)    
