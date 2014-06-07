@@ -1,0 +1,8 @@
+%h1 
+  Send notification to attendees of
+  =@lesson.title
+
+=form_tag lesson_notifications_path do
+  =text_field :notification, :subject
+  =text_area :notification, :message, size: "20x30"
+  =submit_tag "Save"

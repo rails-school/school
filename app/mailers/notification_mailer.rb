@@ -13,6 +13,15 @@ class NotificationMailer < ActionMailer::Base
          :from => format_email_field(from_user))
   end
 
+  def notify_lesson(lesson_id, subject, message, user_id)
+    @lesson = Lesson.find(lesson_id)
+    @teacher = @lesson.teacher
+    @user = User.find(user_id)
+    @message = message
+    mail(:to => format_email_field(@user), :subject => subject,
+         :from => format_email_field(@teacher))
+  end
+
   private
   def format_email_field(user)
     address = Mail::Address.new(user.email)
