@@ -136,4 +136,5 @@ ActiveRecord::Schema.define(version: 20140114015501) do
     t.string   "comment"
     t.string   "slug"
   end
+
 end
