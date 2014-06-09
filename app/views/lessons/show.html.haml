@@ -52,6 +52,7 @@
       = link_to "Notify subscribers", notify_subscribers_path(@lesson.id), method: :post, data: {confirm: "Are you sure?"}
     - else
       Notification email was sent #{@lesson.notification_sent_at}.
+    = link_to "Send message to the attendees", new_lesson_notification_path(@lesson)
   - else
     Please update your account to use your @railsschool.org email in order to notify subscribers by email.
 

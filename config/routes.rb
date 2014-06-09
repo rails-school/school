@@ -14,6 +14,7 @@ Rs::Application.routes.draw do
     member do
       get "whiteboard" => "lessons#show", :whiteboard => true
     end
+    resources :notifications, only: [:new, :create]
   end
 
   get "unsubscribe/:code" => "users#unsubscribe", :as => "unsubscribe"
