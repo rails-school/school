@@ -10,7 +10,7 @@ class NotificationsController < ApplicationController
 
     attendees = @lesson.users
     attendees.each do |attendee|
-    	NotificationMailer.notify_lesson(@lesson.id, @subject, @message, attendee.id).deliver
+    	NotificationMailer.delay.send_lesson_message(@lesson.id, @subject, @message, attendee.id).deliver
     end
 
     redirect_to @lesson, notice: "Notification was sent"
@@ -19,6 +19,6 @@ class NotificationsController < ApplicationController
   private
   def authenticate_teacher
     @lesson = Lesson.find_by_slug(params[:lesson_id])
-    render :status => :forbidden, :text => "Access denied" unless can? :manage, :notifications
+    render status: :forbidden, text: "Access denied" unless can? :manage, :notifications
   end
 end
