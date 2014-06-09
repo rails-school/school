@@ -16,104 +16,104 @@ ActiveRecord::Schema.define(version: 20140114015501) do
   create_table "answers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer "poll_id"
-    t.text "text"
+    t.integer  "poll_id"
+    t.text     "text"
   end
 
   create_table "attendances", force: true do |t|
-    t.integer "user_id"
-    t.integer "lesson_id"
-    t.boolean "attended"
+    t.integer  "user_id"
+    t.integer  "lesson_id"
+    t.boolean  "attended"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean "confirmed", default: false
+    t.boolean  "confirmed", default: false
   end
 
   add_index "attendances", ["user_id", "lesson_id"], name: "index_attendances_on_user_id_and_lesson_id", unique: true
 
   create_table "internals", force: true do |t|
-    t.string "about"
-    t.string "contact"
-    t.string "calendar"
+    t.string   "about"
+    t.string   "contact"
+    t.string   "calendar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "lessons", force: true do |t|
-    t.string "title"
-    t.text "description"
-    t.string "address"
-    t.string "city"
-    t.integer "course_id"
-    t.integer "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "address"
+    t.string   "city"
+    t.integer  "course_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "slug"
-    t.integer "venue_id"
-    t.text "summary"
+    t.string   "slug"
+    t.integer  "venue_id"
+    t.text     "summary"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "notification_sent_at"
-    t.integer "level_id"
-    t.string "tweet_message", limit: 140
-    t.integer "teacher_id"
+    t.integer  "level_id"
+    t.string   "tweet_message", limit: 140
+    t.integer  "teacher_id"
   end
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
 
   create_table "levels", force: true do |t|
-    t.string "title"
-    t.text "description"
+    t.string   "title"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "polls", force: true do |t|
-    t.text "question"
+    t.text     "question"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean "published"
+    t.boolean  "published"
   end
 
   create_table "schools", force: true do |t|
-    t.string "name"
-    t.string "slug"
+    t.string   "name"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "user_answers", force: true do |t|
-    t.integer "user_id"
-    t.integer "answer_id"
+    t.integer  "user_id"
+    t.integer  "answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer "poll_id"
+    t.integer  "poll_id"
   end
 
   add_index "user_answers", ["user_id", "answer_id"], name: "index_user_answers_on_user_id_and_answer_id", unique: true
 
   create_table "users", force: true do |t|
-    t.string "name"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
+    t.string   "email", default: "", null: false
+    t.string   "encrypted_password", default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0
+    t.integer  "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.boolean "subscribe", default: true
-    t.boolean "admin"
-    t.boolean "teacher"
-    t.string "unsubscribe_token"
-    t.boolean "hide_last_name", default: true
-    t.string "homepage"
-    t.string "github_username"
-    t.integer "school_id"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.boolean  "subscribe", default: true
+    t.boolean  "admin"
+    t.boolean  "teacher"
+    t.string   "unsubscribe_token"
+    t.boolean  "hide_last_name", default: true
+    t.string   "homepage"
+    t.string   "github_username"
+    t.integer  "school_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -121,20 +121,20 @@ ActiveRecord::Schema.define(version: 20140114015501) do
   add_index "users", ["school_id"], name: "index_users_on_school_id"
 
   create_table "venues", force: true do |t|
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.string "country"
-    t.string "zip"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean "gmaps"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "name"
-    t.integer "school_id"
-    t.string "comment"
-    t.string "slug"
+    t.boolean  "gmaps"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "name"
+    t.integer  "school_id"
+    t.string   "comment"
+    t.string   "slug"
   end
 
 end
