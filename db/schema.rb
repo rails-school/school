@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114015501) do
+ActiveRecord::Schema.define(version: 20140609220336) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -75,11 +75,47 @@ ActiveRecord::Schema.define(version: 20140114015501) do
     t.boolean  "published"
   end
 
+  create_table "prosperity_dashboard_graphs", force: true do |t|
+    t.integer  "graph_id",     null: false
+    t.integer  "dashboard_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "prosperity_dashboard_graphs", ["dashboard_id"], name: "index_prosperity_dashboard_graphs_on_dashboard_id"
+  add_index "prosperity_dashboard_graphs", ["graph_id", "dashboard_id"], name: "index_prosperity_dashboard_graphs_on_graph_id_and_dashboard_id", unique: true
+
+  create_table "prosperity_dashboards", force: true do |t|
+    t.string   "title",      null: false
+    t.boolean  "default",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "prosperity_graph_lines", force: true do |t|
+    t.integer  "graph_id",   null: false
+    t.string   "option",     null: false
+    t.string   "metric",     null: false
+    t.string   "extractor",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "prosperity_graph_lines", ["graph_id"], name: "index_prosperity_graph_lines_on_graph_id"
+
+  create_table "prosperity_graphs", force: true do |t|
+    t.string   "title",      null: false
+    t.string   "period",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "schools", force: true do |t|
     t.string   "name"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "timezone"
   end
 
   create_table "user_answers", force: true do |t|
