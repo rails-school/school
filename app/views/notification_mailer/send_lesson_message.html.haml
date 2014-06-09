@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "text/html; charset=UTF-8", http: {equiv: "Content-Type"}}
   %body
     %h1
       Hi, #{@user.name}!
@@ -18,4 +18,4 @@
 
     - if @user.unsubscribe_token.present?
       %p
-        %a{:href => unsubscribe_path(:code => @user.unsubscribe_token, :only_path => false)} Unsubscribe immediately
+        %a{href: unsubscribe_path(code: @user.unsubscribe_token, only_path: false)} Unsubscribe immediately

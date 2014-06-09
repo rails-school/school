@@ -31,8 +31,7 @@ feature %q{
 
   background do
     @venue = FactoryGirl.create(:venue)
-    @teacher = FactoryGirl.create(:admin)
-    @teacher.school = @venue.school; @teacher.save!
+    @teacher = FactoryGirl.create(:admin, school: @venue.school)
     @attendee = FactoryGirl.create(:user)
     @lesson = FactoryGirl.create(:next_month_lesson, teacher_id: @teacher.id, venue_id: @venue.id)
     @attendee.rsvp_for(@lesson)
