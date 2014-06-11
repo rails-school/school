@@ -10,7 +10,7 @@
 -d = -1
 
 -# Number of weeks to print
--nb_weeks = 1 + ((lastday - (7 - startweekday)).to_f/7).ceil
+-weeks_in_month = 1 + ((lastday - (7 - startweekday)).to_f/7).ceil
 
 .calendar_wrap
 
@@ -27,7 +27,7 @@
           -weekday = Date::DAYNAMES[day]
           =weekday[0..2].capitalize
 
-    -nb_weeks.times do |week|
+    -weeks_in_month.times do |week|
       %ul
         -7.times do |day|
           %li
