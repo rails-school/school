@@ -13,7 +13,7 @@ FactoryGirl.define do
   end
 
   factory :admin, class: User do |u|
-    u.name                   "this is an admin"
+    sequence(:name) { |i| "this is admin ##{i}" }
     u.email                  "light1@test.railsschool.org"
     u.password               "draft1"
     u.password_confirmation  "draft1"
