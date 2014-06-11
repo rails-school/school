@@ -1,6 +1,6 @@
-%li.button.dropdown{:href => '#'}
+%li.button.dropdown{href: '#', id: "school_dropdown"}
   = current_school.name
   %ul
     - School.all.each do |school|
       %li
-        %a{:href => "?school=#{school.slug}"}= school.name
+        %a{href: "?school=#{school.slug}"}= school.name

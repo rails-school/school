@@ -13,8 +13,8 @@ FactoryGirl.define do
   end
 
   factory :admin, class: User do |u|
-    u.name                   "this is an admin"
-    u.email                  "light1@test.railsschool.org"
+    sequence(:name) { |i| "this is admin ##{i}" }
+    sequence(:email) { |i| "light#{i}@test.railsschool.org" }
     u.password               "draft1"
     u.password_confirmation  "draft1"
     admin                    true
@@ -44,6 +44,7 @@ FactoryGirl.define do
   factory :school do
     sequence(:name) { |i| "School ##{i}" }
     sequence(:slug) { |i| "school_#{i}" }
+    timezone "Pacific Time (US & Canada)"
   end
 
   factory :venue do

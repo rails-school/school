@@ -107,6 +107,7 @@ private
   def fix_dates
     l_params = params[:lesson]
     if l_params
+      Time.zone = Venue.find(l_params[:venue_id]).school.timezone
       date = l_params.delete("date")
       l_params[:start_time] =
         Time.zone.parse("#{date} #{l_params[:start_time]}")
