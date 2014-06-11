@@ -9,6 +9,9 @@
 -lastday = Date.civil(year,month,-1).day.to_i
 -d = -1
 
+-# Number of weeks to print
+-nb_weeks = 1 + ((lastday - (7 - startweekday)).to_f/7).ceil
+
 .calendar_wrap
 
   %h1
@@ -24,7 +27,7 @@
           -weekday = Date::DAYNAMES[day]
           =weekday[0..2].capitalize
 
-    -5.times do |week|
+    -nb_weeks.times do |week|
       %ul
         -7.times do |day|
           %li
