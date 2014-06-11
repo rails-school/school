@@ -116,7 +116,7 @@ feature %q{
     # Eastern params
     @school_eastern = create(:school, timezone: "Eastern Time (US & Canada)")
     @venue_eastern = create(:venue, school: @school_eastern)
-    @admin_eastern = create(:admin, school: @school_eastern, email: "light2@test.railsschool.org")
+    @admin_eastern = create(:admin, school: @school_eastern)
   end
 
   scenario "creating a new upcoming lesson", :js => true do
