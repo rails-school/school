@@ -35,6 +35,8 @@ module Helpers
 
   def select_school_in_dropdown(name)
     find('li#school_dropdown').click
-    click_link(name)
+    within "li#school_dropdown" do
+      click_link(name)
+    end
   end
 end

@@ -131,6 +131,9 @@ feature %q{
     visit "/"
     page.should have_content "some random topic"
     page.should have_content "some random summary"
+    within "div.details" do
+      page.should have_content "6:30pm Pacific - 8:15pm Pacific"
+    end
 
     visit lesson_path(Lesson.last)
     within "ul.teachers" do
@@ -145,6 +148,12 @@ feature %q{
     sign_in_manually @admin_eastern
     select_school_in_dropdown(@admin_eastern.school.name)
     create_lesson_manually("some other random topic", @admin_eastern.school.venues.first)
+
+    visit "/?school=#{@admin_eastern.school.slug}"
+    page.should have_content "some other random topic"
+    within "div.details" do
+      page.should have_content "6:30pm Eastern - 8:15pm Eastern"
+    end
 
     visit lesson_path(Lesson.last)
     within "div.details" do

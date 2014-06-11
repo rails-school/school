@@ -36,7 +36,12 @@ module ApplicationHelper
     date.try(:strftime, "%B %e, %Y")
   end
 
-  def format_time(time)
+  def format_time(time, school=nil)
+    # Defining the timezone to print time
+    if school
+      Time.zone = school.timezone
+      time = Time.zone.parse(time.to_s)
+    end
     zone = time.try(:strftime, "%Z").downcase
     case zone
       when "pdt", "pst"
@@ -48,9 +53,9 @@ module ApplicationHelper
     "#{t.sub(':00', '')} #{zone}"
   end
 
-  def format_datetime(start_time, end_time=nil)
-    t = format_time(start_time)
-    t += " - #{format_time(end_time)}" if end_time
+  def format_datetime(start_time, end_time=nil, school=nil)
+    t = format_time(start_time, school)
+    t += " - #{format_time(end_time, school)}" if end_time
     t + " on #{format_date(start_time)}"
   end
 
