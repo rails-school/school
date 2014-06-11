@@ -1,6 +1,8 @@
 class UpdateTimezoneInExistingLessons < ActiveRecord::Migration
   def change
-    lessons = Lesson.all.select {|l| ((l.venue_id == 3) || (l.venue_id == 4))}
+  	eastern_school = School.find(2)
+  	venues = eastern_school.venues.map {|v| v.id }
+    lessons = Lesson.all.select {|l| venues.include? l.venue_id}
 
     lessons.each do |l|
       Time.zone = Venue.find(l.venue_id).school.timezone
