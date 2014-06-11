@@ -88,6 +88,19 @@ feature %q{
   end
 end
 
+def create_lesson_manually(title, venue)
+  visit new_lesson_path
+  page.should have_content "New lesson"
+  fill_in "lesson[title]", :with => title
+  fill_in "lesson[summary]", :with => "some random summary"
+  fill_in "lesson[description]", :with => "some random description"
+  fill_in "lesson[start_time]", :with => "6:30pm"
+  fill_in "lesson[end_time]", :with => "8:15pm"
+  fill_in "lesson[date]", :with => (Date.current + 1.day).to_s
+  select venue.name, :from => 'Venue'
+  click_button "Save"
+end
+
 feature %q{
   As a website
   I want to make sure,
@@ -96,21 +109,20 @@ feature %q{
 } do
 
   background do
-    @venue = create(:venue)
-    @admin = create(:admin, school: @venue.school)
-    sign_in_manually @admin
+    # Pacific params
+    @school_pacific = create(:school, timezone: "Pacific Time (US & Canada)")
+    @venue_pacific = create(:venue, school: @school_pacific)
+    @admin_pacific = create(:admin, school: @school_pacific)
+    # Eastern params
+    @school_eastern = create(:school, timezone: "Eastern Time (US & Canada)")
+    @venue_eastern = create(:venue, school: @school_eastern)
+    @admin_eastern = create(:admin, school: @school_eastern, email: "light2@test.railsschool.org")
   end
 
   scenario "creating a new upcoming lesson", :js => true do
-    visit new_lesson_path
-    page.should have_content "New lesson"
-    fill_in "lesson[title]", :with => "some random topic"
-    fill_in "lesson[summary]", :with => "some random summary"
-    fill_in "lesson[description]", :with => "some random description"
-    fill_in "lesson[start_time]", :with => "6:30pm"
-    fill_in "lesson[end_time]", :with => "8:15pm"
-    fill_in "lesson[date]", :with => (Date.current + 1.day).to_s
-    click_button "Save"
+    sign_in_manually @admin_pacific
+    create_lesson_manually("some random topic", @admin_pacific.school.venues.first)
+
     page.should have_content "Lesson was successfully created."
     lessons = Lesson.all
     lessons.count.should == 1
@@ -121,7 +133,21 @@ feature %q{
 
     visit lesson_path(Lesson.last)
     within "ul.teachers" do
-      page.should have_content @admin.name
+      page.should have_content @admin_pacific.name
+    end
+    within "div.details" do
+      page.should have_content "6:30pm Pacific - 8:15pm Pacific"
+    end
+  end
+
+  scenario "creating a new upcoming lesson from a different school timezone", :js => true do
+    sign_in_manually @admin_eastern
+    select_school_in_dropdown(@admin_eastern.school.name)
+    create_lesson_manually("some other random topic", @admin_eastern.school.venues.first)
+
+    visit lesson_path(Lesson.last)
+    within "div.details" do
+      page.should have_content "6:30pm Eastern - 8:15pm Eastern"
     end
   end
 

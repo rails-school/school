@@ -44,6 +44,7 @@ FactoryGirl.define do
   factory :school do
     sequence(:name) { |i| "School ##{i}" }
     sequence(:slug) { |i| "school_#{i}" }
+    timezone "Pacific Time (US & Canada)"
   end
 
   factory :venue do

@@ -19,4 +19,22 @@ module Helpers
   def stub_lesson_tweeter
     LessonTweeter.any_instance.stub(:tweet) { true }
   end
+
+  def create_lesson_manually(title, venue, start_time="6:30pm", end_time="8:15pm")
+    visit new_lesson_path
+    page.should have_content "New lesson"
+    fill_in "lesson[title]", :with => title
+    fill_in "lesson[summary]", :with => "some random summary"
+    fill_in "lesson[description]", :with => "some random description"
+    fill_in "lesson[start_time]", :with => start_time
+    fill_in "lesson[end_time]", :with => end_time
+    fill_in "lesson[date]", :with => (Date.current + 1.day).to_s
+    select venue.name, :from => 'Venue'
+    click_button "Save"
+  end
+
+  def select_school_in_dropdown(name)
+    find('li#school_dropdown').click
+    click_link(name)
+  end
 end
