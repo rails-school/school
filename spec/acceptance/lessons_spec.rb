@@ -123,7 +123,6 @@ feature %q{
     sign_in_manually @admin_pacific
     select_school_in_dropdown(@admin_pacific.school.name)
     create_lesson_manually("some random topic", @admin_pacific.school.venues.first)
-    binding.pry
 
     page.should have_content "Lesson was successfully created."
     lessons = Lesson.all
@@ -146,7 +145,6 @@ feature %q{
     sign_in_manually @admin_eastern
     select_school_in_dropdown(@admin_eastern.school.name)
     create_lesson_manually("some other random topic", @admin_eastern.school.venues.first)
-    binding.pry
 
     visit lesson_path(Lesson.last)
     within "div.details" do
