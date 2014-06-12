@@ -83,25 +83,31 @@ h2 {
         }
       }
 
+      #school_dropdown {
+        min-width: 200px;
+      }
+
       li.dropdown {
         z-index: 50;
       }
 
       ul.show-dropdown {
         position: relative;
-        width: 235px;
-        background-color: #2ba6cb;
+        background: none;
         border: 0;
+        padding-bottom: 40px;
 
         li {
+          display: block;
           position: relative;
-          height: 66px;
+          height: 40px;
           padding-bottom: 0px;
 
           &:hover {
-            background: #257c9c;
+            background: none;
           }
           a {
+            display: block;
             position: absolute;
             line-height: 30px;
             top: 0;
@@ -111,6 +117,10 @@ h2 {
             color: white;
             font-size: 18px;
             height: auto;
+
+            &:hover {
+              background: none;
+            }
           }
         }
       }
