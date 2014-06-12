@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
     @current_school
   end
 
+  def set_time_zone
+    Time.zone = current_school.timezone
+  end
+
   def devise_parameter_sanitizer
     if resource_class == User
       User::ParameterSanitizer.new(User, :user, params)

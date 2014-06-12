@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+  before_filter :set_time_zone, only: [:index, :show, :new]
   before_filter :fix_dates, only: [:create, :update]
   before_filter :convert_slug_to_id
   load_and_authorize_resource except: [:index]

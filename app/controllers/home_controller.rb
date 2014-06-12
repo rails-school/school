@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_filter :set_time_zone, only: [:index]
 
   def about
   end
