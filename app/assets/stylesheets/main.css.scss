@@ -91,6 +91,10 @@ h2 {
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+
+        &.button.dropdown:after {
+          top: 18px;
+        }
       }
 
       li.dropdown {
