@@ -2,7 +2,7 @@
   .date
     - if main_page
       Next Workshop /
-    = format_date(lesson.start_time) if lesson.present?
+    = format_date(lesson.start_time, lesson.venue.school) if lesson.present?
   %h1= main_page ? link_to(lesson.title, lesson) : lesson.title
   .summary= lesson.summary
   -if main_page == true

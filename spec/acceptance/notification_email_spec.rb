@@ -7,15 +7,15 @@ feature %q{
 } do
 
   background do
-    @user = FactoryGirl.create(:user)
-    @user2 = FactoryGirl.create(:user)
+    @teacher = FactoryGirl.create(:user)
+    @attendee = FactoryGirl.create(:user)
     @venue = FactoryGirl.create(:venue)
-    @lesson = FactoryGirl.create(:next_month_lesson)
+    @lesson = FactoryGirl.create(:next_month_lesson, start_time: Date.current + 1.month + 1.day + 19.hours, start_time: Date.current + 1.month + 1.day + 21.hours)
   end
 
-  scenario "Sending notification mail" do
+  scenario "Sending notification email" do
     expect{NotificationMailer.lesson_notification(
-      @lesson.id, @user.id, @user2.id
+      @lesson.id, @teacher.id, @attendee.id
     ).deliver}.to change{ActionMailer::Base.deliveries.count}.by(1)    
     email = ActionMailer::Base.deliveries.last
     email.attachments.count.should == 1
@@ -24,9 +24,40 @@ feature %q{
 end
 
 feature %q{
+  As a teacher
+  I want to be sure
+  That notifications contain the correct start time and timezone
+} do
+
+  background do
+    # Pacific params
+    @school_pacific = create(:school, timezone: "Pacific Time (US & Canada)")
+    @venue_pacific = create(:venue, school: @school_pacific)
+    @admin_pacific = create(:admin, school: @school_pacific)
+    # Eastern params
+    @school_eastern = create(:school, timezone: "Eastern Time (US & Canada)")
+    @venue_eastern = create(:venue, school: @school_eastern)
+    @admin_eastern = create(:admin, school: @school_eastern)
+    @attendee = FactoryGirl.create(:user)
+  end
+
+  scenario "Pacific teacher sending notification email" do
+    expect{create_lesson_and_send_notification(@admin_pacific, @attendee)}.to change{ActionMailer::Base.deliveries.count}.by(1)
+    email = ActionMailer::Base.deliveries.last
+    email.body.encoded.should include("6:30pm Pacific")
+  end
+
+  scenario "Eastern teacher sending notification email" do
+    expect{create_lesson_and_send_notification(@admin_eastern, @attendee)}.to change{ActionMailer::Base.deliveries.count}.by(1)
+    email = ActionMailer::Base.deliveries.last
+    email.body.encoded.should include("6:30pm Eastern")
+  end
+end
+
+feature %q{
   As a user
   I want to be sure
-  That notifications will get delivered
+  That messages about a lesson will get delivered
 } do
 
   background do
@@ -39,7 +70,7 @@ feature %q{
 
 
 
-  scenario "Teacher sending mail to students attending a lesson" do
+  scenario "Teacher sending email to students attending a lesson" do
     sign_in_manually @teacher
     visit lesson_path(@lesson)
     click_link "Send message to the attendees"

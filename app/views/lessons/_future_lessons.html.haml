@@ -3,7 +3,7 @@
     %li.lesson
       .info
         .date
-          = format_date l.start_time
+          = format_date l.start_time, l.venue.school
         .text
           =link_to l.title, l
         .expand
