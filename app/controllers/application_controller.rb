@@ -1,6 +1,8 @@
 require_dependency "user_sanitizer"
 
 class ApplicationController < ActionController::Base
+  before_filter :set_time_zone
+
   protect_from_forgery
   helper_method :current_school
 
