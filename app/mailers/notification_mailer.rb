@@ -8,7 +8,7 @@ class NotificationMailer < ActionMailer::Base
     from_user = User.find(from_id)
     # Takes timezone into account
     Time.zone = @lesson.venue.school.timezone
-    @lesson.start_time = Time.zone.parse("#{@lesson.start_time}")
+    @lesson.reload
     subject = "Rails class #{@lesson.start_time.strftime("%-m/%-d")}: #{@lesson.title}"
     calendar = @lesson.to_ics
     attachments['calendar.ics'] = calendar

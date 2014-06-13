@@ -7,29 +7,24 @@ module ApplicationHelper
     end
   end
 
-  def lesson_date(lesson, time)
-    time = Time.zone.parse(time.to_s)
-    time.to_date
-  end
-
   def lesson_today(day)
-    @lessons_this_month.find { |l| lesson_date(l, l.start_time).day == day }
+    @lessons_this_month.find { |l| l.start_time.day == day }
   end
 
   def calendar_lesson(day, month)
     if month == Time.current.month
-      @lessons_this_month.find { |l| lesson_date(l, l.start_time).day == day }
+      @lessons_this_month.find { |l| l.start_time.day == day }
     else
-      @future_lessons.find { |l| lesson_date(l, l.start_time).day == day && lesson_date(l, l.start_time).month == month }
+      @future_lessons.find { |l| l.start_time.day == day && l.start_time.month == month }
     end
   end
 
   def lessons_between?(day_start, day_end)
-    @lessons_this_month.find { |l| lesson_date(l, l.start_time).day >= day_start && lesson_date(l, l.start_time).day <= day_end }
+    @lessons_this_month.find { |l| l.start_time.day >= day_start && l.start_time.day <= day_end }
   end
 
   def future_lessons_between?(day_start, day_end)
-    @future_lessons.find { |l| lesson_date(l, l.start_time).day >= day_start && lesson_date(l, l.start_time).day <= day_end }
+    @future_lessons.find { |l| l.start_time.day >= day_start && l.start_time.day <= day_end }
   end
 
   def title_content(page_title)
