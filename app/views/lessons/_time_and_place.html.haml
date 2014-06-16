@@ -1,4 +1,4 @@
-= format_datetime(lesson.start_time, lesson.end_time, lesson.venue.school)
+= format_datetime(lesson.start_time, lesson.end_time)
 -if lesson.venue.present?
   at
   = link_to lesson.venue.name, lesson.venue

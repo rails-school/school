@@ -1,6 +1,8 @@
 require_dependency "user_sanitizer"
 
 class ApplicationController < ActionController::Base
+  before_filter :set_time_zone
+
   protect_from_forgery
   helper_method :current_school
 
@@ -36,6 +38,10 @@ class ApplicationController < ActionController::Base
     binding.pry unless @current_school
     session[:school] = @current_school.slug
     @current_school
+  end
+
+  def set_time_zone
+    Time.zone = current_school.timezone
   end
 
   def devise_parameter_sanitizer

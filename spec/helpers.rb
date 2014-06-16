@@ -33,6 +33,16 @@ module Helpers
     click_button "Save"
   end
 
+  def create_lesson_and_send_notification(teacher, attendee)
+    sign_in_manually teacher
+    select_school_in_dropdown(teacher.school.name)
+    create_lesson_manually("some random topic", teacher.school.venues.first)
+    lesson = Lesson.last
+    NotificationMailer.lesson_notification(
+      lesson.id, teacher.id, attendee.id
+    ).deliver
+  end
+
   def select_school_in_dropdown(name)
     find('li#school_dropdown').click
     within "li#school_dropdown" do

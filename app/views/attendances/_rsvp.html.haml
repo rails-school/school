@@ -1,5 +1,5 @@
 .rsvp{'data-id' => lesson.id}
-  -the_date = lesson.start_time.present? ? lesson.start_time.to_date : Date.current.to_date
+  -the_date = lesson.start_time.present? ? lesson.start_time : Date.current.to_date
   -today = Time.current
   -if the_date >= today.to_date
     .actions

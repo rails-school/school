@@ -88,19 +88,6 @@ feature %q{
   end
 end
 
-def create_lesson_manually(title, venue)
-  visit new_lesson_path
-  page.should have_content "New lesson"
-  fill_in "lesson[title]", :with => title
-  fill_in "lesson[summary]", :with => "some random summary"
-  fill_in "lesson[description]", :with => "some random description"
-  fill_in "lesson[start_time]", :with => "6:30pm"
-  fill_in "lesson[end_time]", :with => "8:15pm"
-  fill_in "lesson[date]", :with => (Date.current + 1.day).to_s
-  select venue.name, :from => 'Venue'
-  click_button "Save"
-end
-
 feature %q{
   As a website
   I want to make sure,

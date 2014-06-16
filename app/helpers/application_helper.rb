@@ -33,15 +33,14 @@ module ApplicationHelper
   end
 
   def format_date(date)
+    # Converts time into the current school's timezone
+    date = Time.zone.parse(date.to_s).to_date
     date.try(:strftime, "%B %e, %Y")
   end
 
-  def format_time(time, school=nil)
-    # Defining the timezone to print time
-    if school
-      Time.zone = school.timezone
-      time = Time.zone.parse(time.to_s)
-    end
+  def format_time(time)
+    # Converts time into the current school's timezone
+    time = Time.zone.parse(time.to_s)
     zone = time.try(:strftime, "%Z").downcase
     case zone
       when "pdt", "pst"
@@ -53,9 +52,9 @@ module ApplicationHelper
     "#{t.sub(':00', '')} #{zone}"
   end
 
-  def format_datetime(start_time, end_time=nil, school=nil)
-    t = format_time(start_time, school)
-    t += " - #{format_time(end_time, school)}" if end_time
+  def format_datetime(start_time, end_time=nil)
+    t = format_time(start_time)
+    t += " - #{format_time(end_time)}" if end_time
     t + " on #{format_date(start_time)}"
   end
 
