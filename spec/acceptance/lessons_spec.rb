@@ -147,6 +147,8 @@ feature %q{
     within "div.details" do
       page.should have_content "6:30pm Pacific - 8:15pm Pacific"
     end
+
+    visit ""
   end
 
   scenario "creating a new upcoming lesson from a different school timezone", :js => true do
@@ -262,6 +264,27 @@ feature %q{
   scenario "RSVP clicking RSVP button", :js => true do
     page.should_not have_content(Date.current.strftime("%B").upcase)
     page.should have_content((Date.current+1.month).strftime("%B").upcase)
+  end
+
+
+end
+
+feature %q{
+  As a visitor
+  I see the right school in the page's title
+  If I access a lesson directly by its 
+} do
+
+  background do
+    other_school = FactoryGirl.create(:school)
+    @venue = FactoryGirl.create(:venue)
+    @lesson = FactoryGirl.create(:next_month_lesson, venue: @venue)
+  end
+
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.title.should have_content(@venue.school.name)
   end
 
 
