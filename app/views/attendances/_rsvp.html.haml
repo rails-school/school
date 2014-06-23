@@ -1,7 +1,7 @@
 .rsvp{'data-id' => lesson.id}
-  -the_date = lesson.start_time.present? ? lesson.start_time : Date.current.to_date
-  -today = Time.current
-  -if the_date >= today.to_date
+  -the_date = lesson.start_time.present? ? lesson.start_time.to_date : Date.current.to_date
+  -today = Time.current.to_date
+  -if the_date >= today
     .actions
       -if user_signed_in? && current_user.attend?(lesson.id)
         %a.ruby-button.pressed{:href => "/rsvp/#{lesson.id}/delete", 'data-remote' => true, 'data-method' => 'POST'}

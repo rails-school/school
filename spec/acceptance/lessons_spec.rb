@@ -43,6 +43,24 @@ end
 
 feature %q{
   As a user
+  I can't RSVP the day after the lesson
+  So the attendance list is fixed
+} do
+
+  background do
+    @lesson = FactoryGirl.create(:lesson, start_time: 1.day.ago, end_time: 1.day.ago+2.hours)
+    @user = FactoryGirl.create(:user, school: @lesson.venue.school)
+    sign_in_manually @user
+  end
+
+
+  scenario "RSVP no button present" do
+    page.should_not have_link "RSVP!"
+  end
+end
+
+feature %q{
+  As a user
   I can log in and RSVP at the same time
   So my life is easy
 } do
