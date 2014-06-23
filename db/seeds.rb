@@ -3,11 +3,13 @@
 puts "Creating School - San Francisco"
 school = School.find_or_create_by_name("San Francisco") do |school|
   school.slug = 'sf'
+  school.timezone = 'Pacific Time (US & Canada)'
 end
 
 puts "Creating School - Charlottesville, VA"
 school = School.find_or_create_by_name("Charlottesville, VA") do |school|
   school.slug = 'cville'
+  school.timezone = 'Eastern Time (US & Canada)'
 end
 
 puts "Creating Venue - Noisebridge"
