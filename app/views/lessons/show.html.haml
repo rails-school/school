@@ -18,12 +18,12 @@
       %ul.attendees
         - @lesson.users.each do |u|
           %a{href: user_path(u)}
-            = render "users/show_attending", :user => u
+            = render "users/show_attending", user: u
   - if user_signed_in?
-    = render :partial => "polls/poll", :locals => {poll: current_user.next_unanswered_poll, previous_poll: nil}
+    = render partial: "polls/poll", locals: {poll: current_user.next_unanswered_poll, previous_poll: nil}
 
 .lesson_details
-  =render :partial => "lessons/announce", :locals => {:lesson => @lesson, :main_page => false}
+  =render partial: "lessons/announce", locals: {lesson: @lesson, main_page: false}
 
 %hr
 
@@ -33,10 +33,10 @@
 
 -if user_signed_in?
   -if @whiteboard == true
-    %iframe{:src => "#{etherpad_host(@lesson)}rails-school-lesson-#{@lesson.id}", :style => "width:100%;height:600px;border:1px solid #CCCCCC;"}
+    %iframe{:src => "#{etherpad_host(@lesson)}rails-school-lesson-#{@lesson.id}", style: "width:100%;height:600px;border:1px solid #CCCCCC;"}
   -else
     .action
-      =link_to "Show whiteboard", whiteboard_lesson_path(@lesson), :class => "button secondary"
+      =link_to "Show whiteboard", whiteboard_lesson_path(@lesson), class: "button secondary"
 
       %br
       %br
@@ -46,7 +46,7 @@
   = link_to "Please, sign in to see the Whiteboard", whiteboard_lesson_path(@lesson)
 
 -if can? :manage, @lesson
-  = link_to 'Edit', edit_lesson_path(@lesson), :class => 'button'
+  = link_to 'Edit', edit_lesson_path(@lesson), class: 'button'
   -if can? :manage, :notifications
     - if @lesson.notification_sent_at.blank?
       = link_to "Notify subscribers", notify_subscribers_path(@lesson.id), method: :post, data: {confirm: "Are you sure?"}
@@ -58,11 +58,20 @@
 
 
 -provide :meta do
-  %meta{:content => "Rails School #{current_school.name} - #{@lesson.title}", :property => "og:title"}/
-  %meta{:content => "website", :property => "og:type"}/
-  %meta{:content => url_for(@lesson), :property => "og:url"}/
-  %meta{:content => "http://www.railsschool.org/assets/logo.png", :property => "og:image"}/
-  %meta{:content => "www.railsschool.org", :property => "og:site_name"}/
-  %meta{:content => "100000245725293", :property => "fb:admins"}/
-  %meta{:content => "442490832470487", :property => "fb:app_id"}/
-  %meta{:content => "Rails School #{current_school.name} - #{@lesson.description}", :property => "og:description"}/
+  - school_name = (@lesson.nil? || @lesson.venue.nil?) ? current_school.name : @lesson.venue.school.name
+  - # For Google
+  %meta{content: "#{@lesson.summary}", property: "description"}/
+  - # For Facebook
+  %link{rel: "image_src", type: "image/#{File.extname(@lesson.image_social).delete('.')}", href: "#{image_url(@lesson.image_social)}"}
+  %meta{content: "#{school_name} - #{@lesson.title}", property: "og:title"}/
+  %meta{content: "website", property: "og:type"}/
+  %meta{content: "www.railsschool.org" + url_for(@lesson), property: "og:url"}/
+  %meta{content: image_url(@lesson.image_social), property: "og:image"}/
+  %meta{content: "www.railsschool.org", property: "og:site_name"}/
+  %meta{content: "100000245725293", property: "fb:admins"}/
+  %meta{content: "442490832470487", property: "fb:app_id"}/
+  %meta{content: "#{@lesson.summary}", property: "og:description"}/
+  - # For Twitter
+  %meta{content: "#{school_name} - #{@lesson.title}", property: "twitter:title"}/
+  %meta{content: "#{@lesson.summary}", property: "twitter:description"}/
+  %meta{content: image_url(@lesson.image_social), property: "twitter:image"}/
