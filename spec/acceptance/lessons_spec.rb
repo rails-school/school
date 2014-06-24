@@ -270,7 +270,7 @@ end
 feature %q{
   As a visitor
   I see the right school in the page's title
-  If I access a lesson directly by its 
+  If I access a lesson directly by its URL
 } do
 
   background do
