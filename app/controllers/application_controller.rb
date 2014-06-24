@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
 
     unless @current_school
       if @lesson
-        binding.pry
         @current_school = @lesson.venue.school
       end
     end

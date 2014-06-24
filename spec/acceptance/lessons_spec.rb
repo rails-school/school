@@ -147,8 +147,6 @@ feature %q{
     within "div.details" do
       page.should have_content "6:30pm Pacific - 8:15pm Pacific"
     end
-
-    visit ""
   end
 
   scenario "creating a new upcoming lesson from a different school timezone", :js => true do
