@@ -22,6 +22,12 @@ class ApplicationController < ActionController::Base
     end
 
     unless @current_school
+      if @lesson
+        @current_school = @lesson.venue.school
+      end
+    end
+
+    unless @current_school
       begin
         loc = request.location
         @current_school = Venue.near([loc.latitude, loc.longitude], 5000)

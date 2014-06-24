@@ -266,3 +266,24 @@ feature %q{
 
 
 end
+
+feature %q{
+  As a visitor
+  I see the right school in the page's title
+  If I access a lesson directly by its URL
+} do
+
+  background do
+    other_school = FactoryGirl.create(:school)
+    @venue = FactoryGirl.create(:venue)
+    @lesson = FactoryGirl.create(:next_month_lesson, venue: @venue)
+  end
+
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.title.should have_content(@venue.school.name)
+  end
+
+
+end
