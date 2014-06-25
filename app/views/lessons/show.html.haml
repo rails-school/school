@@ -62,7 +62,8 @@
   - # For Google
   %meta{content: "#{@lesson.summary}", property: "description"}/
   - # For Facebook
-  %link{rel: "image_src", type: "image/#{File.extname(@lesson.image_social).delete('.')}", href: "#{image_url(@lesson.image_social)}"}
+  - unless @lesson.image_social.nil?
+    %link{rel: "image_src", type: "image/#{File.extname(@lesson.image_social).delete('.')}", href: "#{image_url(@lesson.image_social)}"}
   %meta{content: "#{school_name} - #{@lesson.title}", property: "og:title"}/
   %meta{content: "website", property: "og:type"}/
   %meta{content: "www.railsschool.org" + url_for(@lesson), property: "og:url"}/
