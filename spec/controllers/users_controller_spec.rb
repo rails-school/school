@@ -9,7 +9,7 @@ describe UsersController do
       ApplicationController.any_instance.stub(:current_school).and_return(
         # Let's create an anonymous object responding to 
         # methods timezone and slug 
-        # so the before_filter set_time_zone works always
+        # so the around_filter set_time_zone works always
         OpenStruct.new(
           timezone: "Pacific Time (US & Canada)", 
           slug: "pretty-cool-completely-virtual-lesson"

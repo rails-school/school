@@ -36,3 +36,6 @@ Rs::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+# Let's set a different timezone to test timezones handling
+Time.zone = "Paris"

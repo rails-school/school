@@ -4,16 +4,17 @@ class NotificationMailer < ActionMailer::Base
 
   def lesson_notification(lesson_id, to_id, from_id)
     @lesson = Lesson.find(lesson_id)
-    @user = User.find(to_id)
-    from_user = User.find(from_id)
     # Takes timezone into account
-    Time.zone = @lesson.venue.school.timezone
-    @lesson.reload
-    subject = "Rails class #{@lesson.start_time.strftime("%-m/%-d")}: #{@lesson.title}"
-    calendar = @lesson.to_ics
-    attachments['calendar.ics'] = calendar
-    mail(to: format_email_field(@user), subject: subject,
-         from: format_email_field(from_user))
+    Time.use_zone(@lesson.venue.school.timezone) do
+      @user = User.find(to_id)
+      from_user = User.find(from_id)
+      @lesson.reload
+      subject = "Rails class #{@lesson.start_time.strftime("%-m/%-d")}: #{@lesson.title}"
+      calendar = @lesson.to_ics
+      attachments['calendar.ics'] = calendar
+      mail(to: format_email_field(@user), subject: subject,
+           from: format_email_field(from_user))
+    end
   end
 
   def send_lesson_message(lesson_id, subject, message, user_id)

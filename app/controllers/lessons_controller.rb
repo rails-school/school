@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+  around_filter :school_timezone, only: [:create, :update]
   before_filter :fix_dates, only: [:create, :update]
   before_filter :convert_slug_to_id
   load_and_authorize_resource except: [:index]
@@ -104,10 +105,16 @@ private
     end
   end
 
+  def school_timezone(&block)
+    l_params = params[:lesson]
+    if l_params
+      Time.use_zone(Venue.find(l_params[:venue_id]).school.timezone, &block)
+    end
+  end
+
   def fix_dates
     l_params = params[:lesson]
     if l_params
-      Time.zone = Venue.find(l_params[:venue_id]).school.timezone
       date = l_params.delete("date")
       l_params[:start_time] =
         Time.zone.parse("#{date} #{l_params[:start_time]}")

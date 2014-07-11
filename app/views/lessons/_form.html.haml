@@ -3,9 +3,9 @@
 
   - # Get the time in the right timezone for an existing lesson
   - if(@lesson.venue)
-    - Time.zone = @lesson.venue.school.timezone
-    - @lesson.start_time = Time.zone.parse(@lesson.start_time.to_s)
-    - @lesson.end_time = Time.zone.parse(@lesson.end_time.to_s)
+    - Time.use_zone(@lesson.venue.school.timezone) do
+      - @lesson.start_time = Time.zone.parse(@lesson.start_time.to_s)
+      - @lesson.end_time = Time.zone.parse(@lesson.end_time.to_s)
 
   .field
     = f.label :title
@@ -20,7 +20,7 @@
     =f.label :date
     -# TODO replace this with date helper when upgrading to Rails 4
     %input{id: "lesson_date", name: "lesson[date]", type: "date",
-           value: @lesson.start_time ? @lesson.start_time : Date.current}
+           value: @lesson.start_time ? @lesson.start_time.to_date : Date.current}
   .field
     =f.label :start_time
     -# TODO replace this with time helper when upgrading to Rails 4
