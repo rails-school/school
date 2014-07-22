@@ -6,6 +6,8 @@
     - Time.zone = @lesson.venue.school.timezone
     - @lesson.start_time = Time.zone.parse(@lesson.start_time.to_s)
     - @lesson.end_time = Time.zone.parse(@lesson.end_time.to_s)
+  - # Set the default social media image to share
+  - @lesson.image_social = "logo.png"
 
   .field
     = f.label :title
@@ -44,7 +46,10 @@
     = f.label :slug
     = f.text_field :slug
   .field
-    = f.label "Tweet message (use {{url}} placeholder for link, assume it will cost 30 characters)"
+    = f.label :image_social, "Image to share on social media"
+    = f.text_field :image_social
+  .field
+    = f.label :tweet_message, "Tweet message (use {{url}} placeholder for link, assume it will cost 30 characters)"
     = f.text_area :tweet_message
   .actions
     = f.submit 'Save'
