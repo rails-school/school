@@ -4,7 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     %h1
-      Hi, #{@user.name}! We added a new class at 5:30pm on July 30, 2014
+      Hi, #{@user.name}! We added a new class at #{format_datetime(@lesson.start_time)}
     %h2
       = @lesson.title
     %p= @lesson.summary

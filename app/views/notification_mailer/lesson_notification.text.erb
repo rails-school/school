@@ -1,4 +1,4 @@
-Hi, <%= @user.name %>! We added a new class at 5:30pm on July 30, 2014
+Hi, <%= @user.name %>! We added a new class at <%= format_datetime(@lesson.start_time) %>
 
 <%= @lesson.title %>
 
