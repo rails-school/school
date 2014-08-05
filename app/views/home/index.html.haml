@@ -6,17 +6,11 @@
     = render :partial => "polls/poll", :locals => {poll: current_user.next_unanswered_poll, previous_poll: nil}
 
 .announce
-  -# RailsSchool SF is taking July off
-  - if current_school.name == "San Francisco"
-    %h2 Summer Break
-    = "RailsSchool is taking July 2014 off as NoiseBridge upgrades its facility. We'll be back in August!"
-
   - if @future_lessons.present?
     = render "lessons/announce", :lesson => @future_lessons.first, :main_page => true
 
 .future-events
   %h2 Upcoming Free Workshops
-
   =render "lessons/future_lessons", :lessons => @future_lessons
 
 =render :partial => "home/slogan"
