@@ -169,6 +169,24 @@ feature %q{
 end
 
 feature %q{
+  As an admin
+  I want to edit lessons,
+  So that I can make them perfect
+} do
+
+  let(:admin) { create(:admin) }
+  let(:lesson) { create(:lesson, teacher: admin) }
+  let!(:venue) { create(:venue) }
+
+  scenario "The date field is correctly populated when editing" do
+    sign_in_manually(admin)
+    visit edit_lesson_path(lesson)
+    # field should contain date formatted like 2014-08-07
+    find_field("Date").value.should eq(lesson.start_time.to_date.iso8601)
+  end
+end
+
+feature %q{
   As a website
   I want to make sure,
   That some random user
