@@ -98,10 +98,14 @@ class LessonsController < ApplicationController
 
 private
   def convert_slug_to_id
-    if (params[:id] && !(params[:id].to_i > 0))
+    if id_is_slug?(params[:id])
       l = Lesson.find_by_slug(params[:id])
       params[:id] = l.id if l.present?
     end
+  end
+
+  def id_is_slug?(id)
+    id && !(id.to_i > 0 && id.to_i.to_s == id)
   end
 
   def fix_dates
