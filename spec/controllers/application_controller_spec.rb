@@ -8,7 +8,7 @@ describe ApplicationController do
 
     mock_location
   end
-  describe "current_school" do
+  describe "current_school with geocoding on", geocode: true do
 
     it "defaults to school for the nearest venue" do
       school1 = create(:school)
