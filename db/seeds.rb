@@ -528,3 +528,15 @@ lesson = Lesson.find_or_create_by_title("Refactoring existing code") do |lesson|
 We're going to take a look at refactoring an existing Rails up. Learn how to improve your models, controllers and views.
 EOF
 end
+puts "Creating lesson Rails and Mixpanel"
+lesson = Lesson.find_or_create_by_title("Rails and Mixpanel") do |lesson|
+  lesson.title = "Rails and Mixpanel"
+  lesson.course_id = "1"
+  lesson.start_time = Time.parse("2015-04-14 19:00:00 UTC")
+  lesson.end_time = lesson.start_time + 2.hours
+  lesson.venue_id = 1
+  lesson.summary = "How to implement mixpanel and rails"
+  lesson.description = <<EOF
+We're going to learn how to send data to mixpanel in a rails app using javascript.
+EOF
+end
