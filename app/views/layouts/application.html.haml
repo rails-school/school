@@ -13,6 +13,9 @@
     = render "layouts/google_analytics"
     = render "layouts/mixpanel"
     =csrf_meta_tags
+    -if user_signed_in?
+      :javascript
+        window.current_user = #{raw current_user.to_json};
   %body
     =render "social_media/fb_header"
     =render :partial => "layouts/header"
