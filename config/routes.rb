@@ -6,7 +6,11 @@ Rs::Application.routes.draw do
 
   devise_for :users, controllers: {sessions: "devise_overrides/sessions"}
 
-  resources :venues
+  #resources :venues
+  # NOTE I just discovered that any user could destroy venues, so have
+  # disabled creating, deleting, and updating venues through the website
+  # until we lock this down properly
+  resources :venues, only: [:index, :show, :edit, :new]
   resources :answers
   resources :questions
   resources :users, :except => [:new, :create, :destroy]
