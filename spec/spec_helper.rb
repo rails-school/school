@@ -9,6 +9,8 @@ require "email_spec"
 require 'capybara/poltergeist'
 require_relative 'helpers'
 
+ActiveRecord::Migration.maintain_test_schema!
+
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 DatabaseCleaner.strategy = :truncation
