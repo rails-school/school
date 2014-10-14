@@ -37,8 +37,8 @@ Badge.all.each do |badge|
       subject.slug.should be_present
     end
 
-    it "has a notification_thank_you_message" do
-      subject.notification_thank_you_message.should be_present
+    it "has a notification_bonus_message" do
+      subject.notification_bonus_message.should be_present
     end
   end
 end

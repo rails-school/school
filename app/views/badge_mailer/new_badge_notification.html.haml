@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Congratulations, #{@user.name}! You have been awarded a new badge:
+    %h2
+      = @badge.display_name
+    :markdown
+      #{@badge.description}
+    :markdown
+      #{@badge.notification_bonus_message}
+    %p
+      May The Force Be With You!
+    %br
+    Best regards,
+    %br
+    Rails School,
+    %a{:href =>"http://www.railsschool.org"}www.railsschool.org
+
+    - if @user.unsubscribe_token.present?
+      %p
+        %a{:href => unsubscribe_path(:code => @user.unsubscribe_token, :only_path => false)} Unsubscribe immediately

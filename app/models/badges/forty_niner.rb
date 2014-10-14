@@ -11,6 +11,12 @@ Given to users that attended one of the first 16 lessons in San Francisco.
 EOF
   end
 
+  def notification_bonus_message
+<<EOF
+Thank you for your critical role getting Rails School San Francisco off the ground.
+EOF
+  end
+
   def self.allocate_to_user?(user)
     user_lessons_attended_ids = user.attendances.select { |a| a.confirmed? }.map(&:lesson_id)
     sf_venues_ids = Venue.joins(:school).where("schools.slug = 'sf'").pluck(:id)
