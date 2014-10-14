@@ -1,0 +1,11 @@
+%h1 All badges
+
+%table
+  %tr
+    %th
+    %th
+
+  - @badges.each do |badge|
+    %tr
+      %td= link_to badge.display_name, badge_path(badge)
+      %td (#{@badges_allocated_counts[badge.class.id] || 0} given)

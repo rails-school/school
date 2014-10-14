@@ -1,6 +1,8 @@
 Rs::Application.routes.draw do
+
   post "polls/answer" => "polls#answer"
 
+  resources :badges, param: :slug, only: [:index, :show]
   resources :polls
   resources :schools
 

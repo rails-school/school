@@ -22,6 +22,10 @@ module Badge
     self.class::DISPLAY_NAME
   end
 
+  def to_param
+    slug
+  end
+
   included do
     def self.id
       self::BADGE_ID

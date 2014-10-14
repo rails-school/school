@@ -5,8 +5,7 @@
     - if @lesson.teacher.present?
       %h2 Teacher
       %ul.teachers
-        %a{href: user_path(@lesson.teacher)}
-          = render "users/show_attending", user: @lesson.teacher
+        = render "users/show_attending", user: @lesson.teacher
     - if @lesson.users.any?
       %h2 Attendance
       %p
@@ -17,8 +16,7 @@
           were there
       %ul.attendees
         - @lesson.users.each do |u|
-          %a{href: user_path(u)}
-            = render "users/show_attending", user: u
+          = render "users/show_attending", user: u
   - if user_signed_in?
     = render partial: "polls/poll", locals: {poll: current_user.next_unanswered_poll, previous_poll: nil}
 

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%h1= @badge.display_name
+
+:markdown
+  #{@badge.description}
+
+%h2 Recipients (#{@recipients.size}):
+
+%ul.recipients
+  - @recipients.each do |recipient|
+    = render "users/show_attending", user: recipient
+
+%p
+  = link_to "All badges", badges_path
