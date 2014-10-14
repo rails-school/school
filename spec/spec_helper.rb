@@ -8,6 +8,8 @@ require 'rspec/autorun'
 require "email_spec"
 require 'capybara/poltergeist'
 require_relative 'helpers'
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
 
 ActiveRecord::Migration.maintain_test_schema!
 
