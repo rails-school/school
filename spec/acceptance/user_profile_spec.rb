@@ -16,12 +16,14 @@ feature %q{
   scenario "Browse other user's profile" do
     other_user = create(:user, homepage: "silly.example.com")
     missed_rsvp = create(:attendance, user: other_user)
-    confirmed_rsvps = 2.times.map { 
+    confirmed_rsvps = 2.times.map {
       create(:attendance, user: other_user, confirmed: true)
     }
+    other_user.user_badges.create(badge_id: Badge.first.id)
     Timecop.travel(3.days)
     visit user_path(other_user)
     page.should have_content "attended 2 lessons"
+    page.should have_content Badge.first.new.display_name
     page.should have_link "silly.example.com"
     page.should_not have_link "github.com/example"
     Timecop.return

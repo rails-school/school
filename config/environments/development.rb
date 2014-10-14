@@ -1,3 +1,6 @@
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
+
 Rs::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 

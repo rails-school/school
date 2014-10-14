@@ -5,14 +5,20 @@
 %h4
   This user has attended #{pluralize(@user.attendances.joins(:lesson).where(confirmed: true).where("lessons.end_time < (?)", Time.now).count, "lesson")}
 
-  - if @user.homepage.present?
-    %p
-      %b Homepage:
-      = link_to @user.homepage, @user.homepage, rel: "nofollow"
+- if @user.user_badges.any?
+  %h5 Badges
+  %ul
+    - @user.badges.sort_by(&:display_name).each do |badge|
+      %li= badge.display_name
 
-  - if @user.github_username.present?
-    %p
-      %iframe{frameborder: "0", src: "http://githubbadge.appspot.com/#{@user.github_username}", style: "border: 0;height: 142px;width: 200px;overflow: hidden;"}
+- if @user.homepage.present?
+  %p
+    %b Homepage:
+    = link_to @user.homepage, @user.homepage, rel: "nofollow"
+
+- if @user.github_username.present?
+  %p
+    %iframe{frameborder: "0", src: "http://githubbadge.appspot.com/#{@user.github_username}", style: "border: 0;height: 142px;width: 200px;overflow: hidden;"}
 - if can? :manage, @user
   %h2 Details
 
@@ -27,7 +33,7 @@
   %p
     %b Base School:
     = @user.school.name
-    
+
   %p
     %b Homepage:
     = @user.homepage

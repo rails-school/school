@@ -74,8 +74,8 @@ group :test, :development do
   gem "rspec-rails"
   gem 'capybara'
   gem 'poltergeist'
-  gem 'pry'
-  gem 'pry-nav'
+  gem 'pry-rails'
+  gem 'pry-plus'
   gem 'sqlite3'
 end
 
