@@ -9,7 +9,7 @@
   %h5 Badges
   %ul
     - @user.badges.sort_by(&:display_name).each do |badge|
-      %li= badge.display_name
+      %li= link_to badge.display_name, badge_path(badge)
 
 - if @user.homepage.present?
   %p
