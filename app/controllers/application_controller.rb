@@ -1,7 +1,7 @@
 require_dependency "user_sanitizer"
 
 class ApplicationController < ActionController::Base
-  before_filter :set_time_zone
+  before_filter :set_time_zone, :maybe_enqueue_badge_allocator
 
   protect_from_forgery
   helper_method :current_school
@@ -55,6 +55,17 @@ class ApplicationController < ActionController::Base
       User::ParameterSanitizer.new(User, :user, params)
     else
       super
+    end
+  end
+
+  private
+  def maybe_enqueue_badge_allocator
+    return unless user_signed_in?
+    if current_user.last_badges_checked_at.nil? ||
+       (Time.now - current_user.last_badges_checked_at > 3600)
+      BadgeAllocator.perform_async(current_user.id)
+      current_user.last_badges_checked_at = Time.now
+      current_user.save!
     end
   end
 end

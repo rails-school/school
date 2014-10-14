@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624175523) do
+ActiveRecord::Schema.define(version: 20141013234200) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -129,6 +129,13 @@ ActiveRecord::Schema.define(version: 20140624175523) do
 
   add_index "user_answers", ["user_id", "answer_id"], name: "index_user_answers_on_user_id_and_answer_id", unique: true
 
+  create_table "user_badges", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "badge_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -151,6 +158,7 @@ ActiveRecord::Schema.define(version: 20140624175523) do
     t.string   "homepage"
     t.string   "github_username"
     t.integer  "school_id"
+    t.datetime "last_badges_checked_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource except: [:unsubscribe, :notify_subscribers]
+  load_and_authorize_resource except:
+    [:show, :unsubscribe, :notify_subscribers]
 
   http_basic_authenticate_with :name => SENDGRID_EVENT_USERNAME,
     :password => SENDGRID_EVENT_PASSWORD, :only => :report_email_bounce
@@ -40,6 +41,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @user = User.includes(:user_badges, attendances: [:lesson])
+                .find(params[:id])
   end
 
   # GET /users/1/edit

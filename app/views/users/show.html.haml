@@ -5,6 +5,12 @@
 %h4
   This user has attended #{pluralize(@user.attendances.joins(:lesson).where(confirmed: true).where("lessons.end_time < (?)", Time.now).count, "lesson")}
 
+- if @user.user_badges.any?
+  %h5 Badges
+  %ul
+    - @user.badges.sort_by(&:display_name).each do |badge|
+      %li= badge.display_name
+
   - if @user.homepage.present?
     %p
       %b Homepage:
@@ -27,7 +33,7 @@
   %p
     %b Base School:
     = @user.school.name
-    
+
   %p
     %b Homepage:
     = @user.homepage

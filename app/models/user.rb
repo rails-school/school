@@ -14,10 +14,11 @@ class User < ActiveRecord::Base
 
   has_many :attendances
   has_many :user_answers
+  has_many :user_badges
   #has_many :answers
   has_many :lessons, :through => :attendances
   belongs_to :school
-  
+
   before_save :generate_unsubscribe_token, :canonicalize_homepage
   validates_uniqueness_of :email
 
@@ -48,8 +49,14 @@ class User < ActiveRecord::Base
       Poll.first
     end
   end
-  
+
   def rsvp_for(lesson)
     attendances.create(lesson_id: lesson.id) unless lesson.teacher == self
+  end
+
+  def badges
+    user_badges.map { |user_badge|
+      Badge.find_by_badge_id(user_badge.badge_id).new
+    }
   end
 end
