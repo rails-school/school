@@ -1,6 +1,7 @@
 class Badge::Teacher
-  BADGE_ID = 1
-  SLUG = DISPLAY_NAME = "Teacher"
+  BADGE_ID = 2
+  DISPLAY_NAME = "Teacher"
+  SLUG = "teacher"
 
   include Badge
 
