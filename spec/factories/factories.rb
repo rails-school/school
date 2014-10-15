@@ -7,7 +7,7 @@ FactoryGirl.define do
     sequence(:email) { |i| "user_#{i}@example.com"}
     u.password               "draft1"
     u.password_confirmation  "draft1"
-    u.subscribe               true
+    u.subscribe_lesson_notifications   true
     u.admin                   false
     school
   end

@@ -217,7 +217,8 @@ feature %q{
 
   background do
     @user = FactoryGirl.create(:user)
-    @admin = FactoryGirl.create(:admin, :subscribe => false)
+    @admin = FactoryGirl.create(:admin,
+                                subscribe_lesson_notifications: false)
     @lesson = FactoryGirl.create(:lesson)
     @user.school = @lesson.venue.school; @user.save!
     LessonTweeter.should_receive(:new).with(@lesson, @admin).and_call_original
