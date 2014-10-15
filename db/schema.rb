@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014231313) do
+ActiveRecord::Schema.define(version: 20141015004407) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(version: 20141014231313) do
     t.string   "github_username"
     t.integer  "school_id"
     t.datetime "last_badges_checked_at"
+    t.boolean  "subscribe_badge_notifications",  default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

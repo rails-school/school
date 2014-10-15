@@ -17,8 +17,8 @@
     Best regards,
     %br
     Rails School,
-    %a{:href =>"http://www.railsschool.org"}www.railsschool.org
+    = link_to root_url, root_url
 
     - if @user.unsubscribe_token.present?
       %p
-        %a{:href => unsubscribe_path(:code => @user.unsubscribe_token, :only_path => false)} Unsubscribe immediately
+        = link_to "Unsubscribe immediately", badge_unsubscribe_path(code: @user.unsubscribe_token, only_path: false)

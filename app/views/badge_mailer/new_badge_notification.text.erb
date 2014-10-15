@@ -4,15 +4,15 @@
 
 <%= @badge.description %>
 
-<%= @lesson.notification_bonus_message %>
+<%= @badge.notification_bonus_message %>
 
 Visit your profile to see all your badges: <%= url_for(@user) %>
 
 May The Force Be With You!
 
 Best regards,
-Rails School, http://www.railsschool.org
+Rails School, <%= root_url %>
 
 <% if @user.unsubscribe_token.present? %>
-Unsubscribe link here: <%= unsubscribe_path(:code => @user.unsubscribe_token, :only_path => false) %>
+Unsubscribe link here: <%= badge_unsubscribe_path(code: @user.unsubscribe_token, only_path: false) %>
 <% end %>

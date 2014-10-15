@@ -13,17 +13,22 @@ feature %q{
   end
 
   scenario "Edit my profile", :js => true do
+    @user.subscribe_lesson_notifications.should == true
+    @user.subscribe_badge_notifications.should == true
+
     click_link "Stewie"
     click_link "Edit"
     within ".center-column" do
       fill_in "user[email]", :with => "stewie@example.com"
       fill_in "user[homepage]", :with => "example.com"
       uncheck "user[subscribe_lesson_notifications]"
+      uncheck "user[subscribe_badge_notifications]"
       click_button "Save"
     end
     page.should have_content "User was successfully updated."
     @user.reload.email.should == "stewie@example.com"
     @user.homepage.should == "http://example.com"
     @user.subscribe_lesson_notifications.should == false
+    @user.subscribe_badge_notifications.should == false
   end
 end

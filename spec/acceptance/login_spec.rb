@@ -70,7 +70,7 @@ feature %q{
 
   scenario "unsubscribe" do
     @user.subscribe_lesson_notifications.should == true
-    visit "/unsubscribe/#{@user.unsubscribe_token}"
+    visit lesson_unsubscribe_path(code: @user.unsubscribe_token)
     page.should have_content("unsubscribed")
     @user.reload.subscribe_lesson_notifications.should == false
   end

@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :hide_last_name, :homepage, :github_username,
-                  :school_id, :subscribe_lesson_notifications
+                  :school_id, :subscribe_lesson_notifications,
+                  :subscribe_badge_notifications
 
   has_many :attendances
   has_many :user_answers

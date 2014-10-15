@@ -16,7 +16,7 @@ feature %q{
   scenario "Sending notification email" do
     expect{NotificationMailer.lesson_notification(
       @lesson.id, @teacher.id, @attendee.id
-    ).deliver}.to change{ActionMailer::Base.deliveries.count}.by(1)    
+    ).deliver}.to change{ActionMailer::Base.deliveries.count}.by(1)
     email = ActionMailer::Base.deliveries.last
     email.attachments.count.should == 1
     email.attachments.first.body.include?(Rails.application.routes.default_url_options[:host]).should == true
