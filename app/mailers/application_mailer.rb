@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "team@railsschool.org"
+  default from: "Rails School <team@railsschool.org>"
 
   private
   def format_email_field(user)

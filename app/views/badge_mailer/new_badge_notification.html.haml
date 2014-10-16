@@ -9,8 +9,11 @@
       = @badge.display_name
     :markdown
       #{@badge.description}
-    :markdown
+
       #{@badge.notification_bonus_message}
+    %p
+      = link_to "Visit your profile", user_path(@user, only_path: false)
+      to see all your badges.
     %p
       May The Force Be With You!
     %br

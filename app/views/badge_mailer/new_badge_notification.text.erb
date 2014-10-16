@@ -1,12 +1,12 @@
- Congratulations, <%= @user.name %>! You have been awarded a new badge:
+Congratulations, <%= @user.name %>! You have been awarded a new badge:
 
-<%= @badge.display_name %>
+"<%= @badge.display_name %>"
 
 <%= @badge.description %>
 
 <%= @badge.notification_bonus_message %>
 
-Visit your profile to see all your badges: <%= url_for(@user) %>
+Visit your profile to see all your badges: <%= user_path(@user, only_path: false) %>
 
 May The Force Be With You!
 

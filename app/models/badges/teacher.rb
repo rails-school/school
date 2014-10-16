@@ -6,15 +6,11 @@ class Badge::Teacher
   include Badge
 
   def description
-<<EOF
-Given to users that have taught a lesson.
-EOF
+    "Given to users that have taught a lesson."
   end
 
   def notification_bonus_message
-<<EOF
-Welcome to the faculty :)
-EOF
+    "Welcome to the faculty :)"
   end
 
   def self.allocate_to_user?(user)
