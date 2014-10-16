@@ -62,5 +62,5 @@ end
 # Need to load all the sources now in case we want to do anything with
 # Badge.included_classes
 Dir[Rails.root + 'app/models/badges/*.rb'].each do |path|
-  load path
+  require path
 end
