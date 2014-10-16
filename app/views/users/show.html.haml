@@ -1,5 +1,3 @@
-%p#notice= notice
-
 %h2= format_user_name(@user)
 
 %h4
@@ -47,7 +45,7 @@
 
   %p
     %b Subscribe to lesson announcement emails:
-    = @user.subscribe
+    = @user.subscribe_lesson_notifications
 
   %p
     %b Last name hidden (in Attendance):

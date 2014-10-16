@@ -8,6 +8,12 @@ class BadgeAllocator
       unless user_badge_ids.include?(badge.id)
         if badge.allocate_to_user?(user)
           UserBadge.create(badge_id: badge.id, user_id: user.id)
+          if user.subscribe_badge_notifications?
+            # TODO limit badge notifications to once in a certain interval
+            BadgeMailer.new_badge_notification(
+              badge.id, user.id
+            ).deliver
+          end
         end
       end
     end

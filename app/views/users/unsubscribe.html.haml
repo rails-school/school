@@ -1,0 +1,11 @@
+%h1 Success!
+
+%p
+  You have been successfully unsubscribed from new #{params[:notification_type]} notifications.
+
+%p
+  You may always review and update your notification settings by
+  = link_to "editing your profile", edit_user_path(@user)
+
+%p
+  Thank you for all the good you have, cheers and astalavista.

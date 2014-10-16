@@ -1,0 +1,18 @@
+Congratulations, <%= @user.name %>! You have been awarded a new badge:
+
+"<%= @badge.display_name %>"
+
+<%= @badge.description %>
+
+<%= @badge.notification_bonus_message %>
+
+Visit your profile to see all your badges: <%= user_path(@user, only_path: false) %>
+
+May The Force Be With You!
+
+Best regards,
+Rails School, <%= root_url %>
+
+<% if @user.unsubscribe_token.present? %>
+Unsubscribe link here: <%= badge_unsubscribe_path(code: @user.unsubscribe_token, only_path: false) %>
+<% end %>

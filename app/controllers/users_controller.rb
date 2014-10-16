@@ -10,18 +10,23 @@ class UsersController < ApplicationController
   # GET /unsubscribe/:code
   def unsubscribe
     code = params[:code]
-    user = User.find_by_unsubscribe_token(code)
-    user.subscribe = false
-    user.save!
+    @user = User.find_by_unsubscribe_token(code)
+    case params[:notification_type]
+    when "lesson"
+      @user.subscribe_lesson_notifications = false
+    when "badge"
+      @user.subscribe_badge_notifications = false
+    end
 
-    render text: "you have been successfully unsubscribed from RailsSchool notifications. Thank you for all the good you have, cheers and astalavista."
+    @user.save!
   end
 
   # POST /notify_subscribers/1
   def notify_subscribers
     lesson = Lesson.find(params[:id])
     authorize! :notify, lesson
-    User.where(subscribe: true, school: lesson.venue.school).each do |u|
+    User.where(subscribe_lesson_notifications: true,
+               school: lesson.venue.school).each do |u|
       NotificationMailer.delay.lesson_notification(lesson.id, u.id,
                                                    current_user.id)
     end
@@ -56,7 +61,7 @@ class UsersController < ApplicationController
     end
     user = User.find_by_email(params[:email])
     if user
-      user.subscribe = false
+      user.subscribe_lesson_notifications = false
       user.save
     end
     head :status => 200 # sendgrid demands a 200

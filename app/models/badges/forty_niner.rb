@@ -6,8 +6,14 @@ class Badge::FortyNiner
   include Badge
 
   def description
-<<EOF
+<<EOF.strip
 Given to users that attended one of the first 16 lessons in San Francisco.
+EOF
+  end
+
+  def notification_bonus_message
+<<EOF.strip
+Thank you for your critical role getting Rails School San Francisco off the ground.
 EOF
   end
 

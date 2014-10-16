@@ -15,15 +15,5 @@
     %p
       RSVP here:
       %a{:href => lesson_path(@lesson, :only_path => false)}= @lesson.title
-    %br
-    %p
-      May The Force Be With You!
-    %br
-    Best regards,
-    %br
-    Rails School,
-    %a{:href =>"http://www.railsschool.org"}www.railsschool.org
 
-    - if @user.unsubscribe_token.present?
-      %p
-        %a{:href => unsubscribe_path(:code => @user.unsubscribe_token, :only_path => false)} Unsubscribe immediately
+    = render "footer"

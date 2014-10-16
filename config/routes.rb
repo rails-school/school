@@ -23,7 +23,11 @@ Rs::Application.routes.draw do
     resources :notifications, only: [:new, :create]
   end
 
-  get "unsubscribe/:code" => "users#unsubscribe", :as => "unsubscribe"
+  %w{lesson badge}.each do |notification_type|
+    get "#{notification_type}_unsubscribe/:code" => "users#unsubscribe",
+      as: "#{notification_type}_unsubscribe",
+      defaults: {notification_type: notification_type}
+  end
   get "about" => "home#about"
   get "calendar" => "home#calendar"
   get "contact" => "home#contact"
