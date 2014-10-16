@@ -34,12 +34,6 @@
     %input{id: "lesson_end_time", name: "lesson[end_time]", type: "time",
      value: @lesson.end_time ? @lesson.end_time.strftime("%H:%M") : "21:00"}
   .field
-    = f.label :course_id
-    = f.number_field :course_id
-  .field
-    = f.label :level_id
-    =select("lesson", "level_id", Level.all.collect {|l| [ l.title, l.id ] }, {include_blank: 'None'})
-  .field
     = f.label :venue_id
     =select("lesson", "venue_id", @venues.collect {|v| [ v.name, v.id ]})
   .field

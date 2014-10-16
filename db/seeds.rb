@@ -37,7 +37,6 @@ end
 puts "Creating lesson Class: topic is BLOGS"
 lesson = Lesson.find_or_create_by_title("Class: topic is BLOGS") do |lesson|
   lesson.title = "Class: topic is BLOGS"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-05-08 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -53,7 +52,6 @@ end
 puts "Creating lesson Demo Day!"
 lesson = Lesson.find_or_create_by_title("Demo Day!") do |lesson|
   lesson.title = "Demo Day!"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-05-15 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -66,7 +64,6 @@ end
 puts "Creating lesson  Authentication with the Devise gem"
 lesson = Lesson.find_or_create_by_title(" Authentication with the Devise gem") do |lesson|
   lesson.title = " Authentication with the Devise gem"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-05-22 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -80,7 +77,6 @@ end
 puts "Creating lesson Rails class"
 lesson = Lesson.find_or_create_by_title("Rails class") do |lesson|
   lesson.title = "Rails class"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-05-29 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -125,7 +121,6 @@ end
 puts "Creating lesson Ajax in Rails"
 lesson = Lesson.find_or_create_by_title("Ajax in Rails") do |lesson|
   lesson.title = "Ajax in Rails"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-06-05 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -141,7 +136,6 @@ end
 puts "Creating lesson Dissecting the request lifecycle with pry"
 lesson = Lesson.find_or_create_by_title("Dissecting the request lifecycle with pry") do |lesson|
   lesson.title = "Dissecting the request lifecycle with pry"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-06-12 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -161,7 +155,6 @@ end
 puts "Creating lesson Test-Driven-Development and Sending Emails"
 lesson = Lesson.find_or_create_by_title("Test-Driven-Development and Sending Emails") do |lesson|
   lesson.title = "Test-Driven-Development and Sending Emails"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-06-19 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -183,7 +176,6 @@ end
 puts "Creating lesson Layouts and Rendering in Rails"
 lesson = Lesson.find_or_create_by_title("Layouts and Rendering in Rails") do |lesson|
   lesson.title = "Layouts and Rendering in Rails"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-06-26 18:59:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -200,7 +192,6 @@ end
 puts "Creating lesson Playing with APIs"
 lesson = Lesson.find_or_create_by_title("Playing with APIs") do |lesson|
   lesson.title = "Playing with APIs"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-07-03 19:01:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -212,7 +203,6 @@ end
 puts "Creating lesson Continuous Integration with Travis"
 lesson = Lesson.find_or_create_by_title("Continuous Integration with Travis") do |lesson|
   lesson.title = "Continuous Integration with Travis"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-07-10 19:01:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -229,7 +219,6 @@ end
 puts "Creating lesson Catch-up Day"
 lesson = Lesson.find_or_create_by_title("Catch-up Day") do |lesson|
   lesson.title = "Catch-up Day"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-07-17 07:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -249,7 +238,6 @@ end
 puts "Creating lesson Fun with the Stripe payment API"
 lesson = Lesson.find_or_create_by_title("Fun with the Stripe payment API") do |lesson|
   lesson.title = "Fun with the Stripe payment API"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-07-24 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -272,7 +260,6 @@ end
 puts "Creating lesson Rails' Asset Pipeline"
 lesson = Lesson.find_or_create_by_title("Rails' Asset Pipeline") do |lesson|
   lesson.title = "Rails' Asset Pipeline"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-07-31 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -288,7 +275,6 @@ end
 puts "Creating lesson Ruby, API's, and Gems"
 lesson = Lesson.find_or_create_by_title("Ruby, API's, and Gems") do |lesson|
   lesson.title = "Ruby, API's, and Gems"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-08-07 19:01:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -302,7 +288,6 @@ end
 puts "Creating lesson Twitter API"
 lesson = Lesson.find_or_create_by_title("Twitter API") do |lesson|
   lesson.title = "Twitter API"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-08-14 19:03:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -318,7 +303,6 @@ end
 puts "Creating lesson ActiveRecord"
 lesson = Lesson.find_or_create_by_title("ActiveRecord") do |lesson|
   lesson.title = "ActiveRecord"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-08-21 07:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -337,7 +321,6 @@ end
 puts "Creating lesson Self-posting Novelty Twitter Accounts"
 lesson = Lesson.find_or_create_by_title("Self-posting Novelty Twitter Accounts") do |lesson|
   lesson.title = "Self-posting Novelty Twitter Accounts"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-08-28 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -358,7 +341,6 @@ end
 puts "Creating lesson Scraping and Parsing the Web"
 lesson = Lesson.find_or_create_by_title("Scraping and Parsing the Web") do |lesson|
   lesson.title = "Scraping and Parsing the Web"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-09-11 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -378,7 +360,6 @@ end
 puts "Creating lesson Hack with Foursquare API"
 lesson = Lesson.find_or_create_by_title("Hack with Foursquare API") do |lesson|
   lesson.title = "Hack with Foursquare API"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-09-04 19:01:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -399,7 +380,6 @@ end
 puts "Creating lesson Roll-your-own Chat App with the Goliath web server"
 lesson = Lesson.find_or_create_by_title("Roll-your-own Chat App with the Goliath web server") do |lesson|
   lesson.title = "Roll-your-own Chat App with the Goliath web server"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-09-18 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -415,7 +395,6 @@ end
 puts "Creating lesson Catch-up Day"
 lesson = Lesson.find_or_create_by_title("Catch-up Day") do |lesson|
   lesson.title = "Catch-up Day"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-09-25 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -435,7 +414,6 @@ end
 puts "Creating lesson Etherpad Bots"
 lesson = Lesson.find_or_create_by_title("Etherpad Bots") do |lesson|
   lesson.title = "Etherpad Bots"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-10-02 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -451,7 +429,6 @@ end
 puts "Creating lesson Sending email using background workers"
 lesson = Lesson.find_or_create_by_title("Sending email using background workers") do |lesson|
   lesson.title = "Sending email using background workers"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-10-09 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -469,7 +446,6 @@ end
 puts "Creating lesson How to prepare your Rails app for production"
 lesson = Lesson.find_or_create_by_title("How to prepare your Rails app for production") do |lesson|
   lesson.title = "How to prepare your Rails app for production"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-10-16 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -489,7 +465,6 @@ end
 puts "Creating lesson Calculating π with Object-Oriented Ruby and Test-Driven Development"
 lesson = Lesson.find_or_create_by_title("Calculating π with Object-Oriented Ruby and Test-Driven Development") do |lesson|
   lesson.title = "Calculating π with Object-Oriented Ruby and Test-Driven Development"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-10-23 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -507,7 +482,6 @@ end
 puts "Creating lesson Image Uploads in Rails with TDD"
 lesson = Lesson.find_or_create_by_title("Image Uploads in Rails with TDD") do |lesson|
   lesson.title = "Image Uploads in Rails with TDD"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-10-30 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -519,7 +493,6 @@ end
 puts "Creating lesson Refactoring existing code"
 lesson = Lesson.find_or_create_by_title("Refactoring existing code") do |lesson|
   lesson.title = "Refactoring existing code"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2013-11-06 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
@@ -531,7 +504,6 @@ end
 puts "Creating lesson Rails and Mixpanel"
 lesson = Lesson.find_or_create_by_title("Rails and Mixpanel") do |lesson|
   lesson.title = "Rails and Mixpanel"
-  lesson.course_id = "1"
   lesson.start_time = Time.parse("2015-04-14 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
   lesson.venue_id = 1
