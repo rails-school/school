@@ -1,4 +1,4 @@
 = link_to user_path(user) do
   %li
-    =image_tag Gravatar.new(user.email).image_url(:size => 40), class: "avatar"
+    =image_tag Gravatar.new(user.email).image_url(size: 40, secure: true), class: "avatar"
     %span= format_user_name(user)
