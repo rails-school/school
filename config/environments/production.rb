@@ -67,9 +67,9 @@ Rs::Application.configure do
     config.action_controller.asset_host = ENV['CLOUDFRONT_HOST']
   elsif ENV['FOG_DIRECTORY']
     if ENV['FOG_REGION']
-      host = "http://#{ENV['FOG_DIRECTORY']}.s3-#{ENV['FOG_REGION']}.amazonaws.com"
+      host = "#{ENV['FOG_DIRECTORY']}.s3-#{ENV['FOG_REGION']}.amazonaws.com"
     else
-      host = "http://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
+      host = "#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
     end
     config.action_controller.asset_host = host
   end

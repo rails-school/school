@@ -4,7 +4,7 @@ School
 Demo
 ----
 
-You can find a live School instance at [Railsschool.org](http://www.railsschool.org).
+You can find a live School instance at [Railsschool.org](//www.railsschool.org).
 
 Contribute
 ----

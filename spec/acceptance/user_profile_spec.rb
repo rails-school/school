@@ -38,7 +38,7 @@ feature %q{
     page.should have_content "attended 2 lessons"
     page.should have_link "github.com/example"
     page.all("a[href*='github.com/example']").count.should == 1
-    page.should have_css("iframe[src='http://githubbadge.appspot.com/#{myself.github_username}']")
+    page.should have_css("iframe[src='//githubbadge.appspot.com/#{myself.github_username}']")
     myself.attendances.each do |attendance|
       # for some reason `have_link` doesn't find the links :/
       page.all("a[href='#{lesson_path(attendance.lesson)}']").count.should == 1
@@ -46,7 +46,7 @@ feature %q{
     click_link "Logout"
     visit user_path(myself)
     page.all("a[href*='github.com/example']").count.should == 0
-    page.should have_css("iframe[src='http://githubbadge.appspot.com/#{myself.github_username}']")
+    page.should have_css("iframe[src='//githubbadge.appspot.com/#{myself.github_username}']")
     Timecop.return
   end
 end
