@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015004407) do
+ActiveRecord::Schema.define(version: 20141016180906) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -31,21 +31,9 @@ ActiveRecord::Schema.define(version: 20141015004407) do
 
   add_index "attendances", ["user_id", "lesson_id"], name: "index_attendances_on_user_id_and_lesson_id", unique: true
 
-  create_table "internals", force: true do |t|
-    t.string   "about"
-    t.string   "contact"
-    t.string   "calendar"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "lessons", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "address"
-    t.string   "city"
-    t.integer  "course_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
@@ -54,20 +42,12 @@ ActiveRecord::Schema.define(version: 20141015004407) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "notification_sent_at"
-    t.integer  "level_id"
     t.string   "tweet_message",        limit: 140
     t.integer  "teacher_id"
     t.string   "image_social"
   end
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
-
-  create_table "levels", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "polls", force: true do |t|
     t.text     "question"
