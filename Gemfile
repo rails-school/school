@@ -58,6 +58,7 @@ gem 'zurb-foundation', '3.0.9'
 gem 'modular-scale', '1.0.6'
 
 gem 'jquery-rails'
+gem 'chronic'
 
 group :test do
   gem "cucumber-rails", :require => false
