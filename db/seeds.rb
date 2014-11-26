@@ -1,19 +1,19 @@
 # encoding: UTF-8
 
 puts "Creating School - San Francisco"
-school = School.find_or_create_by_name("San Francisco") do |school|
+school = School.where(name: "San Francisco").first_or_create do |school|
   school.slug = 'sf'
   school.timezone = 'Pacific Time (US & Canada)'
 end
 
 puts "Creating School - Charlottesville, VA"
-school = School.find_or_create_by_name("Charlottesville, VA") do |school|
+school = School.where(name: "Charlottesville, VA").first_or_create do |school|
   school.slug = 'cville'
   school.timezone = 'Eastern Time (US & Canada)'
 end
 
 puts "Creating Venue - Noisebridge"
-venue = Venue.find_or_create_by_name("Noisebridge") do |venue|
+venue = Venue.where(name: "Noisebridge").first_or_create do |venue|
   venue.address = '2169 Mission Street'
   venue.city = 'San Francisco'
   venue.state = 'California'
@@ -24,7 +24,7 @@ venue = Venue.find_or_create_by_name("Noisebridge") do |venue|
 end
 
 puts "Creating Venue - HackCville"
-venue = Venue.find_or_create_by_name("Hack Cville") do |venue|
+venue = Venue.where(name: "Hack Cville").first_or_create do |venue|
   venue.address = '9 Elliewood Avenue'
   venue.city = 'Charlottesville'
   venue.state = 'Virginia'
@@ -35,7 +35,7 @@ end
 
 
 puts "Creating lesson Class: topic is BLOGS"
-lesson = Lesson.find_or_create_by_title("Class: topic is BLOGS") do |lesson|
+lesson = Lesson.where(title: "Class: topic is BLOGS").first_or_create do |lesson|
   lesson.title = "Class: topic is BLOGS"
   lesson.start_time = Time.parse("2013-05-08 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -50,7 +50,7 @@ Notes:
 EOF
 end
 puts "Creating lesson Demo Day!"
-lesson = Lesson.find_or_create_by_title("Demo Day!") do |lesson|
+lesson = Lesson.where(title: "Demo Day!").first_or_create do |lesson|
   lesson.title = "Demo Day!"
   lesson.start_time = Time.parse("2013-05-15 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -62,7 +62,7 @@ Then we'll break up into two groups, one for beginners and one for more experien
 EOF
 end
 puts "Creating lesson  Authentication with the Devise gem"
-lesson = Lesson.find_or_create_by_title(" Authentication with the Devise gem") do |lesson|
+lesson = Lesson.where(title: " Authentication with the Devise gem").first_or_create do |lesson|
   lesson.title = " Authentication with the Devise gem"
   lesson.start_time = Time.parse("2013-05-22 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -75,7 +75,7 @@ We will also have a beginners' group for folks needing help getting Rails set up
 EOF
 end
 puts "Creating lesson Rails class"
-lesson = Lesson.find_or_create_by_title("Rails class") do |lesson|
+lesson = Lesson.where(title: "Rails class").first_or_create do |lesson|
   lesson.title = "Rails class"
   lesson.start_time = Time.parse("2013-05-29 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -119,7 +119,7 @@ Vision statement?
 EOF
 end
 puts "Creating lesson Ajax in Rails"
-lesson = Lesson.find_or_create_by_title("Ajax in Rails") do |lesson|
+lesson = Lesson.where(title: "Ajax in Rails").first_or_create do |lesson|
   lesson.title = "Ajax in Rails"
   lesson.start_time = Time.parse("2013-06-05 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -134,7 +134,7 @@ And RSVP here, please!
 EOF
 end
 puts "Creating lesson Dissecting the request lifecycle with pry"
-lesson = Lesson.find_or_create_by_title("Dissecting the request lifecycle with pry") do |lesson|
+lesson = Lesson.where(title: "Dissecting the request lifecycle with pry").first_or_create do |lesson|
   lesson.title = "Dissecting the request lifecycle with pry"
   lesson.start_time = Time.parse("2013-06-12 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -153,7 +153,7 @@ http://railscasts.com/episodes/280-pry-with-rails
 EOF
 end
 puts "Creating lesson Test-Driven-Development and Sending Emails"
-lesson = Lesson.find_or_create_by_title("Test-Driven-Development and Sending Emails") do |lesson|
+lesson = Lesson.where(title: "Test-Driven-Development and Sending Emails").first_or_create do |lesson|
   lesson.title = "Test-Driven-Development and Sending Emails"
   lesson.start_time = Time.parse("2013-06-19 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -174,7 +174,7 @@ Homework: First make sure you've completed <a href="http://guides.rubyonrails.or
 EOF
 end
 puts "Creating lesson Layouts and Rendering in Rails"
-lesson = Lesson.find_or_create_by_title("Layouts and Rendering in Rails") do |lesson|
+lesson = Lesson.where(title: "Layouts and Rendering in Rails").first_or_create do |lesson|
   lesson.title = "Layouts and Rendering in Rails"
   lesson.start_time = Time.parse("2013-06-26 18:59:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -190,7 +190,7 @@ Use nested layouts (sub-templates)
 EOF
 end
 puts "Creating lesson Playing with APIs"
-lesson = Lesson.find_or_create_by_title("Playing with APIs") do |lesson|
+lesson = Lesson.where(title: "Playing with APIs").first_or_create do |lesson|
   lesson.title = "Playing with APIs"
   lesson.start_time = Time.parse("2013-07-03 19:01:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -201,7 +201,7 @@ In this class we will use Twitter's API (https://dev.twitter.com/docs/api) and i
 EOF
 end
 puts "Creating lesson Continuous Integration with Travis"
-lesson = Lesson.find_or_create_by_title("Continuous Integration with Travis") do |lesson|
+lesson = Lesson.where(title: "Continuous Integration with Travis").first_or_create do |lesson|
   lesson.title = "Continuous Integration with Travis"
   lesson.start_time = Time.parse("2013-07-10 19:01:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -217,7 +217,7 @@ Suggested reading:
 EOF
 end
 puts "Creating lesson Catch-up Day"
-lesson = Lesson.find_or_create_by_title("Catch-up Day") do |lesson|
+lesson = Lesson.where(title: "Catch-up Day").first_or_create do |lesson|
   lesson.title = "Catch-up Day"
   lesson.start_time = Time.parse("2013-07-17 07:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -236,7 +236,7 @@ Experienced students please consider coming out to help troubleshoot.  This clas
 EOF
 end
 puts "Creating lesson Fun with the Stripe payment API"
-lesson = Lesson.find_or_create_by_title("Fun with the Stripe payment API") do |lesson|
+lesson = Lesson.where(title: "Fun with the Stripe payment API").first_or_create do |lesson|
   lesson.title = "Fun with the Stripe payment API"
   lesson.start_time = Time.parse("2013-07-24 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -258,7 +258,7 @@ How I Explained REST to My Wife by Ryan Tomayko
 EOF
 end
 puts "Creating lesson Rails' Asset Pipeline"
-lesson = Lesson.find_or_create_by_title("Rails' Asset Pipeline") do |lesson|
+lesson = Lesson.where(title: "Rails' Asset Pipeline").first_or_create do |lesson|
   lesson.title = "Rails' Asset Pipeline"
   lesson.start_time = Time.parse("2013-07-31 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -273,7 +273,7 @@ Required viewing
 EOF
 end
 puts "Creating lesson Ruby, API's, and Gems"
-lesson = Lesson.find_or_create_by_title("Ruby, API's, and Gems") do |lesson|
+lesson = Lesson.where(title: "Ruby, API's, and Gems").first_or_create do |lesson|
   lesson.title = "Ruby, API's, and Gems"
   lesson.start_time = Time.parse("2013-08-07 19:01:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -286,7 +286,7 @@ Highly Recommended Reading
 EOF
 end
 puts "Creating lesson Twitter API"
-lesson = Lesson.find_or_create_by_title("Twitter API") do |lesson|
+lesson = Lesson.where(title: "Twitter API").first_or_create do |lesson|
   lesson.title = "Twitter API"
   lesson.start_time = Time.parse("2013-08-14 19:03:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -301,7 +301,7 @@ Twitter API methods: <a href="https://dev.twitter.com/docs/api">Twitter API meth
 EOF
 end
 puts "Creating lesson ActiveRecord"
-lesson = Lesson.find_or_create_by_title("ActiveRecord") do |lesson|
+lesson = Lesson.where(title: "ActiveRecord").first_or_create do |lesson|
   lesson.title = "ActiveRecord"
   lesson.start_time = Time.parse("2013-08-21 07:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -319,7 +319,7 @@ http://guides.rubyonrails.org/active_record_validations_callbacks.html
 EOF
 end
 puts "Creating lesson Self-posting Novelty Twitter Accounts"
-lesson = Lesson.find_or_create_by_title("Self-posting Novelty Twitter Accounts") do |lesson|
+lesson = Lesson.where(title: "Self-posting Novelty Twitter Accounts").first_or_create do |lesson|
   lesson.title = "Self-posting Novelty Twitter Accounts"
   lesson.start_time = Time.parse("2013-08-28 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -339,7 +339,7 @@ POOP!
 EOF
 end
 puts "Creating lesson Scraping and Parsing the Web"
-lesson = Lesson.find_or_create_by_title("Scraping and Parsing the Web") do |lesson|
+lesson = Lesson.where(title: "Scraping and Parsing the Web").first_or_create do |lesson|
   lesson.title = "Scraping and Parsing the Web"
   lesson.start_time = Time.parse("2013-09-11 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -358,7 +358,7 @@ This class is Ruby-only.  New students that are Ruby newbies, please complete <a
 EOF
 end
 puts "Creating lesson Hack with Foursquare API"
-lesson = Lesson.find_or_create_by_title("Hack with Foursquare API") do |lesson|
+lesson = Lesson.where(title: "Hack with Foursquare API").first_or_create do |lesson|
   lesson.title = "Hack with Foursquare API"
   lesson.start_time = Time.parse("2013-09-04 19:01:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -378,7 +378,7 @@ https://gist.github.com/3630081
 EOF
 end
 puts "Creating lesson Roll-your-own Chat App with the Goliath web server"
-lesson = Lesson.find_or_create_by_title("Roll-your-own Chat App with the Goliath web server") do |lesson|
+lesson = Lesson.where(title: "Roll-your-own Chat App with the Goliath web server").first_or_create do |lesson|
   lesson.title = "Roll-your-own Chat App with the Goliath web server"
   lesson.start_time = Time.parse("2013-09-18 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -393,7 +393,7 @@ However, please complete this small tutorial on EventMachine beforehand: <a href
 EOF
 end
 puts "Creating lesson Catch-up Day"
-lesson = Lesson.find_or_create_by_title("Catch-up Day") do |lesson|
+lesson = Lesson.where(title: "Catch-up Day").first_or_create do |lesson|
   lesson.title = "Catch-up Day"
   lesson.start_time = Time.parse("2013-09-25 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -412,7 +412,7 @@ Experienced students please consider coming out to help troubleshoot. This class
 EOF
 end
 puts "Creating lesson Etherpad Bots"
-lesson = Lesson.find_or_create_by_title("Etherpad Bots") do |lesson|
+lesson = Lesson.where(title: "Etherpad Bots").first_or_create do |lesson|
   lesson.title = "Etherpad Bots"
   lesson.start_time = Time.parse("2013-10-02 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -427,7 +427,7 @@ We will target an Etherpad-Lite instance using Ruby.  Visit <a href="https://git
 EOF
 end
 puts "Creating lesson Sending email using background workers"
-lesson = Lesson.find_or_create_by_title("Sending email using background workers") do |lesson|
+lesson = Lesson.where(title: "Sending email using background workers").first_or_create do |lesson|
   lesson.title = "Sending email using background workers"
   lesson.start_time = Time.parse("2013-10-09 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -444,7 +444,7 @@ Delayed Job: https://github.com/collectiveidea/delayed_job
 EOF
 end
 puts "Creating lesson How to prepare your Rails app for production"
-lesson = Lesson.find_or_create_by_title("How to prepare your Rails app for production") do |lesson|
+lesson = Lesson.where(title: "How to prepare your Rails app for production").first_or_create do |lesson|
   lesson.title = "How to prepare your Rails app for production"
   lesson.start_time = Time.parse("2013-10-16 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -463,7 +463,7 @@ Recommended reading
 EOF
 end
 puts "Creating lesson Calculating π with Object-Oriented Ruby and Test-Driven Development"
-lesson = Lesson.find_or_create_by_title("Calculating π with Object-Oriented Ruby and Test-Driven Development") do |lesson|
+lesson = Lesson.where(title: "Calculating π with Object-Oriented Ruby and Test-Driven Development").first_or_create do |lesson|
   lesson.title = "Calculating π with Object-Oriented Ruby and Test-Driven Development"
   lesson.start_time = Time.parse("2013-10-23 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -480,7 +480,7 @@ Suggested Preparation
 EOF
 end
 puts "Creating lesson Image Uploads in Rails with TDD"
-lesson = Lesson.find_or_create_by_title("Image Uploads in Rails with TDD") do |lesson|
+lesson = Lesson.where(title: "Image Uploads in Rails with TDD").first_or_create do |lesson|
   lesson.title = "Image Uploads in Rails with TDD"
   lesson.start_time = Time.parse("2013-10-30 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -491,7 +491,7 @@ Please complete <a href="http://guides.rubyonrails.org/getting_started.html">htt
 EOF
 end
 puts "Creating lesson Refactoring existing code"
-lesson = Lesson.find_or_create_by_title("Refactoring existing code") do |lesson|
+lesson = Lesson.where(title: "Refactoring existing code").first_or_create do |lesson|
   lesson.title = "Refactoring existing code"
   lesson.start_time = Time.parse("2013-11-06 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
@@ -502,7 +502,7 @@ We're going to take a look at refactoring an existing Rails up. Learn how to imp
 EOF
 end
 puts "Creating lesson Rails and Mixpanel"
-lesson = Lesson.find_or_create_by_title("Rails and Mixpanel") do |lesson|
+lesson = Lesson.where(title: "Rails and Mixpanel").first_or_create do |lesson|
   lesson.title = "Rails and Mixpanel"
   lesson.start_time = Time.parse("2015-04-14 19:00:00 UTC")
   lesson.end_time = lesson.start_time + 2.hours
