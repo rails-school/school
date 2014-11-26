@@ -29,7 +29,7 @@ FactoryGirl.define do
     sequence(:title) { |i| "Lesson ##{i}" }
     l.description        "light@beer-is-good.com"
     l.start_time         Date.current + 1.day
-    l.end_time           Date.current + 1.day + 2.hours
+    l.end_time       { |ll| ll.start_time }
     venue
   end
 

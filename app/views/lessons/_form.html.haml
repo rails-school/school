@@ -22,7 +22,7 @@
     =f.label :date
     -# TODO replace this with date helper when upgrading to Rails 4
     %input{id: "lesson_date", name: "lesson[date]", type: "date",
-           value: @lesson.start_time ? @lesson.start_time.to_date.iso8601 : Date.current}
+           value: @lesson.start_time ? @lesson.start_time.to_date.iso8601 : current_school.next_available_date }
   .field
     =f.label :start_time
     -# TODO replace this with time helper when upgrading to Rails 4

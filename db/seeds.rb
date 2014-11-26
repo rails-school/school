@@ -4,6 +4,7 @@ puts "Creating School - San Francisco"
 school = School.where(name: "San Francisco").first_or_create do |school|
   school.slug = 'sf'
   school.timezone = 'Pacific Time (US & Canada)'
+  school.day_of_week = "tuesday"
 end
 
 puts "Creating School - Charlottesville, VA"
