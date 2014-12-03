@@ -6,9 +6,9 @@
 
 %h1= @title
 
+-if can? :create, :lesson
+  = link_to 'New Lesson', new_lesson_path
+
 =render "lessons/future_lessons", :lessons => @lessons
 
 %br
-
--if can? :create, :lesson
-  = link_to 'New Lesson', new_lesson_path
