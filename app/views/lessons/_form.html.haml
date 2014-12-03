@@ -17,7 +17,7 @@
     = f.text_area :summary
   .field
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, rows: "8"
   .field
     =f.label :date
     -# TODO replace this with date helper when upgrading to Rails 4
@@ -36,6 +36,7 @@
   .field
     = f.label :venue_id
     =select("lesson", "venue_id", @venues.collect {|v| [ v.name, v.id ]})
+  %br
   .field
     = f.label :slug
     = f.text_field :slug
