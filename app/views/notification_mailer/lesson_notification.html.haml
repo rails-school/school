@@ -14,7 +14,11 @@
           #{@lesson.description}
     - if @lesson.venue.present?
       %p
-        The class will take place at #{@lesson.venue.name}.
+        The class will take place at #{@lesson.venue.name}
+        -if @lesson.venue.comment.present?
+          = "in the " + @lesson.venue.comment + "."
+        -else
+          = "."
     %p
       %a{href: lesson_path(@lesson, only_path: false), style: "text-decoration: none; color: white; font-family: 'arial'; font-size: 14px;"}
         %div{style:"background-color: #2ba6cb; width: 100px; text-align: center; color: white; height: 30px; line-height: 30px; border-radius: 5px;"} RSVP HERE
