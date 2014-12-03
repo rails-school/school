@@ -4,7 +4,7 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     %h1
-      Hi, #{@user.name}! We added a new class at #{format_datetime(@lesson.start_time)}
+      Hi, #{@user.name}! We added a new class at #{format_datetime(@lesson.start_time)} covering:
     %h2
       = @lesson.title
     %p= @lesson.summary
@@ -12,6 +12,9 @@
       %p
         :markdown
           #{@lesson.description}
+    - if @lesson.venue.present?
+      %p
+        The class will take place at #{@lesson.venue.name}.
     %p
       %a{href: lesson_path(@lesson, only_path: false), style: "text-decoration: none; color: white; font-family: 'arial'; font-size: 14px;"}
         %div{style:"background-color: #2ba6cb; width: 100px; text-align: center; color: white; height: 30px; line-height: 30px; border-radius: 5px;"} RSVP HERE
