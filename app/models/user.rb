@@ -60,4 +60,8 @@ class User < ActiveRecord::Base
       Badge.find_by_badge_id(user_badge.badge_id).new
     }
   end
+
+  def lessons_taught
+    Lesson.where(teacher_id: self.id)
+  end
 end
