@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :user_badges
   #has_many :answers
   has_many :lessons, :through => :attendances
+  has_many :lessons_taught, class_name: "Lesson", foreign_key: :teacher_id
   belongs_to :school
 
   before_save :generate_unsubscribe_token, :canonicalize_homepage
@@ -59,9 +60,5 @@ class User < ActiveRecord::Base
     user_badges.map { |user_badge|
       Badge.find_by_badge_id(user_badge.badge_id).new
     }
-  end
-
-  def lessons_taught
-    Lesson.where(teacher_id: self.id)
   end
 end
