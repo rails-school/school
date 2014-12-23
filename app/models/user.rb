@@ -25,7 +25,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   def generate_unsubscribe_token
-    unless encrypted_password.blank? # dummy users
+    # don't generate unsubscribe token for dummy users
+    #   (IE users with no encrypted password)
+    if unsubscribe_token.blank? && encrypted_password.present?
       self.unsubscribe_token = (0..15).map{(65+rand(26)).chr}.join
     end
   end
