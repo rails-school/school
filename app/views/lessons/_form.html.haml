@@ -19,6 +19,13 @@
     = f.label :description
     = f.text_area :description, rows: "8"
   .field
+    = f.label :codewars_challenge, "Codewars challenge slug (i.e. remove-duplicates)"
+    = f.text_field :codewars_challenge
+  .field
+    = f.label :codewars_challenge_language
+    = f.select :codewars_challenge_language, options_for_select(%w[ruby javascript coffeescript python haskell clojure java])
+  %br
+  .field
     =f.label :date
     -# TODO replace this with date helper when upgrading to Rails 4
     %input{id: "lesson_date", name: "lesson[date]", type: "date",

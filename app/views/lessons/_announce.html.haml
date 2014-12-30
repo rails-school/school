@@ -13,6 +13,9 @@
     .description
       :markdown
         #{lesson.description}
+    -if lesson.codewars_challenge.present?
+      Be sure to complete the following codewars cahllenge before class!
+      = link_to nil, "https://codewars.com/kata/#{@lesson.codewars_challenge}/train/#{@lesson.codewars_challenge_language}"
     %br
     %br
   .details

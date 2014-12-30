@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230215330) do
+ActiveRecord::Schema.define(version: 20141230222255) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -42,9 +42,11 @@ ActiveRecord::Schema.define(version: 20141230215330) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "notification_sent_at"
-    t.string   "tweet_message",        limit: 140
+    t.string   "tweet_message",               limit: 140
     t.integer  "teacher_id"
     t.string   "image_social"
+    t.string   "codewars_challenge"
+    t.string   "codewars_challenge_language"
   end
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true

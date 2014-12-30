@@ -1,5 +1,5 @@
 class Lesson < ActiveRecord::Base
-  attr_accessible :start_time, :end_time, :description, :title, :slug, :venue_id, :summary, :tweet_message, :image_social
+  attr_accessible :start_time, :end_time, :description, :title, :slug, :venue_id, :summary, :tweet_message, :image_social, :codewars_challenge, :codewars_challenge_language
 
   has_many :attendances
   has_many :users, :through => :attendances
