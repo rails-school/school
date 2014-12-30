@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124205308) do
+ActiveRecord::Schema.define(version: 20141230215330) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20141124205308) do
     t.string   "period",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "graph_type", null: false
   end
 
   create_table "schools", force: true do |t|
@@ -141,6 +142,7 @@ ActiveRecord::Schema.define(version: 20141124205308) do
     t.integer  "school_id"
     t.datetime "last_badges_checked_at"
     t.boolean  "subscribe_badge_notifications",  default: true
+    t.string   "codewars_username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

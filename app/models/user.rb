@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :hide_last_name, :homepage, :github_username,
                   :school_id, :subscribe_lesson_notifications,
-                  :subscribe_badge_notifications
+                  :subscribe_badge_notifications, :codewars_username
 
   has_many :attendances
   has_many :user_answers
