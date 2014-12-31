@@ -49,6 +49,7 @@ gem 'sass-rails',   '~> 4.0.0'
 # gem 'therubyracer', :platforms => :ruby
 gem "uglifier", '~> 2.1.1'
 
+gem 'httparty'
 
 #gem 'compass-rails', '1.0.3'
 

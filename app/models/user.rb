@@ -1,4 +1,5 @@
 require "addressable/uri"
+require 'httparty'
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -62,5 +63,14 @@ class User < ActiveRecord::Base
     user_badges.map { |user_badge|
       Badge.find_by_badge_id(user_badge.badge_id).new
     }
+  end
+
+  def codewars_completed
+    if codewars_username.present?
+      response = HTTParty.get("https://www.codewars.com/api/v1/users/#{codewars_username}/code-challenges/completed")
+      response['data'].count
+    else
+      0
+    end
   end
 end
