@@ -67,10 +67,27 @@ class User < ActiveRecord::Base
 
   def codewars_completed
     if codewars_username.present?
-      response = HTTParty.get("https://www.codewars.com/api/v1/users/#{codewars_username}/code-challenges/completed")
-      response['data'].count
+      @codewars ||= HTTParty.get("https://www.codewars.com/api/v1/users/#{codewars_username}/code-challenges/completed")['data']
+    end
+  end
+
+  def codewars_completed_count
+    if codewars_completed.present?
+      codewars_completed.count
     else
       0
     end
   end
+
+  def completed_codewar_for_lesson(lesson)
+    if codewars_completed.present?
+      codewars_completed.each do |codewar|
+        return true if codewar['slug']==lesson.codewars_challenge
+      end
+      false
+    else
+      false
+    end
+  end
+
 end

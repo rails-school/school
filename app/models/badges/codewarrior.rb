@@ -14,6 +14,6 @@ class Badge::Codewarrior
   end
 
   def self.allocate_to_user?(user)
-    user.codewars_completed >= 5
+    user.codewars_completed_count >= 5
   end
 end
