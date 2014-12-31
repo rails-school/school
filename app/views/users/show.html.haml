@@ -23,8 +23,6 @@
 - if @user.github_username.present?
   %p
     %iframe{frameborder: "0", src: "//githubbadge.appspot.com/#{@user.github_username}", style: "border: 0;height: 142px;width: 200px;overflow: hidden;"}
-
--# ToDo: Add a list of Codewars challenges that the user completed. Will do once a helper method for the Codewars curl reqeust is done.
     
 - if can? :manage, @user
   %h2 Details
