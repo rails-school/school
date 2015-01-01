@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230222255) do
+ActiveRecord::Schema.define(version: 20141231015925) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20141230222255) do
     t.string   "tweet_message",               limit: 140
     t.integer  "teacher_id"
     t.string   "image_social"
-    t.string   "codewars_challenge"
+    t.string   "codewars_challenge_slug"
     t.string   "codewars_challenge_language"
   end
 
