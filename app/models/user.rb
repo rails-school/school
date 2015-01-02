@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   #has_many :answers
   has_many :lessons, :through => :attendances
   has_many :lessons_taught, class_name: "Lesson", foreign_key: :teacher_id
+  has_many :codewars
   belongs_to :school
 
   before_save :generate_unsubscribe_token, :canonicalize_homepage

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231015925) do
+ActiveRecord::Schema.define(version: 20150102003804) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20141231015925) do
   end
 
   add_index "attendances", ["user_id", "lesson_id"], name: "index_attendances_on_user_id_and_lesson_id", unique: true
+
+  create_table "codewars", force: true do |t|
+    t.integer  "user_id"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "lessons", force: true do |t|
     t.string   "title"
