@@ -55,4 +55,9 @@ FactoryGirl.define do
     school
   end
 
+  factory :codewar do
+    sequence(:slug) { |i| "topic-#{i}"}
+    sequence(:language) { |i| "language-#{i}"}
+  end
+
 end
