@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
   def completed_codewar_for_lesson(lesson)
     if codewars_completed.present?
       codewars_completed.each do |codewar|
-        return true if codewar['slug']==lesson.codewars_challenge
+        return true if codewar['slug']==lesson.codewars_challenge_slug
       end
       false
     else

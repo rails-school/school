@@ -19,8 +19,8 @@
     = f.label :description
     = f.text_area :description, rows: "8"
   .field
-    = f.label :codewars_challenge, "Codewars challenge slug (i.e. remove-duplicates)"
-    = f.text_field :codewars_challenge
+    = f.label :codewars_challenge_slug, "Codewars challenge slug (i.e. remove-duplicates)"
+    = f.text_field :codewars_challenge_slug
   .field
     = f.label :codewars_challenge_language
     = f.select :codewars_challenge_language, options_for_select(%w[ruby javascript coffeescript python haskell clojure java])
