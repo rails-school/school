@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102003804) do
+ActiveRecord::Schema.define(version: 20150102012651) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(version: 20150102003804) do
     t.datetime "last_badges_checked_at"
     t.boolean  "subscribe_badge_notifications",  default: true
     t.string   "codewars_username"
+    t.datetime "last_codewars_checked_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

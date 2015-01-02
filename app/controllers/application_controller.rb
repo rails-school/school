@@ -71,6 +71,7 @@ class ApplicationController < ActionController::Base
 
   def maybe_enqueue_codewars_recorder
     return unless user_signed_in?
+    return unless current_user.codewars_username.present?
     if current_user.last_codewars_checked_at.nil? ||
         (Time.now - current_user.last_codewars_checked_at > 3600)
       CodewarsRecorder.perform_async(current_user.id, current_user.codewars_username)
