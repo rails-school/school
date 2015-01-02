@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
 
   def completed_codewar_for_lesson(lesson)
     codewars.each do |codewar|
-      return true if codewar.slug==lesson.codewars_challenge_slug
+      codewars.find_by_slug(lesson.codewars_challenge_slug).present?
     end
     false
   end
