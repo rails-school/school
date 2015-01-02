@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124205308) do
+ActiveRecord::Schema.define(version: 20150102012651) do
 
   create_table "answers", force: true do |t|
     t.datetime "created_at"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20141124205308) do
 
   add_index "attendances", ["user_id", "lesson_id"], name: "index_attendances_on_user_id_and_lesson_id", unique: true
 
+  create_table "codewars", force: true do |t|
+    t.integer  "user_id"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "lessons", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -42,9 +49,11 @@ ActiveRecord::Schema.define(version: 20141124205308) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "notification_sent_at"
-    t.string   "tweet_message",        limit: 140
+    t.string   "tweet_message",               limit: 140
     t.integer  "teacher_id"
     t.string   "image_social"
+    t.string   "codewars_challenge_slug"
+    t.string   "codewars_challenge_language"
   end
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
@@ -89,6 +98,7 @@ ActiveRecord::Schema.define(version: 20141124205308) do
     t.string   "period",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "graph_type", null: false
   end
 
   create_table "schools", force: true do |t|
@@ -141,6 +151,8 @@ ActiveRecord::Schema.define(version: 20141124205308) do
     t.integer  "school_id"
     t.datetime "last_badges_checked_at"
     t.boolean  "subscribe_badge_notifications",  default: true
+    t.string   "codewars_username"
+    t.datetime "last_codewars_checked_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

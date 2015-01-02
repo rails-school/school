@@ -1,7 +1,7 @@
 require_dependency "user_sanitizer"
 
 class ApplicationController < ActionController::Base
-  before_filter :set_time_zone, :maybe_enqueue_badge_allocator
+  before_filter :set_time_zone, :maybe_enqueue_badge_allocator, :maybe_enqueue_codewars_recorder
 
   protect_from_forgery
   helper_method :current_school
@@ -65,6 +65,17 @@ class ApplicationController < ActionController::Base
        (Time.now - current_user.last_badges_checked_at > 3600)
       BadgeAllocator.perform_async(current_user.id)
       current_user.last_badges_checked_at = Time.now
+      current_user.save!
+    end
+  end
+
+  def maybe_enqueue_codewars_recorder
+    return unless user_signed_in?
+    return unless current_user.codewars_username.present?
+    if current_user.last_codewars_checked_at.nil? ||
+        (Time.now - current_user.last_codewars_checked_at > 3600)
+      CodewarsRecorder.perform_async(current_user.id, current_user.codewars_username)
+      current_user.last_codewars_checked_at = Time.now
       current_user.save!
     end
   end

@@ -51,6 +51,13 @@
       Missing
 
   %p
+    %b Codewars profile:
+    - if @user.codewars_username.present?
+      = link_to nil, "https://codewars.com/users/#{@user.codewars_username}"
+    -else
+      Missing
+
+  %p
     %b Subscribe to lesson announcement emails:
     = @user.subscribe_lesson_notifications
 

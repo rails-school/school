@@ -1,4 +1,5 @@
 require "addressable/uri"
+require 'httparty'
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -11,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :hide_last_name, :homepage, :github_username,
                   :school_id, :subscribe_lesson_notifications,
-                  :subscribe_badge_notifications
+                  :subscribe_badge_notifications, :codewars_username
 
   has_many :attendances
   has_many :user_answers
@@ -19,6 +20,7 @@ class User < ActiveRecord::Base
   #has_many :answers
   has_many :lessons, :through => :attendances
   has_many :lessons_taught, class_name: "Lesson", foreign_key: :teacher_id
+  has_many :codewars
   belongs_to :school
 
   before_save :generate_unsubscribe_token, :canonicalize_homepage
@@ -63,4 +65,12 @@ class User < ActiveRecord::Base
       Badge.find_by_badge_id(user_badge.badge_id).new
     }
   end
+
+  def completed_codewar_for_lesson(lesson)
+    codewars.each do |codewar|
+      codewars.find_by_slug(lesson.codewars_challenge_slug).present?
+    end
+    false
+  end
+
 end
