@@ -71,12 +71,30 @@ class ApplicationController < ActionController::Base
 
   def maybe_enqueue_codewars_recorder
     return unless user_signed_in?
-    return unless current_user.codewars_username.present?
-    if current_user.last_codewars_checked_at.nil? ||
-        (Time.now - current_user.last_codewars_checked_at > 3600)
-      CodewarsRecorder.perform_async(current_user.id, current_user.codewars_username)
-      current_user.last_codewars_checked_at = Time.now
-      current_user.save!
+    return unless current_user.teacher?
+    # Below: Checks codewars completed for the teacher.
+    enqueue_codewars_recorder(current_user)
+    # Below: Checks the codewars completed for each of the students of this teacher's upcoming lessons (in next 1 week).
+    upcoming_lessons_for_teacher = Lesson.includes(:users)
+                         .where("start_time > ? AND start_time < ? AND teacher_id = ?", Time.current, Time.current + 1.week, current_user.id)
+    if upcoming_lessons_for_teacher.present?
+      upcoming_lessons_for_teacher.each do |lesson|
+        if lesson.codewars_challenge_slug.present?
+          lesson.users.each do |student|
+            enqueue_codewars_recorder(student)
+          end
+        end
+      end
+    end
+  end
+
+  def enqueue_codewars_recorder(student)
+    return unless student.codewars_username.present?
+    if student.last_codewars_checked_at.nil? ||
+        (Time.now - student.last_codewars_checked_at > 3600)
+      CodewarsRecorder.perform_async(student.id, student.codewars_username)
+      student.last_codewars_checked_at = Time.now
+      student.save!
     end
   end
 end

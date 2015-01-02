@@ -11,6 +11,8 @@ class AttendancesController < ApplicationController
       current_user.attendances.find_by_lesson_id(id).destroy
     elsif @lesson.present?
       current_user.rsvp_for(@lesson)
+      # When someone RSVP's for a lesson, the below line will update their codewars data.
+      enqueue_codewars_recorder(current_user)
     end
   end
 
