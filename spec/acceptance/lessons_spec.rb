@@ -339,3 +339,26 @@ feature %q{
   end
 
 end
+
+feature %q{
+  As a teacher
+  who has created a lesson with a codewars assignment
+  I want to see stars next to students
+  who have completed it
+} do
+
+  background do
+    @teacher = FactoryGirl.create(:user, teacher: true)
+    @lesson = FactoryGirl.create(:lesson, codewars_challenge_slug: "multiply", codewars_challenge_language: "ruby", teacher_id: @teacher.id)
+    @student = FactoryGirl.create(:user, school: @lesson.venue.school)
+    create(:codewar, user_id: @student.id, slug: "multiply", language: "ruby")
+    attendance = FactoryGirl.create(:attendance, lesson: @lesson, user: @student)
+    sign_in_manually(@teacher)
+  end
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.should have_content("★")
+  end
+
+end
