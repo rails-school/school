@@ -2,7 +2,8 @@
   %li
     =image_tag Gravatar.new(user.email).image_url(size: 40, secure: true), class: "avatar"
     %span= format_user_name(user)
-    -if current_user.teacher?
-      -if user.completed_codewar_for_lesson(lesson)
-        %span.star
-          &#9733;
+    - if user_signed_in?
+      - if current_user.teacher?
+        - if user.completed_codewar_for_lesson(lesson)
+          %span.star
+            &#9733;
