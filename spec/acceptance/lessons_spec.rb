@@ -304,5 +304,38 @@ feature %q{
     page.title.should have_content(@venue.school.name)
   end
 
+end
+
+feature %q{
+  As a visitor
+  I want to see a codewars assignment on lesson page
+  if a lesson has a codewars assignment
+} do
+
+  background do
+    @lesson = FactoryGirl.create(:next_month_lesson, codewars_challenge_slug: "multiply", codewars_challenge_language: "ruby")
+  end
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.should have_content("Be sure to complete the following codewars challenge before class! https://codewars.com/kata/multiply/train/ruby")
+  end
+
+end
+
+feature %q{
+  As a visitor
+  I don't want to see a codewars assignment on lesson page
+  if a lesson does not have a codewars assignment
+} do
+
+  background do
+    @lesson = FactoryGirl.create(:next_month_lesson)
+  end
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.should_not have_content("Be sure to complete the following codewars challenge before class!")
+  end
 
 end
