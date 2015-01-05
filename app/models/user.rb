@@ -67,10 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def completed_codewar_for_lesson(lesson)
-    codewars.each do |codewar|
-      codewars.find_by_slug(lesson.codewars_challenge_slug).present?
-    end
-    false
+    codewars.where(:slug=>lesson.codewars_challenge_slug, :language=>lesson.codewars_challenge_language).present?
   end
 
 end

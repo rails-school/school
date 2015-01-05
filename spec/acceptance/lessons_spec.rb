@@ -304,5 +304,61 @@ feature %q{
     page.title.should have_content(@venue.school.name)
   end
 
+end
+
+feature %q{
+  As a visitor
+  I want to see a codewars assignment on lesson page
+  if a lesson has a codewars assignment
+} do
+
+  background do
+    @lesson = FactoryGirl.create(:next_month_lesson, codewars_challenge_slug: "multiply", codewars_challenge_language: "ruby")
+  end
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.should have_content("Be sure to complete the following codewars challenge before class! https://codewars.com/kata/multiply/train/ruby")
+  end
+
+end
+
+feature %q{
+  As a visitor
+  I don't want to see a codewars assignment on lesson page
+  if a lesson does not have a codewars assignment
+} do
+
+  background do
+    @lesson = FactoryGirl.create(:next_month_lesson)
+  end
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.should_not have_content("Be sure to complete the following codewars challenge before class!")
+  end
+
+end
+
+feature %q{
+  As a teacher
+  who has created a lesson with a codewars assignment
+  I want to see stars next to students
+  who have completed it
+} do
+
+  background do
+    @teacher = FactoryGirl.create(:user, teacher: true)
+    @lesson = FactoryGirl.create(:lesson, codewars_challenge_slug: "multiply", codewars_challenge_language: "ruby", teacher_id: @teacher.id)
+    @student = FactoryGirl.create(:user, school: @lesson.venue.school)
+    create(:codewar, user_id: @student.id, slug: "multiply", language: "ruby")
+    attendance = FactoryGirl.create(:attendance, lesson: @lesson, user: @student)
+    sign_in_manually(@teacher)
+  end
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.should have_content("★")
+  end
 
 end
