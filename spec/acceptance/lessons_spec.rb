@@ -318,7 +318,7 @@ feature %q{
 
   scenario "Visiting the page directly by its URL" do
     visit lesson_path(@lesson)
-    page.should have_content("Be sure to complete the following codewars challenge before class! http://codewars.com/kata/multiply/train/ruby")
+    page.should have_content("Be sure to complete the following codewars challenge before class! http://www.codewars.com/kata/multiply/train/ruby")
   end
 
 end
