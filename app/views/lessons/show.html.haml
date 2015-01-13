@@ -5,7 +5,7 @@
     - if @lesson.teacher.present?
       %h2 Teacher
       %ul.teachers
-        = render partial: "users/show_attending", locals: {user: @lesson.teacher, lesson: @lesson}
+        = render partial: "users/single_user", locals: {user: @lesson.teacher, lesson: @lesson}
     - if @lesson.users.any?
       %h2 Attendance
       %p
@@ -16,7 +16,7 @@
           were there
       %ul.attendees
         - @lesson.users.each do |u|
-          = render partial: "users/show_attending", locals: {user: u, lesson: @lesson}
+          = render partial: "users/single_user", locals: {user: u, lesson: @lesson}
   - if user_signed_in?
     = render partial: "polls/poll", locals: {poll: current_user.next_unanswered_poll, previous_poll: nil}
 
