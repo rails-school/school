@@ -1,6 +1,6 @@
 Rs::Application.routes.draw do
 
-  require 'sidekiq/web'
+  require "sidekiq/web"
 
   post "polls/answer" => "polls#answer"
 
@@ -47,5 +47,4 @@ Rs::Application.routes.draw do
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web, at: "/sidekiq"
   end
-  
 end
