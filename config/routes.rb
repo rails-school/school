@@ -1,5 +1,7 @@
 Rs::Application.routes.draw do
 
+  require 'sidekiq/web'
+
   post "polls/answer" => "polls#answer"
 
   resources :badges, param: :slug, only: [:index, :show]
@@ -41,4 +43,9 @@ Rs::Application.routes.draw do
   root :to => 'home#index'
 
   mount Prosperity::Engine => "/metrics"
+
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web, at: "/sidekiq"
+  end
+  
 end
