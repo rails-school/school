@@ -16,8 +16,7 @@ gem 'geocoder'
 gem "unicorn"
 gem "rack-timeout"
 gem "sidekiq"
-gem 'sinatra', require: false
-gem 'slim'
+gem "sinatra", require: false # Required for Sidekiq web interface
 
 gem "asset_sync"
 gem "devise-async"
