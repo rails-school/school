@@ -70,4 +70,8 @@ class User < ActiveRecord::Base
     codewars.where(:slug=>lesson.codewars_challenge_slug, :language=>lesson.codewars_challenge_language).present?
   end
 
+  def formatted_user_name()
+    URI.encode(name)
+  end
+
 end
