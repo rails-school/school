@@ -34,7 +34,7 @@
     Sadly the whiteboards prior to 2012-11-07 are gone forever
 - elsif user_signed_in?
   -if @whiteboard == true
-    %iframe{src: "//pad.railsschool.org/p/rails-school-lesson-#{@lesson.id}?userName=#{current_user.formatted_user_name}", style: "width:100%;height:600px;border:1px solid #CCCCCC;"}
+    %iframe{src: "//pad.railsschool.org/p/rails-school-lesson-#{@lesson.id}?userName=#{format_user_name(current_user)}", style: "width:100%;height:600px;border:1px solid #CCCCCC;"}
   -else
     .action
       =link_to "Show whiteboard", whiteboard_lesson_path(@lesson), class: "button secondary"
