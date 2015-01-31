@@ -11,7 +11,8 @@
     = javascript_include_tag "application"
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = render "layouts/google_analytics"
-    =csrf_meta_tags
+    = csrf_meta_tags
+    = favicon_link_tag 'favicon.png', rel: 'apple-touch-icon', type: 'image/png'
   %body
     =render "social_media/fb_header"
     =render :partial => "layouts/header"
