@@ -6,9 +6,15 @@ Demo
 
 You can find a live School instance at [Railsschool.org](//www.railsschool.org).
 
-Contribute
-----
-We'd love to have you install and build out RailsSchool in your area - feel free to fork and code!
+Start Your Own Local Rails School
+---
+
+We'd love to have you spread Rails School to your area! [It's easy. Start here](https://github.com/rails-school/school/blob/master/STARTING_A_LOCAL_SCHOOL.md).
+
+Bugs and Feature Requests
+---
+
+[Submit a GitHub issue](https://github.com/rails-school/school/issues/new), or better yet, create a pull request (TODO - link to CONTRIBUTING.md here once it exists).
 
 CI
 --
