@@ -26,4 +26,4 @@ You may have ideas to improve the website to better support your school - please
 Getting Help
 ---
 
-Shoot us an email any time at team@railsschool.org. (TODO - ask Michael to turn on guest access to #RailsSchool on HipChat and post link here)
+Shoot us an email any time at team@railsschool.org and [join us in our HipChat room](https://www.hipchat.com/gOTeMcGjM).
