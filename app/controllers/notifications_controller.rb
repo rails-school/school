@@ -10,7 +10,9 @@ class NotificationsController < ApplicationController
 
     attendees = @lesson.users
     attendees.each do |attendee|
-      NotificationMailer.send_lesson_message(@lesson.id, @subject, @message, attendee.id).deliver_later
+      NotificationMailer.send_lesson_message(
+        @lesson.id, @subject, @message, attendee.id
+      ).deliver_later
     end
 
     redirect_to @lesson, notice: "Notification was sent"
