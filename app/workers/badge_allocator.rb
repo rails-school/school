@@ -12,7 +12,7 @@ class BadgeAllocator
             # TODO limit badge notifications to once in a certain interval
             BadgeMailer.new_badge_notification(
               badge.id, user.id
-            ).deliver
+            ).deliver_now
           end
         end
       end

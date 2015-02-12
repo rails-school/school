@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-ruby "2.1.1"
+ruby "2.2.0"
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "devise", "~> 3.2.2"
+gem "devise"
 gem "cancan"
 gem "haml-rails"
 gem 'coffee-rails', '~> 4.0.0'
@@ -79,7 +79,6 @@ group :test, :development do
   gem 'capybara'
   gem 'poltergeist'
   gem 'pry-rails'
-  gem 'pry-plus'
   gem 'sqlite3'
 end
 

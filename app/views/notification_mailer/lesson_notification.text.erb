@@ -6,12 +6,12 @@ Hi, <%= @user.name %>! We added a new class at <%= format_datetime(@lesson.start
 
 <%= @lesson.description if @lesson.description.present? %>
 
-RSVP here: <%= lesson_path(@lesson, :only_path => false) %>
+RSVP here: <%= lesson_url(@lesson) %>
 May The Force Be With You!
 
 Best regards,
 Rails School, http://www.railsschool.org
 
 <% if @user.unsubscribe_token.present? %>
-Unsubscribe link here: <%= lesson_unsubscribe_path(code: @user.unsubscribe_token, only_path: false) %>
+Unsubscribe link here: <%= lesson_unsubscribe_url(code: @user.unsubscribe_token) %>
 <% end %>
