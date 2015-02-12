@@ -3,3 +3,6 @@ rvm:
   - 2.2.0
 notifications:
   hipchat: 89d684618c0efae42e66b30900961c@RailsSchool
+script:
+  - bundle exec rake db:create db:schema:load --trace
+  - bundle exec rake
