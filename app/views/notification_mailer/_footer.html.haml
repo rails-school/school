@@ -7,4 +7,4 @@ Rails School,
 
 - if @user.unsubscribe_token.present?
   %p
-    = link_to "Unsubscribe immediately", lesson_unsubscribe_path(code: @user.unsubscribe_token, only_path: false)
+    = link_to "Unsubscribe immediately", lesson_unsubscribe_url(code: @user.unsubscribe_token)

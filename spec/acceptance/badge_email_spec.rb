@@ -9,9 +9,11 @@ feature %q{
   let(:user) { create(:user) }
 
   scenario "Send new badge notification email" do
-    expect{BadgeMailer.new_badge_notification(
-      badge.id, user.id
-    ).deliver}.to change{ActionMailer::Base.deliveries.count}.by(1)
+    expect {
+      BadgeMailer.new_badge_notification(
+        badge.id, user.id
+      ).deliver_now
+    }.to change { ActionMailer::Base.deliveries.count }.by(1)
     email = ActionMailer::Base.deliveries.last
     email.parts.length.should == 2
     email.parts.each do |part|

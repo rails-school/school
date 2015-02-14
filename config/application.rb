@@ -83,5 +83,8 @@ module Rs
     config.generators do |g|
       g.test_framework  :rspec
     end
+
+    # TODO remove when upgrading from Rails 4.2.0
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

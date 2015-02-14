@@ -10,13 +10,17 @@ feature %q{
     @teacher = FactoryGirl.create(:user)
     @attendee = FactoryGirl.create(:user)
     @venue = FactoryGirl.create(:venue)
-    @lesson = FactoryGirl.create(:next_month_lesson, start_time: Date.current + 1.month + 1.day + 19.hours, start_time: Date.current + 1.month + 1.day + 21.hours)
+    @lesson = create(
+      :next_month_lesson, start_time: Date.current + 1.month + 1.day + 19.hours
+    )
   end
 
   scenario "Sending notification email" do
-    expect{NotificationMailer.lesson_notification(
-      @lesson.id, @teacher.id, @attendee.id
-    ).deliver}.to change{ActionMailer::Base.deliveries.count}.by(1)
+    expect {
+      NotificationMailer.lesson_notification(
+        @lesson.id, @teacher.id, @attendee.id
+      ).deliver_now
+    }.to change{ ActionMailer::Base.deliveries.count }.by(1)
     email = ActionMailer::Base.deliveries.last
     email.attachments.count.should == 1
     email.attachments.first.body.include?(Rails.application.routes.default_url_options[:host]).should == true

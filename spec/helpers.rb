@@ -40,7 +40,7 @@ module Helpers
     lesson = Lesson.last
     NotificationMailer.lesson_notification(
       lesson.id, teacher.id, attendee.id
-    ).deliver
+    ).deliver_now
   end
 
   def select_school_in_dropdown(name)

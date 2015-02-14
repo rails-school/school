@@ -12,7 +12,7 @@
 
       #{@badge.notification_bonus_message}
     %p
-      = link_to "Visit your profile", user_path(@user, only_path: false)
+      = link_to "Visit your profile", user_url(@user)
       to see all your badges.
     %p
       May The Force Be With You!
@@ -24,4 +24,4 @@
 
     - if @user.unsubscribe_token.present?
       %p
-        = link_to "Unsubscribe immediately", badge_unsubscribe_path(code: @user.unsubscribe_token, only_path: false)
+        = link_to "Unsubscribe immediately", badge_unsubscribe_url(code: @user.unsubscribe_token)
