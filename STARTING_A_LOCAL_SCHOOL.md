@@ -21,7 +21,7 @@ Your Next Steps
 Hacking on the Website
 ---
 
-You may have ideas to improve the website to better support your school - please [submit an issue](https://github.com/rails-school/school/issues/new), or better yet, create a pull request (TODO - link to CONTRIBUTING.md here once it exists).
+You may have ideas to improve the website to better support your school - please [submit an issue](https://github.com/rails-school/school/issues/new), or better yet, create a pull request [create a pull request](https://github.com/rails-school/school/CONTRIBUTING.md).
 
 Getting Help
 ---
