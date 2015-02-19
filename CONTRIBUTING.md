@@ -8,6 +8,7 @@ Fork, then clone the repo:
 
 Set up your machine:
 
+    cd school
     bundle install
     rake db:setup
 
