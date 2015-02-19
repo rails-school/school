@@ -10,7 +10,7 @@ gem 'rails', '~> 4.2.0'
 gem "devise"
 gem "cancan"
 gem "haml-rails"
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 gem 'gmaps4rails', '~> 1.5.6'
 gem 'geocoder'
 gem "unicorn"
