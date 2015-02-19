@@ -14,7 +14,7 @@ gem 'coffee-rails'
 gem 'gmaps4rails', '~> 1.5.6'
 gem 'geocoder'
 gem "unicorn"
-gem "rack-timeout"
+gem "rack-timeout", '0.0.4' # https://github.com/heroku/rack-timeout/issues/55
 gem "sidekiq"
 gem "sinatra", require: false # Required for Sidekiq web interface
 
