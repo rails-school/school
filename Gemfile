@@ -64,7 +64,6 @@ gem 'jquery-rails'
 gem 'chronic'
 
 group :test do
-  gem "cucumber-rails", :require => false
   gem "factory_girl_rails"
   gem "timecop"
   gem 'shoulda-matchers'
