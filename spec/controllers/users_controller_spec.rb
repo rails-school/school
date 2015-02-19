@@ -21,27 +21,27 @@ describe UsersController do
       request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("stewie", "cookie")
       post 'report_email_bounce', email: user.email, event: "bounce"
       response.status.should be(200)
-      user.reload.subscribe_lesson_notifications.should be_false
+      expect(user.reload).not_to be_subscribe_lesson_notifications
     end
 
     it "fails when required params are missing" do
       request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("stewie", "cookie")
       post 'report_email_bounce', email: user.email
       response.status.should be(422)
-      user.reload.subscribe_lesson_notifications.should be_true
+      expect(user.reload).to be_subscribe_lesson_notifications
     end
 
     it "fails when no credentials" do
       post 'report_email_bounce', email: user.email, event: "bounce"
       response.status.should be(401)
-      user.reload.subscribe_lesson_notifications.should be_true
+      expect(user.reload).to be_subscribe_lesson_notifications
     end
 
     it "fails when bad credentials" do
       request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("stewie", "cookie!")
       post 'report_email_bounce', email: user.email, event: "bounce"
       response.status.should be(401)
-      user.reload.subscribe_lesson_notifications.should be_true
+      expect(user.reload).to be_subscribe_lesson_notifications
     end
   end
 end

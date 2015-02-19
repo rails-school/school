@@ -28,6 +28,6 @@
 .image
   .img-wrap
     .img{class: lesson.venue.slug}
-  =render :partial => "social_media/likes", :locals => {:message => "Join me for a class on #{lesson.title}!", :url => url_to(lesson)}
+  =render partial: "social_media/likes", locals: {message: "Join me for a class on #{lesson.title}!", url: lesson_url(lesson)}
 
 .clearboth{:style => "clear:both;"}

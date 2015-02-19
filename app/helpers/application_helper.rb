@@ -58,8 +58,4 @@ module ApplicationHelper
     t += " - #{format_time(end_time)}" if end_time
     t + " on #{format_date(start_time)}"
   end
-
-  def url_to(object)
-    "#{root_url[0..root_url.length-2]}#{url_for(object)}"
-  end
 end
