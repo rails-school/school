@@ -175,7 +175,6 @@ GEM
     fog-xml (0.1.1)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
-    forgery (0.6.0)
     formatador (0.2.5)
     fssm (0.2.10)
     geocoder (1.1.9)
@@ -406,7 +405,6 @@ DEPENDENCIES
   devise-async
   email_spec
   factory_girl_rails
-  forgery
   geocoder
   gmaps4rails (~> 1.5.6)
   gravatar-ultimate

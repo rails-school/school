@@ -69,7 +69,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', :require => false # code coverage tool
   gem "database_cleaner"
-  gem "forgery"
   gem 'email_spec'
 end
 
