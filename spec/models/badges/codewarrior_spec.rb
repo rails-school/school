@@ -12,7 +12,7 @@ describe Badge::Codewarrior do
         create(:codewar, user: user)
       end
 
-      it { should be_false }
+      it { should eq(false) }
     end
 
 
@@ -23,7 +23,7 @@ describe Badge::Codewarrior do
         }
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context "user completed more than 5 codewar challenges" do
@@ -33,7 +33,7 @@ describe Badge::Codewarrior do
         }
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
   end

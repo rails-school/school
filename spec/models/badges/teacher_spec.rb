@@ -10,7 +10,7 @@ describe Badge::Teacher do
     subject { Badge::Teacher.allocate_to_user?(user) }
 
     context "user has not taught a lesson" do
-      it { should be_false }
+      it { should eq(false) }
     end
 
 
@@ -19,7 +19,7 @@ describe Badge::Teacher do
         lesson
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context "user will teach a lesson" do
@@ -27,7 +27,7 @@ describe Badge::Teacher do
         future_lesson
       end
 
-      it { should be_false }
+      it { should eq(false) }
     end
 
   end

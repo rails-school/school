@@ -20,7 +20,7 @@ describe Badge::FortyNiner do
         create(:attendance, lesson: lessons[3], user: user, confirmed: true)
       end
 
-      it { should be_true }
+      it { should eq(true) }
     end
 
     context "user did not attend one of first 16 SF lessons" do
@@ -28,7 +28,7 @@ describe Badge::FortyNiner do
         create(:attendance, lesson: lessons.last, user: user, confirmed: true)
       end
 
-      it { should be_false }
+      it { should eq(false) }
     end
   end
 end

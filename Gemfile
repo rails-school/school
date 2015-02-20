@@ -10,11 +10,11 @@ gem 'rails', '~> 4.2.0'
 gem "devise"
 gem "cancan"
 gem "haml-rails"
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 gem 'gmaps4rails', '~> 1.5.6'
 gem 'geocoder'
 gem "unicorn"
-gem "rack-timeout"
+gem "rack-timeout", '0.0.4' # https://github.com/heroku/rack-timeout/issues/55
 gem "sidekiq"
 gem "sinatra", require: false # Required for Sidekiq web interface
 
@@ -46,7 +46,7 @@ end
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'sass-rails',   '~> 4.0.0'
+gem 'sass-rails',   '~> 4.0.0' # v5 breaks CI
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 gem "uglifier", '~> 2.1.1'
@@ -64,13 +64,11 @@ gem 'jquery-rails'
 gem 'chronic'
 
 group :test do
-  gem "cucumber-rails", :require => false
   gem "factory_girl_rails"
   gem "timecop"
   gem 'shoulda-matchers'
   gem 'simplecov', :require => false # code coverage tool
   gem "database_cleaner"
-  gem "forgery"
   gem 'email_spec'
 end
 
