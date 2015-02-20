@@ -61,7 +61,7 @@ Rs::Application.configure do
   config.cache_store = :memory_store
 
   # Enable serving of images, stylesheets, and JavaScripts from Cloudfront
-  if ENV['CLOUDFRONT_HOST']
+  if ENV["CLOUDFRONT_HOST"]
     config.action_controller.asset_host = ENV['CLOUDFRONT_HOST']
   end
 
