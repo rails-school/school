@@ -23,7 +23,7 @@ Rs::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Heroku or nginx will already do this)
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS
   config.assets.js_compressor = :uglifier
@@ -60,18 +60,9 @@ Rs::Application.configure do
   # Use a different cache store in production
   config.cache_store = :memory_store
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  if ENV['ASSET_SYNC_ENABLED'] == 'false'
-     # noop
-  elsif ENV['CLOUDFRONT_HOST']
+  # Enable serving of images, stylesheets, and JavaScripts from Cloudfront
+  if ENV["CLOUDFRONT_HOST"]
     config.action_controller.asset_host = ENV['CLOUDFRONT_HOST']
-  elsif ENV['FOG_DIRECTORY']
-    if ENV['FOG_REGION']
-      host = "#{ENV['FOG_DIRECTORY']}.s3-#{ENV['FOG_REGION']}.amazonaws.com"
-    else
-      host = "#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
-    end
-    config.action_controller.asset_host = host
   end
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
