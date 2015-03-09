@@ -14,10 +14,12 @@
       :markdown
         #{lesson.description}
     -if lesson.codewars_challenge_slug.present?
-      Be sure to complete the following codewars challenge before class to get
-      your star! Your RailsSchool profile needs to include your Codewars username
-      for the star to appear.
-      = link_to nil, "http://www.codewars.com/kata/#{@lesson.codewars_challenge_slug}/train/#{@lesson.codewars_challenge_language}", target: "_blank"
+      %p
+        Be sure to complete the following codewars challenge before class!
+        (If your RailsSchool profile includes your codewars username, you'll get
+        a nifty star if complete the challenge.)
+        %br
+        = link_to nil, "http://www.codewars.com/kata/#{@lesson.codewars_challenge_slug}/train/#{@lesson.codewars_challenge_language}", target: "_blank"
     %br
     %br
   .details
