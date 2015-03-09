@@ -78,4 +78,7 @@ class Lesson < ActiveRecord::Base
     calendar.to_ical
   end
 
+  def as_json(opts={})
+    super.merge(opts.slice(:students))
+  end
 end

@@ -17,6 +17,7 @@ class LessonsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lessons }
+      format.xml { render xml: @lessons }
     end
   end
 
@@ -34,7 +35,11 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @lesson }
+      format.json {
+        render json: @lesson.to_json(
+          students: @lesson.attendances.map(&:user)
+        )
+      }
     end
   end
 
