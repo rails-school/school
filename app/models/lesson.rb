@@ -45,7 +45,7 @@ class Lesson < ActiveRecord::Base
     calendar = Icalendar::Calendar.new
     calendar.ip_method = "REQUEST"
     calendar.events << Icalendar::Event.new
-    if self.venue.school.timezone.include?("Pacific")
+    if venue.school.timezone.include?("Pacific")
       # Makes calendar event in Pacfic Time
       # (Daylight / Standard depending on time of year)
       calendar.timezone do |t|
@@ -65,7 +65,7 @@ class Lesson < ActiveRecord::Base
           s.rrule = "FREQ=YEARLY;BYMONTH=11;BYDAY=1SU"
         end
       end
-    elsif self.venue.school.timezone.include?("Eastern")
+    elsif venue.school.timezone.include?("Eastern")
       # Makes calendar event in Eastern Time
       # (Daylight / Standard depending on time of year)
       calendar.timezone do |t|
@@ -86,8 +86,9 @@ class Lesson < ActiveRecord::Base
         end
       end
     end
-    # Creates an Eastern or Pacific Time zone to convert lesson start and end times to!
-    zone = ActiveSupport::TimeZone.new(self.venue.school.timezone)
+    # Creates an Eastern or Pacific Time zone to convert lesson 
+    # start and end times to!
+    zone = ActiveSupport::TimeZone.new(venue.school.timezone)
     lesson = calendar.events.first
     lesson.dtstart = self.start_time.in_time_zone(zone)
     lesson.dtend = self.end_time.in_time_zone(zone)
