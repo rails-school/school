@@ -45,26 +45,48 @@ class Lesson < ActiveRecord::Base
     calendar = Icalendar::Calendar.new
     calendar.ip_method = "REQUEST"
     calendar.events << Icalendar::Event.new
-    # Makes calendar event in Pacfic Time (Daylight / Standard depending on time of year)
-    calendar.timezone do |t|
-      t.tzid = "America/Los_Angeles"
-      t.daylight do |d|
-        d.tzoffsetfrom = "-0800"
-        d.tzoffsetto   = "-0700"
-        d.tzname       = "PDT"
-        d.dtstart      = "19700308T020000"
-        d.rrule        = "FREQ=YEARLY;BYMONTH=3;BYDAY=2SU"
+    if self.venue.school.timezone.include?("Pacific")
+      # Makes calendar event in Pacfic Time (Daylight / Standard depending on time of year)
+      calendar.timezone do |t|
+        t.tzid = "America/Los_Angeles"
+        t.daylight do |d|
+          d.tzoffsetfrom = "-0800"
+          d.tzoffsetto   = "-0700"
+          d.tzname       = "PDT"
+          d.dtstart      = "19700308T020000"
+          d.rrule        = "FREQ=YEARLY;BYMONTH=3;BYDAY=2SU"
+        end
+        t.standard do |s|
+          s.tzoffsetfrom = "-0700"
+          s.tzoffsetto   = "-0800"
+          s.tzname       = "PST"
+          s.dtstart      = "19701101T020000"
+          s.rrule        = "FREQ=YEARLY;BYMONTH=11;BYDAY=1SU"
+        end
       end
-      t.standard do |s|
-        s.tzoffsetfrom = "-0700"
-        s.tzoffsetto   = "-0800"
-        s.tzname       = "PST"
-        s.dtstart      = "19701101T020000"
-        s.rrule        = "FREQ=YEARLY;BYMONTH=11;BYDAY=1SU"
+    elsif self.venue.school.timezone.include?("Eastern")
+      binding.pry
+      # Makes calendar event in Eastern Time (Daylight / Standard depending on time of year)
+      calendar.timezone do |t|
+        t.tzid = "America/New_York"
+        t.daylight do |d|
+          d.tzoffsetfrom = "-0500"
+          d.tzoffsetto   = "-0400"
+          d.tzname       = "EDT"
+          d.dtstart      = "19700308T020000"
+          d.rrule        = "FREQ=YEARLY;BYMONTH=3;BYDAY=2SU"
+        end
+        t.standard do |s|
+          s.tzoffsetfrom = "-0400"
+          s.tzoffsetto   = "-0500"
+          s.tzname       = "EST"
+          s.dtstart      = "19701101T020000"
+          s.rrule        = "FREQ=YEARLY;BYMONTH=11;BYDAY=1SU"
+        end
       end
     end
-    # Creates a Pacific Time zone to convert lesson start and end times to!
-    zone = ActiveSupport::TimeZone.new("Pacific Time (US & Canada)")
+    # Creates an Eastern or Pacific Time zone to convert lesson start and end times to!
+    zone = ActiveSupport::TimeZone.new(self.venue.school.timezone)
     lesson = calendar.events.first
     lesson.dtstart = self.start_time.in_time_zone(zone)
     lesson.dtend = self.end_time.in_time_zone(zone)
