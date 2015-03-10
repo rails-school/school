@@ -86,7 +86,7 @@ class Lesson < ActiveRecord::Base
         end
       end
     end
-    # Creates an Eastern or Pacific Time zone to convert lesson 
+    # Creates an Eastern or Pacific Time zone to convert lesson
     # start and end times to!
     zone = ActiveSupport::TimeZone.new(venue.school.timezone)
     lesson = calendar.events.first
