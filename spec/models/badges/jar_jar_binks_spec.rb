@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe Badge::JarJarBinks do
-
   describe ".allocate_to_user?" do
     let(:user) { create(:user) }
 

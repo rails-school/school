@@ -17,4 +17,3 @@ class Badge::BobaFett
     user.attendances.count >= 35
   end
 end
-

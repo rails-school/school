@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe Badge::BobaFett do
-
   describe ".allocate_to_user?" do
     let(:user) { create(:user) }
 
