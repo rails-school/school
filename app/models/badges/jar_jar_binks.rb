@@ -6,16 +6,15 @@ class Badge::JarJarBinks
   include Badge
 
   def description
-    "Given to users who have attended at least one lesson."
+    "Given to users who have attended one lesson."
   end
 
   def notification_bonus_message
-    "Welcome to RailsSchool! We hope you enjoyed your first class"
+    "Welcome to RailsSchool! We hope you enjoyed your first class."
   end
 
   def self.allocate_to_user?(user)
     user.attendances.count == 1
   end
-
 end
 
