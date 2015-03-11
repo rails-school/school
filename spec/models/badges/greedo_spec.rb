@@ -23,7 +23,7 @@ describe Badge::Greedo do
 
     context "user attended more than 15 classes" do
       before { 16.times { create(:attendance, user: user) } }
-      it { should eq(false) }
+      it { should eq(true) }
     end
   end
 end

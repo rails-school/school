@@ -23,7 +23,7 @@ describe Badge::Ewok do
 
     context "user attended more than 5 classes" do
       before { 6.times { create(:attendance, user: user) } }
-      it { should eq(false) }
+      it { should eq(true) }
     end
   end
 end

@@ -18,7 +18,7 @@ describe Badge::JarJarBinks do
 
     context "user attended more than one class" do
       before { 2.times { create(:attendance, user: user) } }
-      it { should eq(false) }
+      it { should eq(true) }
     end
   end
 end

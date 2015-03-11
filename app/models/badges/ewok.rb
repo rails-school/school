@@ -14,7 +14,7 @@ class Badge::Ewok
   end
 
   def self.allocate_to_user?(user)
-    user.attendances.count == 5
+    user.attendances.count >= 5
   end
 end
 

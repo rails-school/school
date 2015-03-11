@@ -14,7 +14,7 @@ class Badge::Greedo
   end
 
   def self.allocate_to_user?(user)
-    user.attendances.count == 15
+    user.attendances.count >= 15
   end
 end
 
