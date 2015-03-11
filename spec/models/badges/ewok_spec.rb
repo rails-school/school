@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Badge::Ewok do
 
@@ -27,4 +27,3 @@ describe Badge::Ewok do
     end
   end
 end
-

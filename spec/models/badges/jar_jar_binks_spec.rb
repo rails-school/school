@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Badge::JarJarBinks do
 
@@ -22,4 +22,3 @@ describe Badge::JarJarBinks do
     end
   end
 end
-

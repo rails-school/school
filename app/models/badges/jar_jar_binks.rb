@@ -17,4 +17,3 @@ class Badge::JarJarBinks
     user.attendances.count >= 1
   end
 end
-

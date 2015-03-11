@@ -17,4 +17,3 @@ class Badge::Ewok
     user.attendances.count >= 5
   end
 end
-

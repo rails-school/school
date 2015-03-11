@@ -17,4 +17,3 @@ class Badge::Greedo
     user.attendances.count >= 15
   end
 end
-

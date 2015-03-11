@@ -17,4 +17,3 @@ class Badge::Jabba
     user.attendances.count >= 50
   end
 end
-

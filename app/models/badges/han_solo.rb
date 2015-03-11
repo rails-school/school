@@ -17,4 +17,3 @@ class Badge::HanSolo
     user.attendances.count >= 100
   end
 end
-

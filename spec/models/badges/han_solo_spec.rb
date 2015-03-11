@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Badge::HanSolo do
 
@@ -27,4 +27,3 @@ describe Badge::HanSolo do
     end
   end
 end
-
