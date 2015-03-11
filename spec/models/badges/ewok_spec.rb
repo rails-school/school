@@ -25,7 +25,6 @@ describe Badge::Ewok do
       before { 6.times { create(:attendance, user: user) } }
       it { should eq(false) }
     end
-    
   end
 end
 
