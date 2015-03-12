@@ -10,18 +10,23 @@ describe Badge::HanSolo do
       it { should eq(false) }
     end
 
+    context "user rsvp'd but did not attend classes" do
+      before { 100.times { create(:attendance, confirmed: false, user: user) } }
+      it { should eq(false) }
+    end
+
     context "user attended less than 100 classes" do
-      before { 99.times { create(:attendance, user: user) } }
+      before { 99.times { create(:attendance, confirmed: true, user: user) } }
       it { should eq(false) }
     end
 
     context "user attended exactly 100 classes" do
-      before { 100.times { create(:attendance, user: user) } }
+      before { 100.times { create(:attendance, confirmed: true, user: user) } }
       it { should eq(true) }
     end
 
     context "user attended more than 100 classes" do
-      before { 101.times { create(:attendance, user: user) } }
+      before { 101.times { create(:attendance, confirmed: true, user: user) } }
       it { should eq(true) }
     end
   end

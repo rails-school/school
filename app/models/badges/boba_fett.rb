@@ -14,6 +14,6 @@ class Badge::BobaFett
   end
 
   def self.allocate_to_user?(user)
-    user.attendances.count >= 35
+    user.attendances.where(confirmed: true).count >= 35
   end
 end

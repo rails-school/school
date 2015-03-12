@@ -14,6 +14,6 @@ class Badge::JarJarBinks
   end
 
   def self.allocate_to_user?(user)
-    user.attendances.count >= 1
+    user.attendances.where(confirmed: true).count >= 1
   end
 end

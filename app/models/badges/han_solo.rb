@@ -14,6 +14,6 @@ class Badge::HanSolo
   end
 
   def self.allocate_to_user?(user)
-    user.attendances.count >= 100
+    user.attendances.where(confirmed: true).count >= 100
   end
 end

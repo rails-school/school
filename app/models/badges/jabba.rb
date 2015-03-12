@@ -14,6 +14,6 @@ class Badge::Jabba
   end
 
   def self.allocate_to_user?(user)
-    user.attendances.count >= 50
+    user.attendances.where(confirmed: true).count >= 50
   end
 end

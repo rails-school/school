@@ -10,13 +10,18 @@ describe Badge::JarJarBinks do
       it { should eq(false) }
     end
 
+    context "user rsvp'd but did not attend a class" do
+      before { create(:attendance, confirmed: false, user: user) }
+      it { should eq(false) }
+    end
+
     context "user attended one class" do
-      before { create(:attendance, user: user) }
+      before { create(:attendance, confirmed: true, user: user) }
       it { should eq(true) }
     end
 
     context "user attended more than one class" do
-      before { 2.times { create(:attendance, user: user) } }
+      before { 2.times { create(:attendance, confirmed: true, user: user) } }
       it { should eq(true) }
     end
   end
