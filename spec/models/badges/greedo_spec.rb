@@ -15,7 +15,6 @@ describe Badge::Greedo do
       it { should eq(false) }
     end
 
-
     context "user attended less than 15 classes" do
       before { 14.times { create(:attendance, confirmed: true, user: user) } }
       it { should eq(false) }
