@@ -10,18 +10,23 @@ describe Badge::Greedo do
       it { should eq(false) }
     end
 
+    context "user rsvp'd but did not attend classes" do
+      before { 15.times { create(:attendance, confirmed: false, user: user) } }
+      it { should eq(false) }
+    end
+
     context "user attended less than 15 classes" do
-      before { 14.times { create(:attendance, user: user) } }
+      before { 14.times { create(:attendance, confirmed: true, user: user) } }
       it { should eq(false) }
     end
 
     context "user attended exactly 15 classes" do
-      before { 15.times { create(:attendance, user: user) } }
+      before { 15.times { create(:attendance, confirmed: true, user: user) } }
       it { should eq(true) }
     end
 
     context "user attended more than 15 classes" do
-      before { 16.times { create(:attendance, user: user) } }
+      before { 16.times { create(:attendance, confirmed: true, user: user) } }
       it { should eq(true) }
     end
   end
