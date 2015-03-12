@@ -29,6 +29,9 @@ RSpec.configure do |config|
   config.include(EmailSpec::Matchers)
   config.include Devise::TestHelpers, type: :controller
   config.infer_spec_type_from_file_location!
+
+  # enable both should and expect syntax
+  config.expect_with(:rspec) { |c| c.syntax = [:should, :expect] }
 end
 
 Capybara.register_driver :poltergeist do |app|
