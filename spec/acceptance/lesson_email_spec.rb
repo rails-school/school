@@ -59,6 +59,58 @@ feature %q{
 end
 
 feature %q{
+  As a teacher
+  I want to be sure
+  That notifications contain the correct start time and timezone in calendar.ics
+} do
+  background do
+    # Pacific params
+    @school_pacific = create(:school, timezone: "Pacific Time (US & Canada)")
+    @venue_pacific = create(:venue, school: @school_pacific)
+    @admin_pacific = create(:admin, school: @school_pacific)
+    # Eastern params
+    @school_eastern = create(:school, timezone: "Eastern Time (US & Canada)")
+    @venue_eastern = create(:venue, school: @school_eastern)
+    @admin_eastern = create(:admin, school: @school_eastern)
+    @attendee = FactoryGirl.create(:user)
+  end
+
+  scenario "Pacific teacher sending notification email" do
+    expect {
+      create_lesson_and_send_notification(@admin_pacific, @attendee)
+    }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    email = ActionMailer::Base.deliveries.last
+    lines = email.attachments.first.body.decoded.split("\n")
+    expect(lines).to include(
+      "TZID:" + ActiveSupport::TimeZone[
+        @school_pacific.timezone].tzinfo.canonical_identifier
+      )
+    start_time = Icalendar.parse(
+      email.attachments.first, true).events.first.dtstart.value
+    expect(start_time).to eq (
+      (Date.current + 1.day + 18.hours + 30.minutes).strftime(
+        "%Y-%m-%d %H:%M:%S UTC")).to_s
+  end
+
+  scenario "Eastern teacher sending notification email" do
+    expect {
+      create_lesson_and_send_notification(@admin_eastern, @attendee)
+    }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    email = ActionMailer::Base.deliveries.last
+    lines = email.attachments.first.body.decoded.split("\n")
+    expect(lines).to include(
+      "TZID:" + ActiveSupport::TimeZone[
+        @school_eastern.timezone].tzinfo.canonical_identifier
+      )
+    start_time = Icalendar.parse(
+      email.attachments.first, true).events.first.dtstart.value
+    expect(start_time).to eq (
+      (Date.current + 1.day + 18.hours + 30.minutes).strftime(
+        "%Y-%m-%d %H:%M:%S UTC")).to_s
+  end
+end
+
+feature %q{
   As a user
   I want to be sure
   That messages about a lesson will get delivered
