@@ -63,7 +63,6 @@ feature %q{
   I want to be sure
   That notifications contain the correct start time and timezone in calendar.ics
 } do
-
   background do
     # Pacific params
     @school_pacific = create(:school, timezone: "Pacific Time (US & Canada)")
@@ -79,7 +78,7 @@ feature %q{
   scenario "Pacific teacher sending notification email" do
     expect {
       create_lesson_and_send_notification(@admin_pacific, @attendee)
-    }.to change{ActionMailer::Base.deliveries.count}.by(1)
+    }.to change { ActionMailer::Base.deliveries.count }.by(1)
     email = ActionMailer::Base.deliveries.last
     lines = email.attachments.first.body.decoded.split("\n")
     expect(lines).to include(
@@ -90,13 +89,13 @@ feature %q{
       email.attachments.first, true).events.first.dtstart.value
     expect(start_time).to eq (
       (Date.current + 1.day + 18.hours + 30.minutes).strftime(
-      '%Y-%m-%d %H:%M:%S UTC')).to_s
+        "%Y-%m-%d %H:%M:%S UTC")).to_s
   end
 
   scenario "Eastern teacher sending notification email" do
-    expect{
+    expect {
       create_lesson_and_send_notification(@admin_eastern, @attendee)
-    }.to change{ActionMailer::Base.deliveries.count}.by(1)
+    }.to change { ActionMailer::Base.deliveries.count }.by(1)
     email = ActionMailer::Base.deliveries.last
     lines = email.attachments.first.body.decoded.split("\n")
     expect(lines).to include(
@@ -107,7 +106,7 @@ feature %q{
       email.attachments.first, true).events.first.dtstart.value
     expect(start_time).to eq (
       (Date.current + 1.day + 18.hours + 30.minutes).strftime(
-        '%Y-%m-%d %H:%M:%S UTC')).to_s
+        "%Y-%m-%d %H:%M:%S UTC")).to_s
   end
 end
 
