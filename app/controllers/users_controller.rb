@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     [:show, :unsubscribe, :notify_subscribers]
 
   skip_before_action :verify_authenticity_token, only: [:report_email_bounce]
+  before_filter :authenticate_sendgrid_webhook, only: [:report_email_bounce]
 
   # GET /unsubscribe/:code
   def unsubscribe
@@ -53,15 +54,11 @@ class UsersController < ApplicationController
 
   # POST /bounce_reports
   def report_email_bounce
-    if params[:email].blank? || params[:event] != "bounce"
-      return head status: 422
-    elsif params[:token] != ENV["SENDGRID_EVENT_TOKEN"]
-      return head status: 401
-    end
-    user = User.find_by_email(params[:email])
-    if user
-      user.subscribe_lesson_notifications = false
-      user.save
+    params[:_json].each do |payload|
+      if payload[:email].present? && payload[:event] == "bounce"
+        user = User.find_by_email(payload[:email])
+        user.update_attributes(subscribe_lesson_notifications: false) if user
+      end
     end
     head status: 200 # sendgrid demands a 200
   end
@@ -72,6 +69,14 @@ class UsersController < ApplicationController
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render action: "edit"
+    end
+  end
+
+  private
+
+  def authenticate_sendgrid_webhook
+    unless params[:token] == ENV["SENDGRID_EVENT_TOKEN"]
+      return head status: 401
     end
   end
 end
