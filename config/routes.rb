@@ -41,6 +41,7 @@ Rs::Application.routes.draw do
 
   # handle SendGrid bounces. For some reason they're sending this as get
   get "bounce_reports" => "users#report_email_bounce"
+  post "bounce_reports" => "users#report_email_bounce"
 
   root :to => 'home#index'
 
