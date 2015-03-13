@@ -45,31 +45,14 @@ class Lesson < ActiveRecord::Base
     calendar = Icalendar::Calendar.new
     calendar.ip_method = "REQUEST"
     calendar.events << Icalendar::Event.new
-    # Makes calendar event in Pacfic Time
-    # (Daylight / Standard depending on time of year)
     calendar.timezone do |t|
-      t.tzid = "America/Los_Angeles"
-      t.daylight do |d|
-        d.tzoffsetfrom = "-0800"
-        d.tzoffsetto = "-0700"
-        d.tzname = "PDT"
-        d.dtstart = "19700308T020000"
-        d.rrule = "FREQ=YEARLY;BYMONTH=3;BYDAY=2SU"
-      end
-      t.standard do |s|
-        s.tzoffsetfrom = "-0700"
-        s.tzoffsetto = "-0800"
-        s.tzname = "PST"
-        s.dtstart = "19701101T020000"
-        s.rrule = "FREQ=YEARLY;BYMONTH=11;BYDAY=1SU"
-      end
+      t.tzid = ActiveSupport::TimeZone[venue.school.timezone].tzinfo.canonical_identifier
     end
-    # Creates an Eastern or Pacific Time zone to convert lesson
-    # start and end times to!
-    zone = ActiveSupport::TimeZone.new(venue.school.timezone)
     lesson = calendar.events.first
-    lesson.dtstart = self.start_time.in_time_zone(zone)
-    lesson.dtend = self.end_time.in_time_zone(zone)
+    # While the dtstart & dtend variables appear to have time zone information, 
+    # icalendar gem seems to remove it mand make them UTC
+    lesson.dtstart = self.start_time
+    lesson.dtend = self.end_time
     lesson.summary = self.title
     lesson.description = self.summary
     lesson.location = self.venue.formatted_address
