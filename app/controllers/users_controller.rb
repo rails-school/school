@@ -2,9 +2,6 @@ class UsersController < ApplicationController
   load_and_authorize_resource except:
     [:show, :unsubscribe, :notify_subscribers]
 
-  http_basic_authenticate_with :name => SENDGRID_EVENT_USERNAME,
-    :password => SENDGRID_EVENT_PASSWORD, :only => :report_email_bounce
-
   skip_before_action :verify_authenticity_token, only: [:report_email_bounce]
 
   # GET /unsubscribe/:code
@@ -56,25 +53,25 @@ class UsersController < ApplicationController
 
   # POST /bounce_reports
   def report_email_bounce
-    unless params[:email].present? && params[:event] == "bounce"
-      return head :status => 422
+    if params[:email].blank? || params[:event] != "bounce"
+      return head status: 422
+    elsif params[:token] != ENV["SENDGRID_EVENT_TOKEN"]
+      return head status: 401
     end
     user = User.find_by_email(params[:email])
     if user
       user.subscribe_lesson_notifications = false
       user.save
     end
-    head :status => 200 # sendgrid demands a 200
+    head status: 200 # sendgrid demands a 200
   end
 
   # PUT /users/1
   def update
-
     if @user.update_attributes(params[:user])
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render action: "edit"
     end
   end
-
 end
