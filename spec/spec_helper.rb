@@ -8,7 +8,10 @@ require "email_spec"
 require 'capybara/poltergeist'
 require_relative 'helpers'
 require 'sidekiq/testing'
+require "support/fake_send_grid"
 Sidekiq::Testing.inline!
+WebMock.allow_net_connect! # only stubbing SendGrid for now
+WebMock.stub_request(:any, /api.sendgrid.com/).to_rack(FakeSendGrid)
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -30,7 +33,6 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.infer_spec_type_from_file_location!
 
-  # enable both should and expect syntax
   config.expect_with(:rspec) { |c| c.syntax = [:should, :expect] }
 end
 

@@ -69,6 +69,7 @@ group :test do
   gem 'simplecov', :require => false # code coverage tool
   gem "database_cleaner"
   gem 'email_spec'
+  gem "webmock"
 end
 
 group :test, :development do
