@@ -46,13 +46,14 @@ class Lesson < ActiveRecord::Base
     calendar.ip_method = "REQUEST"
     calendar.events << Icalendar::Event.new
     calendar.timezone do |t|
-      t.tzid = ActiveSupport::TimeZone[venue.school.timezone].tzinfo.canonical_identifier
+      t.tzid = ActiveSupport::TimeZone[
+        venue.school.timezone].tzinfo.canonical_identifier
     end
     lesson = calendar.events.first
-    # While the dtstart & dtend variables appear to have time zone information, 
+    # While the dtstart & dtend variables appear to have time zone information,
     # icalendar gem seems to remove it mand make them UTC
-    lesson.dtstart = self.start_time
-    lesson.dtend = self.end_time
+    lesson.dtstart = start_time
+    lesson.dtend = end_time
     lesson.summary = self.title
     lesson.description = self.summary
     lesson.location = self.venue.formatted_address

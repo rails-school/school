@@ -83,10 +83,13 @@ feature %q{
     email = ActionMailer::Base.deliveries.last
     lines = email.attachments.first.body.decoded.split("\n")
     expect(lines).to include(
-      "TZID:" + ActiveSupport::TimeZone[@school_pacific.timezone].tzinfo.canonical_identifier
+      "TZID:" + ActiveSupport::TimeZone[
+        @school_pacific.timezone].tzinfo.canonical_identifier
       )
-    start_time = Icalendar.parse(email.attachments.first,true).events.first.dtstart.value
-    expect(start_time).to eq ((Date.current + 1.day + 18.hours + 30.minutes).strftime(
+    start_time = Icalendar.parse(
+      email.attachments.first, true).events.first.dtstart.value
+    expect(start_time).to eq (
+      (Date.current + 1.day + 18.hours + 30.minutes).strftime(
       '%Y-%m-%d %H:%M:%S UTC')).to_s
   end
 
@@ -97,11 +100,14 @@ feature %q{
     email = ActionMailer::Base.deliveries.last
     lines = email.attachments.first.body.decoded.split("\n")
     expect(lines).to include(
-      "TZID:" + ActiveSupport::TimeZone[@school_eastern.timezone].tzinfo.canonical_identifier
+      "TZID:" + ActiveSupport::TimeZone[
+        @school_eastern.timezone].tzinfo.canonical_identifier
       )
-    start_time = Icalendar.parse(email.attachments.first,true).events.first.dtstart.value
-    expect(start_time).to eq ((Date.current + 1.day + 18.hours + 30.minutes).strftime(
-      '%Y-%m-%d %H:%M:%S UTC')).to_s
+    start_time = Icalendar.parse(
+      email.attachments.first, true).events.first.dtstart.value
+    expect(start_time).to eq (
+      (Date.current + 1.day + 18.hours + 30.minutes).strftime(
+        '%Y-%m-%d %H:%M:%S UTC')).to_s
   end
 end
 
