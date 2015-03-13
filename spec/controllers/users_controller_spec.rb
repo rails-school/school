@@ -15,31 +15,46 @@ describe UsersController do
           slug: "pretty-cool-completely-virtual-lesson"
         )
       )
+
+      # Create a token for the controller to check
+      ENV.stub(:[]).with("SENDGRID_EVENT_TOKEN").and_return("my_token")
     end
 
     it "marks the associated user as unsubscribed" do
-      request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("stewie", "cookie")
-      post 'report_email_bounce', email: user.email, event: "bounce"
+      get "report_email_bounce", token: "my_token", email: user.email,
+                                 event: "bounce"
       response.status.should be(200)
       expect(user.reload).not_to be_subscribe_lesson_notifications
     end
 
-    it "fails when required params are missing" do
-      request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("stewie", "cookie")
-      post 'report_email_bounce', email: user.email
+    it "fails when no event param is passed" do
+      get "report_email_bounce", token: "my_token", email: user.email
+      response.status.should be(422)
+      expect(user.reload).to be_subscribe_lesson_notifications
+    end
+
+    it "fails when no email is passed" do
+      get "report_email_bounce", token: "my_token", event: "bounce"
+      response.status.should be(422)
+      expect(user.reload).to be_subscribe_lesson_notifications
+    end
+
+    it "fails for events other than bounce is passed" do
+      get "report_email_bounce", token: "my_token", email: user.email,
+                                 event: "open"
       response.status.should be(422)
       expect(user.reload).to be_subscribe_lesson_notifications
     end
 
     it "fails when no credentials" do
-      post 'report_email_bounce', email: user.email, event: "bounce"
+      get "report_email_bounce", email: user.email, event: "bounce"
       response.status.should be(401)
       expect(user.reload).to be_subscribe_lesson_notifications
     end
 
     it "fails when bad credentials" do
-      request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials("stewie", "cookie!")
-      post 'report_email_bounce', email: user.email, event: "bounce"
+      get "report_email_bounce", token: "foo", email: user.email,
+                                 event: "bounce"
       response.status.should be(401)
       expect(user.reload).to be_subscribe_lesson_notifications
     end
