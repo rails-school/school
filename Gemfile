@@ -17,7 +17,7 @@ gem "unicorn"
 gem "rack-timeout", '0.0.4' # https://github.com/heroku/rack-timeout/issues/55
 gem "sidekiq"
 gem "sinatra", require: false # Required for Sidekiq web interface
-
+gem 'whenever', :require => false
 gem "devise-async"
 gem "gravatar-ultimate"
 # render markdown
