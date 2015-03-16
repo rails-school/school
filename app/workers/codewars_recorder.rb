@@ -5,7 +5,7 @@ class CodewarsRecorder
   def perform(user_id, codewars_username)
     user = User.includes(:codewars).find(user_id)
     codewars_url = "http://www.codewars.com/api/v1/users/#{codewars_username}" \
-                   "code-challenges/completed"
+                   "/code-challenges/completed"
     codewars = HTTParty.get(codewars_url)['data']
     # only check languages if we have a response
     if codewars
