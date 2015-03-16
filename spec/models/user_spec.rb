@@ -5,6 +5,7 @@ describe User do
 
   describe "attributes" do
     it { should respond_to(:bridge_troll_user_id) }
+    it { should respond_to(:rails_bridge_class_count) }
   end
 
   describe "#generate_unsubscribe_token" do

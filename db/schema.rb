@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316163226) do
+ActiveRecord::Schema.define(version: 20150316172118) do
 
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at"
@@ -155,10 +155,12 @@ ActiveRecord::Schema.define(version: 20150316163226) do
     t.string   "codewars_username"
     t.datetime "last_codewars_checked_at"
     t.string   "bridge_troll_user_id",           default: ""
+    t.integer  "rails_bridge_class_count",       default: 0
   end
 
   add_index "users", ["bridge_troll_user_id"], name: "index_users_on_bridge_troll_user_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["rails_bridge_class_count"], name: "index_users_on_rails_bridge_class_count"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["school_id"], name: "index_users_on_school_id"
 
