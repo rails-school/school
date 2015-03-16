@@ -21,42 +21,34 @@ describe UsersController do
     end
 
     it "marks the associated user as unsubscribed" do
-      get "report_email_bounce", token: "my_token", email: user.email,
-                                 event: "bounce"
+      get "report_email_bounce", token: "my_token",
+                                 _json: sendgrid_payload(user.email, "bounce")
       response.status.should be(200)
       expect(user.reload).not_to be_subscribe_lesson_notifications
     end
 
-    it "fails when no event param is passed" do
-      get "report_email_bounce", token: "my_token", email: user.email
-      response.status.should be(422)
-      expect(user.reload).to be_subscribe_lesson_notifications
-    end
-
-    it "fails when no email is passed" do
-      get "report_email_bounce", token: "my_token", event: "bounce"
-      response.status.should be(422)
-      expect(user.reload).to be_subscribe_lesson_notifications
-    end
-
-    it "fails for events other than bounce is passed" do
-      get "report_email_bounce", token: "my_token", email: user.email,
-                                 event: "open"
-      response.status.should be(422)
+    it "does not update the user record for events other than bounce" do
+      get "report_email_bounce", token: "my_token",
+                                 _json: sendgrid_payload(user.email, "open")
+      response.status.should be(200)
       expect(user.reload).to be_subscribe_lesson_notifications
     end
 
     it "fails when no credentials" do
-      get "report_email_bounce", email: user.email, event: "bounce"
+      get "report_email_bounce", _json: sendgrid_payload(user.email, "bounce")
       response.status.should be(401)
       expect(user.reload).to be_subscribe_lesson_notifications
     end
 
     it "fails when bad credentials" do
-      get "report_email_bounce", token: "foo", email: user.email,
-                                 event: "bounce"
+      get "report_email_bounce", token: "foo",
+                                 _json: sendgrid_payload(user.email, "bounce")
       response.status.should be(401)
       expect(user.reload).to be_subscribe_lesson_notifications
+    end
+
+    def sendgrid_payload(email, event)
+      [{ email: email, event: event }]
     end
   end
 end
