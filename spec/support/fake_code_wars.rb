@@ -7,7 +7,6 @@ class FakeCodeWars < Sinatra::Base
     json_response 200, "codewars.json"
   end
 
-
   def json_response(response_code, file_name)
     content_type :json
     status response_code
