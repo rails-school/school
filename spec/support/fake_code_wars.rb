@@ -1,7 +1,6 @@
 require "sinatra/base"
 
 class FakeCodeWars < Sinatra::Base
-
   CODEWARS_URL = "http://www.codewars.com/api/v1/users/"
 
   get "/api/v1/users/nbhartiya/code-challenges/completed" do

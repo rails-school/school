@@ -8,7 +8,7 @@ describe CodewarsRecorder do
       codewars_count = 0
       codewars_url = "http://www.codewars.com/api/v1/users/nbhartiya/" \
                      "code-challenges/completed"
-      codewars_completed = HTTParty.get(codewars_url)['data']
+      codewars_completed = HTTParty.get(codewars_url)["data"]
       codewars_completed.each do |exercise|
         exercise["completedLanguages"].each do |language|
           codewars_count += 1
@@ -21,7 +21,7 @@ describe CodewarsRecorder do
       context "but already has one codewar populated" do
         let!(:codewar) do
           create(:codewar, user_id: user.id, slug: "multiply",
-                 language: "clojure")
+                           language: "clojure")
         end
 
         it "creats new codewars that are not already existing, resulting in correct codewars count" do
