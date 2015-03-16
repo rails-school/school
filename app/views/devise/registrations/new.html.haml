@@ -46,6 +46,16 @@
     %br
     = f.text_field :github_username
 
+  %div
+    = f.label :codewars_username
+    %br
+    = f.text_field :codewars_username
+
+  %div
+    = f.label :bridge_troll_user_id, "BridgeTroll User ID"
+    %br
+    = f.text_field :bridge_troll_user_id
+
   %div= f.submit "Sign up"
 
 = render "devise/shared/links"

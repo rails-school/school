@@ -1,9 +1,13 @@
 require 'spec_helper'
 
 describe User do
-  describe "#generate_unsubscribe_token" do
-    subject { create(:user) }
+  subject { create(:user) }
 
+  describe "attributes" do
+    it { should respond_to(:bridge_troll_user_id) }
+  end
+
+  describe "#generate_unsubscribe_token" do
     context "user already has unsubscribe token" do
       it "doesn't change the existing token" do
         existing_token = subject.unsubscribe_token

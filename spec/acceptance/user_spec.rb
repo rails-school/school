@@ -19,8 +19,9 @@ feature %q{
     click_link "Stewie"
     click_link "Edit"
     within ".center-column" do
-      fill_in "user[email]", :with => "stewie@example.com"
-      fill_in "user[homepage]", :with => "example.com"
+      fill_in "user[email]", with: "stewie@example.com"
+      fill_in "user[homepage]", with: "example.com"
+      fill_in "user[bridge_troll_user_id]", with: "1111"
       uncheck "user[subscribe_lesson_notifications]"
       uncheck "user[subscribe_badge_notifications]"
       click_button "Save"
@@ -28,6 +29,7 @@ feature %q{
     page.should have_content "User was successfully updated."
     @user.reload.email.should == "stewie@example.com"
     @user.homepage.should == "http://example.com"
+    @user.bridge_troll_user_id.should == "1111"
     @user.subscribe_lesson_notifications.should == false
     @user.subscribe_badge_notifications.should == false
   end
