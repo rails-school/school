@@ -85,4 +85,9 @@ class User < ActiveRecord::Base
       ]
     )
   end
+
+  def self.rails_bridge_users
+    # bridge_troll_user_id defaults to a blank string
+    where.not(bridge_troll_user_id: "")
+  end
 end
