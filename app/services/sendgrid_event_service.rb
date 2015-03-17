@@ -13,7 +13,7 @@ class SendgridEventService
       if event[:email].present? && HANDLED_EVENTS.include?(event[:event])
         user = User.find_by(email: event[:email])
         method_name = "process_#{event[:event]}_event".to_sym
-        self.send(method_name, user) if user
+        send(method_name, user) if user
       end
     end
   end

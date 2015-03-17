@@ -1,9 +1,11 @@
 require "spec_helper"
 
 describe SendgridEventService do
-  file_path = "spec/fixtures/sendgrid_webhook.json"
-  webhook_payload = JSON.parse(File.open(file_path, "rb")
-                               .read).with_indifferent_access
+  let(:webhook_payload) do
+    JSON.parse(
+      File.open("spec/fixtures/sendgrid_webhook.json", "rb").read
+    ).with_indifferent_access
+  end
 
   context "when an email bounces" do
     let!(:bounced_user) { create(:user, email: "bouncedemail@example.com") }
@@ -26,9 +28,12 @@ describe SendgridEventService do
   end
 
   context "when one of our mailing list emails is marked as spam" do
-    let!(:list_user) { create(:user, email: "listemail@example.com",
-                                     password: nil,
-                                     password_confirmation: nil) }
+    let!(:list_user) {
+      create(:user, email: "listemail@example.com",
+                    password: nil,
+                    password_confirmation: nil)
+    }
+
     before do
       SendgridEventService.new(request_params: webhook_payload).perform
     end
