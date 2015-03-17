@@ -3,7 +3,7 @@ require "spec_helper"
 describe SendgridEventService do
   let(:webhook_payload) do
     JSON.parse(
-      File.open("spec/fixtures/sendgrid_webhook.json", "rb").read
+      File.open("spec/support/request_stubs/sendgrid_webhook.json", "rb").read
     ).with_indifferent_access
   end
 

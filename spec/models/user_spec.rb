@@ -11,8 +11,8 @@ describe User do
   describe ".rails_bridge_users" do
     context "when some users have given their bridge troll id" do
       before do
-        2.times { FactoryGirl.create(:user, bridge_troll_user_id: "") }
-        2.times { FactoryGirl.create(:user, bridge_troll_user_id: "foo") }
+        2.times { create(:user) }
+        2.times { create(:user, bridge_troll_user_id: "foo") }
       end
       it "should return only those users" do
         expect(User.rails_bridge_users.count).to eql 2

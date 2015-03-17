@@ -2,7 +2,6 @@ require "spec_helper"
 
 describe Badge::BridgeTroll do
   describe ".allocate_to_user?" do
-
     subject { Badge::BridgeTroll.allocate_to_user?(user) }
 
     context "user did not attend any RailsBridge classes" do

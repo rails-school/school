@@ -7,3 +7,5 @@ class FakeBridgeTroll < Sinatra::Base
     '{"event_count": 15}'
   end
 end
+
+WebMock.stub_request(:any, /www.bridgetroll.org/).to_rack(FakeBridgeTroll)
