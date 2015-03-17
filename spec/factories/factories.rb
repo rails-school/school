@@ -3,12 +3,13 @@ require 'factory_girl'
 FactoryGirl.define do
 
   factory :user do |u|
-    u.name                   "Test User that loves beer"
-    sequence(:email) { |i| "user_#{i}@example.com"}
-    u.password               "draft1"
-    u.password_confirmation  "draft1"
-    u.subscribe_lesson_notifications   true
-    u.admin                   false
+    u.name                            "Test User that loves beer"
+    sequence(:email)                  { |i| "user_#{i}@example.com" }
+    u.password                        "draft1"
+    u.password_confirmation           "draft1"
+    u.subscribe_lesson_notifications  true
+    u.subscribe_badge_notifications   true
+    u.admin                           false
     school
   end
 

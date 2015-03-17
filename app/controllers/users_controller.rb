@@ -54,12 +54,7 @@ class UsersController < ApplicationController
 
   # POST /bounce_reports
   def report_email_bounce
-    params[:_json].each do |payload|
-      if payload[:email].present? && payload[:event] == "bounce"
-        user = User.find_by_email(payload[:email])
-        user.update_attributes(subscribe_lesson_notifications: false) if user
-      end
-    end
+    SendgridEventService.new(request_params: params).perform
     head status: 200 # sendgrid demands a 200
   end
 

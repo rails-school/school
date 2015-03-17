@@ -1,0 +1,37 @@
+{ "_json":
+  [
+    {
+        "uid": "123456",
+        "status": "5.1.1",
+        "sg_event_id": "X_C_clhwSIi4EStEpol-SQ",
+        "reason": "550 5.1.1 The email account that you tried to reach does not exist. Please try double-checking the recipient's email address for typos or unnecessary spaces. Learn more at http: //support.google.com/mail/bin/answer.py?answer=6596 do3si8775385pbc.262 - gsmtp ",
+        "purchase": "PO1452297845",
+        "event": "bounce",
+        "email": "bouncedemail@example.com",
+        "timestamp": 1386637483,
+        "smtp-id": "<142da08cd6e.5e4a.310b89@localhost.localdomain>",
+        "type": "bounce",
+        "category": ["category1","category2","category3"],
+        "id": "001"
+    },
+    {
+        "email":"spamemail@example.com",
+        "timestamp":1386638248,
+        "uid":"123456",
+        "purchase":"PO1452297845",
+        "id":"001",
+        "category":["category1","category2","category3"],
+        "event":"spamreport"
+    },
+    {
+        "email":"listemail@example.com",
+        "timestamp":1386638248,
+        "uid":"123456",
+        "purchase":"PO1452297845",
+        "id":"001",
+        "category":["category1","category2","category3"],
+        "event":"spamreport"
+    }
+
+  ]
+}
