@@ -10,10 +10,12 @@ require_relative 'helpers'
 require 'sidekiq/testing'
 require "support/fake_code_wars"
 require "support/fake_send_grid"
+require "support/fake_bridge_troll"
 Sidekiq::Testing.inline!
 WebMock.allow_net_connect! # only stubbing CodeWars for now
 WebMock.stub_request(:any, /codewars.com/).to_rack(FakeCodeWars)
 WebMock.stub_request(:any, /api.sendgrid.com/).to_rack(FakeSendGrid)
+WebMock.stub_request(:any, /www.bridgetroll.org/).to_rack(FakeBridgeTroll)
 
 ActiveRecord::Migration.maintain_test_schema!
 
