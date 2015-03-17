@@ -69,4 +69,19 @@ class User < ActiveRecord::Base
   def completed_codewar_for_lesson(lesson)
     codewars.where(:slug=>lesson.codewars_challenge_slug, :language=>lesson.codewars_challenge_language).present?
   end
+
+  def as_json
+    super(
+      only: [
+        :id,
+        :created_at,
+        :teacher,
+        :school_id,
+        :admin,
+        :codewars_username,
+        :homepage,
+        :github_username
+      ]
+    )
+  end
 end
