@@ -18,6 +18,8 @@ feature %q{
     fill_in "user[password]", with: "draft1"
     fill_in "user[password_confirmation]", with: "draft1"
     fill_in "user[homepage]", with: "google.com"
+    fill_in "user[codewars_username]", with: "stewie2000"
+    fill_in "user[bridge_troll_user_id]", with: "999"
     click_button "Sign up"
     within ".center-column" do
       page.should_not have_content "Sign up"
@@ -26,6 +28,8 @@ feature %q{
     user.name.should == "Stewie"
     user.email.should == "stewie@example.com"
     user.homepage.should == "http://google.com"
+    user.codewars_username.should == "stewie2000"
+    user.bridge_troll_user_id.should == "999"
   end
 
   scenario "Email has already been taken", js: true do

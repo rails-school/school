@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :hide_last_name, :homepage, :github_username,
                   :school_id, :subscribe_lesson_notifications,
-                  :subscribe_badge_notifications, :codewars_username
+                  :subscribe_badge_notifications, :codewars_username,
+                  :bridge_troll_user_id
 
   has_many :attendances
   has_many :user_answers
@@ -83,5 +84,10 @@ class User < ActiveRecord::Base
         :github_username
       ]
     )
+  end
+
+  def self.rails_bridge_users
+    # bridge_troll_user_id defaults to a blank string
+    where.not(bridge_troll_user_id: "")
   end
 end

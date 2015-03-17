@@ -23,7 +23,7 @@
 - if @user.github_username.present?
   %p
     %iframe{frameborder: "0", src: "//githubbadge.appspot.com/#{@user.github_username}", style: "border: 0;height: 142px;width: 200px;overflow: hidden;"}
-    
+
 - if can? :manage, @user
   %h2 Details
 
@@ -54,6 +54,13 @@
     %b Codewars profile:
     - if @user.codewars_username.present?
       = link_to nil, "https://codewars.com/users/#{@user.codewars_username}"
+    -else
+      Missing
+
+  %p
+    %b BridgeTroll User ID:
+    - if @user.bridge_troll_user_id.present?
+      = @user.bridge_troll_user_id
     -else
       Missing
 

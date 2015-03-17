@@ -6,3 +6,5 @@ class FakeSendGrid < Sinatra::Base
     '{ "message": "success" }'
   end
 end
+
+WebMock.stub_request(:any, /api.sendgrid.com/).to_rack(FakeSendGrid)

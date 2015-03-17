@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102195531) do
+ActiveRecord::Schema.define(version: 20150316172118) do
 
-  create_table "answers", force: true do |t|
+  create_table "answers", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "poll_id"
     t.text     "text"
   end
 
-  create_table "attendances", force: true do |t|
+  create_table "attendances", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "lesson_id"
     t.boolean  "attended"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150102195531) do
 
   add_index "attendances", ["user_id", "lesson_id"], name: "index_attendances_on_user_id_and_lesson_id", unique: true
 
-  create_table "codewars", force: true do |t|
+  create_table "codewars", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "slug"
     t.datetime "created_at"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150102195531) do
     t.string   "language"
   end
 
-  create_table "lessons", force: true do |t|
+  create_table "lessons", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"
@@ -59,14 +59,14 @@ ActiveRecord::Schema.define(version: 20150102195531) do
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
 
-  create_table "polls", force: true do |t|
+  create_table "polls", force: :cascade do |t|
     t.text     "question"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "published"
   end
 
-  create_table "prosperity_dashboard_graphs", force: true do |t|
+  create_table "prosperity_dashboard_graphs", force: :cascade do |t|
     t.integer  "graph_id",     null: false
     t.integer  "dashboard_id", null: false
     t.datetime "created_at"
@@ -76,14 +76,14 @@ ActiveRecord::Schema.define(version: 20150102195531) do
   add_index "prosperity_dashboard_graphs", ["dashboard_id"], name: "index_prosperity_dashboard_graphs_on_dashboard_id"
   add_index "prosperity_dashboard_graphs", ["graph_id", "dashboard_id"], name: "index_prosperity_dashboard_graphs_on_graph_id_and_dashboard_id", unique: true
 
-  create_table "prosperity_dashboards", force: true do |t|
+  create_table "prosperity_dashboards", force: :cascade do |t|
     t.string   "title",      null: false
     t.boolean  "default",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "prosperity_graph_lines", force: true do |t|
+  create_table "prosperity_graph_lines", force: :cascade do |t|
     t.integer  "graph_id",   null: false
     t.string   "option",     null: false
     t.string   "metric",     null: false
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20150102195531) do
 
   add_index "prosperity_graph_lines", ["graph_id"], name: "index_prosperity_graph_lines_on_graph_id"
 
-  create_table "prosperity_graphs", force: true do |t|
+  create_table "prosperity_graphs", force: :cascade do |t|
     t.string   "title",      null: false
     t.string   "period",     null: false
     t.datetime "created_at"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20150102195531) do
     t.string   "graph_type", null: false
   end
 
-  create_table "schools", force: true do |t|
+  create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
     t.datetime "created_at"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20150102195531) do
     t.integer  "day_of_week"
   end
 
-  create_table "user_answers", force: true do |t|
+  create_table "user_answers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "answer_id"
     t.datetime "created_at"
@@ -121,14 +121,14 @@ ActiveRecord::Schema.define(version: 20150102195531) do
 
   add_index "user_answers", ["user_id", "answer_id"], name: "index_user_answers_on_user_id_and_answer_id", unique: true
 
-  create_table "user_badges", force: true do |t|
+  create_table "user_badges", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "badge_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -154,13 +154,17 @@ ActiveRecord::Schema.define(version: 20150102195531) do
     t.boolean  "subscribe_badge_notifications",  default: true
     t.string   "codewars_username"
     t.datetime "last_codewars_checked_at"
+    t.string   "bridge_troll_user_id",           default: ""
+    t.integer  "rails_bridge_class_count",       default: 0
   end
 
+  add_index "users", ["bridge_troll_user_id"], name: "index_users_on_bridge_troll_user_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["rails_bridge_class_count"], name: "index_users_on_rails_bridge_class_count"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["school_id"], name: "index_users_on_school_id"
 
-  create_table "venues", force: true do |t|
+  create_table "venues", force: :cascade do |t|
     t.string   "address"
     t.string   "city"
     t.string   "state"
