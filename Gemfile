@@ -33,6 +33,9 @@ gem "protected_attributes"
 # quick and easy metrics
 gem "prosperity"
 
+# job scheduling
+gem "whenever", require: false
+
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets'

@@ -1,12 +1,11 @@
 require "spec_helper"
 
 describe BridgeTrollRecorder do
-  describe "#perform" do
-    let(:recorder) { BridgeTrollRecorder.new }
+  describe ".perform_async" do
     let!(:user) { create(:user) }
     let!(:bt_user) { create(:user, bridge_troll_user_id: "1") }
 
-    before { recorder.perform }
+    before { BridgeTrollRecorder.perform_async }
 
     context "when updating RailsBridge class counts" do
       it "should not update users without a bridge troll id" do
