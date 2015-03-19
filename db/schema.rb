@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316172118) do
+ActiveRecord::Schema.define(version: 20150319185740) do
 
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20150316172118) do
     t.string   "image_social"
     t.string   "codewars_challenge_slug"
     t.string   "codewars_challenge_language"
+    t.string   "hangout_url"
+    t.string   "archive_url"
   end
 
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true

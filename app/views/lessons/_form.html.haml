@@ -53,5 +53,21 @@
   .field
     = f.label :tweet_message, "Tweet message (use {{url}} placeholder for link, assume it will cost 30 characters)"
     = f.text_area :tweet_message
+  .field
+    = f.label :hangout_url, "Hangout URL"
+    -unless @lesson.hangout_url
+      = javascript_include_tag "https://apis.google.com/js/platform.js"
+      #create-hangout-btn
+        :javascript
+          var btn = gapi.hangout.render('create-hangout-btn', {
+            'topic' : "#{@lesson.title}",
+            'render': 'createhangout',
+            'hangout_type': 'onair',
+            'widget_size': 175
+          });
+    = f.text_field :hangout_url
+  .field
+    = f.label :archive_url, "Youtube/Recording URL"
+    = f.text_field :archive_url
   .actions
     = f.submit 'Save'
