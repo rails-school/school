@@ -23,17 +23,28 @@ class UsersController < ApplicationController
   def notify_subscribers
     lesson = Lesson.find(params[:id])
     authorize! :notify, lesson
-    User.where(subscribe_lesson_notifications: true,
-               school: lesson.venue.school).each do |u|
-      NotificationMailer.delay.lesson_notification(lesson.id, u.id,
-                                                   current_user.id)
-    end
-    if LessonTweeter.new(lesson, current_user).tweet
-      flash[:notice] = "Subcribers notified and tweet tweeted"
+
+    school = lesson.venue.school
+    next_up_lesson = Lesson.for_school(school).future_lessons.first
+
+    if next_up_lesson == lesson
+      User.where(subscribe_lesson_notifications: true,
+                 school: lesson.venue.school).each do |u|
+        NotificationMailer.delay.lesson_notification(lesson.id, u.id,
+                                                     current_user.id)
+      end
+      if LessonTweeter.new(lesson, current_user).tweet
+        flash[:notice] = "Subcribers notified and tweet tweeted"
+      else
+        flash[:notice] = "Subscribers notified but error sending tweet, \
+perhaps it was too long?"
+      end
+      lesson.update_attribute(:notification_sent_at, Time.now)
     else
-      flash[:notice] = "Subscribers notified but error sending tweet, perhaps it was too long?"
+      flash[:error] =
+        %{Please wait until the lesson "#{next_up_lesson.title}" \
+has finished before notifying subscribers}
     end
-    lesson.update_attribute(:notification_sent_at, Time.now)
     redirect_to lesson_path(lesson)
   end
 
