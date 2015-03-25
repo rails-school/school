@@ -1,11 +1,5 @@
+# coding: utf-8
 module ApplicationHelper
-  def format_user_name(user)
-    if user.hide_last_name? && !user.admin?
-      user.name.split(" ").first
-    else
-      user.name
-    end
-  end
 
   def lesson_today(day)
     @lessons_this_month.find { |l| l.start_time.day == day }

@@ -1,4 +1,6 @@
 class LessonTweeter
+  include UsersHelper
+
   def initialize(lesson, teacher)
     @lesson = lesson
     @teacher = teacher
@@ -30,7 +32,7 @@ private
 
   def default_content
     <<-TWEET.strip_heredoc.sub(/\n$/, "")
-    Shame on #{teacher.name.split(" ").first} for this boring message. The next class is "#{lesson.title}"! {{URL}}
+    Shame on #{first_name(teacher) } for this boring message. The next class is "#{lesson.title}"! {{URL}}
     TWEET
   end
 

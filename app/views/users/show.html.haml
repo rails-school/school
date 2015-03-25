@@ -1,4 +1,4 @@
-%h2= format_user_name(@user)
+%h2= display_name(@user)
 
 %h4
   This user has attended #{pluralize(@user.attendances.joins(:lesson).where(confirmed: true).where("lessons.end_time < (?)", Time.now).count, "lesson")}

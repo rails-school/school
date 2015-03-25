@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 
@@ -117,7 +118,7 @@ feature %q{
     # Pacific params
     @school_pacific = create(:school, timezone: "Pacific Time (US & Canada)")
     @venue_pacific = create(:venue, school: @school_pacific)
-    @admin_pacific = create(:admin, school: @school_pacific)
+    @admin_pacific = create(:admin, school: @school_pacific, hide_last_name: false)
     # Eastern params
     @school_eastern = create(:school, timezone: "Eastern Time (US & Canada)")
     @venue_eastern = create(:venue, school: @school_eastern)
