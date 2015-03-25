@@ -1,8 +1,5 @@
 # coding: utf-8
 module ApplicationHelper
-  def format_user_name(user)
-    user.hide_last_name? ? user.first_name : user.name
-  end
 
   def lesson_today(day)
     @lessons_this_month.find { |l| l.start_time.day == day }

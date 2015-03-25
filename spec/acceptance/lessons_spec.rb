@@ -118,7 +118,7 @@ feature %q{
     # Pacific params
     @school_pacific = create(:school, timezone: "Pacific Time (US & Canada)")
     @venue_pacific = create(:venue, school: @school_pacific)
-    @admin_pacific = create(:admin, school: @school_pacific)
+    @admin_pacific = create(:admin, school: @school_pacific, hide_last_name: false)
     # Eastern params
     @school_eastern = create(:school, timezone: "Eastern Time (US & Canada)")
     @venue_eastern = create(:venue, school: @school_eastern)
@@ -143,7 +143,7 @@ feature %q{
 
     visit lesson_path(Lesson.last)
     within "ul.teachers" do
-      page.should have_content @admin_pacific.first_name
+      page.should have_content @admin_pacific.name
     end
     within "div.details" do
       page.should have_content "6:30pm Pacific - 8:15pm Pacific"
