@@ -30,7 +30,7 @@ private
 
   def default_content
     <<-TWEET.strip_heredoc.sub(/\n$/, "")
-    Shame on #{teacher.name.split(" ").first} for this boring message. The next class is "#{lesson.title}"! {{URL}}
+    Shame on #{teacher.first_name} for this boring message. The next class is "#{lesson.title}"! {{URL}}
     TWEET
   end
 

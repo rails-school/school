@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 
@@ -142,7 +143,7 @@ feature %q{
 
     visit lesson_path(Lesson.last)
     within "ul.teachers" do
-      page.should have_content @admin_pacific.name
+      page.should have_content @admin_pacific.first_name
     end
     within "div.details" do
       page.should have_content "6:30pm Pacific - 8:15pm Pacific"

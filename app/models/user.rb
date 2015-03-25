@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   before_save :generate_unsubscribe_token, :canonicalize_homepage
   validates_uniqueness_of :email
 
+  def first_name
+    name.split(" ").first
+  end
+
   def generate_unsubscribe_token
     # don't generate unsubscribe token for dummy users
     #   (IE users with no encrypted password)

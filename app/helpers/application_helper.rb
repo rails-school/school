@@ -1,10 +1,7 @@
+# coding: utf-8
 module ApplicationHelper
   def format_user_name(user)
-    if user.hide_last_name? && !user.admin?
-      user.name.split(" ").first
-    else
-      user.name
-    end
+    user.hide_last_name? ? user.first_name : user.name
   end
 
   def lesson_today(day)
