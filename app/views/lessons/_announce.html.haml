@@ -15,9 +15,9 @@
         #{lesson.description}
     -if lesson.codewars_challenge_slug.present?
       %p
-        Be sure to complete the following codewars challenge before class!
-        (If your RailsSchool profile includes your codewars username, you'll get
-        a nifty star if complete the challenge.)
+        Be sure to complete the following Codewars challenge before class!
+        (If your RailsSchool profile includes your Codewars username, you'll get
+        a nifty star if you complete the challenge.)
         %br
         = link_to nil, "http://www.codewars.com/kata/#{@lesson.codewars_challenge_slug}/train/#{@lesson.codewars_challenge_language}", target: "_blank"
     %br
