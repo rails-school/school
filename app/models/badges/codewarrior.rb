@@ -6,7 +6,7 @@ class Badge::Codewarrior
   include Badge
 
   def description
-    "Given to users who have completed at 5 ruby exercises on codewars."
+    "Given to users who have completed at least 5 ruby exercises on codewars."
   end
 
   def notification_bonus_message
