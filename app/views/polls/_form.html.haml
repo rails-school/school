@@ -17,7 +17,7 @@
   .six.columns
     .answers
       -if @poll.id.blank?
-        %h2 Please save this pall first to add answers
+        %h2 Please save this poll first to add answers
       -else
         =render :partial => "polls/answer_form", :locals => {:poll_id => @poll.id}
   .six.columns
