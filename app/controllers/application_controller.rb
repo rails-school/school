@@ -2,7 +2,7 @@ require_dependency "user_sanitizer"
 
 class ApplicationController < ActionController::Base
   before_filter :set_time_zone, :maybe_enqueue_codewars_recorder,
-                :maybe_enqueue_badge_allocator_or_bridge_troll_recorder
+                :maybe_enqueue_badge_allocator
 
   protect_from_forgery
   helper_method :current_school
@@ -60,7 +60,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  # def maybe_enqueue_badge_allocator_or_bridge_troll_recorder
   def maybe_enqueue_badge_allocator
     return unless user_signed_in?
     if current_user.last_badges_checked_at.nil? ||
