@@ -110,7 +110,8 @@ end
 feature %q{
   As a website
   I want to make sure,
-  That when a lesson with a google plus events hangout url but no archive url is saved
+  That when a lesson with a google plus events hangout url but no 
+    archive url is saved
   The archive url is set to the google plus events hangout url
 } do
 
