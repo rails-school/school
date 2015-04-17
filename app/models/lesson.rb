@@ -4,11 +4,20 @@ class Lesson < ActiveRecord::Base
   has_many :attendances
   has_many :users, :through => :attendances
   before_save :generate_slug
+  before_save :set_blank_archive_url
   belongs_to :venue
   belongs_to :teacher, class_name: "User"
 
   def generate_slug
     self.slug = Slug.new(title).generate if self.slug.blank?
+  end
+
+  def set_blank_archive_url
+    archivable_hangout_url =
+      /\Ahttps?:\/\/plus\.google\.com\/(?!.*hoaevent.*)(?=events\/.+)/i
+    if archive_url.blank? && hangout_url.try(:match, archivable_hangout_url)
+      self.archive_url = hangout_url
+    end
   end
 
   def to_param

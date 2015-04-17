@@ -110,6 +110,45 @@ end
 feature %q{
   As a website
   I want to make sure,
+  That when a lesson with a google plus events hangout url but no
+    archive url is saved
+  The archive url is set to the google plus events hangout url
+} do
+  background do
+    @lesson = FactoryGirl.build(:lesson)
+  end
+
+  scenario "creating a lesson with a google plus events url", js: true do
+    @lesson.hangout_url = "https://plus.google.com/events/foo"
+    @lesson.archive_url.should == nil
+    @lesson.save!
+    lessons = Lesson.all
+    lessons.count.should == 1
+    lessons.first.archive_url.should == "https://plus.google.com/events/foo"
+  end
+
+  scenario "creating a lesson with a google plus hoaevent url", js: true do
+    @lesson.hangout_url = "https://plus.google.com/hangouts/_/hoaevent/foo"
+    @lesson.archive_url.should == nil
+    @lesson.save!
+    lessons = Lesson.all
+    lessons.count.should == 1
+    lessons.first.archive_url.should == nil
+  end
+
+  scenario "creating a lesson with a non-google plus url", js: true do
+    @lesson.hangout_url = "https://talkgadget.com/events/foo"
+    @lesson.archive_url.should == nil
+    @lesson.save!
+    lessons = Lesson.all
+    lessons.count.should == 1
+    lessons.first.archive_url.should == nil
+  end
+end
+
+feature %q{
+  As a website
+  I want to make sure,
   That the admin can create lessons
   So the admin can create lessons
 } do
