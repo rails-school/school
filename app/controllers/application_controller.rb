@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
     if current_user.last_badges_checked_at.nil? ||
        (Time.now - current_user.last_badges_checked_at > 3600)
       BadgeAllocator.perform_async(current_user.id)
-      BridgeTrollRecorder.perform_async
+      # BridgeTrollRecorder.perform_async
       current_user.last_badges_checked_at = Time.now
       current_user.save!
     end

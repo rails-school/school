@@ -118,34 +118,34 @@ describe ApplicationController do
       end
     end
 
-    context "current_user has never had a bridge troll recorded job" do
-      let(:user) { create(:user, last_badges_checked_at: nil) }
+    # context "current_user has never had a bridge troll recorded job" do
+    #   let(:user) { create(:user, last_badges_checked_at: nil) }
 
-      it "enqueues a bridge troll recorder job and sets last_badges_checked_at" do
-        BridgeTrollRecorder.should_receive(:perform_async)
-        controller.send(:maybe_enqueue_badge_allocator_or_bridge_troll_recorder)
-        user.reload.last_badges_checked_at.to_i.should == Time.now.to_i
-      end
-    end
+    #   it "enqueues a bridge troll recorder job and sets last_badges_checked_at" do
+    #     BridgeTrollRecorder.should_receive(:perform_async)
+    #     controller.send(:maybe_enqueue_badge_allocator_or_bridge_troll_recorder)
+    #     user.reload.last_badges_checked_at.to_i.should == Time.now.to_i
+    #   end
+    # end
 
-    context "current_user has had a bridge troll recorded job 2 hours ago" do
-      let(:user) { create(:user, last_badges_checked_at: Time.now-2.hours.ago) }
+    # context "current_user has had a bridge troll recorded job 2 hours ago" do
+    #   let(:user) { create(:user, last_badges_checked_at: Time.now-2.hours.ago) }
 
-      it "enqueues a bridge troll recorder job and sets last_badges_checked_at" do
-        BridgeTrollRecorder.should_receive(:perform_async)
-        controller.send(:maybe_enqueue_badge_allocator_or_bridge_troll_recorder)
-        user.reload.last_badges_checked_at.to_i.should == Time.now.to_i
-      end
-    end
+    #   it "enqueues a bridge troll recorder job and sets last_badges_checked_at" do
+    #     BridgeTrollRecorder.should_receive(:perform_async)
+    #     controller.send(:maybe_enqueue_badge_allocator_or_bridge_troll_recorder)
+    #     user.reload.last_badges_checked_at.to_i.should == Time.now.to_i
+    #   end
+    # end
 
-    context "current_user had a bridge troll recorded job 5 minutes ago" do
-      let(:user) { create(:user, last_badges_checked_at: Time.now-5.minutes) }
+    # context "current_user had a bridge troll recorded job 5 minutes ago" do
+    #   let(:user) { create(:user, last_badges_checked_at: Time.now-5.minutes) }
 
-      it "does not enqueue a bridge troll recorder job or set last_badges_checked_at" do
-        BridgeTrollRecorder.should_not_receive(:perform_async)
-        controller.send(:maybe_enqueue_badge_allocator_or_bridge_troll_recorder)
-        user.reload.last_badges_checked_at.to_i.should == (Time.now-5.minutes).to_i
-      end
-    end
+    #   it "does not enqueue a bridge troll recorder job or set last_badges_checked_at" do
+    #     BridgeTrollRecorder.should_not_receive(:perform_async)
+    #     controller.send(:maybe_enqueue_badge_allocator_or_bridge_troll_recorder)
+    #     user.reload.last_badges_checked_at.to_i.should == (Time.now-5.minutes).to_i
+    #   end
+    # end
   end
 end
