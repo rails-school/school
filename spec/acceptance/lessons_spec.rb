@@ -425,9 +425,10 @@ feature %q{
     five minutes after the end of the lesson
 } do
   background do
-    @lesson = FactoryGirl.create(:lesson, 
-      start_time: Time.now - 2.hours - 6.minutes,
-      end_time: Time.now - 6.minutes, notification_sent_at: Time.now - 1.day)
+    @lesson = FactoryGirl.create(:lesson,
+                                 start_time: Time.now - 2.hours - 6.minutes,
+                                 end_time: Time.now - 6.minutes,
+                                 notification_sent_at: Time.now - 1.day)
   end
 
   scenario "Visiting the page directly by its URL" do
