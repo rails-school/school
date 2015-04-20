@@ -59,6 +59,9 @@
     %br
     %br
     %br
+- else
+  - if @lesson.notification_sent_at && Time.now < @lesson.end_time + 5.minutes
+    %h2 No Hangout for this lesson
 
 -if can? :manage, @lesson
   = link_to 'Edit', edit_lesson_path(@lesson), class: 'button'

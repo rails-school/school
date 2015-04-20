@@ -387,6 +387,57 @@ feature %q{
 end
 
 feature %q{
+  As a visitor
+  I want to see a message about no hangout
+  if a lesson has no hangout after it's notification is sent and before
+    five minutes to the end of the lesson
+} do
+  background do
+    @lesson = FactoryGirl.create(:lesson, end_time: Time.now + 1.day + 2.hours,
+      notification_sent_at: Time.now - 1.day)
+  end
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.should have_content("No Hangout for this lesson")
+  end
+end
+
+feature %q{
+  As a visitor
+  I don't want to see a message about no hangout
+  if a lesson has no hangout before it's notification is sent
+} do
+  background do
+    @lesson = FactoryGirl.create(:lesson, end_time: Time.now + 1.day + 2.hours)
+  end
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.should_not have_content("No Hangout for this lesson")
+  end
+end
+
+feature %q{
+  As a visitor
+  I don't want to see a message about no hangout
+  if a lesson has no hangout after it's notification is sent and after
+    five minutes after the end of the lesson
+} do
+  background do
+    @lesson = FactoryGirl.create(:lesson,
+                                 start_time: Time.now - 2.hours - 6.minutes,
+                                 end_time: Time.now - 6.minutes,
+                                 notification_sent_at: Time.now - 1.day)
+  end
+
+  scenario "Visiting the page directly by its URL" do
+    visit lesson_path(@lesson)
+    page.should_not have_content("No Hangout for this lesson")
+  end
+end
+
+feature %q{
   As a teacher
   who has created a lesson with a codewars assignment
   I want to see stars next to students
