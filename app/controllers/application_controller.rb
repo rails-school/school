@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     unless @current_school
       begin
         loc = request.location
-        @current_school = Venue.near([loc.latitude, loc.longitude], 5000)
+        @current_school = Venue.near([loc.latitude, loc.longitude], 1400)
                                .first
                                .school
       rescue StandardError
