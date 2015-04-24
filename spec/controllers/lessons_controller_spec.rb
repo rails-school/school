@@ -35,4 +35,40 @@ describe LessonsController do
       Timecop.return
     end
   end
+
+  describe "GET /l/future/slugs" do
+    let!(:future_lessons) { create_list(:lesson, 2) }
+    let!(:past_lesson) do
+      create(:lesson, start_time: Time.now - 1.day,
+             end_time: Time.now - 1.day + 2.hours)
+    end
+
+    before { get :future_lessons_slug }
+
+    it "returns slugs for only future lessons" do
+      expect(Lesson.count).to eq(3)
+      expect(response).to be_success
+      response_body = JSON.parse(response.body)
+      expect(response_body.length).to eq(2)
+      expect(response_body[0]).to be_a_kind_of(String)
+    end
+  end
+
+  describe "GET /l/upcoming" do
+    let!(:future_lessons) { create_list(:lesson, 2) }
+    let!(:past_lesson) do
+      create(:lesson, start_time: Time.now - 1.day,
+             end_time: Time.now - 1.day + 2.hours)
+    end
+
+    before { get :upcoming }
+
+    it "returns only upcoming lessons" do
+      expect(Lesson.count).to eq(3)
+      expect(response).to be_success
+      response_body = JSON.parse(response.body)
+      expect(response_body.length).to eq(2)
+      expect(response_body[0]["title"]).to include("Lesson")
+    end
+  end
 end

@@ -22,6 +22,11 @@ Rs::Application.routes.draw do
     member do
       get "whiteboard" => "lessons#show", :whiteboard => true
     end
+    collection do
+      get "future/slugs", to: "lessons#future_lessons_slug",
+                          as: :future_slug
+      get "upcoming", to: "lessons#upcoming", as: :upcoming
+    end
     resources :notifications, only: [:new, :create]
   end
 

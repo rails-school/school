@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
   before_filter :fix_dates, only: [:create, :update]
   before_filter :convert_slug_to_id
-  load_and_authorize_resource except: [:index]
+  load_and_authorize_resource except: [:index, :future_lessons_slug, :upcoming]
 
   # GET /lessons
   # GET /lessons.json
@@ -99,6 +99,19 @@ class LessonsController < ApplicationController
       format.html { redirect_to lessons_url }
       format.json { head :no_content }
     end
+  end
+
+  # GET /l/future/slugs.json
+  def future_lessons_slug
+    # lessons = [ "foo", "bar" ]
+    future_lesson_slugs = Lesson.future_lessons.pluck(:slug)
+    render json: future_lesson_slugs
+  end
+
+  # GET /l/upcoming
+  def upcoming
+    future_lessons = Lesson.future_lessons
+    render json: future_lessons
   end
 
 private
