@@ -71,4 +71,24 @@ describe LessonsController do
       expect(response_body[0]["title"]).to include("Lesson")
     end
   end
+
+  describe "GET /attending_lesson/:lesson_slug" do
+    let!(:user) { create(:user) }
+    let!(:lesson) { create(:lesson) }
+    let!(:attendance) { create(:attendance, user: user, lesson: lesson) }
+
+    before { sign_in(user) }
+
+    it "returns true if a user is attending a lesson" do
+      get :attending_lesson, lesson_slug: lesson.slug
+      expect(response).to be_success
+      expect(response.body).to eq("true")
+    end
+    it "returns false if a user is not attending a lesson" do
+      Attendance.first.destroy
+      get :attending_lesson, lesson_slug: lesson.slug
+      expect(response).to be_success
+      expect(response.body).to eq("false")
+    end
+  end
 end

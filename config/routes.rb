@@ -29,6 +29,8 @@ Rs::Application.routes.draw do
     end
     resources :notifications, only: [:new, :create]
   end
+  get "attending_lesson/:lesson_slug", to: "lessons#attending_lesson",
+                                       as: :attending_lesson
 
   %w{lesson badge}.each do |notification_type|
     get "#{notification_type}_unsubscribe/:code" => "users#unsubscribe",

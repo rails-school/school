@@ -1,7 +1,9 @@
 class LessonsController < ApplicationController
   before_filter :fix_dates, only: [:create, :update]
   before_filter :convert_slug_to_id
-  load_and_authorize_resource except: [:index, :future_lessons_slug, :upcoming]
+  load_and_authorize_resource except: [:index, :future_lessons_slug, :upcoming,
+                                       :attending_lesson]
+  before_action :authenticate_user!, only: [:attending_lesson]
 
   # GET /lessons
   # GET /lessons.json
@@ -108,10 +110,18 @@ class LessonsController < ApplicationController
     render json: future_lesson_slugs
   end
 
-  # GET /l/upcoming
+  # GET /l/upcoming.json
   def upcoming
     future_lessons = Lesson.future_lessons
     render json: future_lessons
+  end
+
+  # GET /attending_lesson/:lesson_slug.json
+  def attending_lesson
+    lesson = Lesson.find_by(slug: params[:lesson_slug])
+    attendance = current_user.attendances.find_by(lesson_id: lesson.id)
+    render json: !attendance.nil?
+    # render json: true
   end
 
 private
