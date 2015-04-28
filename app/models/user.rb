@@ -71,19 +71,16 @@ class User < ActiveRecord::Base
     codewars.where(:slug=>lesson.codewars_challenge_slug, :language=>lesson.codewars_challenge_language).present?
   end
 
-  def as_json
-    super(
-      only: [
-        :id,
-        :created_at,
-        :teacher,
-        :school_id,
-        :admin,
-        :codewars_username,
-        :homepage,
-        :github_username
-      ]
-    )
+  def as_json(options={})
+    options = { only: [:id,
+                       :created_at,
+                       :teacher,
+                       :school_id,
+                       :admin,
+                       :codewars_username,
+                       :homepage,
+                       :github_username] } if options.blank?
+    super options
   end
 
   def self.rails_bridge_users

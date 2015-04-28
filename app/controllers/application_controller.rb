@@ -3,9 +3,12 @@ require_dependency "user_sanitizer"
 class ApplicationController < ActionController::Base
   before_filter :set_time_zone, :maybe_enqueue_codewars_recorder,
                 :maybe_enqueue_badge_allocator
+  skip_before_filter :verify_authenticity_token, if: :json_request?
 
   protect_from_forgery
   helper_method :current_school
+
+  respond_to :html, :json
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
@@ -98,5 +101,9 @@ class ApplicationController < ActionController::Base
       student.last_codewars_checked_at = Time.now
       student.save!
     end
+  end
+
+  def json_request?
+    request.format.json?
   end
 end

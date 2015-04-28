@@ -105,15 +105,14 @@ class LessonsController < ApplicationController
 
   # GET /l/future/slugs.json
   def future_lessons_slug
-    # lessons = [ "foo", "bar" ]
     future_lesson_slugs = Lesson.future_lessons.pluck(:slug)
     render json: future_lesson_slugs
   end
 
   # GET /l/upcoming.json
   def upcoming
-    future_lessons = Lesson.future_lessons
-    render json: future_lessons
+    next_lesson = Lesson.future_lessons.first
+    render json: next_lesson
   end
 
   # GET /attending_lesson/:lesson_slug.json
@@ -121,7 +120,6 @@ class LessonsController < ApplicationController
     lesson = Lesson.find_by(slug: params[:lesson_slug])
     attendance = current_user.attendances.find_by(lesson_id: lesson.id)
     render json: !attendance.nil?
-    # render json: true
   end
 
 private

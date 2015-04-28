@@ -55,7 +55,9 @@ describe LessonsController do
   end
 
   describe "GET /l/upcoming" do
-    let!(:future_lessons) { create_list(:lesson, 2) }
+    let!(:next_lesson) { create(:lesson, title: "next") }
+    let!(:distant_lesson) { create(:lesson, start_time: Time.now + 1.month,
+      end_time: Time.now + 1.month + 2.hours, title: "distant") }
     let!(:past_lesson) do
       create(:lesson, start_time: Time.now - 1.day,
              end_time: Time.now - 1.day + 2.hours)
@@ -63,12 +65,11 @@ describe LessonsController do
 
     before { get :upcoming }
 
-    it "returns only upcoming lessons" do
+    it "returns only the next upcoming lesson" do
       expect(Lesson.count).to eq(3)
       expect(response).to be_success
       response_body = JSON.parse(response.body)
-      expect(response_body.length).to eq(2)
-      expect(response_body[0]["title"]).to include("Lesson")
+      expect(response_body["title"]).to eq("next")
     end
   end
 
