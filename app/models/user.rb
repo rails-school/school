@@ -71,15 +71,15 @@ class User < ActiveRecord::Base
     codewars.where(:slug=>lesson.codewars_challenge_slug, :language=>lesson.codewars_challenge_language).present?
   end
 
-  def as_json(options={})
-    options = { only: [:id,
-                       :created_at,
-                       :teacher,
-                       :school_id,
-                       :admin,
-                       :codewars_username,
-                       :homepage,
-                       :github_username] } if options.blank?
+  def as_json(options = {})
+    options ||= { only: [:id,
+                         :created_at,
+                         :teacher,
+                         :school_id,
+                         :admin,
+                         :codewars_username,
+                         :homepage,
+                         :github_username] }
     super options
   end
 

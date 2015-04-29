@@ -56,8 +56,10 @@ describe LessonsController do
 
   describe "GET /l/upcoming" do
     let!(:next_lesson) { create(:lesson, title: "next") }
-    let!(:distant_lesson) { create(:lesson, start_time: Time.now + 1.month,
-      end_time: Time.now + 1.month + 2.hours, title: "distant") }
+    let!(:distant_lesson) do
+      create(:lesson, start_time: Time.now + 1.month, 
+        end_time: Time.now + 1.month + 2.hours, title: "distant")
+    end
     let!(:past_lesson) do
       create(:lesson, start_time: Time.now - 1.day,
              end_time: Time.now - 1.day + 2.hours)
