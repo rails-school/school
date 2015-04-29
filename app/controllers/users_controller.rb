@@ -57,6 +57,12 @@ has finished before notifying subscribers}
   def show
     @user = User.includes(:user_badges, attendances: [:lesson])
                 .find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json do
+        render @user.as_json(only: [:id, :name, :email, :hide_last_name])
+      end
+    end
   end
 
   # GET /users/1/edit
