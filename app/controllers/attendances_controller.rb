@@ -17,7 +17,7 @@ class AttendancesController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.json { render status: 200 }
+      format.json { render json: nil, status: 200 }
     end
   end
 

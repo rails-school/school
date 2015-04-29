@@ -60,7 +60,7 @@ has finished before notifying subscribers}
     respond_to do |format|
       format.html
       format.json do
-        render @user.as_json(only: [:id, :name, :email, :hide_last_name])
+        render json: @user.as_json(only: [:id, :name, :email, :hide_last_name])
       end
     end
   end

@@ -3,9 +3,9 @@ require_dependency "user_sanitizer"
 class ApplicationController < ActionController::Base
   before_filter :set_time_zone, :maybe_enqueue_codewars_recorder,
                 :maybe_enqueue_badge_allocator
-  skip_before_filter :verify_authenticity_token, if: :json_request?
 
   protect_from_forgery
+  skip_before_filter :verify_authenticity_token, if: :json_request?
   helper_method :current_school
 
   respond_to :html, :json
