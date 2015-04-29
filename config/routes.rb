@@ -22,8 +22,15 @@ Rs::Application.routes.draw do
     member do
       get "whiteboard" => "lessons#show", :whiteboard => true
     end
+    collection do
+      get "future/slugs", to: "lessons#future_lessons_slug",
+                          as: :future_slug
+      get "upcoming", to: "lessons#upcoming", as: :upcoming
+    end
     resources :notifications, only: [:new, :create]
   end
+  get "attending_lesson/:lesson_slug", to: "lessons#attending_lesson",
+                                       as: :attending_lesson
 
   %w{lesson badge}.each do |notification_type|
     get "#{notification_type}_unsubscribe/:code" => "users#unsubscribe",
