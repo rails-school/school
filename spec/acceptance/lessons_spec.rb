@@ -327,6 +327,30 @@ feature %q{
 end
 
 feature %q{
+  As a user
+  I see a calendar for the next month
+  If there are no more lessons in this month 
+  And there is only one lesson on the 31st of the next month
+} do
+  background do
+    Timecop.travel(Time.local(2015, 4, 30, 12))
+    @user = FactoryGirl.create(:user)
+    @lesson = FactoryGirl.create(:lesson,
+                                 start_time: Time.local(2015, 5, 31, 10),
+                                 end_time: Time.local(2015, 5, 31, 12))
+    @user.school = @lesson.venue.school
+    sign_in_manually @user
+  end
+
+
+  scenario "RSVP clicking RSVP button", :js => true do
+    page.should_not have_content(Date.current.strftime("%B").upcase)
+    page.should have_content((Date.current + 1.month).strftime("%B").upcase)
+    Timecop.return
+  end
+end
+
+feature %q{
   As a visitor
   I see the right school in the page's title
   If I access a lesson directly by its URL
