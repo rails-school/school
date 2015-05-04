@@ -76,4 +76,13 @@ class Lesson < ActiveRecord::Base
   def as_json(opts={})
     super.merge(opts.slice(:students))
   end
+
+  def self.future_lessons_for_school(school = nil)
+    if school
+      Lesson.for_school(school).where("end_time > (?)", Time.current)
+        .order("start_time asc")
+    else
+      Lesson.future_lessons
+    end
+  end
 end

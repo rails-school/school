@@ -105,13 +105,15 @@ class LessonsController < ApplicationController
 
   # GET /l/future/slugs.json
   def future_lessons_slug
-    future_lesson_slugs = Lesson.future_lessons.pluck(:slug)
+    school = School.find_by(id: params[:school_id])
+    future_lesson_slugs = Lesson.future_lessons_for_school(school).pluck(:slug)
     render json: future_lesson_slugs
   end
 
   # GET /l/upcoming.json
   def upcoming
-    next_lesson = Lesson.future_lessons.first
+    school = School.find_by(id: params[:school_id])
+    next_lesson = Lesson.future_lessons_for_school(school).first
     render json: next_lesson
   end
 
