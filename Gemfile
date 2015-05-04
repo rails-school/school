@@ -62,6 +62,9 @@ gem 'modular-scale', '1.0.6'
 gem 'jquery-rails'
 gem 'chronic'
 
+# Allow use of sockets for mobile support
+gem 'socket.io-client-simple'
+
 group :test do
   gem "factory_girl_rails"
   gem "timecop"

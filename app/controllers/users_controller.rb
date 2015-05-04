@@ -39,6 +39,8 @@ class UsersController < ApplicationController
         flash[:notice] = "Subscribers notified but error sending tweet, \
 perhaps it was too long?"
       end
+
+      emit_lesson_notification_on_socket lesson
       lesson.update_attribute(:notification_sent_at, Time.now)
     else
       flash[:error] =
@@ -89,6 +91,20 @@ has finished before notifying subscribers}
   def authenticate_sendgrid_webhook
     unless params[:token] == ENV["SENDGRID_EVENT_TOKEN"]
       return head status: 401
+    end
+  end
+
+  # Send the lesson (for which a notification is being sent) to a Node
+  # server with socket.io; the Node server will then send the lesson to
+  # all mobile devices subscribed to a channel
+  def emit_lesson_notification_on_socket lesson
+    server_addr = 'https://rs-socketio.herokuapp.com'
+    socket = SocketIO::Client::Simple.connect server_addr
+    message = lesson.as_json
+
+    socket.emit 'lessonNotification', message
+    socket.on :connect do
+      socket.emit 'lessonNotification', message
     end
   end
 end
