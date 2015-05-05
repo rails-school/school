@@ -98,7 +98,7 @@ has finished before notifying subscribers}
   # server with socket.io; the Node server will then send the lesson to
   # all mobile devices subscribed to a channel
   def emit_lesson_notification_on_socket lesson
-    server_addr = 'https://rs-socketio.herokuapp.com'
+    server_addr = 'https://rssf-pusher.herokuapp.com'
     socket = SocketIO::Client::Simple.connect server_addr
     message = lesson.as_json
 
