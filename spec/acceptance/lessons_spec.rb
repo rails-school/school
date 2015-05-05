@@ -329,7 +329,7 @@ end
 feature %q{
   As a user
   I see a calendar for the next month
-  If there are no more lessons in this month 
+  If there are no more lessons in this month
   And there is only one lesson on the 31st of the next month
 } do
   background do
@@ -342,8 +342,7 @@ feature %q{
     sign_in_manually @user
   end
 
-
-  scenario "RSVP clicking RSVP button", :js => true do
+  scenario "RSVP clicking RSVP button", js: true do
     page.should_not have_content(Date.current.strftime("%B").upcase)
     page.should have_content((Date.current + 1.month).strftime("%B").upcase)
     Timecop.return
