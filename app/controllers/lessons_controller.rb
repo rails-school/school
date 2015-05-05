@@ -9,7 +9,8 @@ class LessonsController < ApplicationController
   # GET /lessons.json
   def index
     if params[:school].present?
-      @lessons = Lesson.for_school_id(current_school.id).order("start_time DESC")
+      @lessons = Lesson.for_school_id(current_school.id)
+        .order("start_time DESC")
       @title = "All lessons in #{current_school.name}"
     else
       @lessons = Lesson.order("start_time DESC")
@@ -109,7 +110,6 @@ class LessonsController < ApplicationController
     if params[:school_id].present?
       future_lessons = future_lesson.for_school_id(params[:school_id])
     end
-
     render json: future_lessons.pluck(:slug)
   end
 
@@ -119,7 +119,6 @@ class LessonsController < ApplicationController
     if params[:school_id].present?
       next_lessons = next_lessons.for_school_id(params[:school_id])
     end
-    
     render json: next_lessons.first
   end
 
