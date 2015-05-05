@@ -59,7 +59,7 @@ describe Lesson do
 
   end
 
-  describe "for_school" do
+  describe "for_school_id" do
     it "contains lessons for venues in the school" do
       school = create(:school)
       venue1 = create(:venue, school: school)
@@ -67,7 +67,7 @@ describe Lesson do
       lesson1 = create(:lesson, venue: venue1)
       lesson2 = create(:lesson, venue: venue2)
 
-      lessons = Lesson.for_school(school)
+      lessons = Lesson.for_school_id(school.id)
       lessons.should include(lesson1)
       lessons.should include(lesson2)
     end
@@ -75,46 +75,7 @@ describe Lesson do
     it "doesn't contains lessons for venues outside the school" do
       school = create(:school)
       venue1 = create(:venue)
-      Lesson.for_school(school).should_not include(venue1)
-    end
-  end
-
-  describe "future_lessons_for_school" do
-    let(:school1) { create(:school) }
-    let(:school2) { create(:school) }
-    let(:venue1) { create(:venue, school: school1) }
-    let(:venue2) { create(:venue, school: school2) }
-    let(:lesson1) { create(:lesson, venue: venue1, title: "Lesson 1") }
-    let(:lesson2) { create(:lesson, venue: venue2, title: "Lesson 2") }
-    let(:lesson3) { create(:lesson, venue: venue1, title: "Lesson 3") }
-    let(:past_lesson) do
-      create(:lesson, venue: venue1, start_time: Time.now - 1.day,
-        end_time: Time.now - 1.day + 2.hours)
-    end
-
-    context "with school provided" do
-      let(:lessons) { Lesson.future_lessons_for_school(school1) }
-
-      it "does not include lesson at a different school" do
-        expect(lessons).not_to include(lesson2)
-      end
-      it "does not include past lesson" do
-        expect(lessons).not_to include(past_lesson)
-      end
-      it "includes future lessons at school provided" do
-        expect(lessons).to match_array([lesson1, lesson3])
-      end
-    end
-
-    context "with no school provided" do
-      let(:lessons) { Lesson.future_lessons_for_school }
-
-      it "does not include past lesson" do
-        expect(lessons).not_to include(past_lesson)
-      end
-      it "includes all future lessons" do
-        expect(lessons).to match_array([lesson1, lesson2, lesson3])
-      end
+      Lesson.for_school_id(school.id).should_not include(venue1)
     end
   end
 end
