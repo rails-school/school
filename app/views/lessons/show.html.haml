@@ -47,14 +47,17 @@
   = link_to "Please, sign in to see the Whiteboard", whiteboard_lesson_path(@lesson)
 
 - if @lesson.hangout_url.present? || @lesson.archive_url.present?
-  %h2 Watch Lesson
+  - if Time.now > @lesson.start_time - 15.minutes
+    %h2 Watch Lesson
+  - else
+    %h5 The hangout link will be posted here 15 minutes before the class
   .action
     - if @lesson.hangout_url.present? && Time.now > @lesson.start_time - 15.minutes && Time.now < @lesson.end_time + 5.minutes
       - if user_signed_in?
         = link_to 'Join Hangout', @lesson.hangout_url, class: "button primary", target: "_blank"
       - else
         Please, sign in to join the hangout
-    - if @lesson.archive_url.present?
+    - if @lesson.archive_url.present? && Time.now > @lesson.end_time + 5.minutes
       = link_to 'Watch Recording', @lesson.archive_url, class: "button secondary", target: "_blank"
     %br
     %br
