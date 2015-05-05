@@ -37,8 +37,8 @@ FactoryGirl.define do
   factory :next_month_lesson, class: Lesson do |l|
     l.title              "some random lesson how to make animal orgy on mondays"
     l.description        "light@beer-is-good.com"
-    l.start_time         Date.current + 1.month + 1.day
-    l.end_time           Date.current + 1.month + 1.day + 2.hours
+    l.start_time         Date.current + 1.month
+    l.end_time           Date.current + 1.month + 2.hours
     venue
   end
 

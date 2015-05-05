@@ -11,7 +11,7 @@ feature %q{
     @attendee = FactoryGirl.create(:user)
     @venue = FactoryGirl.create(:venue)
     @lesson = create(
-      :next_month_lesson, start_time: Date.current + 1.month + 1.day + 19.hours
+      :next_month_lesson, start_time: Date.current + 1.month + 19.hours
     )
   end
 
