@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     authorize! :notify, lesson
 
     school = lesson.venue.school
-    next_up_lesson = Lesson.for_school(school).future_lessons.first
+    next_up_lesson = Lesson.for_school_id(school.id).future_lessons.first
 
     if next_up_lesson == lesson
       User.where(subscribe_lesson_notifications: true,

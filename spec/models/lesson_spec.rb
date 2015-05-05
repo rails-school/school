@@ -59,7 +59,7 @@ describe Lesson do
 
   end
 
-  describe "for_school" do
+  describe "for_school_id" do
     it "contains lessons for venues in the school" do
       school = create(:school)
       venue1 = create(:venue, school: school)
@@ -67,7 +67,7 @@ describe Lesson do
       lesson1 = create(:lesson, venue: venue1)
       lesson2 = create(:lesson, venue: venue2)
 
-      lessons = Lesson.for_school(school)
+      lessons = Lesson.for_school_id(school.id)
       lessons.should include(lesson1)
       lessons.should include(lesson2)
     end
@@ -75,7 +75,7 @@ describe Lesson do
     it "doesn't contains lessons for venues outside the school" do
       school = create(:school)
       venue1 = create(:venue)
-      Lesson.for_school(school).should_not include(venue1)
+      Lesson.for_school_id(school.id).should_not include(venue1)
     end
   end
 end

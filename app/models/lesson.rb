@@ -46,8 +46,8 @@ class Lesson < ActiveRecord::Base
     lessons
   end
 
-  def self.for_school(school)
-    self.joins(:venue).where(venues: {school_id: school.id})
+  def self.for_school_id(school_id)
+    self.joins(:venue).where(venues: { school_id: school_id })
   end
 
   def to_ics
