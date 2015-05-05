@@ -82,8 +82,8 @@ describe Lesson do
   describe "future_lessons_for_school" do
     let(:school1) { create(:school) }
     let(:school2) { create(:school) }
-    let(:venue1)  { create(:venue, school: school1) }
-    let(:venue2)  { create(:venue, school: school2) }
+    let(:venue1) { create(:venue, school: school1) }
+    let(:venue2) { create(:venue, school: school2) }
     let(:lesson1) { create(:lesson, venue: venue1, title: "Lesson 1") }
     let(:lesson2) { create(:lesson, venue: venue2, title: "Lesson 2") }
     let(:lesson3) { create(:lesson, venue: venue1, title: "Lesson 3") }
@@ -98,7 +98,7 @@ describe Lesson do
       it "does not include lesson at a different school" do
         expect(lessons).not_to include(lesson2)
       end
-      it "does not include past lesson" do 
+      it "does not include past lesson" do
         expect(lessons).not_to include(past_lesson)
       end
       it "includes future lessons at school provided" do
@@ -109,7 +109,7 @@ describe Lesson do
     context "with no school provided" do
       let(:lessons) { Lesson.future_lessons_for_school }
 
-      it "does not include past lesson" do 
+      it "does not include past lesson" do
         expect(lessons).not_to include(past_lesson)
       end
       it "includes all future lessons" do
