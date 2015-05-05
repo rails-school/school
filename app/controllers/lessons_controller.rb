@@ -10,7 +10,7 @@ class LessonsController < ApplicationController
   def index
     if params[:school].present?
       @lessons = Lesson.for_school_id(current_school.id)
-                 .order("start_time DESC")
+                   .order("start_time DESC")
       @title = "All lessons in #{current_school.name}"
     else
       @lessons = Lesson.order("start_time DESC")
