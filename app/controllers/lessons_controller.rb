@@ -73,7 +73,10 @@ class LessonsController < ApplicationController
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
         format.json { render json: @lesson, status: :created, location: @lesson }
       else
-        format.html { render action: "new" }
+        format.html do
+          @venues = current_school.venues
+          render action: "new"
+        end
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
       end
     end
@@ -87,7 +90,10 @@ class LessonsController < ApplicationController
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html do
+          @venues = current_school.venues
+          render action: "edit"
+        end
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
       end
     end
