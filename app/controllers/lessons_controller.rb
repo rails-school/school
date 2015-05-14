@@ -50,7 +50,6 @@ class LessonsController < ApplicationController
   # GET /lessons/new.json
   def new
     # @lesson = Lesson.new
-    @venues = current_school.venues
 
     respond_to do |format|
       format.html # new.html.erb
@@ -60,7 +59,6 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
-    @venues = current_school.venues
   end
 
   # POST /lessons
@@ -73,10 +71,7 @@ class LessonsController < ApplicationController
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
         format.json { render json: @lesson, status: :created, location: @lesson }
       else
-        format.html do
-          @venues = current_school.venues
-          render action: "new"
-        end
+        format.html { render action: "new" }
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
       end
     end
@@ -90,10 +85,7 @@ class LessonsController < ApplicationController
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html do
-          @venues = current_school.venues
-          render action: "edit"
-        end
+        format.html { render action: "edit" }
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
       end
     end

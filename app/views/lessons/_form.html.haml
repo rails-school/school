@@ -41,8 +41,9 @@
     %input{id: "lesson_end_time", name: "lesson[end_time]", type: "time",
      value: @lesson.end_time ? @lesson.end_time.strftime("%H:%M") : "21:00"}
   .field
+    - venues = current_school.venues
     = f.label :venue_id
-    =select("lesson", "venue_id", @venues.collect {|v| [ v.name, v.id ]})
+    =select("lesson", "venue_id", venues.collect {|v| [ v.name, v.id ]})
   %br
   .field
     = f.label :slug
