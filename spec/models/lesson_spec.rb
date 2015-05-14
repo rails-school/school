@@ -2,6 +2,13 @@ require 'spec_helper'
 
 describe Lesson do
 
+  describe "validation" do
+    let(:lesson) { create(:lesson) }
+    subject { lesson }
+
+    it { should validate_length_of(:tweet_message).is_at_most(140) }
+  end
+
   describe "lessons_this_month" do
     it "contains this months's lessons" do
       Timecop.freeze(Time.local(2014,7,1,12,0,0)) do

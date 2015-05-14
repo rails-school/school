@@ -50,7 +50,6 @@ class LessonsController < ApplicationController
   # GET /lessons/new.json
   def new
     # @lesson = Lesson.new
-    @venues = current_school.venues
 
     respond_to do |format|
       format.html # new.html.erb
@@ -60,7 +59,6 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
-    @venues = current_school.venues
   end
 
   # POST /lessons
