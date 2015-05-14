@@ -108,7 +108,7 @@ class LessonsController < ApplicationController
   def future_lessons_slug
     future_lessons = Lesson.future_lessons
     if params[:school_id].present?
-      future_lessons = future_lesson.for_school_id(params[:school_id])
+      future_lessons = future_lessons.for_school_id(params[:school_id])
     end
     render json: future_lessons.pluck(:slug)
   end
