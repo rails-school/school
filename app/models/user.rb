@@ -72,15 +72,15 @@ class User < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    options ||= { only: [:id,
-                         :created_at,
-                         :teacher,
-                         :school_id,
-                         :admin,
-                         :codewars_username,
-                         :homepage,
-                         :github_username] }
-    super options
+    default_options = { only: [:id,
+                               :created_at,
+                               :teacher,
+                               :school_id,
+                               :admin,
+                               :codewars_username,
+                               :homepage,
+                               :github_username] }
+    super(default_options.merge options)
   end
 
   def self.rails_bridge_users
