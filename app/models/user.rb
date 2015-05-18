@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
                                :codewars_username,
                                :homepage,
                                :github_username] }
-    super(default_options.merge! options)
+    super(default_options.merge options)
   end
 
   def self.rails_bridge_users
