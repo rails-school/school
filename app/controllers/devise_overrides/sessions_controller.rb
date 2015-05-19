@@ -1,10 +1,10 @@
 class DeviseOverrides::SessionsController < Devise::SessionsController
   def create
     if request.format.json?
-      resource = warden.authenticate(scope: resource_name)
+      resource = warden.authenticate(scope: resource_name)
       if resource
         sign_in(resource_name, resource)
-        render json: resource
+        render json: resource
       else
         head :unauthorized
       end
