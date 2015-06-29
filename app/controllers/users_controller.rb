@@ -1,3 +1,5 @@
+require 'houston'
+
 class UsersController < ApplicationController
   load_and_authorize_resource except:
     [:show, :unsubscribe, :notify_subscribers]
@@ -86,6 +88,12 @@ has finished before notifying subscribers}
     end
   end
 
+  # PUT /users/device-token
+  def save_device_token
+    args = params.require[:token]
+    DeviceToken.new(token: args).save
+  end
+
   private
 
   def authenticate_sendgrid_webhook
@@ -100,6 +108,19 @@ has finished before notifying subscribers}
   def emit_lesson_notification_on_socket(lesson)
     return unless Rails.env.production?
 
+    # Notify iOS apps
+    myAPN = Houston::Client.production
+    myAPN.certificate = IOS_CERTIFICATE
+    myAPN.passphrase = IOS_CERTIFICATE_PASSPHRASE
+
+    DeviceToken.all.each do |token|
+      notification = Houston::Notification.new(device: token)
+      notification.alert = lesson.title
+      notification.sound = 'true'
+      myAPN.push notification
+    end
+
+    # Notify socket listeners (Android)
     server_addr = "https://rssf-pusher.herokuapp.com"
     socket = SocketIO::Client::Simple.connect server_addr
     message = lesson.as_json

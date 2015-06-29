@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319185740) do
+ActiveRecord::Schema.define(version: 20150629163010) do
 
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20150319185740) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "language"
+  end
+
+  create_table "device_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -102,6 +108,26 @@ ActiveRecord::Schema.define(version: 20150319185740) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "graph_type", null: false
+  end
+
+  create_table "rails_push_notifications_apns_apps", force: :cascade do |t|
+    t.text     "apns_dev_cert"
+    t.text     "apns_prod_cert"
+    t.boolean  "sandbox_mode"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "rails_push_notifications_gcm_apps", force: :cascade do |t|
+    t.string   "gcm_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rails_push_notifications_mpns_apps", force: :cascade do |t|
+    t.text     "cert"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "schools", force: :cascade do |t|
