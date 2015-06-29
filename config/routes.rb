@@ -17,7 +17,7 @@ Rs::Application.routes.draw do
   resources :venues, only: [:index, :show, :edit, :new]
   resources :answers
   resources :questions
-  resources :users, :except => [:new, :create, :destroy] do
+  resources :users, except: [:new, :create, :destroy] do
     collection do
       put "device-token" => "users#save_device_token"
     end

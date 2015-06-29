@@ -1,4 +1,4 @@
-require 'houston'
+require "houston"
 
 class UsersController < ApplicationController
   load_and_authorize_resource except:
@@ -115,17 +115,17 @@ has finished before notifying subscribers}
 
     # Notify iOS apps
     # Swap lines below when production certificate is ready
-    #myAPN = Houston::Client.production
-    myAPN = Houston::Client.development
-    myAPN.certificate = IOS_CERTIFICATE
-    myAPN.passphrase = IOS_CERTIFICATE_PASSPHRASE
+    #my_apn = Houston::Client.production
+    my_apn = Houston::Client.development
+    my_apn.certificate = IOS_CERTIFICATE
+    my_apn.passphrase = IOS_CERTIFICATE_PASSPHRASE
 
     DeviceToken.all.each do |dt|
       notification = Houston::Notification.new(device: dt.token)
       notification.alert = lesson.title
-      notification.sound = 'true'
+      notification.sound = "true"
       notification.badge = 1
-      myAPN.push notification
+      my_apn.push notification
     end
 
     # Notify socket listeners (Android)
