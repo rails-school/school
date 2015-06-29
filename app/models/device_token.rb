@@ -1,13 +1,16 @@
 class DeviceToken < ActiveRecord::Base
+  attr_accessible :token
+
   def save
+    # Escape token: remove arrows and spaces
     escaped_token = ''
     token.each_char do |c|
       escaped_token += c if c != ' ' && c != '<' && c != '>'
     end
-    token = escaped_token
+    self.token = escaped_token
 
-    return if where('token = ?', token).count > 0
-
-    super.save
+    # Save if it does not already exist
+    return if DeviceToken.where('token = ?', self.token).count > 0
+    super
   end
 end

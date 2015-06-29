@@ -90,8 +90,13 @@ has finished before notifying subscribers}
 
   # PUT /users/device-token
   def save_device_token
-    args = params.require[:token]
+    args = params.require :token
     DeviceToken.new(token: args).save
+
+    respond_to do |f|
+      f.html
+      f.json { render json: nil, status: :ok }
+    end
   end
 
   private
@@ -109,14 +114,17 @@ has finished before notifying subscribers}
     return unless Rails.env.production?
 
     # Notify iOS apps
-    myAPN = Houston::Client.production
+    # Swap lines below when production certificate is ready
+    #myAPN = Houston::Client.production
+    myAPN = Houston::Client.development
     myAPN.certificate = IOS_CERTIFICATE
     myAPN.passphrase = IOS_CERTIFICATE_PASSPHRASE
 
-    DeviceToken.all.each do |token|
-      notification = Houston::Notification.new(device: token)
+    DeviceToken.all.each do |dt|
+      notification = Houston::Notification.new(device: dt.token)
       notification.alert = lesson.title
       notification.sound = 'true'
+      notification.badge = 1
       myAPN.push notification
     end
 

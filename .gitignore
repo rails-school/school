@@ -21,3 +21,5 @@
 
 
 config/initializers/ios_certificate.rb
+
+config/initializers/ios_development_certificate.rb
