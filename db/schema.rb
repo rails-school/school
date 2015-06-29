@@ -110,26 +110,6 @@ ActiveRecord::Schema.define(version: 20150629163010) do
     t.string   "graph_type", null: false
   end
 
-  create_table "rails_push_notifications_apns_apps", force: :cascade do |t|
-    t.text     "apns_dev_cert"
-    t.text     "apns_prod_cert"
-    t.boolean  "sandbox_mode"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "rails_push_notifications_gcm_apps", force: :cascade do |t|
-    t.string   "gcm_key"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "rails_push_notifications_mpns_apps", force: :cascade do |t|
-    t.text     "cert"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
