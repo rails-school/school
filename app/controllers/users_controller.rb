@@ -108,31 +108,20 @@ has finished before notifying subscribers}
   # server with socket.io; the Node server will then send the lesson to
   # all mobile devices subscribed to a channel
   def emit_lesson_notification_on_socket(lesson)
-    return unless Rails.env.production?
-
     # Notify iOS apps
     # Swap lines below when production certificate is ready
-    #my_apn = Houston::Client.production
-    my_apn = Houston::Client.development
-    my_apn.certificate = IOS_CERTIFICATE
-    my_apn.passphrase = IOS_CERTIFICATE_PASSPHRASE
-
-    DeviceToken.all.each do |dt|
-      notification = Houston::Notification.new(device: dt.token)
-      notification.alert = lesson.title
-      notification.sound = "true"
-      notification.badge = 1
-      my_apn.push notification
-    end
+    DeviceToken.all.each { |dt| IOSNotificationSender.perform_async(dt.as_json, lesson.as_json) }
 
     # Notify socket listeners (Android)
-    server_addr = "https://rssf-pusher.herokuapp.com"
-    socket = SocketIO::Client::Simple.connect server_addr
-    message = lesson.as_json
+    if Rails.env.production?
+      server_addr = "https://rssf-pusher.herokuapp.com"
+      socket = SocketIO::Client::Simple.connect server_addr
+      message = lesson.as_json
 
-    socket.emit "lessonNotification", message
-    socket.on :connect do
       socket.emit "lessonNotification", message
+      socket.on :connect do
+        socket.emit "lessonNotification", message
+      end
     end
   end
 end

@@ -20,6 +20,5 @@
 *.DS_Store
 
 
-config/initializers/ios_certificate.rb
-
-config/initializers/ios_development_certificate.rb
+config/ios_development_certificate.txt
+config/ios_development_passphrase.txt
