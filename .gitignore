@@ -19,6 +19,7 @@
 
 *.DS_Store
 
-
-config/ios_development_certificate.txt
+config/ios_development_certificate.pem
 config/ios_development_passphrase.txt
+config/ios_production_certificate.pem
+config/ios_production_passphrase.txt
