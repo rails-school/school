@@ -110,7 +110,9 @@ has finished before notifying subscribers}
   def emit_lesson_notification_on_socket(lesson)
     # Notify iOS apps
     # Swap lines below when production certificate is ready
-    DeviceToken.all.each { |dt| IOSNotificationSender.perform_async(dt.as_json, lesson.as_json) }
+    DeviceToken.all.each do |dt|
+      IOSNotificationSender.perform_async(dt.as_json, lesson.as_json)
+    end
 
     # Notify socket listeners (Android)
     if Rails.env.production?
