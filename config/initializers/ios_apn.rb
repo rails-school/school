@@ -1,9 +1,33 @@
 if Rails.env.production?
   IOS_APN = ENV["IOS_APN"] || Houston::Client.production
-  IOS_APN.certificate = File.read("config/ios_production_certificate.pem")
-  IOS_APN.passphrase = File.read("config/ios_production_passphrase.txt")
+
+  certificate = "config/ios_production_certificate.pem"
+  if File.exist? certificate
+    IOS_APN.certificate = File.read(certificate)
+  else
+    puts "iOS APN: #{certificate} not found"
+  end
+
+  passphrase = "config/ios_production_passphrase.txt"
+  if File.exist? passphrase
+    IOS_APN.passphrase = File.read(passphrase)
+  else
+    puts "iOS APN: #{passphrase} not found"
+  end
 else
   IOS_APN = ENV["IOS_APN"] || Houston::Client.development
-  IOS_APN.certificate = File.read("config/ios_development_certificate.pem")
-  IOS_APN.passphrase = File.read("config/ios_development_passphrase.txt")
+
+  certificate = "config/ios_development_certificate.pem"
+  if File.exist? certificate
+    IOS_APN.certificate = File.read(certificate)
+  else
+    puts "iOS APN: #{certificate} not found"
+  end
+
+  passphrase = "config/ios_development_passphrase.txt"
+  if File.exist? passphrase
+    IOS_APN.passphrase = File.read(passphrase)
+  else
+    puts "iOS APN: #{passphrase} not found"
+  end
 end
