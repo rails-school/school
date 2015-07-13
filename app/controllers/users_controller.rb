@@ -93,10 +93,7 @@ has finished before notifying subscribers}
     args = params.require :token
     DeviceToken.new(token: args).save
 
-    respond_to do |f|
-      f.html
-      f.json { render json: nil, status: :ok }
-    end
+    render json: nil, status: :ok
   end
 
   private
