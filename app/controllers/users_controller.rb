@@ -109,7 +109,6 @@ has finished before notifying subscribers}
   # all mobile devices subscribed to a channel
   def emit_lesson_notification_on_socket(lesson)
     # Notify iOS apps
-    # Swap lines below when production certificate is ready
     DeviceToken.all.each do |dt|
       IOSNotificationSender.perform_async(dt.as_json, lesson.as_json)
     end

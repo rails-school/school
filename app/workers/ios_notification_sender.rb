@@ -11,4 +11,3 @@ class IOSNotificationSender
     IOS_APN.push notification
   end
 end
-
