@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319185740) do
+ActiveRecord::Schema.define(version: 20150629163010) do
 
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20150319185740) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "language"
+  end
+
+  create_table "device_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lessons", force: :cascade do |t|

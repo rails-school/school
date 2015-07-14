@@ -1,3 +1,5 @@
+require "houston"
+
 class UsersController < ApplicationController
   load_and_authorize_resource except:
     [:show, :unsubscribe, :notify_subscribers]
@@ -86,6 +88,14 @@ has finished before notifying subscribers}
     end
   end
 
+  # PUT /users/device-token
+  def save_device_token
+    args = params.require :token
+    DeviceToken.new(token: args).save
+
+    render json: nil, status: :created
+  end
+
   private
 
   def authenticate_sendgrid_webhook
@@ -98,15 +108,21 @@ has finished before notifying subscribers}
   # server with socket.io; the Node server will then send the lesson to
   # all mobile devices subscribed to a channel
   def emit_lesson_notification_on_socket(lesson)
-    return unless Rails.env.production?
+    # Notify iOS apps
+    DeviceToken.all.each do |dt|
+      IOSNotificationSender.perform_async(dt.as_json, lesson.as_json)
+    end
 
-    server_addr = "https://rssf-pusher.herokuapp.com"
-    socket = SocketIO::Client::Simple.connect server_addr
-    message = lesson.as_json
+    # Notify socket listeners (Android)
+    if Rails.env.production?
+      server_addr = "https://rssf-pusher.herokuapp.com"
+      socket = SocketIO::Client::Simple.connect server_addr
+      message = lesson.as_json
 
-    socket.emit "lessonNotification", message
-    socket.on :connect do
       socket.emit "lessonNotification", message
+      socket.on :connect do
+        socket.emit "lessonNotification", message
+      end
     end
   end
 end

@@ -64,6 +64,8 @@ gem 'chronic'
 
 # Allow use of sockets for mobile support
 gem 'socket.io-client-simple'
+# Set up push notifications for iOS apps
+gem 'houston'
 
 group :test do
   gem "factory_girl_rails"

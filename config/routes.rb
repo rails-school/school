@@ -17,7 +17,12 @@ Rs::Application.routes.draw do
   resources :venues, only: [:index, :show, :edit, :new]
   resources :answers
   resources :questions
-  resources :users, :except => [:new, :create, :destroy]
+  resources :users, except: [:new, :create, :destroy] do
+    collection do
+      put "device-token" => "users#save_device_token"
+    end
+  end
+
   resources :lessons, :path => "l" do
     member do
       get "whiteboard" => "lessons#show", :whiteboard => true
