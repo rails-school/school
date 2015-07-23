@@ -23,7 +23,7 @@
     = f.text_field :codewars_challenge_slug
   .field
     = f.label :codewars_challenge_language
-    = f.select :codewars_challenge_language, options_for_select(%w[ruby javascript coffeescript python haskell clojure java])
+    = f.select :codewars_challenge_language, options_for_select(%w[ruby javascript coffeescript python haskell clojure java], :selected => @lesson.codewars_challenge_language)
   %br
   .field
     =f.label :date
