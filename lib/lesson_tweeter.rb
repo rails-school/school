@@ -9,11 +9,14 @@ class LessonTweeter
   def tweet
     status = lesson.tweet_message.present? ? lesson.tweet_message : default_content
     if status.match(/{{URL}}/i)
+      # Allow 30 characters for url and 7 characters for "{{URL}}"
+      return false if status.length > 117
       status.gsub!(/{{URL}}/i, url)
     else
+      # Allow 30 characters for url and 3 characters for " - "
+      return false if status.length > 107
       status += " - #{url}"
     end
-    return false if status.length > 140
 
     begin
       client = Twitter::REST::Client.new do |config|
