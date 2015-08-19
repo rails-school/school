@@ -28,7 +28,6 @@ gem "icalendar"
 gem "addressable"
 
 gem "twitter"
-gem "protected_attributes"
 
 # quick and easy metrics
 gem "prosperity"
