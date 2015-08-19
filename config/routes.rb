@@ -62,4 +62,6 @@ Rs::Application.routes.draw do
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web, at: "/sidekiq"
   end
+
+  ActiveAdmin.routes(self)
 end
