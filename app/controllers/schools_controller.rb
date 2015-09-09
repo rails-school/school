@@ -50,7 +50,7 @@ class SchoolsController < ApplicationController
   # PUT /schools/1.json
   def update
     respond_to do |format|
-      if @school.update_attributes(params[:school])
+      if @school.update_attributes(school_params)
         format.html { redirect_to @school, notice: 'School was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,5 +69,10 @@ class SchoolsController < ApplicationController
       format.html { redirect_to schools_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def school_params
+    params.require(:school).permit(:name, :slug)
   end
 end

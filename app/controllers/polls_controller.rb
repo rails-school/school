@@ -40,7 +40,7 @@ class PollsController < ApplicationController
   # POST /polls
   # POST /polls.json
   def create
-    @poll = Poll.new(params[:poll])
+    @poll = Poll.new(poll_params)
 
     respond_to do |format|
       if @poll.save
@@ -59,7 +59,7 @@ class PollsController < ApplicationController
     @poll = Poll.find(params[:id])
 
     respond_to do |format|
-      if @poll.update_attributes(params[:poll])
+      if @poll.update_attributes(poll_params)
         format.html { redirect_to @poll, notice: 'Poll was successfully updated.' }
         format.js
       else
@@ -91,5 +91,12 @@ class PollsController < ApplicationController
     ua.poll_id = poll_id
     ua.save!
     @poll = Answer.find(answer_id).poll
+  end
+
+  private
+  def poll_params
+    params.require(:poll).permit(
+      :question, :published
+    )
   end
 end

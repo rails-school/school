@@ -81,7 +81,7 @@ class LessonsController < ApplicationController
   # PUT /lessons/1.json
   def update
     respond_to do |format|
-      if @lesson.update_attributes(params[:lesson])
+      if @lesson.update_attributes(lesson_params)
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { head :no_content }
       else
@@ -149,5 +149,13 @@ private
       l_params[:end_time] =
         Time.zone.parse("#{date} #{l_params[:end_time]}")
     end
+  end
+
+  def lesson_params
+    params.require(:lesson).permit(
+      :archive_url, :codewars_challenge_language, :codewars_challenge_slug,
+      :description, :end_time, :hangout_url, :image_social, :slug, :start_time,
+      :summary, :title, :tweet_message, :venue_id
+    )
   end
 end

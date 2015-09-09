@@ -8,7 +8,7 @@ gem 'rails', '~> 4.2.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem "devise"
-gem "cancan"
+gem "cancancan"
 gem "haml-rails"
 gem 'coffee-rails'
 gem 'gmaps4rails', '~> 1.5.6'
