@@ -8,13 +8,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :async
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :name, :hide_last_name, :homepage, :github_username,
-                  :school_id, :subscribe_lesson_notifications,
-                  :subscribe_badge_notifications, :codewars_username,
-                  :bridge_troll_user_id
-
   has_many :attendances
   has_many :user_answers
   has_many :user_badges

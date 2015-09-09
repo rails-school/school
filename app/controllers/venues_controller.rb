@@ -59,7 +59,7 @@ class VenuesController < ApplicationController
     @place = Venue.find(params[:id])
 
     respond_to do |format|
-      if @place.update_attributes(params[:venue])
+      if @place.update_attributes(venue_params)
         format.html { redirect_to @place, notice: 'Venue.was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,5 +79,12 @@ class VenuesController < ApplicationController
       format.html { redirect_to venues_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def venue_params
+    params.require(:venue).permit(
+      :address, :city, :country, :state, :zip, :name, :slug, :comment
+    )
   end
 end

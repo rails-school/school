@@ -1,5 +1,4 @@
 class Venue < ActiveRecord::Base
-  attr_accessible :address, :city, :country, :state, :zip, :name, :slug, :comment
   has_many :lessons
   belongs_to :school
   acts_as_gmappable

@@ -1,6 +1,4 @@
 class DeviceToken < ActiveRecord::Base
-  attr_accessible :token
-
   def save
     # Escape token: remove arrows and spaces
     escaped_token = ""

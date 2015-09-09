@@ -81,7 +81,7 @@ has finished before notifying subscribers}
 
   # PUT /users/1
   def update
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render action: "edit"
@@ -124,5 +124,13 @@ has finished before notifying subscribers}
         socket.emit "lessonNotification", message
       end
     end
+  end
+
+  def user_params
+    params.require(:user).permit(
+      :bridge_troll_user_id, :codewars_username, :email, :github_username,
+      :hide_last_name, :homepage, :name, :school_id,
+      :subscribe_badge_notifications, :subscribe_lesson_notifications
+    )
   end
 end

@@ -1,6 +1,4 @@
 class Lesson < ActiveRecord::Base
-  attr_accessible :start_time, :end_time, :description, :title, :slug, :venue_id, :summary, :tweet_message, :image_social, :codewars_challenge_slug, :codewars_challenge_language, :archive_url, :hangout_url
-
   has_many :attendances
   has_many :users, :through => :attendances
   before_save :generate_slug
