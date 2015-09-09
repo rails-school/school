@@ -24,4 +24,4 @@ Bugs and Feature Requests
 CI
 --
 
-[![Build Status](https://secure.travis-ci.org/rails-school/school.png?branch=master)](http://travis-ci.org/rails-school/school)
+[![Build Status](https://circleci.com/gh/rails-school/school.svg?&style=shield&circle-token=21b6e7eb1bda6c80a89ca4f66fa623dd6686bcac)](https://circleci.com/gh/rails-school/school)
