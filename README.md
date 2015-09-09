@@ -6,6 +6,11 @@ Demo
 
 You can find a live School instance at [Railsschool.org](//www.railsschool.org).
 
+Getting Started in Development
+----
+
+[Check out our instructions.](https://github.com/rails-school/school/blob/master/CONTRIBUTING.md)
+
 Start Your Own Local Rails School
 ---
 
