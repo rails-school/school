@@ -29,9 +29,6 @@ gem "addressable"
 
 gem "twitter"
 
-# quick and easy metrics
-gem "prosperity"
-
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets'
