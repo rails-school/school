@@ -1,9 +1,8 @@
 RSpec.configure do |config|
   config.before(:each) do |example|
     unless self.class.metadata[:geocode] == true
-      Gmaps4rails::ModelHandler.any_instance.stub(:prevent_geocoding?) do
-        true
-      end
+      allow_any_instance_of(Gmaps4rails::ModelHandler).to receive(:prevent_geocoding?)
+        .and_return(true)
     end
   end
 end
