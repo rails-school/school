@@ -46,6 +46,7 @@ feature %q{
 
   background do
     stub_current_school
+    FactoryGirl.create(:poll)
     @user = FactoryGirl.create(:user)
     sign_in_manually(@user)
   end

@@ -61,4 +61,9 @@ FactoryGirl.define do
     sequence(:language) { |i| "language-#{i}"}
   end
 
+  factory :poll do
+    question "Am I stubby?"
+    published true
+  end
+
 end
