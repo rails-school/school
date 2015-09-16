@@ -18,7 +18,7 @@
         - @lesson.users.each do |u|
           = render partial: "users/single_user", locals: {user: u, lesson: @lesson}
   - if user_signed_in?
-    = render partial: "polls/poll", locals: {poll: current_user.next_unanswered_poll, previous_poll: nil}
+    = render partial: "polls/poll", locals: {poll: current_user.next_unanswered_poll, last_completed_poll: nil}
 
 .lesson_details
   =render partial: "lessons/announce", locals: {lesson: @lesson, main_page: false}
