@@ -45,7 +45,6 @@ class ApplicationController < ActionController::Base
       @current_school = Venue.order("created_at").first.school
     end
 
-    binding.pry unless @current_school
     session[:school] = @current_school.slug
     @current_school
   end

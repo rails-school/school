@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%h1= @job_post.title
+
+:markdown
+  #{@job_post.description}
+
+- if can? :edit, :job_post
+  = link_to 'Edit Job Post', edit_job_post_path(@job_post)
+
+%p
+  = link_to "All Jobs", job_posts_path

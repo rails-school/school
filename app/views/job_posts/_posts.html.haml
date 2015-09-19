@@ -1,0 +1,9 @@
+.job_posts_wrap
+
+  %h1
+    Job Listings
+
+  %ul.job_posts
+    - job_posts.each do |post|
+      %li.job_post
+        = link_to post.title, post.href
