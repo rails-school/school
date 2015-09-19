@@ -8,8 +8,8 @@ describe JobPost do
       subject { create(:job_post, url: nil) }
 
       it "is a local link" do
-        expect(subject.href).to
-          eq(Rails.application.routes.url_helpers.job_post_path(subject))
+        expect(subject.href).to eq(
+          Rails.application.routes.url_helpers.job_post_path(subject))
       end
     end
 
