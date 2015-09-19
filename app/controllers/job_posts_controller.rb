@@ -30,11 +30,14 @@ class JobPostsController < ApplicationController
   def create
     respond_to do |format|
       if @job_post.save
-        format.html { redirect_to @job_post, notice: 'Job post was successfully created.' }
-        format.json { render json: @job_post, status: :created, location: @job_post }
+        format.html { redirect_to @job_post,
+                      notice: 'Job post was successfully created.' }
+        format.json { render json: @job_post, status: :created,
+                             location: @job_post }
       else
         format.html { render action: "new" }
-        format.json { render json: @job_post.errors, status: :unprocessable_entity }
+        format.json { render json: @job_post.errors,
+                             status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +45,13 @@ class JobPostsController < ApplicationController
   def update
     respond_to do |format|
       if @job_post.update_attributes(job_post_params)
-        format.html { redirect_to @job_post, notice: 'Job post was successfully updated.' }
+        format.html { redirect_to @job_post,
+                      notice: 'Job post was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @job_post.errors, status: :unprocessable_entity }
+        format.json { render json: @job_post.errors,
+                             status: :unprocessable_entity }
       end
     end
   end
