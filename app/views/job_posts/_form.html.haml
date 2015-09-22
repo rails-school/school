@@ -1,0 +1,26 @@
+= form_for @job_post do |f|
+  = render 'shared/errors', resource: @job_post
+
+  .field
+    = f.label :school
+    = select("job_post", "school_id", School.all.collect { |s| [ s.name, s.id ] })
+  .field
+    = f.label :title
+    = f.text_field :title, :maxlength => 128
+  .field
+    = f.label :description
+    = f.text_area :description, rows: "32"
+  .field
+    = f.label :url
+    = f.text_field :url, placeholder: "(optional) External URL"
+  %br
+  .field
+    = f.label :starts_at
+    = f.date_field :starts_at
+  .field
+    = f.label :ends_at
+    = f.date_field :ends_at
+
+
+  .actions
+    = f.submit 'Save'

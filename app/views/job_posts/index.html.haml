@@ -1,0 +1,4 @@
+= render "job_posts/posts", job_posts: @job_posts
+
+- if can? :create, :job_post
+  = link_to 'New Job Post', new_job_post_path

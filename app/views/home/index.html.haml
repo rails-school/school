@@ -16,4 +16,4 @@
 
 -provide :right_column do
   =render :partial => "lessons/calendar"
-
+  =render "job_posts/posts", :job_posts => @job_posts unless @job_posts.empty?

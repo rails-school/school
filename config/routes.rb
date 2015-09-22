@@ -7,6 +7,7 @@ Rs::Application.routes.draw do
   resources :badges, param: :slug, only: [:index, :show]
   resources :polls
   resources :schools
+  resources :job_posts
 
   devise_for :users, controllers: {sessions: "devise_overrides/sessions"}
 

@@ -66,4 +66,11 @@ FactoryGirl.define do
     published true
   end
 
+  factory :job_post do
+    sequence(:title) { |i| "Job Post #{i}" }
+    sequence(:description) { |i| "Job Description #{i}\n-some\n-markdown" }
+    starts_at { 1.day.ago }
+    ends_at { 1.month.from_now }
+  end
+
 end
