@@ -22,30 +22,6 @@ describe JobPost do
     end
   end
 
-  describe "#for_school_id" do
-    it "contains job posts with the correct school id" do
-      school = create(:school)
-      post1 = create(:job_post, school: school)
-      post2 = create(:job_post, school: school)
-
-      posts = JobPost.for_school_id(school.id)
-      posts.should include(post1)
-      posts.should include(post2)
-    end
-
-    it "does not contain job posts with the incorrect school id" do
-      school = create(:school)
-      other_school = create(:school)
-      post1 = create(:job_post, school: school)
-      post2 = create(:job_post, school: other_school)
-      post3 = create(:job_post, school: other_school)
-
-      posts = JobPost.for_school_id(school.id)
-      posts.should_not include(post2)
-      posts.should_not include(post3)
-    end
-  end
-
   describe "#active" do
     it "includes job posts that have already started" do
       post = create(:job_post, starts_at: 1.day.ago)

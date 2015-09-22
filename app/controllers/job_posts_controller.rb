@@ -4,7 +4,7 @@ class JobPostsController < ApplicationController
 
   def index
     if current_school.present?
-      @job_posts = JobPost.for_school_id(current_school.id)
+      @job_posts = JobPost.where(school: current_school)
                    .active.order("ends_at ASC")
       @title = "All jobs for #{current_school.name}"
     else
