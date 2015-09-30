@@ -32,8 +32,12 @@ class UsersController < ApplicationController
     if next_up_lesson == lesson
       User.where(subscribe_lesson_notifications: true,
                  school: lesson.venue.school).each do |u|
-        NotificationMailer.delay.lesson_notification(lesson.id, u.id,
-                                                     current_user.id)
+        begin
+          NotificationMailer.delay.lesson_notification(lesson.id, u.id,
+                                                       current_user.id)
+        rescue StandardError => e
+          Rails.logger.info "Error enqueueing #{u.email}: #{e}"
+        end
       end
       if LessonTweeter.new(lesson, current_user).tweet
         flash[:notice] = "Subcribers notified and tweet tweeted"
