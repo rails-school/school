@@ -1,8 +1,8 @@
 = provide(:title, @title)
 
 -provide :left_column do
-  -poll = user_signed_in? ? current_user.next_unanswered_poll : nil
-  =render "polls/poll", :poll => poll, :previous_poll => nil
+  - if user_signed_in?
+    = render partial: "polls/poll", locals: {poll: current_user.next_unanswered_poll, last_completed_poll: nil}
 
 %h1= @title
 
