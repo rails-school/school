@@ -8,6 +8,34 @@
 %p
   We welcome your feedback and are happy to answer your questions.
 
-%h1
-  Email us at
+%h2 By Email
+
+%p
+  Send a message to our volunteer staff at
   = mail_to 'team@railsschool.org', 'team@railsschool.org'
+
+%h2 By Chat
+
+%p
+  We like to hang out in Slack, which unfortunately requires that you sign up in order to participate. However getting started it pretty easy:
+  %script{async: true, defer: true, src: "https://slackin.railsschool.org/slackin.js"}
+
+%h2 On Social Media
+
+%ul
+  %li
+    %a{href: "https://twitter.com/railsschool"}
+      @RailsSchool on Twitter
+
+  %li
+    %a{href: "https://www.facebook.com/railsschool"}
+      Rails School on Facebook
+
+%h2 Through our Mailing List
+
+%p
+  We post announcements and hold discussions on the
+  = succeed '.' do
+    %a{href: 'https://groups.google.com/group/starmonkeys'}<
+      Starmonkeys Google Group
+  This is a great place to ask a question or suggest an idea that might be of interest to the greater Rails School community.
