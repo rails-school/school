@@ -26,4 +26,4 @@ You may have ideas to improve the website to better support your school - please
 Getting Help
 ---
 
-Shoot us an email any time at team@railsschool.org and [join us in our HipChat room](https://www.hipchat.com/gOTeMcGjM).
+Shoot us an email any time at team@railsschool.org and [join us on Slack](https://slackin.railsschool.org/) [![Slack Status](https://slackin.railsschool.org/badge.svg)](https://slackin.railsschool.org).
