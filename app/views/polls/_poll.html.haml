@@ -4,7 +4,7 @@
     -if poll.present?
       %h2
         :markdown
-          Poll:#{poll.question.html_safe}
+          Poll:#{poll.question}
       /%p=poll.description
 
       -answers = poll.answers
@@ -19,7 +19,9 @@
 -elsif last_completed_poll.present?
   .poll-result
     %p Poll result
-    %h3=last_completed_poll.try(:question)
+    %h3
+      :markdown
+        #{last_completed_poll.try(:question)}
     =render :partial => 'polls/stats', :locals => {:poll => last_completed_poll}
     %br
     = link_to 'See all polls', polls_path

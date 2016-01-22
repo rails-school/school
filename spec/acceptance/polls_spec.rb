@@ -46,12 +46,13 @@ feature %q{
 
   background do
     stub_current_school
-    FactoryGirl.create(:poll)
+    FactoryGirl.create(:poll, published: true)
     @user = FactoryGirl.create(:user)
     sign_in_manually(@user)
   end
 
   scenario "poll is visible and votable", :js => true do
+    save_and_open_page
     page.should have_css(".polls", :visible => true)
   end
 end

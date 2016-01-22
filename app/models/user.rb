@@ -43,11 +43,11 @@ class User < ActiveRecord::Base
   end
 
   def next_unanswered_poll
-    if user_answers.any?
-      Poll.where(['id not in (?)', user_answers.map(&:poll_id)]).first
-    else
-      Poll.first
-    end
+    Poll.where(published: true).tap { |s|
+      if user_answers.any?
+        s.where!('id not in (?)', user_answers.map(&:poll_id))
+      end
+    }.first
   end
 
   def rsvp_for(lesson)
