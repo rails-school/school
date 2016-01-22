@@ -2,7 +2,9 @@
 -if poll.present?
   .polls{'data-id' => poll.id}
     -if poll.present?
-      %h2 Poll:#{poll.question}
+      %h2
+        :markdown
+          Poll:#{poll.question.html_safe}
       /%p=poll.description
 
       -answers = poll.answers
