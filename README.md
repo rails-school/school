@@ -19,7 +19,7 @@ We'd love to have you spread Rails School to your area! [It's easy. Start here](
 Bugs and Feature Requests
 ---
 
-[Submit a GitHub issue](https://github.com/rails-school/school/issues/new), or better yet, [create a pull request](https://github.com/rails-school/school/CONTRIBUTING.md).
+[Submit a GitHub issue](https://github.com/rails-school/school/issues/new), or better yet, [create a pull request](CONTRIBUTING.md).
 
 CI
 --
