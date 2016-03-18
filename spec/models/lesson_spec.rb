@@ -6,7 +6,14 @@ describe Lesson do
     let(:lesson) { create(:lesson) }
     subject { lesson }
 
-    it { should validate_length_of(:tweet_message).is_at_most(140) }
+    # previous behavior limited tweets to 140
+    describe "tweet_message length" do
+      it "allows tweets of 255 characters" do
+        tweet = "a" * 255
+        lesson.tweet_message = tweet
+        expect(lesson).to be_valid
+      end
+    end
   end
 
   describe "lessons_this_month" do

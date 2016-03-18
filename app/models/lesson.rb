@@ -6,8 +6,6 @@ class Lesson < ActiveRecord::Base
   belongs_to :venue
   belongs_to :teacher, class_name: "User"
 
-  validates :tweet_message, length: { maximum: 140 }
-
   def generate_slug
     self.slug = Slug.new(title).generate if self.slug.blank?
   end
