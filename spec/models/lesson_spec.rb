@@ -6,7 +6,7 @@ describe Lesson do
     let(:lesson) { create(:lesson) }
     subject { lesson }
 
-    #previous behavior limited tweets to 140
+    # previous behavior limited tweets to 140
     describe "tweet_message length" do
       it "allows tweets of 255 characters" do
         tweet = "a" * 255
