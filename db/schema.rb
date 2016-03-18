@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918142651) do
+ActiveRecord::Schema.define(version: 20160317232856) do
 
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20150918142651) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "notification_sent_at"
-    t.string   "tweet_message",               limit: 140
+    t.string   "tweet_message"
     t.integer  "teacher_id"
     t.string   "image_social"
     t.string   "codewars_challenge_slug"
