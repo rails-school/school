@@ -27,12 +27,19 @@ class PollsController < ApplicationController
   # GET /polls/new
   # GET /polls/new.json
   def new
-    @poll = Poll.new
+    if !current_user.admin?
+      redirect_to root_path
+      return
+    
+    else
+      @poll = Poll.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @poll }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @poll }
+
     end
+
   end
 
   # GET /polls/1/edit
@@ -43,6 +50,7 @@ class PollsController < ApplicationController
   # POST /polls
   # POST /polls.json
   def create
+
     @poll = Poll.new(poll_params)
 
     respond_to do |format|

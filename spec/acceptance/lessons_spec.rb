@@ -248,6 +248,8 @@ feature %q{
 
 end
 
+
+
 feature %q{
   As a teacher
   When I have a lesson coming up
