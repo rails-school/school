@@ -245,7 +245,6 @@ feature %q{
     uri = URI.parse(current_url)
     uri.path.should == root_path
   end
-
 end
 
 feature %q{

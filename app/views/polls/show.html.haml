@@ -4,6 +4,6 @@
   %b Question:
   = @poll.question
 
-= link_to 'Edit', edit_poll_path(@poll)
+= link_to 'Edit', edit_poll_path(@poll) if can? :manage, :polls
 \|
-= link_to 'Back', polls_path
+= link_to 'Back', polls_path if can? :manage, :polls
