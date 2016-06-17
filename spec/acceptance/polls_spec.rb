@@ -6,7 +6,7 @@ feature %q{
 } do
 
   background do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:admin)
     venue = FactoryGirl.create(:venue)
     visit root_path
     click_link "Login"
