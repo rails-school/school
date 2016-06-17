@@ -35,7 +35,6 @@ feature %q{
     page.should have_css("p", :text => "Poll was successfully updated.", :visible => true)
   end
 
-
 end
 
 feature %q{
@@ -55,7 +54,9 @@ feature %q{
     save_and_open_page
     page.should have_css(".polls", :visible => true)
   end
+
 end
+
 feature %q{
   As a website
   I want to make sure,
@@ -70,7 +71,7 @@ feature %q{
     sign_in_manually @user
   end
 
-  scenario "Non-admin user is trying to access polls" do
+  scenario "Non-admin user is trying to access polls", :js => true do
     visit new_poll_path
     uri = URI.parse(current_url)
     uri.path.should == root_path

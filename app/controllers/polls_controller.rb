@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
-
+  
+  load_and_authorize_resource only: [:new, :create, :edit, :update]
   before_action :authenticate_user!
 
   # GET /polls
@@ -27,13 +28,7 @@ class PollsController < ApplicationController
   # GET /polls/new
   # GET /polls/new.json
   def new
-    if !current_user.admin?
-      redirect_to root_path
-      return
-    
-    else
       @poll = Poll.new
-
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @poll }
