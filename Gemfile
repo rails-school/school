@@ -32,6 +32,10 @@ gem "twitter"
 group :development do
   gem 'letter_opener'
   gem 'quiet_assets'
+
+  # for deploying to our production vps
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
 end
 
 group :production do
