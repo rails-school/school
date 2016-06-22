@@ -219,11 +219,6 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.4)
-    rails_stdout_logging (0.0.3)
     railties (4.2.5)
       actionpack (= 4.2.5)
       activesupport (= 4.2.5)
@@ -381,7 +376,6 @@ DEPENDENCIES
   quiet_assets
   rack-timeout (= 0.0.4)
   rails (~> 4.2.4)
-  rails_12factor
   redcarpet (~> 1.17.2)
   rspec-rails
   sass-rails (~> 4.0.0)
@@ -397,3 +391,9 @@ DEPENDENCIES
   unicorn
   webmock
   zurb-foundation (= 3.0.9)
+
+RUBY VERSION
+   ruby 2.2.0p0
+
+BUNDLED WITH
+   1.12.5

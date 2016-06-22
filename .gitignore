@@ -16,6 +16,7 @@
 /.idea
 
 /coverage
+/public/assets
 
 *.DS_Store
 
