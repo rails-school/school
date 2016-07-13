@@ -38,6 +38,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-secrets-yml', '~> 1.0.0'
   gem 'rvm1-capistrano3', require: false
+  gem 'capistrano-sidekiq'
 end
 
 group :production do

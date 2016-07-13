@@ -6,6 +6,7 @@ require "capistrano/deploy"
 require 'capistrano/rails'
 require 'capistrano/secrets_yml'
 require 'rvm1/capistrano3'
+require 'capistrano/sidekiq'
 
 # Include tasks from other gems included in your Gemfile
 #

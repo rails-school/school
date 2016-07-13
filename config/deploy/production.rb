@@ -10,6 +10,7 @@ server 'new-site.railsschool.org', user: 'deploy', roles: %w{web}
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
 
+set :sidekiq_concurrency, 3
 
 # role-based syntax
 # ==================
