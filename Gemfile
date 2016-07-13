@@ -36,6 +36,8 @@ group :development do
   # for deploying to our production vps
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-secrets-yml', '~> 1.0.0'
+  gem 'rvm1-capistrano3', require: false
 end
 
 group :production do

@@ -17,6 +17,7 @@
 
 /coverage
 /public/assets
+config/secrets.yml
 
 *.DS_Store
 

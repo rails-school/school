@@ -1,8 +1,9 @@
+
 # config valid only for current version of Capistrano
 lock '3.5.0'
 
 set :application, 'rails-school'
-set :repo_url, 'git@github.com:rails-school/school.git'
+set :repo_url, 'https://github.com/rails-school/school.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -47,3 +48,5 @@ namespace :deploy do
   end
 
 end
+
+set :branch, ENV['BRANCH'] if ENV['BRANCH']
