@@ -18,7 +18,7 @@ feature %q{
 
 
   scenario "create a poll", :js => true do
-    page.find("a", :text => 'New Poll', :visible => true).click
+    visit new_poll_path
     fill_in "poll_question", :with => "Should a bear drink beer or have food with an elephant?"
     page.should have_css("h2", :text => "Please save this poll first to add answers", :visible => true)
     click_button "Save"
@@ -78,3 +78,4 @@ feature %q{
   end
 
 end
+
