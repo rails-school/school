@@ -1,6 +1,6 @@
 class PollsController < ApplicationController
-  
-  load_and_authorize_resource only: [:new, :create, :edit, :update]
+  load_and_authorize_resource only: [:new, :create, :edit, :update, 
+  :destroy, :published]
   before_action :authenticate_user!
 
   # GET /polls

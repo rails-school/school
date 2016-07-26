@@ -1,14 +1,14 @@
 %h1 Listing polls
 
 
--@polls.each do |poll|
+- @polls.each do |poll|
   .poll{'data-id' => poll.id}
     %h2= poll.question
     .publish
-      =render :partial => "polls/publish_link", :locals => {:poll => poll}
-    .actions
+      = if current_user.admin?
+        = render :partial => "polls/publish_link", :locals => {:poll => poll}.actions
+      	= link_to 'Edit', edit_poll_path(poll) 
+      	= link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } 
       = link_to 'Show', poll
-      = link_to 'Edit', edit_poll_path(poll) 
-      = link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } 
 
-= link_to 'New Poll', new_poll_path if can? :manage, :polls
+= link_to 'New Poll', new_poll_path if current_user.admin?
