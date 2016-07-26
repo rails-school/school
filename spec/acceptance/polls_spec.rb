@@ -78,4 +78,3 @@ feature %q{
   end
 
 end
-

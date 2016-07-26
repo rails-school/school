@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
-  load_and_authorize_resource only: [:new, :create, :edit, :update, :destroy, :published] 
+  load_and_authorize_resource only: [:new, :create, :edit, :update, 
+:destroy, :published] 
   before_action :authenticate_user!
 
   # GET /polls
@@ -27,7 +28,6 @@ class PollsController < ApplicationController
   # GET /polls/new
   # GET /polls/new.json
   def new
-
       @poll = Poll.new
       respond_to do |format|
         format.html # new.html.erb

@@ -6,8 +6,7 @@
     %h2= poll.question
     .publish
       = if current_user.admin?
-      	=render :partial => "polls/publish_link", :locals => {:poll => poll}
-    .actions
+        =render :partial => "polls/publish_link", :locals => {:poll => poll}.actions
       	= link_to 'Edit', edit_poll_path(poll) 
       	= link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } 
       = link_to 'Show', poll
