@@ -3,8 +3,8 @@
 %p
   %b Question:
   = @poll.question
-= if current_user.admin?
+  -if current_user.admin?
 		= link_to 'Edit', edit_poll_path(@poll) 
 		%p | 
-= else
+  -else
 		= link_to 'Back', polls_path 
