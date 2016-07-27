@@ -3,7 +3,8 @@
 %p
   %b Question:
   = @poll.question
-
-= link_to 'Edit', edit_poll_path(@poll) if can? :manage, :polls
-\|
-= link_to 'Back', polls_path if can? :manage, :polls
+= if current_user.admin?
+		= link_to 'Edit', edit_poll_path(@poll) 
+		%p | 
+	= else
+		= link_to 'Back', polls_path 
