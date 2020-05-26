@@ -9,7 +9,24 @@ Rs::Application.routes.draw do
   resources :schools
   resources :job_posts
 
-  devise_for :users, controllers: {sessions: "devise_overrides/sessions"}
+  disable_new_user_registrations = Rails.env.production?
+
+  if disable_new_user_registrations
+    devise_for :users,
+      controllers: {sessions: "devise_overrides/sessions"},
+      skip: [:registrations]
+
+    # https://stackoverflow.com/a/31779657/283398
+    resource :users,
+      only: [:edit, :update, :destroy],
+      controller: 'devise/registrations',
+      as: :user_registration do
+        get 'cancel'
+        get 'new' => redirect("/"), as: :new
+      end
+  else
+    devise_for :users, controllers: {sessions: "devise_overrides/sessions"}
+  end
 
   #resources :venues
   # NOTE I just discovered that any user could destroy venues, so have
